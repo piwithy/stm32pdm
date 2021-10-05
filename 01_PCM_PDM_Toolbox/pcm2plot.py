@@ -46,7 +46,7 @@ def main():
     plt.subplot(212)
     for data in pcm_files:
         axs[1].plot(data["freq_vector"], np.abs(data["fft"]), label=data["title"])
-    axs[1].set_xlim([0, fs / 2])
+    axs[1].set_xlim([-fs/2, fs / 2])
     axs[1].set_xlabel("Frequency (Hz)")
     axs[1].set_title("Frequency Domain")
     axs[1].legend()

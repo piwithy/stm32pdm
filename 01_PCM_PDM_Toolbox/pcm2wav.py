@@ -11,6 +11,7 @@ def main():
     arg_parser.add_argument('-s', '--sampling', help="Audio Sampling Frequency")
 
     args = arg_parser.parse_args()
+    print(args)
 
     print("Reading \"{}\"".format(args.input[0]))
     data = np.fromfile(args.input[0], dtype='int16')
@@ -21,12 +22,13 @@ def main():
         fs = args.sampling
     else:
         fs = 32000
+    print(fs)
 
     print("Writing \"{}\"".format(args.output[0]))
     wav = wave.open(args.output[0], 'wb')
     wav.setnchannels(1)
     wav.setsampwidth(bytes_per_sample)
-    wav.setframerate(fs)
+    wav.setframerate(float(fs))
     wav.writeframes(fragments)
 
 
