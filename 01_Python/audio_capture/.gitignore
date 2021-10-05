@@ -1,0 +1,5 @@
+.idea
+.pcm
+.wav
+__pycache__
+venv
