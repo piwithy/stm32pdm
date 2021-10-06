@@ -3,6 +3,23 @@ import time
 
 
 def serial_capture(com_port: str, speed: int, timeout_s: float):
+    """
+    Function to capture Data from the serial Port
+
+    Parameters
+    ----------
+    com_port : str
+        Serial Port to listen
+    speed: int
+        Serial Communication Speed in Bauds
+    timeout_s: float
+        Time in seconds after last byte received to end the communication
+
+    Returns
+    -------
+    list
+        list of the bytes received
+    """
     input_buffer = []
     ser = serial.Serial(com_port, baudrate=speed if speed else 115200)
     try:

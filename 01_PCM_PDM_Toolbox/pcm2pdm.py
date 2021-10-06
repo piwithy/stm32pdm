@@ -60,6 +60,21 @@ def main():
         fp.write(pdm_signal_16bits[i])
     fp.close()
 
+    fig, axs = plt.subplots(2, 1, constrained_layout=True)
+    fig.suptitle("PCM-PDM Signal comparison")
+
+    n = np.linspace(0, 1, pdm_signal.shape[0])
+    n_pcm = np.linspace(0, 1, pcm_signal_float.shape[0])
+    axs[0].set_title("PDM")
+    axs[1].set_title("PCM")
+    axs[0].plot(n, pdm_signal, label="PDM Signal")
+    axs[1].plot(n_pcm, pcm_signal_float, label="PCM Signal")
+    axs[0].legend()
+    axs[1].legend()
+    axs[0].set_xlim((.45, .55))
+    axs[1].set_xlim((.45, .55))
+    plt.show()
+
 
 if __name__ == '__main__':
     exit(main())

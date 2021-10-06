@@ -27,12 +27,36 @@ def main():
         T = file_dict["n"] / fs
         Ts.append(T)
         file_dict["time_vector"] = np.linspace(0, T, file_dict["n"])
-        file_dict["fft"] = np.fft.fft(file_dict["signal"])
-        file_dict["freq_vector"] = np.fft.fftfreq(file_dict["n"], d=1 / fs)
+        fft = np.fft.fft(file_dict["signal"])
+        fft = fft[range(int(file_dict["n"] / 2))] / file_dict["n"]
+        frq = np.linspace(0, fs / 2, int(file_dict['n'] / 2))
+        file_dict["fft"] = fft
+        file_dict["freq_vector"] = frq
+
         pcm_files.append(file_dict)
 
     fig, axs = plt.subplots(2, 1, constrained_layout=True)
     fig.suptitle("PCM Sound (Sampled @ {:.1f} kHz)".format(fs / 1000.))
+    # if len(pcm_files) == 2:
+    #     for data in pcm_files:
+    #         axs[0].plot(data["time_vector"], data["signal"], label=data["title"])
+    #         # plt.plot(t, np.ones((data[0].shape[0],)) * np.average(data[0]), label="avg: {}".format(data[1]))
+    #         print("Avg: \"{}\" = {}".format(data["title"], np.average(data["signal"])))
+    #     axs[0].set_title("Time Domain")
+    #     axs[0].set_xlim((0, max(Ts)))
+    #     axs[0].set_xlabel("Time (s)")
+    #     axs[0].set_ylabel("Amplitude")
+    #     axs[0].legend()
+    #
+    #     axs[1].plot(pcm_files[0]["freq_vector"], 20 * np.log(np.abs(pcm_files[1]["fft"] / pcm_files[0]["fft"])))
+    #     axs[1].set_xlim([0, fs / 2])
+    #     # axs[1].set_ylim([-6, 10])
+    #     axs[1].set_xlabel("Frequency (Hz)")
+    #     axs[1].set_ylabel("Response (dB)")
+    #     axs[1].set_title("Frequency Domain")
+    #     axs[1].legend()
+    #
+    # else:
     for data in pcm_files:
         axs[0].plot(data["time_vector"], data["signal"], label=data["title"])
         # plt.plot(t, np.ones((data[0].shape[0],)) * np.average(data[0]), label="avg: {}".format(data[1]))
@@ -43,10 +67,10 @@ def main():
     axs[0].set_ylabel("Amplitude")
     axs[0].legend()
 
-    plt.subplot(212)
     for data in pcm_files:
-        axs[1].plot(data["freq_vector"], np.abs(data["fft"]), label=data["title"])
-    axs[1].set_xlim([-fs/2, fs / 2])
+        axs[1].plot(data["freq_vector"], 20 * np.log10(np.abs(data["fft"])), label=data["title"])
+    axs[1].set_xlim([0, fs / 2])
+    axs[1].set_ylabel("Response (dB)")
     axs[1].set_xlabel("Frequency (Hz)")
     axs[1].set_title("Frequency Domain")
     axs[1].legend()
