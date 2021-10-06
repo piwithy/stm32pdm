@@ -1,24 +1,70 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <getopt.h>
+#include <string.h>
 #include "pdm_fir.h"
+#include "config.h"
 
 #define DECIMATION_FACTOR 64
 #define PDM_WORD_SIZE 16
 
-int main(int argc, char *argv[]) {
-    if (argc < 3) {
-        fprintf(stderr, "Not enough Arguments\n");
-        return -1;
+typedef enum boolean {
+    FALSE, TRUE
+} bool;
+
+void print_usage(FILE *stream, char *program_name, bool help_mode) {
+    fprintf(stream, "USAGE: %s [-h] [-f FACTOR] <Input File> <Outpufile>\n", program_name);
+    if (help_mode == TRUE) {
+        fprintf(stdout, "C Program to filter PDM Signals to PCM format\n\n");
+        fprintf(stdout, "Positional arguments:\n");
+        fprintf(stdout, "\t<Input File>\t\tPDM Signal file\n");
+        fprintf(stdout, "\t<Output File>\t\tPCM output file\n");
+        fprintf(stdout, "\nOptional arguments:\n");
+        fprintf(stdout, "\t-h\t\t\t\t\tShow this help message\n");
+        fprintf(stdout, "\t-f FACTOR\t\t\tDecimation Factor of the filter\n");
     }
+}
+
+
+int main(int argc, char *argv[]) {
+    // Argument handling
+    char *input_file = NULL;
+    char *output_file = NULL;
+    fprintf(stdout, "PDM Filter v%s\n", PROJECT_VER);
+    uint16_t decimation_factor = 64;
+    int opt;
+    char *endptr = NULL;
+    while ((opt = getopt(argc, argv, "hf:")) != -1) {
+        switch (opt) {
+            case 'h':
+                print_usage(stdout, argv[0], TRUE);
+                exit(EXIT_SUCCESS);
+            case 'f':
+                decimation_factor = strtol(optarg, &endptr, 10);
+                break;
+            default:
+                print_usage(stderr, argv[0], FALSE);
+                exit(EXIT_FAILURE);
+        }
+    }
+    if (optind >= argc) {
+        print_usage(stderr, argv[0], FALSE);
+        exit(EXIT_FAILURE);
+    }
+    input_file = argv[optind];
+    output_file = argv[optind + 1];
+
+    // Filter Init
     struct pdm_fir_filter pdm_filter;
     pdm_fir_flt_init(&pdm_filter);
 
-    printf("Reading PDM file: \"%s\"\n", argv[1]);
-    FILE *fp = fopen(argv[1], "rb");
+    // Reading Input
+    fprintf(stdout, "Reading PDM file: \"%s\"\n", input_file);
+    FILE *fp = fopen(input_file, "rb");
 
     if (fp == NULL) {
-        fprintf(stderr, "\"%s\" Not Found !", argv[1]);
-        return -1;
+        fprintf(stderr, "\"%s\" Not Found !\n", input_file);
+        exit(EXIT_FAILURE);
     }
 
     //Reading Input file
@@ -36,7 +82,7 @@ int main(int argc, char *argv[]) {
     fclose(fp);
 
     //filtering PDM
-    printf("Filtering PDM Signal\n");
+    fprintf(stdout, "Filtering PDM Signal\n");
     size_t pcm_length = pdm_length / (DECIMATION_FACTOR / PDM_WORD_SIZE);
     uint16_t *pcm_signal;
     pcm_signal = malloc(pcm_length * sizeof(uint16_t));
@@ -53,8 +99,8 @@ int main(int argc, char *argv[]) {
     }
 
     //Writing PCM
-    printf("Writing PCM to \"%s\"\n", argv[2]);
-    fp = fopen(argv[2], "wb");
+    fprintf(stdout, "Writing PCM to \"%s\"\n", output_file);
+    fp = fopen(output_file, "wb");
     fwrite(pcm_signal, pcm_length * sizeof(uint16_t), 1, fp);
     fclose(fp);
 

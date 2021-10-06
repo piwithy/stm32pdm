@@ -1,8 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
-project(pdm_filtering C)
+project(pdm_filter LANGUAGES C VERSION 0.0.1)
+
 
 set(CMAKE_C_STANDARD 11)
 
-include_directories(inc/ lib/fir_filter)
+configure_file(inc/config.h.in inc/config.h)
+
+include_directories(${PROJECT_BINARY_DIR}/inc/ inc/ lib/fir_filter)
 
 add_executable(pdm_filter lib/fir_filter/pdm_fir.c src/main.c)
