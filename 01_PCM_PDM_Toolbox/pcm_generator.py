@@ -34,7 +34,7 @@ def main():
     for byt in x_int:
         fp.write(byt)
         bytes_wr += 2
-    print("Wrote {} Byte{} ({} samples) to \"{}\"".format(bytes_wr, "s" if bytes_wr > 1 else "", bytes_wr * 2,
+    print("Wrote {} Byte{} ({} samples) to \"{}\"".format(bytes_wr, "s" if bytes_wr > 1 else "", bytes_wr / 2,
                                                           args.output))
 
 

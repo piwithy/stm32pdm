@@ -26,7 +26,7 @@ def main():
     pcm_16_bits = []
     wr_bytes = 0
     for i in range(0, len(pcm_bytes), 2):
-        print(i)
+        # print(i)
         j_b = pcm_bytes[i] + pcm_bytes[i + 1]
         pcm_16_bits.append(int.from_bytes(j_b, 'little', signed=True))
         wr_bytes += 2
