@@ -18,20 +18,22 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "EndlessLoop"
-
 #include "main.h"
+#include "fatfs.h"
+#include "usb_host.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "pdm_fir.h"
 #include <stdlib.h>
 #include <string.h>
+#include "File_Handling.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "EndlessLoop"
 typedef enum program_state {
     IDLE, RECORDING, PLAYING, SENDING
 } program_state;
@@ -39,17 +41,15 @@ typedef enum program_state {
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "EndlessLoop"
 
-#define SOUND_FS 32000
+#define SOUND_FS_KHZ 32
 #define DECIMATION_FACTOR 64
 #define WORD_SIZE 16
 
 #define PDM_BUFFER_SIZE 128
 #define PCM_BUFFER_SIZE PDM_BUFFER_SIZE / (DECIMATION_FACTOR / WORD_SIZE) // HERE PCM_BUFFER_SIZE = 128 / (64 / 16) = 32
 
-#define RECORD_TIME 3 // Record Time in Seconds
+#define RECORD_TIME_MS 2700 // Record Time in Seconds
 
 
 #define TRANSMIT
@@ -74,9 +74,10 @@ UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
 //declaring Buffers and Buffer Indexes
+const uint32_t pcm_data_size = SOUND_FS_KHZ * RECORD_TIME_MS;
 uint16_t PDM_buffer[PDM_BUFFER_SIZE * 2]; // Double buffer for HALF READ
 uint16_t PCM_buffer[PCM_BUFFER_SIZE];
-uint16_t PCM_sound[SOUND_FS * RECORD_TIME];
+uint16_t PCM_sound[SOUND_FS_KHZ * RECORD_TIME_MS];
 uint32_t pcm_sound_index = 0;
 
 uint16_t DAC_buffer_left[PCM_BUFFER_SIZE * 2]; // Double buffer for HALF WRITE
@@ -85,20 +86,24 @@ uint16_t DAC_buffer_right[PCM_BUFFER_SIZE * 2]; // Double buffer for HALF WRITE
 const uint32_t WAVE_HEADER[] = {
         // Declaration fichier
         ('F' << 24) + ('F' << 16) + ('I' << 8) + ('R' << 0), // 'RIFF'
-        (SOUND_FS * RECORD_TIME * sizeof(uint16_t)) + 36, // file size + 44 (header) - 8
+        (SOUND_FS_KHZ * RECORD_TIME_MS * sizeof(uint16_t)) + 36, // file size + 44 (header) - 8
         0x45564157, // WAVE
         0x20746D66, // 'fmt '
         0x10,
         0x00010001, // PCM Entier 1 canal
-        SOUND_FS, // fs 32kHz
-        SOUND_FS * 2, // 32kHz * 2 octet par bloc ech
+        1000 * SOUND_FS_KHZ, // fs 32kHz
+        1000 * SOUND_FS_KHZ * 2, // 32kHz * 2 octet par bloc ech
         0x00100002, // 2 octet par block d'ech et 16 bit par ech
         0x61746164, //'data'
-        SOUND_FS * RECORD_TIME * sizeof(uint16_t)
+        SOUND_FS_KHZ * RECORD_TIME_MS * sizeof(uint16_t)
 };
 
 uint8_t sai_flag = 1, sai_half = 0;
 uint8_t dac_flag = 1, dac_half = 0;
+
+uint8_t usb_ready = 0;
+
+extern ApplicationTypeDef Appli_state;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -115,6 +120,9 @@ static void MX_SAI1_Init(void);
 static void MX_TIM2_Init(void);
 
 static void MX_USART1_UART_Init(void);
+
+void MX_USB_HOST_Process(void);
+
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -182,7 +190,7 @@ int main(void) {
     //initializing Buffers
     for (size_t i = 0; i < PDM_BUFFER_SIZE * 2; i++) PDM_buffer[i] = 0;
     for (size_t i = 0; i < PCM_BUFFER_SIZE; i++) PCM_buffer[i] = 0;
-    for (size_t i = 0; i < SOUND_FS * RECORD_TIME; i++) PCM_sound[i] = 0;
+    for (size_t i = 0; i < SOUND_FS_KHZ * RECORD_TIME_MS; i++) PCM_sound[i] = 0;
     for (size_t i = 0; i < PCM_BUFFER_SIZE * 2; i++) {
         DAC_buffer_left[i] = 0x7ff;
         DAC_buffer_right[i] = 0x7FF;
@@ -212,6 +220,8 @@ int main(void) {
     MX_SAI1_Init();
     MX_TIM2_Init();
     MX_USART1_UART_Init();
+    MX_FATFS_Init();
+    MX_USB_HOST_Init();
     /* USER CODE BEGIN 2 */
 
     pdm_fir_flt_init(&pdm_filter);
@@ -227,6 +237,7 @@ int main(void) {
 
     while (1) {
         /* USER CODE END WHILE */
+        MX_USB_HOST_Process();
 
         /* USER CODE BEGIN 3 */
         switch (current_state) {
@@ -238,7 +249,7 @@ int main(void) {
                                                                PDM_BUFFER_SIZE,
                                                                DECIMATION_FACTOR, 3);
                     sai_flag = 1;
-                    if (pcm_sound_index < SOUND_FS * RECORD_TIME) {
+                    if (pcm_sound_index < SOUND_FS_KHZ * RECORD_TIME_MS) {
                         memcpy(PCM_sound + pcm_sound_index, PCM_buffer, sizeof(uint16_t) * filtered_words);
                         pcm_sound_index += filtered_words;
                     } else {
@@ -251,7 +262,7 @@ int main(void) {
                 break;
             case PLAYING:
                 if (!dac_flag) {
-                    if (pcm_sound_index < SOUND_FS * RECORD_TIME) {
+                    if (pcm_sound_index < SOUND_FS_KHZ * RECORD_TIME_MS) {
                         memcpy(DAC_buffer_left + PCM_BUFFER_SIZE * dac_half, PCM_sound + pcm_sound_index,
                                sizeof(uint16_t) * PCM_BUFFER_SIZE); // left audio channel
                         memcpy(DAC_buffer_right + PCM_BUFFER_SIZE * dac_half, PCM_sound + pcm_sound_index,
@@ -277,19 +288,27 @@ int main(void) {
                 HAL_GPIO_WritePin(GPIOG, LD3_Pin, GPIO_PIN_SET);
                 HAL_GPIO_WritePin(GPIOG, LD4_Pin, GPIO_PIN_SET);
                 // Adding gain on PCM_sound
-                for (size_t i = 0; i < SOUND_FS * RECORD_TIME; i++)
+
+                for (size_t i = 0; i < SOUND_FS_KHZ * RECORD_TIME_MS; i++)
                     PCM_sound[i] = (PCM_sound[i] - 0x7FF) * (0x7FFF / 0x7FF);
 
 
-                uint16_t bytes_per_send = (sizeof(uint16_t) * SOUND_FS) / 2;  // 0.5s of samples
-                uint16_t n_sends = RECORD_TIME * 2;
+                /*uint16_t bytes_per_send = (sizeof(uint16_t) * 1000 * SOUND_FS_KHZ) / 2;  // 0.5s of samples
+                uint16_t n_sends = RECORD_TIME_MS * 2 / 1000;
                 // sending FILE HEADER
                 HAL_UART_Transmit(&huart1, (uint8_t *) WAVE_HEADER, 44, HAL_MAX_DELAY * 10);
                 // sending Data
                 for (size_t i = 0; i < n_sends; i++) { // transmit .5s of data @ 115200 Baud on USART1
                     HAL_UART_Transmit(&huart1, (uint8_t *) PCM_sound + i * bytes_per_send,
                                       bytes_per_send, HAL_MAX_DELAY * 10);
+                }*/
+
+                if(Appli_state == APPLICATION_READY){
+                    Create_File("/output.wav");
+                    write_wav("/output.wav", WAVE_HEADER, PCM_sound, pcm_data_size);
                 }
+                while (usb_ready){}
+
                 HAL_GPIO_WritePin(GPIOG, LD3_Pin, GPIO_PIN_RESET);
                 HAL_GPIO_WritePin(GPIOG, LD4_Pin, GPIO_PIN_RESET);
                 current_state = IDLE;
@@ -334,15 +353,14 @@ void SystemClock_Config(void) {
     /** Initializes the RCC Oscillators according to the specified parameters
     * in the RCC_OscInitTypeDef structure.
     */
-    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
-    RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-    RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+    RCC_OscInitStruct.HSEState = RCC_HSE_ON;
     RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-    RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-    RCC_OscInitStruct.PLL.PLLM = 10;
+    RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+    RCC_OscInitStruct.PLL.PLLM = 5;
     RCC_OscInitStruct.PLL.PLLN = 90;
     RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
-    RCC_OscInitStruct.PLL.PLLQ = 4;
+    RCC_OscInitStruct.PLL.PLLQ = 3;
     if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
         Error_Handler();
     }
@@ -352,8 +370,8 @@ void SystemClock_Config(void) {
                                   | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
     RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
     RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-    RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
-    RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+    RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
+    RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
 
     if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK) {
         Error_Handler();
@@ -550,7 +568,12 @@ static void MX_GPIO_Init(void) {
     __HAL_RCC_GPIOE_CLK_ENABLE();
     __HAL_RCC_GPIOH_CLK_ENABLE();
     __HAL_RCC_GPIOA_CLK_ENABLE();
+    __HAL_RCC_GPIOC_CLK_ENABLE();
+    __HAL_RCC_GPIOB_CLK_ENABLE();
     __HAL_RCC_GPIOG_CLK_ENABLE();
+
+    /*Configure GPIO pin Output Level */
+    HAL_GPIO_WritePin(USB_OTG_HS_PSO_GPIO_Port, USB_OTG_HS_PSO_Pin, GPIO_PIN_RESET);
 
     /*Configure GPIO pin Output Level */
     HAL_GPIO_WritePin(GPIOG, LD3_Pin | LD4_Pin, GPIO_PIN_RESET);
@@ -560,6 +583,13 @@ static void MX_GPIO_Init(void) {
     GPIO_InitStruct.Mode = GPIO_MODE_EVT_RISING;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(USER_BTN_GPIO_Port, &GPIO_InitStruct);
+
+    /*Configure GPIO pin : USB_OTG_HS_PSO_Pin */
+    GPIO_InitStruct.Pin = USB_OTG_HS_PSO_Pin;
+    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(USB_OTG_HS_PSO_GPIO_Port, &GPIO_InitStruct);
 
     /*Configure GPIO pins : LD3_Pin LD4_Pin */
     GPIO_InitStruct.Pin = LD3_Pin | LD4_Pin;
@@ -625,5 +655,3 @@ void assert_failed(uint8_t *file, uint32_t line)
 #endif /* USE_FULL_ASSERT */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
-
-#pragma clang diagnostic pop
