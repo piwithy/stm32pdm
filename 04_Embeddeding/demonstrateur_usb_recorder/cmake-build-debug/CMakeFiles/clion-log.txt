@@ -1,0 +1,5 @@
+/snap/clion/164/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder
+-- Minimal optimization, debug info included
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug

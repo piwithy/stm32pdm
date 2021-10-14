@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="demonstrateur_usb_recorder"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="demonstrateur_usb_recorder.elf">
+				<Option output="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug/demonstrateur_usb_recorder.elf" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DDEBUG"/>
+					<Add option="-DUSE_HAL_DRIVER"/>
+					<Add option="-DSTM32F429xx"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/FATFS/Target"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/FATFS/App"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/USB_HOST/App"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/USB_HOST/Target"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Core/Inc"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/Third_Party/FatFs/src"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/ST/STM32_USB_Host_Library/Core/Inc"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Device/ST/STM32F4xx/Include"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Include"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/pdm_fir"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/file_handling"/>
+					<Add directory="/usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/include/c++/9.2.1"/>
+					<Add directory="/usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/include/c++/9.2.1/arm-none-eabi"/>
+					<Add directory="/usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/include/c++/9.2.1/backward"/>
+					<Add directory="/usr/lib/gcc/arm-none-eabi/9.2.1/include"/>
+					<Add directory="/usr/lib/gcc/arm-none-eabi/9.2.1/include-fixed"/>
+					<Add directory="/usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug/Makefile&quot;  VERBOSE=1 demonstrateur_usb_recorder.elf"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="demonstrateur_usb_recorder.elf/fast">
+				<Option output="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug/demonstrateur_usb_recorder.elf" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DDEBUG"/>
+					<Add option="-DUSE_HAL_DRIVER"/>
+					<Add option="-DSTM32F429xx"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/FATFS/Target"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/FATFS/App"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/USB_HOST/App"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/USB_HOST/Target"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Core/Inc"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/Third_Party/FatFs/src"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/ST/STM32_USB_Host_Library/Core/Inc"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Device/ST/STM32F4xx/Include"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Include"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/pdm_fir"/>
+					<Add directory="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/file_handling"/>
+					<Add directory="/usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/include/c++/9.2.1"/>
+					<Add directory="/usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/include/c++/9.2.1/arm-none-eabi"/>
+					<Add directory="/usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/include/c++/9.2.1/backward"/>
+					<Add directory="/usr/lib/gcc/arm-none-eabi/9.2.1/include"/>
+					<Add directory="/usr/lib/gcc/arm-none-eabi/9.2.1/include-fixed"/>
+					<Add directory="/usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug/Makefile&quot;  VERBOSE=1 demonstrateur_usb_recorder.elf/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Core/Inc/main.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Core/Inc/stm32f4xx_hal_conf.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Core/Inc/stm32f4xx_it.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Core/Src/main.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Core/Src/stm32f4xx_hal_msp.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Core/Src/stm32f4xx_hal_timebase_tim.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Core/Src/stm32f4xx_it.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Core/Src/syscalls.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Core/Src/sysmem.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Core/Src/system_stm32f4xx.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Core/Startup/startup_stm32f429zitx.s">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Include/cmsis_armcc.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Include/cmsis_armclang.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Include/cmsis_compiler.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Include/cmsis_gcc.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Include/cmsis_iccarm.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Include/cmsis_version.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Include/core_armv8mbl.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Include/core_armv8mml.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Include/core_cm0.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Include/core_cm0plus.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Include/core_cm1.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Include/core_cm23.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Include/core_cm3.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Include/core_cm33.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Include/core_cm4.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Include/core_cm7.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Include/core_sc000.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Include/core_sc300.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Include/mpu_armv7.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Include/mpu_armv8.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/CMSIS/Include/tz_context.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_hcd.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sai.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sai_ex.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_hcd.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sai.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sai_ex.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/FATFS/App/fatfs.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/FATFS/App/fatfs.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/FATFS/Target/ffconf.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/FATFS/Target/usbh_diskio.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/FATFS/Target/usbh_diskio.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc/usbh_msc.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc/usbh_msc_bot.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc/usbh_msc_scsi.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Src/usbh_msc.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Src/usbh_msc_bot.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Src/usbh_msc_scsi.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ctlreq.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_def.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ioreq.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_pipes.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_core.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_ctlreq.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_ioreq.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_pipes.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/Third_Party/FatFs/src/diskio.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/Third_Party/FatFs/src/diskio.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/Third_Party/FatFs/src/ff.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/Third_Party/FatFs/src/ff.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/Third_Party/FatFs/src/ff_gen_drv.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/Third_Party/FatFs/src/ff_gen_drv.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/Third_Party/FatFs/src/integer.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/Third_Party/FatFs/src/option/ccsbcs.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/Middlewares/Third_Party/FatFs/src/option/syscall.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/STM32F429ZITX_FLASH.ld">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/USB_HOST/App/usb_host.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/USB_HOST/App/usb_host.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/USB_HOST/Target/usbh_conf.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/USB_HOST/Target/usbh_conf.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/USB_HOST/Target/usbh_platform.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/USB_HOST/Target/usbh_platform.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/file_handling/file_handling.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/file_handling/file_handling.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/pdm_fir/pdm_fir.c">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/pdm_fir/pdm_fir.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/pdm_fir/pdm_fir.py">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/pdm_fir/pdm_fir_.h">
+			<Option target="demonstrateur_usb_recorder.elf"/>
+		</Unit>
+		<Unit filename="/home/jezegoup/rattrapage_pfe/repos/stm32pdm/04_Embeddeding/demonstrateur_usb_recorder/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
