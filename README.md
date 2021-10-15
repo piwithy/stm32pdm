@@ -138,46 +138,24 @@ def serial_capture(com_port:str, speed:int, timeout_s:float):
     ...
 ```
 
-#### pcm_capture.py
+#### raw_capture.py
 
-Script Python exportant les données capturées sur le port série dans un fichier PCM
-
-Message d'aide:
-
-```
-usage: pcm_capture.py [-h] [-b baud] <PCM OUTPUT FILE> <COM PORT>
-
-Python Script to capture PCM data From Serial Port
-
-positional arguments:
-  <PCM OUTPUT FILE>  PCM File where the captured data will be stored
-  <COM PORT>         COM PORT to capture from
-
-optional arguments:
-  -h, --help         show this help message and exit
-  -b baud            Serial Port Speed in Baud (defaults @115200 Baud)
-```
-
-#### wav_capture.py
-
-Script python exportant les données capturées sur le port série dans un fichier WAV
+Script Python exportant les données capturées sur le port série dans un fichier
 
 Message d'aide:
 
 ```
-usage: pcm_capture.py [-h] [-b baud] [-s SAMPLING] <PCM OUTPUT FILE> <COM PORT>
+usage: raw_capture.py [-h] [-b baud] <OUTPUT FILE> <COM PORT>
 
-Python Script to capture WAV data From Serial Port
+Python Script to capture RAW data From Serial Port
 
 positional arguments:
-  <PCM OUTPUT FILE>     PCM File where the captured data will be stored
-  <COM PORT>            COM PORT to capture from
+  <OUTPUT FILE>  File where the captured data will be stored
+  <COM PORT>     COM PORT to capture from
 
 optional arguments:
-  -h, --help            show this help message and exit
-  -b baud               Serial Port Speed in Baud (defaults @115200 Baud)
-  -s SAMPLING, --sampling SAMPLING
-                        Sampling Frequency
+  -h, --help     show this help message and exit
+  -b baud        Serial Port Speed in Baud (defaults @115200 Baud)
 ```
 
 ### 03_Filtering
