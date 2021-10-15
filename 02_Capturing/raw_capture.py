@@ -5,9 +5,9 @@ import serial_capture
 
 
 def main():
-    argument_parser = argparse.ArgumentParser("pcm_capture.py", description="Python Script to capture PCM data From Serial Port")
-    argument_parser.add_argument("output", metavar="<PCM OUTPUT FILE>",
-                                 help="PCM File where the captured data will be stored", nargs=1)
+    argument_parser = argparse.ArgumentParser("raw_capture.py", description="Python Script to capture RAW data From Serial Port")
+    argument_parser.add_argument("output", metavar="<OUTPUT FILE>",
+                                 help="File where the captured data will be stored", nargs=1)
     argument_parser.add_argument("serial_port", metavar="<COM PORT>", help="COM PORT to capture from", nargs=1)
     argument_parser.add_argument("-b", metavar="baud", type=int,
                                  help="Serial Port Speed in Baud (defaults @115200 Baud)", required=False)
