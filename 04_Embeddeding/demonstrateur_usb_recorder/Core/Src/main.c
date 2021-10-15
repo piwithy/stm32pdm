@@ -125,7 +125,7 @@ size_t filter_pdm_chunk(struct pdm_fir_filter *filter, uint16_t *pcm_buffer, uin
         }
         int32_t received_pcm = pdm_fir_flt_get(filter, 16);
         received_pcm -= 820;
-        //received_pcm *= linear_gain;
+        received_pcm *= linear_gain;
         if (received_pcm > 0x7FFF) received_pcm = 0x7FFF;
         if (received_pcm < -0x7FFF) received_pcm = -0x7FFF;
         //received_pcm += 0x7FFF;
@@ -204,9 +204,8 @@ int main(void) {
     /* USER CODE BEGIN WHILE */
     uint32_t idle_counter = 0;
     uint64_t pcm_wrote = 0;
-    uint32_t file_nbr = 0;
+    uint32_t file_nbr = 1;
     int32_t cool_down = 0;
-    FRESULT fres;
     while (1) {
         /* USER CODE END WHILE */
         MX_USB_HOST_Process();
@@ -218,7 +217,7 @@ int main(void) {
                     if (HAL_GPIO_ReadPin(GPIOA, USER_BTN_Pin) == GPIO_PIN_SET && cool_down == 0) {
                         current_state = RECORDING;
                         pcm_wrote = 0;
-                        sprintf(output_file, "%s_%lu.wav", BASE_FILE_NAME, file_nbr++);
+                        sprintf(output_file, "%s_%06lu.wav", BASE_FILE_NAME, file_nbr++);
                         (void) init_wav(output_file, SOUND_FS);
                         cool_down = 500;
                         HAL_GPIO_WritePin(GPIOG, LD3_Pin, GPIO_PIN_SET);
@@ -237,7 +236,7 @@ int main(void) {
                                                                    PCM_buffer,
                                                                    PDM_buffer + PDM_BUFFER_SIZE * sai_half,
                                                                    PDM_BUFFER_SIZE,
-                                                                   DECIMATION_FACTOR, 3);
+                                                                   DECIMATION_FACTOR, 9);
                         sai_flag = 1;
                         (void) write_wav(PCM_buffer, filtered_words);
                         pcm_wrote += filtered_words;
