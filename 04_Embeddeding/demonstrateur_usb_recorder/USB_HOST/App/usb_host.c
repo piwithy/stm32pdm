@@ -31,7 +31,6 @@
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-
 /* USER CODE END PV */
 
 /* USER CODE BEGIN PFP */
@@ -47,7 +46,7 @@ ApplicationTypeDef Appli_state = APPLICATION_IDLE;
  * -- Insert your variables declaration here --
  */
 /* USER CODE BEGIN 0 */
-
+uint8_t usb_mounted = 0;
 /* USER CODE END 0 */
 
 /*
@@ -104,12 +103,24 @@ static void USBH_UserProcess(USBH_HandleTypeDef *phost, uint8_t id) {
             break;
 
         case HOST_USER_DISCONNECTION:
+            if (usb_mounted) {
+                FRESULT fresult = unmount_usb();
+                if (fresult == FR_OK) {
+                    usb_mounted = 0;
+                    HAL_GPIO_WritePin(GPIOG, LD4_Pin, GPIO_PIN_RESET);
+                }
+            }
             Appli_state = APPLICATION_DISCONNECT;
-            unmount_usb();
             break;
 
         case HOST_USER_CLASS_ACTIVE:
-            mount_usb();
+            if (!usb_mounted) {
+                FRESULT fresult = mount_usb();
+                if (fresult == FR_OK) {
+                    usb_mounted = 1;
+                    HAL_GPIO_WritePin(GPIOG, LD4_Pin, GPIO_PIN_SET);
+                }
+            }
             Appli_state = APPLICATION_READY;
 
             break;
