@@ -86,14 +86,14 @@ const uint32_t WAVE_HEADER[] = {
         // Declaration fichier
         ('F' << 24) + ('F' << 16) + ('I' << 8) + ('R' << 0), // 'RIFF'
         (SOUND_FS * RECORD_TIME * sizeof(uint16_t)) + 36, // file size + 44 (header) - 8
-        0x45564157, // WAVE
-        0x20746D66, // 'fmt '
+        ('E' << 24) + ('V' << 16) + ('A' << 8) + ('W' << 0), // WAVE
+        (' ' << 24) + ('t' << 16) + ('m' << 8) + ('f' << 0), // 'fmt '
         0x10,
-        0x00010001, // PCM Entier 1 canal
+        (1 << 16) + (1 << 0), // PCM Entier + 1 canal
         SOUND_FS, // fs 32kHz
         SOUND_FS * 2, // 32kHz * 2 octet par bloc ech
-        0x00100002, // 2 octet par block d'ech et 16 bit par ech
-        0x61746164, //'data'
+        (16 << 16) + (2 << 0), // 2 octet par block d'ech et 16 bit par ech
+        ('a' << 24) + ('t' << 16) + ('a' << 8) + ('d' << 0), //'data'
         SOUND_FS * RECORD_TIME * sizeof(uint16_t)
 };
 
@@ -154,7 +154,7 @@ size_t filter_pdm_chunk(struct pdm_fir_filter *filter, uint16_t *pcm_buffer, uin
             pdm_fir_flt_put(filter, pdm_buffer[i * decimation_words + j]);
         }
         int32_t received_pcm = pdm_fir_flt_get(filter, 12);
-        received_pcm -= 100; // TODO re-center signal
+        received_pcm -= 50; // centering PCM Signal
         received_pcm *= linear_gain;
         if (received_pcm > 0x7FF) received_pcm = 0x7FF;
         if (received_pcm < -0x7FF) received_pcm = -0x7FF;
@@ -276,7 +276,7 @@ int main(void) {
             case SENDING:
                 HAL_GPIO_WritePin(GPIOG, LD3_Pin, GPIO_PIN_SET);
                 HAL_GPIO_WritePin(GPIOG, LD4_Pin, GPIO_PIN_SET);
-                // Adding gain on PCM_sound
+                // Adding gain on PCM_sound (optimizing sound for 16 bits centered on 0)
                 for (size_t i = 0; i < SOUND_FS * RECORD_TIME; i++)
                     PCM_sound[i] = (PCM_sound[i] - 0x7FF) * (0x7FFF / 0x7FF);
 
