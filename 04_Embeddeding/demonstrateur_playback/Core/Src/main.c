@@ -18,9 +18,6 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "EndlessLoop"
-
 #include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -52,7 +49,7 @@ typedef enum program_state {
 #define RECORD_TIME 3 // Record Time in Seconds
 
 
-#define TRANSMIT
+//#define TRANSMIT
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -78,6 +75,8 @@ uint16_t PDM_buffer[PDM_BUFFER_SIZE * 2]; // Double buffer for HALF READ
 uint16_t PCM_buffer[PCM_BUFFER_SIZE];
 uint16_t PCM_sound[SOUND_FS * RECORD_TIME];
 uint32_t pcm_sound_index = 0;
+
+uint32_t sample_count = SOUND_FS * RECORD_TIME;
 
 uint16_t DAC_buffer_left[PCM_BUFFER_SIZE * 2]; // Double buffer for HALF WRITE
 uint16_t DAC_buffer_right[PCM_BUFFER_SIZE * 2]; // Double buffer for HALF WRITE
@@ -182,9 +181,9 @@ int main(void) {
     //initializing Buffers
     for (size_t i = 0; i < PDM_BUFFER_SIZE * 2; i++) PDM_buffer[i] = 0;
     for (size_t i = 0; i < PCM_BUFFER_SIZE; i++) PCM_buffer[i] = 0;
-    for (size_t i = 0; i < SOUND_FS * RECORD_TIME; i++) PCM_sound[i] = 0;
+    for (size_t i = 0; i < SOUND_FS * RECORD_TIME; i++) PCM_sound[i] = 0x7FF;
     for (size_t i = 0; i < PCM_BUFFER_SIZE * 2; i++) {
-        DAC_buffer_left[i] = 0x7ff;
+        DAC_buffer_left[i] = 0x7FF;
         DAC_buffer_right[i] = 0x7FF;
     }
     /* USER CODE END 1 */
@@ -224,7 +223,8 @@ int main(void) {
     /* Infinite loop */
     /* USER CODE BEGIN WHILE */
     uint32_t idle_counter = 0;
-
+    uint16_t cool_down = 0;
+    uint32_t play_back_idx = 0, real_idx = 0;
     while (1) {
         /* USER CODE END WHILE */
 
@@ -238,27 +238,46 @@ int main(void) {
                                                                PDM_BUFFER_SIZE,
                                                                DECIMATION_FACTOR, 9);
                     sai_flag = 1;
-                    if (pcm_sound_index < SOUND_FS * RECORD_TIME) {
-                        memcpy(PCM_sound + pcm_sound_index, PCM_buffer, sizeof(uint16_t) * filtered_words);
-                        pcm_sound_index += filtered_words;
+                    if (pcm_sound_index + filtered_words > sample_count) {
+                        uint32_t available = sample_count - (pcm_sound_index);
+                        memcpy(PCM_sound + pcm_sound_index, PCM_buffer, sizeof(uint16_t) * available);
+                        memcpy(PCM_sound, PCM_buffer + available, sizeof(uint16_t) * (filtered_words - available));
                     } else {
-                        HAL_GPIO_WritePin(GPIOG, LD3_Pin, GPIO_PIN_RESET);
-                        pcm_sound_index = 0;
-                        current_state = PLAYING;
-                        HAL_GPIO_WritePin(GPIOG, LD4_Pin, GPIO_PIN_SET);
+                        memcpy(PCM_sound + pcm_sound_index, PCM_buffer, sizeof(uint16_t) * filtered_words);
                     }
+                    pcm_sound_index = (pcm_sound_index + filtered_words) % sample_count;
+
+                    if (cool_down > 0) cool_down--;
+                }
+                if (HAL_GPIO_ReadPin(GPIOA, USER_BTN_Pin) == GPIO_PIN_SET && cool_down == 0) {
+                    current_state = PLAYING;
+                    HAL_GPIO_WritePin(GPIOG, LD3_Pin, GPIO_PIN_SET);
+                    HAL_GPIO_WritePin(GPIOG, LD4_Pin, GPIO_PIN_SET);
                 }
                 break;
             case PLAYING:
                 if (!dac_flag) {
-                    if (pcm_sound_index < SOUND_FS * RECORD_TIME) {
-                        memcpy(DAC_buffer_left + PCM_BUFFER_SIZE * dac_half, PCM_sound + pcm_sound_index,
-                               sizeof(uint16_t) * PCM_BUFFER_SIZE); // left audio channel
-                        memcpy(DAC_buffer_right + PCM_BUFFER_SIZE * dac_half, PCM_sound + pcm_sound_index,
-                               sizeof(uint16_t) * PCM_BUFFER_SIZE); // right audio channel
-                        pcm_sound_index += PCM_BUFFER_SIZE;
+                    if (play_back_idx < sample_count) {
+                        real_idx = (pcm_sound_index + play_back_idx) % sample_count;
+                        if (real_idx + PCM_BUFFER_SIZE > sample_count) {
+                            uint32_t available = sample_count - (real_idx);
+                            memcpy(DAC_buffer_left + (dac_half * PCM_BUFFER_SIZE), PCM_sound + real_idx,
+                                   available * sizeof(uint16_t));
+                            memcpy(DAC_buffer_left + (dac_half * PCM_BUFFER_SIZE) + available, PCM_sound,
+                                   (PCM_BUFFER_SIZE - available) * sizeof(uint16_t));
+                            memcpy(DAC_buffer_right + dac_half * PCM_BUFFER_SIZE,
+                                   DAC_buffer_left + dac_half * PCM_BUFFER_SIZE, PCM_BUFFER_SIZE * sizeof(uint16_t));
+                        } else {
+                            memcpy(DAC_buffer_left + dac_half * PCM_BUFFER_SIZE, PCM_sound + real_idx,
+                                   sizeof(uint16_t) * PCM_BUFFER_SIZE);
+                            memcpy(DAC_buffer_right + dac_half * PCM_BUFFER_SIZE, PCM_sound + real_idx,
+                                   sizeof(uint16_t) * PCM_BUFFER_SIZE);
+                        }
+                        play_back_idx += PCM_BUFFER_SIZE;
                     } else {
+                        play_back_idx = 0;
                         HAL_GPIO_WritePin(GPIOG, LD4_Pin, GPIO_PIN_RESET);
+                        HAL_GPIO_WritePin(GPIOG, LD3_Pin, GPIO_PIN_RESET);
                         for (size_t i = 0; i < PCM_BUFFER_SIZE * 2; i++) {
                             DAC_buffer_right[i] = 0x7FF;
                             DAC_buffer_left[i] = 0x7FF;
@@ -267,8 +286,9 @@ int main(void) {
                         current_state = SENDING;
 #else
                         current_state = IDLE;
-#endif
+                        cool_down = 250;
                         pcm_sound_index = 0;
+#endif
                     }
                     dac_flag = 1;
                 }
@@ -293,10 +313,13 @@ int main(void) {
                 HAL_GPIO_WritePin(GPIOG, LD3_Pin, GPIO_PIN_RESET);
                 HAL_GPIO_WritePin(GPIOG, LD4_Pin, GPIO_PIN_RESET);
                 current_state = IDLE;
+                cool_down = 250;
             case IDLE:
-                if (HAL_GPIO_ReadPin(GPIOA, USER_BTN_Pin) == GPIO_PIN_SET) {
+                if (HAL_GPIO_ReadPin(GPIOA, USER_BTN_Pin) == GPIO_PIN_SET && cool_down == 0) {
                     current_state = RECORDING;
                     HAL_GPIO_WritePin(GPIOG, LD3_Pin, GPIO_PIN_SET);
+                    HAL_GPIO_WritePin(GPIOG, LD4_Pin, GPIO_PIN_RESET);
+                    cool_down = 500;
                 }
                 if (!sai_flag) { // filtering BUT ignoring output -> Keeping filter up to date
                     (void) filter_pdm_chunk(&pdm_filter, PCM_buffer, PDM_buffer + PDM_BUFFER_SIZE * sai_half,
@@ -305,6 +328,12 @@ int main(void) {
                 }
                 if (!dac_flag) dac_flag = 1; // resetting DAC flag
                 idle_counter = (idle_counter + 1) % 1000000;
+                if (cool_down > 0) {
+                    cool_down--;
+                    HAL_Delay(1);
+                } else {
+                    HAL_GPIO_WritePin(GPIOG, LD4_Pin, GPIO_PIN_SET);
+                }
                 break;
             default:
                 idle_counter = (idle_counter + 1) % 1000000;
@@ -625,5 +654,3 @@ void assert_failed(uint8_t *file, uint32_t line)
 #endif /* USE_FULL_ASSERT */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
-
-#pragma clang diagnostic pop
