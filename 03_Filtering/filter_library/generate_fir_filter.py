@@ -9,13 +9,14 @@ import matplotlib.pyplot as plt
 
 
 def byte_coef(i, b, taps):
-    bit, off, tot = 1 << 7, 8 * i, 0
+    bit, off, tot = 1 << 7, i * 8, 0
     while bit:
         if bit & b:
             tot += taps[off]
         else:
             tot -= taps[off]
         bit >>= 1
+        off += 1
     return tot
 
 
