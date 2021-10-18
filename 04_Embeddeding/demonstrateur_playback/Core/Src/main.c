@@ -236,7 +236,7 @@ int main(void) {
                                                                PCM_buffer,
                                                                PDM_buffer + PDM_BUFFER_SIZE * sai_half,
                                                                PDM_BUFFER_SIZE,
-                                                               DECIMATION_FACTOR, 3);
+                                                               DECIMATION_FACTOR, 9);
                     sai_flag = 1;
                     if (pcm_sound_index < SOUND_FS * RECORD_TIME) {
                         memcpy(PCM_sound + pcm_sound_index, PCM_buffer, sizeof(uint16_t) * filtered_words);
