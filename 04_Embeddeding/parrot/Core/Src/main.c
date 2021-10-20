@@ -30,7 +30,7 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 typedef enum {
-    IDLE, RECORDING, PLAYING
+    IDLE, RECORDING, PLAYING, TRANSMITTING
 } program_state_t;
 /* USER CODE END PTD */
 
@@ -54,6 +54,8 @@ typedef enum {
 #define LINEAR_GAIN 9
 
 #define SAMPLE_COUNT (RECORD_TIME * SOUND_FS)
+
+#define TRANSMIT
 
 /* USER CODE END PD */
 
@@ -85,6 +87,25 @@ uint16_t DAC_BUFFER_RIGHT[PCM_BUFFER_SIZE * 2];
 
 uint8_t sai_flag = 1, sai_half = 0;
 uint8_t dac_flag = 1, dac_half = 0;
+
+#ifdef TRANSMIT
+uint32_t WAVE_HEADER[] = {
+        // Declaration fichier
+        ('F' << 24) + ('F' << 16) + ('I' << 8) + ('R' << 0), // 'RIFF'
+        36, // file size + 44 (header) - 8
+        ('E' << 24) + ('V' << 16) + ('A' << 8) + ('W' << 0), // WAVE
+        (' ' << 24) + ('t' << 16) + ('m' << 8) + ('f' << 0), // 'fmt '
+        0x10,
+        (1 << 16) + (1 << 0), // PCM Entier + 1 canal
+        SOUND_FS, // fs 32kHz
+        SOUND_FS * 2, // 32kHz * 2 octet par bloc ech
+        (16 << 16) + (2 << 0), // 2 octet par block d'ech et 16 bit par ech
+        ('a' << 24) + ('t' << 16) + ('a' << 8) + ('d' << 0), //'data'
+        0
+};
+
+#endif // TRANSMIT
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -138,6 +159,7 @@ size_t filter_pdm_chunk(struct pdm_fir_filter *filter, uint16_t *pcm_buffer, uin
             pdm_fir_flt_put(filter, pdm_buffer[i * decimation_words + j]);
         }
         int32_t received_pcm = pdm_fir_flt_get(filter, 12);
+        // Optimizing Sample for DAC output
         received_pcm -= 50; // centering PCM Signal
         received_pcm *= linear_gain;
         if (received_pcm > 0x7FF) received_pcm = 0x7FF;
@@ -148,9 +170,6 @@ size_t filter_pdm_chunk(struct pdm_fir_filter *filter, uint16_t *pcm_buffer, uin
     return pcm_to_write;
 }
 
-uint32_t absolute(int32_t value) {
-    return (uint32_t) value ? value > 0 : (uint32_t) -value;
-}
 /* USER CODE END 0 */
 
 /**
@@ -173,6 +192,9 @@ int main(void) {
     program_state_t program_state = IDLE;
     uint32_t recording_index = 0, playback_index = 0;
     uint32_t playback_start, samples_recorded = 0, cool_down = 0, idle_counter = 0;
+#ifdef TRANSMIT
+    uint32_t send_index;
+#endif // TRANSMIT
     struct pdm_fir_filter fir_filter;
     /* USER CODE END 1 */
 
@@ -289,12 +311,30 @@ int main(void) {
                             DAC_BUFFER_LEFT[i] = 0x7FF;
                             DAC_BUFFER_RIGHT[i] = 0x7FF;
                         }
+#ifdef TRANSMIT
+                        program_state = TRANSMITTING;
+#else
                         program_state = IDLE;
+#endif // TRANSMIT
                         cool_down = 250;
                         recording_index = 0;
                     }
                     dac_flag = 1;
                 }
+                break;
+            case TRANSMITTING:
+                //Optimizing sound for 16 bit WAV Samples
+                for (size_t i = 0; i < SAMPLE_COUNT; i++)
+                    PCM_SOUND[i] = (int16_t) (PCM_SOUND[i] - 0x7FF) * (0x7FFF / 0x7FF);
+                WAVE_HEADER[1] = 36 + samples_recorded * sizeof(uint16_t);
+                WAVE_HEADER[10] = samples_recorded * sizeof(uint16_t);
+                HAL_UART_Transmit(&huart1, (uint8_t *) WAVE_HEADER, 44, HAL_MAX_DELAY);
+                for (size_t i = 0; i < samples_recorded; i += PCM_BUFFER_SIZE) {
+                    send_index = (playback_start + i) % SAMPLE_COUNT;
+                    HAL_UART_Transmit(&huart1, (uint8_t *) (PCM_SOUND + send_index), PCM_BUFFER_SIZE * sizeof(uint16_t),
+                                      HAL_MAX_DELAY);
+                }
+                program_state = IDLE;
                 break;
             default:
                 break;
