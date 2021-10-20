@@ -10,10 +10,10 @@
   * <h2><center>&copy; Copyright (c) 2021 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
-  * This software component is licensed by ST under Ultimate Liberty license
-  * SLA0044, the "License"; You may not use this file except in compliance with
-  * the License. You may obtain a copy of the License at:
-  *                             www.st.com/SLA0044
+  * This software component is licensed by ST under BSD 3-Clause license,
+  * the "License"; You may not use this file except in compliance with the
+  * License. You may obtain a copy of the License at:
+  *                        opensource.org/licenses/BSD-3-Clause
   *
   ******************************************************************************
   */
@@ -60,8 +60,8 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define USER_BTN_Pin GPIO_PIN_0
 #define USER_BTN_GPIO_Port GPIOA
-#define USB_OTG_HS_PSO_Pin GPIO_PIN_4
-#define USB_OTG_HS_PSO_GPIO_Port GPIOC
+#define USB_PSO_Pin GPIO_PIN_4
+#define USB_PSO_GPIO_Port GPIOC
 #define LD3_Pin GPIO_PIN_13
 #define LD3_GPIO_Port GPIOG
 #define LD4_Pin GPIO_PIN_14

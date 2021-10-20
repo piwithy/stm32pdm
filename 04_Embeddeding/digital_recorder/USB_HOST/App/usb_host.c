@@ -31,6 +31,7 @@
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
+uint8_t usb_mounted = 0;
 /* USER CODE END PV */
 
 /* USER CODE BEGIN PFP */
@@ -46,7 +47,7 @@ ApplicationTypeDef Appli_state = APPLICATION_IDLE;
  * -- Insert your variables declaration here --
  */
 /* USER CODE BEGIN 0 */
-uint8_t usb_mounted = 0;
+
 /* USER CODE END 0 */
 
 /*
@@ -65,39 +66,44 @@ static void USBH_UserProcess(USBH_HandleTypeDef *phost, uint8_t id);
   * Init USB host library, add supported class and start the library
   * @retval None
   */
-void MX_USB_HOST_Init(void) {
-    /* USER CODE BEGIN USB_HOST_Init_PreTreatment */
+void MX_USB_HOST_Init(void)
+{
+  /* USER CODE BEGIN USB_HOST_Init_PreTreatment */
 
-    /* USER CODE END USB_HOST_Init_PreTreatment */
+  /* USER CODE END USB_HOST_Init_PreTreatment */
 
-    /* Init host Library, add supported class and start the library. */
-    if (USBH_Init(&hUsbHostHS, USBH_UserProcess, HOST_HS) != USBH_OK) {
-        Error_Handler();
-    }
-    if (USBH_RegisterClass(&hUsbHostHS, USBH_MSC_CLASS) != USBH_OK) {
-        Error_Handler();
-    }
-    if (USBH_Start(&hUsbHostHS) != USBH_OK) {
-        Error_Handler();
-    }
-    /* USER CODE BEGIN USB_HOST_Init_PostTreatment */
+  /* Init host Library, add supported class and start the library. */
+  if (USBH_Init(&hUsbHostHS, USBH_UserProcess, HOST_HS) != USBH_OK)
+  {
+    Error_Handler();
+  }
+  if (USBH_RegisterClass(&hUsbHostHS, USBH_MSC_CLASS) != USBH_OK)
+  {
+    Error_Handler();
+  }
+  if (USBH_Start(&hUsbHostHS) != USBH_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USB_HOST_Init_PostTreatment */
 
-    /* USER CODE END USB_HOST_Init_PostTreatment */
+  /* USER CODE END USB_HOST_Init_PostTreatment */
 }
 
 /*
  * Background task
  */
-void MX_USB_HOST_Process(void) {
-    /* USB Host Background task */
-    USBH_Process(&hUsbHostHS);
+void MX_USB_HOST_Process(void)
+{
+  /* USB Host Background task */
+  USBH_Process(&hUsbHostHS);
 }
-
 /*
  * user callback definition
  */
-static void USBH_UserProcess(USBH_HandleTypeDef *phost, uint8_t id) {
-    /* USER CODE BEGIN CALL_BACK_1 */
+static void USBH_UserProcess  (USBH_HandleTypeDef *phost, uint8_t id)
+{
+  /* USER CODE BEGIN CALL_BACK_1 */
     switch (id) {
         case HOST_USER_SELECT_CONFIGURATION:
             break;
@@ -108,6 +114,7 @@ static void USBH_UserProcess(USBH_HandleTypeDef *phost, uint8_t id) {
                 if (fresult == FR_OK) {
                     usb_mounted = 0;
                     HAL_GPIO_WritePin(GPIOG, LD4_Pin, GPIO_PIN_RESET);
+                    Appli_state = APPLICATION_DISCONNECT;
                 }
             }
             Appli_state = APPLICATION_DISCONNECT;
@@ -119,6 +126,7 @@ static void USBH_UserProcess(USBH_HandleTypeDef *phost, uint8_t id) {
                 if (fresult == FR_OK) {
                     usb_mounted = 1;
                     HAL_GPIO_WritePin(GPIOG, LD4_Pin, GPIO_PIN_SET);
+                    Appli_state = APPLICATION_READY;
                 }
             }
             Appli_state = APPLICATION_READY;
@@ -132,7 +140,8 @@ static void USBH_UserProcess(USBH_HandleTypeDef *phost, uint8_t id) {
         default:
             break;
     }
-    /* USER CODE END CALL_BACK_1 */
+
+  /* USER CODE END CALL_BACK_1 */
 }
 
 /**

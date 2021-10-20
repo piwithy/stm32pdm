@@ -25,31 +25,44 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "pdm_fir.h"
+#include "file_handling.h"
 #include <stdlib.h>
 #include <string.h>
-#include "file_handling.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "EndlessLoop"
-typedef enum program_state {
-    IDLE, RECORDING
-} program_state;
+// States the program can take
+typedef enum {
+    IDLE, RECORDING, WAITING_FOR_USB
+} program_state_t;
+
+typedef struct {
+    pdm_fir_filter_t *filter;
+    uint16_t decimation_factor;
+    int16_t input_offset;
+    int16_t output_offset;
+    uint16_t linear_gain;
+    uint8_t bit_scale;
+} pdm_filter_t;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+// CLANG WARNING SUPPRESSION
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "EndlessLoop"
 
-#define SOUND_FS 32000
+#define FS 48000
 #define DECIMATION_FACTOR 64
-#define WORD_SIZE 16
+#define PDM_WORD_SIZE 16
 
-#define PDM_BUFFER_SIZE 128
-#define PCM_BUFFER_SIZE PDM_BUFFER_SIZE / (DECIMATION_FACTOR / WORD_SIZE) // HERE PCM_BUFFER_SIZE = 128 / (64 / 16) = 32
+// 1ms @ FS*DECIMATION_FACTOR (With PDM_WORD_SIZE samples per word)
+#define PDM_BUFFER_SIZE ((FS / 1000) * (DECIMATION_FACTOR / PDM_WORD_SIZE))
+// 1ms @ FS (With 1 sample per word)
+#define PCM_BUFFER_SIZE (FS/1000)
 
-#define BASE_FILE_NAME "output"
+#define LINEAR_GAIN 10
 
 /* USER CODE END PD */
 
@@ -62,22 +75,14 @@ typedef enum program_state {
 SAI_HandleTypeDef hsai_BlockA1;
 DMA_HandleTypeDef hdma_sai1_a;
 
-TIM_HandleTypeDef htim1;
-
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
-//declaring Buffers and Buffer Indexes
-
-uint16_t PDM_buffer[PDM_BUFFER_SIZE * 2]; // Double buffer for HALF READ
-uint16_t PCM_buffer[PCM_BUFFER_SIZE];
-
-char output_file[100];
 
 uint8_t sai_flag = 1, sai_half = 0;
 
-
 extern ApplicationTypeDef Appli_state;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -91,11 +96,10 @@ static void MX_SAI1_Init(void);
 
 static void MX_USART1_UART_Init(void);
 
-static void MX_TIM1_Init(void);
-
 void MX_USB_HOST_Process(void);
 
 /* USER CODE BEGIN PFP */
+
 
 /* USER CODE END PFP */
 
@@ -112,28 +116,6 @@ void HAL_SAI_RxCpltCallback(SAI_HandleTypeDef *hsai) {
     sai_flag = 0;
     sai_half = 1;
 }
-
-
-// function to Filter a chunk of PDM_DATA
-size_t filter_pdm_chunk(struct pdm_fir_filter *filter, uint16_t *pcm_buffer, uint16_t *pdm_buffer, size_t pdm_size,
-                        uint16_t decimation, uint16_t linear_gain) {
-    uint16_t decimation_words = decimation / WORD_SIZE;
-    size_t pcm_to_write = pdm_size / decimation_words;
-    for (size_t i = 0; i < pcm_to_write; i++) {
-        for (size_t j = 0; j < decimation_words; j++) {
-            pdm_fir_flt_put(filter, pdm_buffer[i * decimation_words + j]);
-        }
-        int32_t received_pcm = pdm_fir_flt_get(filter, 16);
-        received_pcm -= 820;
-        received_pcm *= linear_gain;
-        if (received_pcm > 0x7FFF) received_pcm = 0x7FFF;
-        if (received_pcm < -0x7FFF) received_pcm = -0x7FFF;
-        //received_pcm += 0x7FFF;
-        pcm_buffer[i] = (uint16_t) received_pcm & 0xFFFF;
-    }
-    return pcm_to_write;
-}
-
 /* USER CODE END 0 */
 
 /**
@@ -142,15 +124,12 @@ size_t filter_pdm_chunk(struct pdm_fir_filter *filter, uint16_t *pcm_buffer, uin
   */
 int main(void) {
     /* USER CODE BEGIN 1 */
-    // Declaring Initial STATE
-    program_state current_state = IDLE;
-    //declaring pdm_filter
-    struct pdm_fir_filter pdm_filter;
 
-    //initializing Buffers
-    for (size_t i = 0; i < PDM_BUFFER_SIZE * 2; i++) PDM_buffer[i] = 0;
-    for (size_t i = 0; i < PCM_BUFFER_SIZE; i++) PCM_buffer[i] = 0;
+    uint16_t pdm_buffer[PDM_BUFFER_SIZE * 2] = {0};
+    uint16_t pcm_buffer[PCM_BUFFER_SIZE] = {0}; // initializing Buffer @ 0
 
+    program_state_t programState = WAITING_FOR_USB;
+    pdm_fir_filter_config_t pdm_filter_wav;
 
     /* USER CODE END 1 */
 
@@ -177,11 +156,15 @@ int main(void) {
     MX_USART1_UART_Init();
     MX_FATFS_Init();
     MX_USB_HOST_Init();
-    MX_TIM1_Init();
     /* USER CODE BEGIN 2 */
-    pdm_fir_flt_init(&pdm_filter);
-    HAL_SAI_Receive_DMA(&hsai_BlockA1, (uint8_t *) PDM_buffer, PDM_BUFFER_SIZE * 2);
+    // Initializing FIR FILTER
+    //pdm_fir_flt_init(&pdm_filter);
+    pdm_fir_flt_config_init(&pdm_filter_wav, DECIMATION_FACTOR, -820, 0, LINEAR_GAIN, 16);
+    // Starting Peripherals
+    // Starting Microphone Capture
+    HAL_SAI_Receive_DMA(&hsai_BlockA1, (uint8_t *) pdm_buffer, PDM_BUFFER_SIZE * 2);
 
+    // GREETING in serial Port
     char *str_buff = malloc(sizeof(char) * 100);
     sprintf(str_buff, "+----------------------------------------------------------+\r\n");
     HAL_UART_Transmit(&huart1, (uint8_t *) str_buff, strlen(str_buff), HAL_MAX_DELAY);
@@ -198,69 +181,78 @@ int main(void) {
     sprintf(str_buff, "+----------------------------------------------------------+\n\r");
     HAL_UART_Transmit(&huart1, (uint8_t *) str_buff, strlen(str_buff), HAL_MAX_DELAY);
     free(str_buff);
+
     /* USER CODE END 2 */
 
     /* Infinite loop */
     /* USER CODE BEGIN WHILE */
-    uint32_t idle_counter = 0;
-    uint64_t pcm_wrote = 0;
-    uint32_t file_nbr = 1;
-    int32_t cool_down = 0;
+    uint32_t idle_counter = 0, cool_down = 0, sample_count = 0, file_number = 1;
+    char file_name[100];
     while (1) {
         /* USER CODE END WHILE */
         MX_USB_HOST_Process();
 
         /* USER CODE BEGIN 3 */
-        if (Appli_state == APPLICATION_READY) {
-            switch (current_state) {
-                case IDLE:
-                    if (HAL_GPIO_ReadPin(GPIOA, USER_BTN_Pin) == GPIO_PIN_SET && cool_down == 0) {
-                        current_state = RECORDING;
-                        pcm_wrote = 0;
-                        sprintf(output_file, "%s_%06lu.wav", BASE_FILE_NAME, file_nbr++);
-                        (void) init_wav(output_file, SOUND_FS);
-                        cool_down = 500;
-                        HAL_GPIO_WritePin(GPIOG, LD3_Pin, GPIO_PIN_SET);
-                    }
-                    //cool_down--;
-                    if (cool_down > 0) {
-                        cool_down--;
-                        HAL_Delay(1);
-                    }
-                    idle_counter = (idle_counter + 1) % 1000000;
-                    break;
+        // State Transition related to USB
+        ApplicationTypeDef local_app_state = Appli_state;
+        if (local_app_state == APPLICATION_READY && programState == WAITING_FOR_USB)
+            programState = IDLE;
+        else if (local_app_state != APPLICATION_READY)
+            programState = WAITING_FOR_USB;
 
-                case RECORDING:
-                    if (!sai_flag) {
-                        uint32_t filtered_words = filter_pdm_chunk(&pdm_filter,
-                                                                   PCM_buffer,
-                                                                   PDM_buffer + PDM_BUFFER_SIZE * sai_half,
-                                                                   PDM_BUFFER_SIZE,
-                                                                   DECIMATION_FACTOR, 9);
-                        sai_flag = 1;
-                        (void) write_wav(PCM_buffer, filtered_words);
-                        pcm_wrote += filtered_words;
-                        if (HAL_GPIO_ReadPin(GPIOA, USER_BTN_Pin) == GPIO_PIN_SET && cool_down == 0) {
-                            current_state = IDLE;
-                            (void) finish_wav(output_file, pcm_wrote);
-                            HAL_GPIO_WritePin(GPIOG, LD3_Pin, GPIO_PIN_RESET);
-                            cool_down = 500;
-                        }
-                        if (cool_down > 0) {
-                            cool_down--;
-                        }
-                    }
-                    break;
-                default:
-                    break;
+        // State Machine
+        switch (programState) {
+            case IDLE:
+                // Handling Interrupts
+                if (!sai_flag) {
+                    (void) pdm_fir_flt_chunk(&pdm_filter_wav,
+                                             pcm_buffer,
+                                             pdm_buffer + sai_half * PDM_BUFFER_SIZE,
+                                             PDM_BUFFER_SIZE);
+                    sai_flag = 1;
 
-            }
-        } else {
-            if (!sai_flag) { // filtering BUT ignoring output -> Keeping filter up to date
-                (void) filter_pdm_chunk(&pdm_filter, PCM_buffer, PDM_buffer + PDM_BUFFER_SIZE * sai_half,
-                                        PDM_BUFFER_SIZE, DECIMATION_FACTOR, 1);
-                sai_flag = 1;
-            }
+                    // Updating cool down (sai flag raised every 1ms...)
+                    if (cool_down > 0) cool_down--;
+                }
+                // Checking State transition conditions
+                if (HAL_GPIO_ReadPin(USER_BTN_GPIO_Port, USER_BTN_Pin) == GPIO_PIN_SET && cool_down == 0) {
+                    //transitioning to RECORDING
+                    programState = RECORDING;
+                    cool_down = 500;
+                    HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
+                    sprintf(file_name, "REC_%08lx.wav", file_number++);
+                    init_wav(file_name, FS);
+                    sample_count = 0;
+                }
+                break;
+            case RECORDING:
+                // Handling Interrupts
+                if (!sai_flag) {
+                    uint32_t filtered = pdm_fir_flt_chunk(&pdm_filter_wav,
+                                                          pcm_buffer,
+                                                          pdm_buffer + sai_half * PDM_BUFFER_SIZE,
+                                                          PDM_BUFFER_SIZE);
+                    sai_flag = 1;
+                    sample_count += filtered;
+                    write_wav(pcm_buffer, filtered);
+                    // Updating cool down (sai flag raised every 1ms...)
+                    if (cool_down > 0) cool_down--;
+                }
+                // Checking State transition conditions
+                if (HAL_GPIO_ReadPin(USER_BTN_GPIO_Port, USER_BTN_Pin) == GPIO_PIN_SET && cool_down == 0) {
+                    //transitioning to RECORDING
+                    HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+                    finish_wav(file_name, sample_count);
+                    programState = IDLE;
+                    cool_down = 500;
+                }
+                break;
+            case WAITING_FOR_USB:
+                idle_counter = (idle_counter + 1) % 0xFFFFFF;
+                break;
+            default:
+                Error_Handler();
+                break;
         }
     }
     /* USER CODE END 3 */
@@ -288,8 +280,8 @@ void SystemClock_Config(void) {
     RCC_OscInitStruct.HSEState = RCC_HSE_ON;
     RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
     RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-    RCC_OscInitStruct.PLL.PLLM = 5;
-    RCC_OscInitStruct.PLL.PLLN = 90;
+    RCC_OscInitStruct.PLL.PLLM = 4;
+    RCC_OscInitStruct.PLL.PLLN = 72;
     RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
     RCC_OscInitStruct.PLL.PLLQ = 3;
     if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
@@ -331,10 +323,9 @@ static void MX_SAI1_Init(void) {
     hsai_BlockA1.Init.ClockStrobing = SAI_CLOCKSTROBING_RISINGEDGE;
     hsai_BlockA1.Init.Synchro = SAI_ASYNCHRONOUS;
     hsai_BlockA1.Init.OutputDrive = SAI_OUTPUTDRIVE_DISABLE;
-    hsai_BlockA1.Init.NoDivider = SAI_MASTERDIVIDER_ENABLE;
+    hsai_BlockA1.Init.NoDivider = SAI_MASTERDIVIDER_DISABLE;
     hsai_BlockA1.Init.FIFOThreshold = SAI_FIFOTHRESHOLD_EMPTY;
     hsai_BlockA1.Init.ClockSource = SAI_CLKSOURCE_PLLSAI;
-    hsai_BlockA1.Init.AudioFrequency = SAI_AUDIO_FREQUENCY_32K;
     hsai_BlockA1.FrameInit.FrameLength = 64;
     hsai_BlockA1.FrameInit.ActiveFrameLength = 32;
     hsai_BlockA1.FrameInit.FSDefinition = SAI_FS_CHANNEL_IDENTIFICATION;
@@ -350,48 +341,6 @@ static void MX_SAI1_Init(void) {
     /* USER CODE BEGIN SAI1_Init 2 */
 
     /* USER CODE END SAI1_Init 2 */
-
-}
-
-/**
-  * @brief TIM1 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_TIM1_Init(void) {
-
-    /* USER CODE BEGIN TIM1_Init 0 */
-
-    /* USER CODE END TIM1_Init 0 */
-
-    TIM_ClockConfigTypeDef sClockSourceConfig = {0};
-    TIM_MasterConfigTypeDef sMasterConfig = {0};
-
-    /* USER CODE BEGIN TIM1_Init 1 */
-
-    /* USER CODE END TIM1_Init 1 */
-    htim1.Instance = TIM1;
-    htim1.Init.Prescaler = 0;
-    htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
-    htim1.Init.Period = 65535;
-    htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-    htim1.Init.RepetitionCounter = 0;
-    htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
-    if (HAL_TIM_Base_Init(&htim1) != HAL_OK) {
-        Error_Handler();
-    }
-    sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
-    if (HAL_TIM_ConfigClockSource(&htim1, &sClockSourceConfig) != HAL_OK) {
-        Error_Handler();
-    }
-    sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
-    sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
-    if (HAL_TIMEx_MasterConfigSynchronization(&htim1, &sMasterConfig) != HAL_OK) {
-        Error_Handler();
-    }
-    /* USER CODE BEGIN TIM1_Init 2 */
-
-    /* USER CODE END TIM1_Init 2 */
 
 }
 
@@ -458,7 +407,7 @@ static void MX_GPIO_Init(void) {
     __HAL_RCC_GPIOG_CLK_ENABLE();
 
     /*Configure GPIO pin Output Level */
-    HAL_GPIO_WritePin(USB_OTG_HS_PSO_GPIO_Port, USB_OTG_HS_PSO_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(USB_PSO_GPIO_Port, USB_PSO_Pin, GPIO_PIN_RESET);
 
     /*Configure GPIO pin Output Level */
     HAL_GPIO_WritePin(GPIOG, LD3_Pin | LD4_Pin, GPIO_PIN_RESET);
@@ -469,12 +418,12 @@ static void MX_GPIO_Init(void) {
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(USER_BTN_GPIO_Port, &GPIO_InitStruct);
 
-    /*Configure GPIO pin : USB_OTG_HS_PSO_Pin */
-    GPIO_InitStruct.Pin = USB_OTG_HS_PSO_Pin;
+    /*Configure GPIO pin : USB_PSO_Pin */
+    GPIO_InitStruct.Pin = USB_PSO_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    HAL_GPIO_Init(USB_OTG_HS_PSO_GPIO_Port, &GPIO_InitStruct);
+    HAL_GPIO_Init(USB_PSO_GPIO_Port, &GPIO_InitStruct);
 
     /*Configure GPIO pins : LD3_Pin LD4_Pin */
     GPIO_InitStruct.Pin = LD3_Pin | LD4_Pin;
@@ -486,7 +435,6 @@ static void MX_GPIO_Init(void) {
 }
 
 /* USER CODE BEGIN 4 */
-
 /* USER CODE END 4 */
 
 /**
@@ -517,6 +465,7 @@ void Error_Handler(void) {
     /* USER CODE BEGIN Error_Handler_Debug */
     /* User can add his own implementation to report the HAL error return state */
     __disable_irq();
+    HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_SET);
     while (1) {
     }
     /* USER CODE END Error_Handler_Debug */

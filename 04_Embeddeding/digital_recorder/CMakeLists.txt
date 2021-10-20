@@ -14,7 +14,7 @@ set(SIZE arm-none-eabi-size)
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
 # project settings
-project(demonstrateur_usb_recorder C CXX ASM)
+project(digital_recorder C CXX ASM)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_STANDARD 11)
 
@@ -46,7 +46,7 @@ else ()
     add_compile_options(-Og -g)
 endif ()
 
-include_directories(FATFS/Target FATFS/App USB_HOST/App USB_HOST/Target Core/Inc Drivers/STM32F4xx_HAL_Driver/Inc Drivers/STM32F4xx_HAL_Driver/Inc/Legacy Middlewares/Third_Party/FatFs/src Middlewares/ST/STM32_USB_Host_Library/Core/Inc Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc Drivers/CMSIS/Device/ST/STM32F4xx/Include Drivers/CMSIS/Include pdm_fir file_handling)
+include_directories(Core/Inc Drivers/STM32F4xx_HAL_Driver/Inc Drivers/STM32F4xx_HAL_Driver/Inc/Legacy Drivers/CMSIS/Device/ST/STM32F4xx/Include Drivers/CMSIS/Include FATFS/Target FATFS/App USB_HOST/App USB_HOST/Target Middlewares/Third_Party/FatFs/src Middlewares/ST/STM32_USB_Host_Library/Core/Inc Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc pdm_fir file_handling)
 
 add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx)
 

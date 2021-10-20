@@ -137,29 +137,3 @@ FRESULT finish_wav(const char *file_name, uint32_t pcm_size) {
 
 }
 
-/*
-FRESULT update_wav(const char *file_name, const uint16_t *pcm_data, uint32_t pcm_size) {
-    fresult = f_open(&USBHFile, file_name, FA_OPEN_ALWAYS | FA_WRITE | FA_READ);
-    if (fresult != FR_OK) return fresult;
-    uint32_t header[11];
-    // reading existing Header
-    fresult = f_read(&USBHFile, (uint8_t *) header, 44, &br);
-    if (fresult != FR_OK) return fresult;
-    uint32_t data_size_byte = header[10];
-    // Editing Header
-    header[1] += pcm_size * sizeof(uint16_t);
-    header[10] += pcm_size * sizeof(uint16_t);
-    // Writing new Header
-    f_rewind(&USBHFile);
-    fresult = f_write(&USBHFile, (char *) header, 44, &bw);
-    if (fresult != FR_OK) return fresult;
-    //Writing new Data
-    fresult = f_lseek(&USBHFile, data_size_byte + 44);
-    if (fresult != FR_OK) return fresult;
-    fresult = f_write(&USBHFile, (char *) pcm_data, pcm_size * sizeof(uint16_t), &bw);
-    if (fresult != FR_OK) return fresult;
-
-    //Closing File
-    fresult = f_close(&USBHFile);
-    return fresult;
-}*/
