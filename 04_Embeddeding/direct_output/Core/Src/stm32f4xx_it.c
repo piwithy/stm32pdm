@@ -60,7 +60,6 @@ extern DMA_HandleTypeDef hdma_dac1;
 extern DMA_HandleTypeDef hdma_dac2;
 extern DAC_HandleTypeDef hdac;
 extern DMA_HandleTypeDef hdma_sai1_a;
-extern TIM_HandleTypeDef htim8;
 extern TIM_HandleTypeDef htim6;
 
 /* USER CODE BEGIN EV */
@@ -231,20 +230,6 @@ void DMA1_Stream6_IRQHandler(void)
   /* USER CODE BEGIN DMA1_Stream6_IRQn 1 */
 
   /* USER CODE END DMA1_Stream6_IRQn 1 */
-}
-
-/**
-  * @brief This function handles TIM8 trigger and commutation interrupts and TIM14 global interrupt.
-  */
-void TIM8_TRG_COM_TIM14_IRQHandler(void)
-{
-  /* USER CODE BEGIN TIM8_TRG_COM_TIM14_IRQn 0 */
-
-  /* USER CODE END TIM8_TRG_COM_TIM14_IRQn 0 */
-  HAL_TIM_IRQHandler(&htim8);
-  /* USER CODE BEGIN TIM8_TRG_COM_TIM14_IRQn 1 */
-
-  /* USER CODE END TIM8_TRG_COM_TIM14_IRQn 1 */
 }
 
 /**

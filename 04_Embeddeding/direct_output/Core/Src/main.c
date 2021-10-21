@@ -23,12 +23,13 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "pdm_fir.h"
+#include <stdlib.h>
 #include <string.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-typedef enum {
+typedef enum program_state {
     IDLE, RECORDING
 } program_state_t;
 /* USER CODE END PTD */
@@ -39,19 +40,16 @@ typedef enum {
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "EndlessLoop"
 
-#define FS 48000
+#define SOUND_FS 48000
 #define DECIMATION_FACTOR 64
-#define PDM_WORD_SIZE 16
+#define WORD_SIZE 16
 
-// 1ms @ FS*DECIMATION_FACTOR (With PDM_WORD_SIZE samples per word)
-#define PDM_BUFFER_SIZE ((FS / 1000) * (DECIMATION_FACTOR / PDM_WORD_SIZE))
-// 1ms @ FS (With 1 sample per word)
-#define PCM_BUFFER_SIZE (FS/1000)
+// 1ms @ SOUND_FS*DECIMATION_FACTOR (With WORD_SIZE samples per Word)
+#define PDM_BUFFER_SIZE ((SOUND_FS / 1000) * (DECIMATION_FACTOR / WORD_SIZE))
+// 1ms @ SOUND_FS (With 1 sample per Word)
+#define PCM_BUFFER_SIZE (SOUND_FS/1000)
 
 #define LINEAR_GAIN 10
-
-
-
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -67,7 +65,7 @@ DMA_HandleTypeDef hdma_dac2;
 SAI_HandleTypeDef hsai_BlockA1;
 DMA_HandleTypeDef hdma_sai1_a;
 
-TIM_HandleTypeDef htim8;
+TIM_HandleTypeDef htim2;
 
 UART_HandleTypeDef huart1;
 
@@ -81,13 +79,13 @@ void SystemClock_Config(void);
 
 static void MX_GPIO_Init(void);
 
+static void MX_DMA_Init(void);
+
 static void MX_DAC_Init(void);
 
 static void MX_SAI1_Init(void);
 
-static void MX_TIM8_Init(void);
-
-static void MX_DMA_Init(void);
+static void MX_TIM2_Init(void);
 
 static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN PFP */
@@ -96,6 +94,8 @@ static void MX_USART1_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+// Configuring SAI Interruption Callbacks
 void HAL_SAI_RxHalfCpltCallback(SAI_HandleTypeDef *hsai) {
     sai_flag = 0;
     sai_half = 0;
@@ -125,14 +125,29 @@ void HAL_DAC_ConvCpltCallbackCh1(DAC_HandleTypeDef *hdac1) {
   */
 int main(void) {
     /* USER CODE BEGIN 1 */
-    program_state_t program_state = IDLE;
+    // Declaring Initial STATE
+    program_state_t current_state = IDLE;
+    uint8_t transition = 0;
+    //declaring pdm_filter
+    pdm_fir_filter_config_t pdm_filter;
 
-    uint16_t pdm_buffer[PDM_BUFFER_SIZE * 2] = {0};
-    uint16_t pcm_buffer[PCM_BUFFER_SIZE] = {[0 ... (PCM_BUFFER_SIZE) - 1] =  0};
-    uint16_t dac_buffer_l[PCM_BUFFER_SIZE * 2] = {[0 ... (PCM_BUFFER_SIZE * 2) - 1] = 0};
-    uint16_t dac_buffer_r[PCM_BUFFER_SIZE * 2] = {[0 ... (PCM_BUFFER_SIZE * 2) - 1] = 0};
+    // Declaring Buffers
+    // PDM -> PDM Buffers
+    uint16_t pdm_buffer[PDM_BUFFER_SIZE * 2] = {0}; // Double buffer for HALF READ
+    uint16_t pcm_buffer[PCM_BUFFER_SIZE] = {[0 ... PCM_BUFFER_SIZE - 1] = 0x7FF};
 
-    pdm_fir_filter_config_t firFilterConfig;
+    // Constant (DAC centered Buffer) for IDLE State
+    uint16_t void_buff[PCM_BUFFER_SIZE] = {[0 ... PCM_BUFFER_SIZE - 1] = 0x7FF};
+    /*uint8_t div_by = 24;
+    for (size_t i = 0; i < PCM_BUFFER_SIZE; i++) {
+        if (i % div_by >= (div_by / 2))
+            void_buff[i] = 0xFFF;
+    }*/
+    // DAC Channels Buffer
+    uint16_t dac_buffer_l[PCM_BUFFER_SIZE * 2] = {[0 ... 2 * PCM_BUFFER_SIZE - 1] = 0x7FF};
+    uint16_t dac_buffer_r[PCM_BUFFER_SIZE * 2] = {[0 ... 2 * PCM_BUFFER_SIZE - 1] = 0X7FF};
+
+
     /* USER CODE END 1 */
 
     /* MCU Configuration--------------------------------------------------------*/
@@ -153,82 +168,70 @@ int main(void) {
 
     /* Initialize all configured peripherals */
     MX_GPIO_Init();
+    MX_DMA_Init();
     MX_DAC_Init();
     MX_SAI1_Init();
-    MX_TIM8_Init();
-    MX_DMA_Init();
+    MX_TIM2_Init();
     MX_USART1_UART_Init();
     /* USER CODE BEGIN 2 */
-    pdm_fir_flt_config_init(&firFilterConfig, DECIMATION_FACTOR, -50, 0x7ff, LINEAR_GAIN, 12);
+    // Configuring PDM Filter
+    pdm_fir_flt_config_init(&pdm_filter, DECIMATION_FACTOR, -50, 0x7FF, 10, 12);
 
-    //Starting SAI
+    // Starting SAI Capture on DMA
     HAL_SAI_Receive_DMA(&hsai_BlockA1, (uint8_t *) pdm_buffer, PDM_BUFFER_SIZE * 2);
 
-    //Starting Left DAC (PA4)
+    // Starting DAC (left -> channel 1 -> PA4; right -> channel 1 -> PA5)
     HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_1, (uint32_t *) dac_buffer_l, PCM_BUFFER_SIZE * 2, DAC_ALIGN_12B_R);
-    //Starting Right DAC (PA4)
     HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_2, (uint32_t *) dac_buffer_r, PCM_BUFFER_SIZE * 2, DAC_ALIGN_12B_R);
+
+    // Starting DAC Sampling Clock (Configured for a DAC sampling frequency of 48kHz)
+    HAL_TIM_Base_Start(&htim2);
     /* USER CODE END 2 */
 
     /* Infinite loop */
     /* USER CODE BEGIN WHILE */
+    uint32_t idle_counter = 0;
     uint32_t cool_down = 0;
-    HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_SET);
+    const uint16_t *to_copy = void_buff;
+    HAL_GPIO_WritePin(GPIOG, LD4_Pin, GPIO_PIN_SET); // Ready LED
     while (1) {
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */
-        switch (program_state) {
-            case IDLE:
-                //Handling Interrupts
-                if (!sai_flag) {
-                    pdm_fir_flt_chunk(&firFilterConfig,
-                                      pcm_buffer,
-                                      pdm_buffer + sai_flag * PDM_BUFFER_SIZE,
-                                      PDM_BUFFER_SIZE);
-                    sai_flag = 1;
-                    if (cool_down > 0) cool_down--;
-                }
-                if (!dac_flag) dac_half = 1;
+        if (!sai_flag) {
+            (void) pdm_fir_flt_chunk(&pdm_filter, pcm_buffer, pdm_buffer + sai_half * PDM_BUFFER_SIZE, PDM_BUFFER_SIZE);
+            if (cool_down > 0) cool_down--;
+            sai_flag = 1;
+        }
+        if (!dac_flag) {
+            memcpy(dac_buffer_l + dac_half * PCM_BUFFER_SIZE, to_copy, sizeof(uint16_t) * PCM_BUFFER_SIZE);
+            memcpy(dac_buffer_r + dac_half * PCM_BUFFER_SIZE, to_copy, sizeof(uint16_t) * PCM_BUFFER_SIZE);
+        }
 
-                // Checking State transition
-                if (HAL_GPIO_ReadPin(USER_BTN_GPIO_Port, USER_BTN_Pin) == GPIO_PIN_SET && cool_down == 0) {
-                    HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
+
+        switch (current_state) {
+            case RECORDING:
+                if (HAL_GPIO_ReadPin(GPIOA, USER_BTN_Pin) == GPIO_PIN_SET && cool_down == 0) {
+                    current_state = IDLE;
                     cool_down = 500;
-                    program_state = RECORDING;
+                    HAL_GPIO_WritePin(GPIOG, LD3_Pin, GPIO_PIN_RESET);
+                    to_copy = void_buff;
                 }
 
                 break;
-            case RECORDING:
-                if (!sai_flag) {
-                    pdm_fir_flt_chunk(&firFilterConfig,
-                                      pcm_buffer,
-                                      pdm_buffer + sai_flag * PDM_BUFFER_SIZE,
-                                      PDM_BUFFER_SIZE);
-                    sai_flag = 1;
-                    if (cool_down > 0) cool_down--;
-                }
-                if (!dac_flag) {
-                    memcpy(dac_buffer_l + dac_half * PCM_BUFFER_SIZE, pcm_buffer, PCM_BUFFER_SIZE - sizeof(uint16_t));
-                    memcpy(dac_buffer_r + dac_half * PCM_BUFFER_SIZE, pcm_buffer, PCM_BUFFER_SIZE - sizeof(uint16_t));
-                    dac_half = 1;
-                }
-
-                // Checking State transition
-                if (HAL_GPIO_ReadPin(USER_BTN_GPIO_Port, USER_BTN_Pin) == GPIO_PIN_SET && cool_down == 0) {
-                    HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+            case IDLE:
+                if (HAL_GPIO_ReadPin(GPIOA, USER_BTN_Pin) == GPIO_PIN_SET && cool_down == 0) {
+                    current_state = RECORDING;
                     cool_down = 500;
-                    for (size_t i = 0; i < PCM_BUFFER_SIZE * 2; i++) {
-                        dac_buffer_l[i] = 0x7ff;
-                        dac_buffer_r[i] = 0x7ff;
-                    }
-                    program_state = IDLE;
+                    HAL_GPIO_WritePin(GPIOG, LD3_Pin, GPIO_PIN_SET);
+                    to_copy = pcm_buffer;
                 }
                 break;
             default:
                 Error_Handler();
                 break;
         }
+        idle_counter = (idle_counter + 1) % 0XFFFF;
     }
     /* USER CODE END 3 */
 }
@@ -258,7 +261,7 @@ void SystemClock_Config(void) {
     RCC_OscInitStruct.PLL.PLLM = 4;
     RCC_OscInitStruct.PLL.PLLN = 72;
     RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
-    RCC_OscInitStruct.PLL.PLLQ = 7;
+    RCC_OscInitStruct.PLL.PLLQ = 4;
     if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
         Error_Handler();
     }
@@ -269,7 +272,7 @@ void SystemClock_Config(void) {
     RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
     RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
     RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
-    RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
+    RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
     if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK) {
         Error_Handler();
@@ -300,7 +303,7 @@ static void MX_DAC_Init(void) {
     }
     /** DAC channel OUT1 config
     */
-    sConfig.DAC_Trigger = DAC_TRIGGER_T8_TRGO;
+    sConfig.DAC_Trigger = DAC_TRIGGER_T2_TRGO;
     sConfig.DAC_OutputBuffer = DAC_OUTPUTBUFFER_ENABLE;
     if (HAL_DAC_ConfigChannel(&hdac, &sConfig, DAC_CHANNEL_1) != HAL_OK) {
         Error_Handler();
@@ -360,44 +363,43 @@ static void MX_SAI1_Init(void) {
 }
 
 /**
-  * @brief TIM8 Initialization Function
+  * @brief TIM2 Initialization Function
   * @param None
   * @retval None
   */
-static void MX_TIM8_Init(void) {
+static void MX_TIM2_Init(void) {
 
-    /* USER CODE BEGIN TIM8_Init 0 */
+    /* USER CODE BEGIN TIM2_Init 0 */
 
-    /* USER CODE END TIM8_Init 0 */
+    /* USER CODE END TIM2_Init 0 */
 
     TIM_ClockConfigTypeDef sClockSourceConfig = {0};
     TIM_MasterConfigTypeDef sMasterConfig = {0};
 
-    /* USER CODE BEGIN TIM8_Init 1 */
+    /* USER CODE BEGIN TIM2_Init 1 */
 
-    /* USER CODE END TIM8_Init 1 */
-    htim8.Instance = TIM8;
-    htim8.Init.Prescaler = 0;
-    htim8.Init.CounterMode = TIM_COUNTERMODE_UP;
-    htim8.Init.Period = 1499;
-    htim8.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-    htim8.Init.RepetitionCounter = 0;
-    htim8.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
-    if (HAL_TIM_Base_Init(&htim8) != HAL_OK) {
+    /* USER CODE END TIM2_Init 1 */
+    htim2.Instance = TIM2;
+    htim2.Init.Prescaler = 0;
+    htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+    htim2.Init.Period = 1499;
+    htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+    htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+    if (HAL_TIM_Base_Init(&htim2) != HAL_OK) {
         Error_Handler();
     }
     sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
-    if (HAL_TIM_ConfigClockSource(&htim8, &sClockSourceConfig) != HAL_OK) {
+    if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK) {
         Error_Handler();
     }
     sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
     sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
-    if (HAL_TIMEx_MasterConfigSynchronization(&htim8, &sMasterConfig) != HAL_OK) {
+    if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK) {
         Error_Handler();
     }
-    /* USER CODE BEGIN TIM8_Init 2 */
+    /* USER CODE BEGIN TIM2_Init 2 */
 
-    /* USER CODE END TIM8_Init 2 */
+    /* USER CODE END TIM2_Init 2 */
 
 }
 
@@ -438,8 +440,8 @@ static void MX_USART1_UART_Init(void) {
 static void MX_DMA_Init(void) {
 
     /* DMA controller clock enable */
-    __HAL_RCC_DMA1_CLK_ENABLE();
     __HAL_RCC_DMA2_CLK_ENABLE();
+    __HAL_RCC_DMA1_CLK_ENABLE();
 
     /* DMA interrupt init */
     /* DMA1_Stream5_IRQn interrupt configuration */
@@ -473,7 +475,7 @@ static void MX_GPIO_Init(void) {
 
     /*Configure GPIO pin : USER_BTN_Pin */
     GPIO_InitStruct.Pin = USER_BTN_Pin;
-    GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+    GPIO_InitStruct.Mode = GPIO_MODE_EVT_RISING;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(USER_BTN_GPIO_Port, &GPIO_InitStruct);
 
@@ -518,7 +520,7 @@ void Error_Handler(void) {
     /* USER CODE BEGIN Error_Handler_Debug */
     /* User can add his own implementation to report the HAL error return state */
     __disable_irq();
-    HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOG, LD4_Pin, GPIO_PIN_RESET); // READY LED
     while (1) {
     }
     /* USER CODE END Error_Handler_Debug */

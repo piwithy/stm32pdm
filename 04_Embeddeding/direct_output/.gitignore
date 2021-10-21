@@ -1,4 +1,4 @@
 .idea
-cmake-*
+cmake-build-debug
 build
 *.iml
