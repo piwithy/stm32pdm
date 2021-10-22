@@ -155,3 +155,75 @@ python 01_PCM_PDM_Toolbox/pcm2wav.py -s 48000 waveform.pcm waveform.wav
 Quand on visualise le fichier dans Audacity on a le signal suivant:
 On obtien alors figure suivante
 ![WAV Signal](../00_Documentation/imgs/01_PCM_PDM_Toolbox/Audacity_wav.png)
+
+# WAV 2 Plot
+
+Ce script permet de tracer les composantes Temporelles et Fréquencielles de plusieurs fichier son WAV
+
+### Message d'aide
+```
+usage: wav2plot [-h] <Input file> [<Input file> ...]
+
+Python script to Plot WAV Files
+
+positional arguments:
+  <Input file>  PCM file to convert
+
+optional arguments:
+  -h, --help    show this help message and exit
+
+
+```
+
+### Exemple d'utilisation
+On veut tracer les composantes Temporelles et Fréquencielles du signal que l'on à générer dans l'exemple de [PCM Generator](#pcm_generator) puis converti en fichier `WAV`dasn l'exemple de [PCM 2 WAV](#pcm_2_wav) afin de s'assurer que l'on a bien les 6 composante Frequencielles à 1,2,3,4,5 et 6 kHz
+
+On execute la commande suivante:
+```bash
+# A partir de la racine du dépot avec l'environnement virtuel Actif
+python 01_PCM_PDM_Toolbox/wav2plot.py waveform.wav
+```
+
+On obtien alors figure suivante
+![WAV Plot](../00_Documentation/imgs/01_PCM_PDM_Toolbox/time_and_frequency_waveform_wav.png)
+
+on obtien la sortie suivante en console:
+```
+File: waveform.wav
+	Channels            : 1
+	Sample Width        : 16 bits
+	Sampling Frequency  : 48.0 kHz
+	WAV sample count    : 96
+	Duration            : 0.00 s
+	Compression type    : NONE
+	Compression name    : not compressed
+	Size Coherent       : Yes
+	Signal Minimum      : -32767
+	Signal Maximum      : 32767
+	Signal Average      : 0.00
+	FFT Max Frequency   : 1.02 kHz
+	FFT Max Value       : 80.00 dB
+```
+
+
+Pour mieu distinguer les frequences j'ai regenerer le même signal mais sur 100ms:
+![Generated PCM](../00_Documentation/imgs/01_PCM_PDM_Toolbox/time_and_frequency_waveform_100ms_wav.png)
+
+on obtien la sortie suivante en console:
+```
+File: waveform.wav
+	Channels            : 1
+	Sample Width        : 16 bits
+	Sampling Frequency  : 48.0 kHz
+	WAV sample count    : 4800
+	Duration            : 0.10 s
+	Compression type    : NONE
+	Compression name    : not compressed
+	Size Coherent       : Yes
+	Signal Minimum      : -32767
+	Signal Maximum      : 32767
+	Signal Average      : 0.00
+	FFT Max Frequency   : 1.00 kHz
+	FFT Max Value       : 80.08 dB
+
+```
