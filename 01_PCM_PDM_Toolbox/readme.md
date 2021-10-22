@@ -6,12 +6,12 @@ Ce dossier contient un ensemble de scripts Python pour le traitement des signaux
 # Scripts
 | Script | Objectif |
 |:-------|:---------|
-|[pcm_generator](pcm_generator.py)| Générer des signaux PCM à une fréquence f0 donnée à partir des coefficients de la série de Fourier |
-|[pcm2pdm](pcm2pdm.py)| Convertir des signaux PCM en PDM |
-|[pcm2plot](pcm2plot.py)| Tracer les composantes temporelles et fréquentielles de signaux PCM|
-|[pcm2wav](pcm2wav.py)| Convertir un signal PCM en fichier WAV|
-|[wav2plot](wav2plot.py) | Tracer les composantes temporelles et fréquentielles de fichier WAV
-
+|[pcm_generator](#pcm_generator)| Générer des signaux PCM à une fréquence f0 donnée à partir des coefficients de la série de Fourier |
+|[pcm2pdm.py](#pcm_2_pdm)| Convertir des signaux PCM en PDM |
+|[pcm2plot.py](#pcm_2_plot)| Tracer les composantes temporelles et fréquentielles de signaux PCM|
+|[pcm2wav.py](#pcm_2_wav)| Convertir un signal PCM en fichier WAV|
+|[wav2plot.py](#wav_2_plot) | Tracer les composantes temporelles et fréquentielles de fichier WAV
+|[raw_capture.py](#raw_capture)| Capturer les données transmise par la carte sur le port série
 
 # Installation des modules Python nécessaires
 ```bash
@@ -82,6 +82,7 @@ python 01_PCM_PDM_Toolbox/pcm_generator.py "waveform.pcm" -s 48000 -f0 1000 -t 0
 on retrouvera alors dans le dossier racine du dépôt un fichier `waveform.pcm` qui contient nos échantillons PCM
 
 Le script trace la figure suivante représentant les échantillons PCM en fonction du temps :
+
 ![Generated PCM](../00_Documentation/imgs/01_PCM_PDM_Toolbox/generated_pcm_fs48kHz_f01kHz_dent_de_scie_ordre_6.png)
 
 # PCM 2 Plot
@@ -114,9 +115,11 @@ python 01_PCM_PDM_Toolbox/pcm2plot.py -s 48000 waveform.pcm
 ```
 
 On obtient alors figure suivante :
+
 ![Generated PCM](../00_Documentation/imgs/01_PCM_PDM_Toolbox/time_and_frequency_waveform.png)
 
 Pour mieux distinguer les fréquences j’ai régénéré le même signal, mais sur 100 ms :
+
 ![Generated PCM](../00_Documentation/imgs/01_PCM_PDM_Toolbox/time_and_frequency_waveform_100ms.png)
 
 # PCM 2 WAV
@@ -150,7 +153,7 @@ On exécute la commande suivante :
 python 01_PCM_PDM_Toolbox/pcm2wav.py -s 48000 waveform.pcm waveform.wav
 ```
 Quand on visualise le fichier dans Audacity, on a le signal suivant :
-On obtient alors figure suivante :
+
 ![WAV Signal](../00_Documentation/imgs/01_PCM_PDM_Toolbox/Audacity_wav.png)
 
 # WAV 2 Plot
@@ -181,7 +184,8 @@ On exécute la commande suivante :
 python 01_PCM_PDM_Toolbox/wav2plot.py waveform.wav
 ```
 
-On obtient alors figure suivante
+On obtient alors figure suivante :
+
 ![WAV Plot](../00_Documentation/imgs/01_PCM_PDM_Toolbox/time_and_frequency_waveform_wav.png)
 
 on obtient la sortie suivante en console :
@@ -204,6 +208,7 @@ File: .\waveform.wav
 
 
 Pour mieux distinguer les fréquences j’ai régénéré le même signal, mais sur 100 ms :
+
 ![Generated PCM](../00_Documentation/imgs/01_PCM_PDM_Toolbox/time_and_frequency_waveform_100ms_wav.png)
 
 on obtient la sortie suivante en console :
@@ -229,7 +234,7 @@ File: .\waveform.wav
 
 Ce script permet de convertir un signal PCM en signal PDM
 
-(:warning: la fréquence d’échantillonnage du signal PDM sera la même que celle du signal PCM :warning:)
+(:warning: La fréquence d’échantillonnage du signal PDM sera la même que celle du signal PCM :warning:)
 
 ### Message d’aide
 ```
@@ -254,8 +259,48 @@ On exécute la commande suivante :
 python 01_PCM_PDM_Toolbox/pcm2pdm.py waveform.pcm waveform.pdm
 ```
 
-On obtient alors figure suivante
+On obtient alors figure suivante :
+
 ![PCM to PDM](../00_Documentation/imgs/01_PCM_PDM_Toolbox/pcm_pdm_converted.png)
 
 Pour permettre un traitement par le Programme C de filtrage j’ai régénéré le signale avec une fréquence d’échantillonnage $`fs=3.072MHz = 48 kHz*64`$ :
+
 ![PCM to PDM](../00_Documentation/imgs/01_PCM_PDM_Toolbox/pcm_pdm_converted_3072kHz.png)
+
+# Raw Capture
+
+Ce script permet de capturer les données envoyées par la carte sur le port série
+
+### Message d’aide
+```
+usage: raw_capture.py [-h] [-b baud] <OUTPUT FILE> <COM PORT>
+
+Python Script to capture RAW data From Serial Port
+
+positional arguments:
+  <OUTPUT FILE>  File where the captured data will be stored
+  <COM PORT>     COM PORT to capture from
+
+optional arguments:
+  -h, --help     show this help message and exit
+  -b baud        Serial Port Speed in Baud (defaults @115200 Baud)
+```
+
+### Exemple d’utilisation
+Si on veut capturer els données enregistrés par [parrot](#wip)
+
+Dans mon cas le port serie de la carte est connecté sur le port COM4
+
+On exécute la commande suivante :
+```bash
+# À partir de la racine du dépôt avec l’environnement virtuel actif
+python 01_PCM_PDM_Toolbox/raw_capture.py captured.pcm COM4 -b 115200
+```
+
+On obtient alors un fichier Wav qui une fois fournis a [WAV 2 Plot](#Wav_to_plot) nous donne la figure suivante:
+
+![Captured WAV](../00_Documentation/imgs/01_PCM_PDM_Toolbox/wip)
+
+On obtiens les relevés suivant sur l'osciloscope (Canal 1 DAC Gauche, Canal 2 DAC Droit):
+
+![Relevés Oscillo](wip)
