@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 
 def main():
-    arg_parser = argparse.ArgumentParser("pcm2wav", description="Python script to Plot PCM Files")
+    arg_parser = argparse.ArgumentParser("pcm2plot", description="Python script to Plot PCM Files")
     arg_parser.add_argument('input', metavar="<Input file>", help="PCM file to convert", nargs='+')
     arg_parser.add_argument("-s", '--sampling', type=int, help="Sampling Frequency", required=False)
 
