@@ -13,9 +13,9 @@ Ce dossier contien un ensemble de scipt Python pour le traitement des signaux PD
 
 # PCM Generator
 
-Ce script permet de Générer un Signal PCM Echantionné à une fréquence fs avec une fréquence fondamentalle f0 qui suit la formule suivante:
+Ce script permet de Générer un Signal PCM Echantionné à une fréquence $`fs`$ avec une fréquence fondamentalle $`f0`$ qui suit la formule suivante:
 
-pour `n` coefficiant stocké dans le tableau `C`
+pour $`n`$ coefficiant stocké dans le tableau $`C`$
 
 ```math
 x(t) =  \sum_{k=0}^{n-1} C[k] * sin(2* \pi* (k+1) * f0 * t)
