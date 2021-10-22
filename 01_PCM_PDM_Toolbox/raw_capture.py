@@ -53,7 +53,7 @@ def main():
                                  help="Serial Port Speed in Baud (defaults @115200 Baud)", required=False)
     args = argument_parser.parse_args()
 
-    pcm_bytes = serial_capture.serial_capture(args.serial_port[0], args.b, .5)
+    pcm_bytes = serial_capture(args.serial_port[0], args.b, .5)
     output_path = pathlib.Path(args.output[0])
     print("Writing to \"{}\"".format(output_path))
     fp = open(output_path, "wb")
