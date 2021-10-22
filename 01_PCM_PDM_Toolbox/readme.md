@@ -227,3 +227,38 @@ File: waveform.wav
 	FFT Max Value       : 80.08 dB
 
 ```
+
+# PCM 2 Plot
+
+Ce script permet de convertir un signal PCM en signal PDM
+
+(:warning: La frequence d'echantillonage du signal PDM sera la même que celle du signal PCM :warning:)
+
+### Message d'aide
+```
+usage: pcm2pdm [-h] <Input file> <Output file>
+
+Python script to convert PCM to PDM
+
+positional arguments:
+  <Input file>   PCM input file
+  <Output file>  PDM output file
+
+optional arguments:
+  -h, --help     show this help message and exit
+```
+
+### Exemple d'utilisation
+On veut converir en PDM le signal que l'on à générer dans l'exemple de [PCM Generator](#pcm_generator)
+
+On execute la commande suivante:
+```bash
+# A partir de la racine du dépot avec l'environnement virtuel Actif
+python 01_PCM_PDM_Toolbox/pcm2pdm.py waveform.pcm waveform.pdm
+```
+
+On obtien alors figure suivante
+![PCM to PDM](../00_Documentation/imgs/01_PCM_PDM_Toolbox/pcm_pdm_converted.png)
+
+Pour permettre un traitement par le Pramme C de filtrage j'ai regéneré le signale avec une frequece d'echantionnage $`fs=3.072MHz = 48kHz*64`$:
+![PCM to PDM](../00_Documentation/imgs/01_PCM_PDM_Toolbox/pcm_pdm_converted_3072kHz.png)
