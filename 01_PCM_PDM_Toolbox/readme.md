@@ -294,13 +294,17 @@ Dans mon cas le port serie de la carte est connecté sur le port COM4
 On exécute la commande suivante :
 ```bash
 # À partir de la racine du dépôt avec l’environnement virtuel actif
-python 01_PCM_PDM_Toolbox/raw_capture.py captured.pcm COM4 -b 115200
+python 01_PCM_PDM_Toolbox/raw_capture.py 'captured.pcm' '/dev/ttyUSB0' -b 115200
 ```
 
 On obtient alors un fichier Wav qui une fois fournis a [WAV 2 Plot](#Wav_to_plot) nous donne la figure suivante:
 
-![Captured WAV](../00_Documentation/imgs/01_PCM_PDM_Toolbox/wip)
+![Captured WAV](../00_Documentation/imgs/01_PCM_PDM_Toolbox/raw_capture_from_parrot_WAV.png)
 
-On obtiens les relevés suivant sur l'osciloscope (Canal 1 DAC Gauche, Canal 2 DAC Droit):
+On obtiens les relevés suivant sur l'oscilloscope ("Channel 1": DAC Gauche, "Channel 2": DAC Droit):
 
-![Relevés Oscillo](wip)
+![Relevés oscilloscope](../00_Documentation/imgs/01_PCM_PDM_Toolbox/raw_capture_from_parrot_DSO.png)
+
+Capture d'écran de l'oscilloscope:
+
+![Capture d'ecran oscilloscope](../00_Documentation/imgs/01_PCM_PDM_Toolbox/raw_capture_from_parrot_DSO.bmp)
