@@ -307,4 +307,4 @@ On obtiens les relevés suivant sur l'oscilloscope ("Channel 1": DAC Gauche, "Ch
 
 Capture d'écran de l'oscilloscope:
 
-![Capture d'ecran oscilloscope](../00_Documentation/imgs/01_PCM_PDM_Toolbox/raw_capture_from_parrot_DSO.bmp)
+![Capture d'ecran oscilloscope](../00_Documentation/imgs/01_PCM_PDM_Toolbox/raw_capture_from_parrot_DSO_screen.png)
