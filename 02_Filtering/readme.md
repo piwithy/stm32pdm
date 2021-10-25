@@ -4,5 +4,5 @@ Ce dossier contient un programme C pour filtrer des signaux PDM sur PC ainsi que
 # Dossiers
 | Dossier | Objectif |
 | :-------|:---------|
-|[c_program](c_program/readme.md)| Programme C pour filiter un signal PDM sur PC |
+|[c_program](c_program/docs/html/files.html)| Programme C pour filiter un signal PDM sur PC |
 |[filter_library](filter_library/readme.md)| Bibliothèque C pour filtrer les signaux PDM|

@@ -1,6 +1,7 @@
 /**
  * @file main.c
- * @author Pierre-Yves JEZEGOU
+ * @author Pierre-Yves JEZEGOU <pierre-yves.jezegou@ensta-bretagne.org>
+ *
  * @brief Main file of the program for filtering PDM Data on PC
  */
 #include <stdio.h>
@@ -15,9 +16,16 @@
 
 #include "config.h"
 
+/** @brief Size in Bits of a PDM Word */
 #define WORD_SIZE 16
 
-
+/**
+ * @brief Function Used to print the usage Message
+ *
+ * @param stream Stream Where to print the message
+ * @param program_name Program address (argv[0])
+ * @param help_mode If it is A Help Message or juste the Usage (true: HELP)
+ */
 void print_usage(FILE *stream, char *program_name, bool help_mode) {
     fprintf(stream, "USAGE: %s [-h] [-f FACTOR] <Input File> <Outpufile>\n", program_name);
     if (help_mode == true) {

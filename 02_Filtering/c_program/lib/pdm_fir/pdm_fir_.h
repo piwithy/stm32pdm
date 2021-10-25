@@ -14,7 +14,13 @@
  +--------------------------------------------------+
 */
 
+/**
+ * @brief Number of Bits the output sample will using
+ */
 #define PDM_FTL_SCALE_BITS  30
+/**
+ * @brief Number of Filter Taps
+ * */
 #define PDM_FTL_TAPS        16
 
 static const int byte_coeff[PDM_FTL_TAPS*2][256] = {
