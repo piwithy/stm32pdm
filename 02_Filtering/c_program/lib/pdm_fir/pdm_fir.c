@@ -1,15 +1,13 @@
-#include "pdm_fir.h"
-
+/**
+ * @file pdm_fir.c
+ * @brief Implementation file of the PDM FIR
+ */
+#include <stdint.h>
 #include <stdlib.h>
 
-/* PDM FIR filter.
- * The source frequency is expected to be 1024kHz so we are receiving 16 bit words at 64kHz rate MSB first.
- * The filter cutoff frequency is 8kHz.  -> customized in pdm_fir.py
- */
+#include "pdm_fir.h"
 
 
-
-/* Initialize filter */
 void pdm_fir_flt_init(pdm_fir_filter_t *f) {
     int t;
     f->next_tap = 0;
@@ -17,18 +15,14 @@ void pdm_fir_flt_init(pdm_fir_filter_t *f) {
         f->buffer[t] = 0x5555;
 }
 
-/* Put 16 bits MSB first */
+
 void pdm_fir_flt_put(pdm_fir_filter_t *f, uint16_t bits) {
     f->buffer[f->next_tap] = bits;
     if (++f->next_tap >= PDM_FTL_TAPS)
         f->next_tap = 0;
 }
 
-/* Retrieve output value. May be called at any rate since it does not change the filter state.
- * The output ranges from -(2**(out_bits-1)) to +(2**(out_bits-1)). Those values correspond to
- * all 0 or all 1 input signal. Note that the output value may still exceed this range so caller
- * should truncate return value on its own if necessary.
- */
+
 int pdm_fir_flt_get(const pdm_fir_filter_t *f, int out_bits) {
     int t, i = 0, tot = 0;
     for (t = f->next_tap;;) {

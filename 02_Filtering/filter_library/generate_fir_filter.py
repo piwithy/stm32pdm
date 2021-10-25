@@ -53,6 +53,12 @@ def main():
     gen_date = datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")
     out_str = ["#ifndef PDM_FIR__H",
                "#define PDM_FIR__H",
+               "/**",
+               " * @file pdm_fir_.h",
+               " * @brief File containing Generated LUT of the Fir filter",
+               " * @date Generation: {}".format(gen_date),
+               " */",
+               ""
                "/*",
                " +--------------------------------------------------+",
                " |                                                  |",

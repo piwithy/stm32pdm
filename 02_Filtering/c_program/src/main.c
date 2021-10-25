@@ -1,6 +1,12 @@
+/**
+ * @file main.c
+ * @author Pierre-Yves JEZEGOU
+ * @brief Main file of the program for filtering PDM Data on PC
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <stdbool.h>
 #include <string.h>
 
 #include <getopt.h>
@@ -9,15 +15,12 @@
 
 #include "config.h"
 
-#define PDM_WORD_SIZE 16
+#define WORD_SIZE 16
 
-typedef enum {
-    FALSE, TRUE
-} bool;
 
 void print_usage(FILE *stream, char *program_name, bool help_mode) {
     fprintf(stream, "USAGE: %s [-h] [-f FACTOR] <Input File> <Outpufile>\n", program_name);
-    if (help_mode == TRUE) {
+    if (help_mode == true) {
         fprintf(stdout, "C Program to filter PDM Signals to PCM format\n\n");
         fprintf(stdout, "Positional arguments:\n");
         fprintf(stdout, "    <Input File>        PDM Signal file\n");
@@ -45,18 +48,18 @@ int main(int argc, char *argv[]) {
     while ((opt = getopt(argc, argv, "hf:")) != -1) {
         switch (opt) {
             case 'h':
-                print_usage(stdout, argv[0], TRUE);
+                print_usage(stdout, argv[0], true);
                 exit(EXIT_SUCCESS);
             case 'f':
                 decimation_factor = strtol(optarg, &endptr, 10);
                 break;
             default:
-                print_usage(stderr, argv[0], FALSE);
+                print_usage(stderr, argv[0], false);
                 exit(EXIT_FAILURE);
         }
     }
     if (optind >= argc) {
-        print_usage(stderr, argv[0], FALSE);
+        print_usage(stderr, argv[0], true);
         exit(EXIT_FAILURE);
     }
     input_file = argv[optind];
@@ -64,7 +67,7 @@ int main(int argc, char *argv[]) {
 
     // Filter Init
     pdm_fir_filter_config_t filter;
-    pdm_fir_flt_config_init(&filter, decimation_factor, 0, 0, 1, PDM_WORD_SIZE);
+    pdm_fir_flt_config_init(&filter, decimation_factor, 0, 0, 1, WORD_SIZE);
 
     // Reading Input
     fprintf(stdout, "Reading PDM file: \"%s\"\n", input_file);
@@ -92,10 +95,10 @@ int main(int argc, char *argv[]) {
 
     //filtering PDM
     uint16_t pdm_buffer[128];
-    uint16_t pcm_buffer[128 / (decimation_factor / PDM_WORD_SIZE)];
+    uint16_t pcm_buffer[128 / (decimation_factor / WORD_SIZE)];
 
     fprintf(stdout, "Filtering PDM Signal\n");
-    size_t pcm_length = pdm_length / (decimation_factor / PDM_WORD_SIZE);
+    size_t pcm_length = pdm_length / (decimation_factor / WORD_SIZE);
     uint16_t *pcm_signal;
     pcm_signal = malloc(pcm_length * sizeof(uint16_t));
     uint32_t pcm_sound_index = 0;
