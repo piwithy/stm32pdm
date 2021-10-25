@@ -5,7 +5,7 @@ Ce programme Implemente le même block de filtrage que celui intégré à la car
 # Compilation
 
 ## Pré-requis:
-- CMAKE 3.16
+- CMAKE >=  3.16
 - GCC >= 4.8.1
 
 ## Build
