@@ -1,38 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <getopt.h>
+#include <stdint.h>
 #include <string.h>
+
+#include <getopt.h>
+
 #include "pdm_fir.h"
+
 #include "config.h"
 
-#define DECIMATION_FACTOR 64
 #define PDM_WORD_SIZE 16
 
-typedef enum boolean {
+typedef enum {
     FALSE, TRUE
 } bool;
-
-uint32_t filter_chunk(struct pdm_fir_filter *filter, uint16_t *pcm_buffer, uint16_t *pdm_buffer, uint32_t pdm_size,
-                      uint32_t decimation_factor, uint8_t linear_gain) {
-    uint32_t decimation_factor_words = decimation_factor / PDM_WORD_SIZE;
-    uint32_t pcm_to_write = pdm_size / decimation_factor_words;
-    for (size_t i = 0; i < pcm_to_write; i++) { // filtering ONE PDM Buffer
-        for (size_t j = 0; j < decimation_factor_words; j++) {
-            pdm_fir_flt_put(filter, pdm_buffer[i * decimation_factor_words + j]);
-        }
-        /*
-         * on enregistre le sample produit par le filtre
-         * on va modifier son amplitude tels que x € [0, 0XFFF] avec une moyenne à Ox7FF
-         * ces paramettre correponde a ceux du DAC
-         */
-        int32_t pcm_tmp = (int32_t) pdm_fir_flt_get(filter, PDM_WORD_SIZE) * linear_gain;
-        if (pcm_tmp > 0x7FFF) pcm_tmp = 0x7FFF;
-        if (pcm_tmp < -0x7FFF) pcm_tmp = -0x7FFF;
-        pcm_buffer[i] = (uint16_t) pcm_tmp & 0xFFFF;
-    }
-    return pcm_to_write;
-}
-
 
 void print_usage(FILE *stream, char *program_name, bool help_mode) {
     fprintf(stream, "USAGE: %s [-h] [-f FACTOR] <Input File> <Outpufile>\n", program_name);
@@ -47,7 +28,12 @@ void print_usage(FILE *stream, char *program_name, bool help_mode) {
     }
 }
 
-
+/**@brief Program Main Function
+ *
+ * @param argc Argument Count
+ * @param argv Argument Vector
+ * @return Error Code
+ */
 int main(int argc, char *argv[]) {
     // Argument handling
     char *input_file = NULL;
@@ -77,8 +63,8 @@ int main(int argc, char *argv[]) {
     output_file = argv[optind + 1];
 
     // Filter Init
-    struct pdm_fir_filter pdm_filter;
-    pdm_fir_flt_init(&pdm_filter);
+    pdm_fir_filter_config_t filter;
+    pdm_fir_flt_config_init(&filter, decimation_factor, 0, 0, 1, PDM_WORD_SIZE);
 
     // Reading Input
     fprintf(stdout, "Reading PDM file: \"%s\"\n", input_file);
@@ -103,13 +89,13 @@ int main(int argc, char *argv[]) {
     fread(pdm_signal, file_size, 1, fp);
     fclose(fp);
 
+
     //filtering PDM
-    uint32_t pdm_index = 0;
     uint16_t pdm_buffer[128];
-    uint16_t pcm_buffer[128 / (DECIMATION_FACTOR / PDM_WORD_SIZE)];
+    uint16_t pcm_buffer[128 / (decimation_factor / PDM_WORD_SIZE)];
 
     fprintf(stdout, "Filtering PDM Signal\n");
-    size_t pcm_length = pdm_length / (DECIMATION_FACTOR / PDM_WORD_SIZE);
+    size_t pcm_length = pdm_length / (decimation_factor / PDM_WORD_SIZE);
     uint16_t *pcm_signal;
     pcm_signal = malloc(pcm_length * sizeof(uint16_t));
     uint32_t pcm_sound_index = 0;
@@ -118,12 +104,20 @@ int main(int argc, char *argv[]) {
         return -1;
     }
 
-    while (pcm_sound_index < pcm_length) {
+    // Filtering PDM Signal in chunks of 128 * 16 PDM Samples
+    for (size_t pdm_index = 0; pdm_index < pdm_length; pdm_index += 128) {
+        //Copying Into pdm buffer
         memcpy(pdm_buffer, pdm_signal + pdm_index, 128 * sizeof(uint16_t));
-        pdm_index += 128;
-        pcm_sound_index += filter_chunk(&pdm_filter, pcm_signal + pcm_sound_index, pdm_buffer, 128, DECIMATION_FACTOR,
-                                        1);
+
+        //filtering
+        size_t filtered = pdm_fir_flt_chunk(&filter, pcm_buffer, pdm_buffer, 128);
+
+        //Copying into PCM Signal
+        memcpy(pcm_signal + pcm_sound_index, pcm_buffer, sizeof(uint16_t) * filtered);
+        pcm_sound_index += filtered;
+
     }
+
 
     //Writing PCM
     fprintf(stdout, "Writing PCM to \"%s\"\n", output_file);
@@ -131,7 +125,7 @@ int main(int argc, char *argv[]) {
     fwrite(pcm_signal, pcm_length * sizeof(uint16_t), 1, fp);
     fclose(fp);
 
-
+    pdm_fir_flt_config_deInit(&filter);
     free(pcm_signal);
     free(pdm_signal);
     return 0;

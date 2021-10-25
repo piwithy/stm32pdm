@@ -6,6 +6,6 @@ set(CMAKE_C_STANDARD 11)
 
 configure_file(inc/config.h.in inc/config.h)
 
-include_directories(${PROJECT_BINARY_DIR}/inc/ inc/ lib/fir_filter)
+include_directories(${PROJECT_BINARY_DIR}/inc/ inc/ lib/pdm_fir)
 
-add_executable(pdm_filter lib/fir_filter/pdm_fir.c src/main.c)
+add_executable(pdm_filter lib/pdm_fir/pdm_fir.c src/main.c)
