@@ -147,3 +147,7 @@ On voit que le signale filtré reproduit fidèlement le signal original avec un 
 # Documentation Doxygen
 
 La documentation doxigen est disponible [ici](docs/html/files.html)
+
+# Algorithme Appliqué par le programme
+
+![Algorithme](../../00_Documentation/imgs/02_Filtering/c_program/algo.svg)
