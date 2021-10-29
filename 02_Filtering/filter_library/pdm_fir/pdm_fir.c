@@ -17,23 +17,19 @@ void pdm_fir_flt_init(pdm_fir_filter_t *f) {
 
 
 void pdm_fir_flt_put(pdm_fir_filter_t *f, uint16_t bits) {
-    f->buffer[f->next_tap] = bits;
-    if (++f->next_tap >= PDM_FTL_TAPS)
-        f->next_tap = 0;
+    f->buffer[f->next_tap++] = bits;
+    f->next_tap %= PDM_FTL_TAPS;
 }
 
 
 int pdm_fir_flt_get(const pdm_fir_filter_t *f, int out_bits) {
-    int t, i = 0, tot = 0;
-    for (t = f->next_tap;;) {
+    int t = f->next_tap, i = 0, tot = 0;
+    do {
         uint16_t v = f->buffer[t];
         tot += byte_coeff[i++][(uint8_t) (v >> 8)];
-        tot += byte_coeff[i++][(uint8_t) (v)];
-        if (++t >= PDM_FTL_TAPS)
-            t = 0;
-        if (t == f->next_tap)
-            break;
-    }
+        tot += byte_coeff[i++][(uint8_t) (v & 0xFF)];
+        t = (t + 1) % PDM_FTL_TAPS;
+    } while (t != f->next_tap);
     /* Rescale to output range */
     return tot >> (PDM_FTL_SCALE_BITS - out_bits + 1);
 }
