@@ -49,11 +49,11 @@ typedef enum {
 #define PCM_BUFFER_SIZE (SOUND_FS / 1000)
 
 // length in second of the played back sound
-#define RECORD_TIME 3
+#define RECORD_TIME_MS 2985
 
 #define LINEAR_GAIN 9
 
-#define SAMPLE_COUNT (RECORD_TIME * SOUND_FS)
+#define SAMPLE_COUNT (RECORD_TIME_MS * (SOUND_FS/1000))
 
 #define TRANSMIT
 
@@ -149,27 +149,6 @@ void HAL_DAC_ConvCpltCallbackCh1(DAC_HandleTypeDef *hdac1) {
     dac_half = 1;
 }
 
-// function to Filter a chunk of PDM_DATA
-size_t filter_pdm_chunk(struct pdm_fir_filter *filter, uint16_t *pcm_buffer, uint16_t *pdm_buffer, size_t pdm_size,
-                        uint16_t decimation, uint16_t linear_gain) {
-    uint16_t decimation_words = decimation / WORD_SIZE;
-    size_t pcm_to_write = pdm_size / decimation_words;
-    for (size_t i = 0; i < pcm_to_write; i++) {
-        for (size_t j = 0; j < decimation_words; j++) {
-            pdm_fir_flt_put(filter, pdm_buffer[i * decimation_words + j]);
-        }
-        int32_t received_pcm = pdm_fir_flt_get(filter, 12);
-        // Optimizing Sample for DAC output
-        received_pcm -= 50; // centering PCM Signal
-        received_pcm *= linear_gain;
-        if (received_pcm > 0x7FF) received_pcm = 0x7FF;
-        if (received_pcm < -0x7FF) received_pcm = -0x7FF;
-        received_pcm += 0x7FF;
-        pcm_buffer[i] = (uint16_t) received_pcm & 0xFFF;
-    }
-    return pcm_to_write;
-}
-
 /* USER CODE END 0 */
 
 /**
@@ -195,7 +174,7 @@ int main(void) {
 #ifdef TRANSMIT
     uint32_t send_index;
 #endif // TRANSMIT
-    struct pdm_fir_filter fir_filter;
+    pdm_fir_filter_config_t fir_filter;
     /* USER CODE END 1 */
 
     /* MCU Configuration--------------------------------------------------------*/
@@ -223,7 +202,7 @@ int main(void) {
     MX_USART1_UART_Init();
     /* USER CODE BEGIN 2 */
     // Starting Peripherals
-    pdm_fir_flt_init(&fir_filter);
+    pdm_fir_flt_config_init(&fir_filter, DECIMATION_FACTOR, -50, 0X7FF, LINEAR_GAIN, 12);
 
     HAL_SAI_Receive_DMA(&hsai_BlockA1, (uint8_t *) PDM_BUFFER, PDM_BUFFER_SIZE * 2);
     HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_1, (uint32_t *) DAC_BUFFER_LEFT, PCM_BUFFER_SIZE * 2, DAC_ALIGN_12B_R);
@@ -247,8 +226,8 @@ int main(void) {
                     samples_recorded = 0;
                 }
                 if (!sai_flag) { // filtering BUT ignoring output -> Keeping filter up to date
-                    (void) filter_pdm_chunk(&fir_filter, PCM_BUFFER, PDM_BUFFER + PDM_BUFFER_SIZE * sai_half,
-                                            PDM_BUFFER_SIZE, DECIMATION_FACTOR, LINEAR_GAIN);
+                    (void) pdm_fir_flt_chunk(&fir_filter, PCM_BUFFER, PDM_BUFFER + PDM_BUFFER_SIZE * sai_half,
+                                             PDM_BUFFER_SIZE);
                     sai_flag = 1;
                 }
                 if (!dac_flag) dac_flag = 1; // resetting DAC flag
@@ -262,11 +241,10 @@ int main(void) {
                 break;
             case RECORDING:
                 if (!sai_flag) {
-                    uint32_t filtered_words = filter_pdm_chunk(&fir_filter,
+                    uint32_t filtered_words = pdm_fir_flt_chunk(&fir_filter,
                                                                PCM_BUFFER,
                                                                PDM_BUFFER + PDM_BUFFER_SIZE * sai_half,
-                                                               PDM_BUFFER_SIZE,
-                                                               DECIMATION_FACTOR, LINEAR_GAIN);
+                                                               PDM_BUFFER_SIZE);
                     sai_flag = 1;
                     if (samples_recorded < SAMPLE_COUNT) samples_recorded += filtered_words;
 
