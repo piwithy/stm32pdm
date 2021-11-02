@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
     char *input_file_name = NULL, *output_file_name = NULL;
     uint8_t decimation_factor = 64;
     size_t pdm_fs = 3072000;
-    bool verbose=false;
+    bool verbose = false;
     int opt;
     char *endptr = NULL;
     while ((opt = getopt(argc, argv, "hf:s:")) != -1) {
@@ -73,6 +73,10 @@ int main(int argc, char *argv[]) {
     strcpy(output_file_name, argv[optind]);
     printf("Exporting PCM to \"%s\"\n", output_file_name);
 
+    size_t pdm_buffer_size = (pcm_fs / 1000) * (decimation_factor / WORD_SIZE);
+    size_t pcm_buffer_size = pcm_fs / 1000;
+
+
     printf("Opening : \"%s\"\n", input_file_name);
     FILE *input_fp = fopen(input_file_name, "rb");
     if (input_fp == NULL) {
@@ -93,37 +97,35 @@ int main(int argc, char *argv[]) {
     fclose(input_fp);
     printf("\"%s\" closed !\n", input_file_name);
 
-    printf("initializing PDM Filter\n");
-    size_t pcm_size_bytes = pdm_size_words / (decimation_factor / WORD_SIZE) * sizeof(int16_t);
-    int16_t *pcm_sound = malloc(pcm_size_bytes);
+
+    size_t pcm_sample_count = pdm_size_words / (decimation_factor / WORD_SIZE);
+    pcm_sample_count = pcm_sample_count - (pcm_sample_count % pcm_buffer_size);
+    uint16_t *pcm_sound = malloc(sizeof(uint16_t) * pcm_sample_count);
+
+    printf("Initializing PDM Filter\n");
+
     pdm_fir_filter_config_t filter_config;
     pdm_fir_flt_config_init(&filter_config, decimation_factor, 0, 0, 1, 16);
 
-    size_t pdm_buffer_size = (pcm_fs / (1000)) * (decimation_factor / WORD_SIZE);
-    size_t pcm_buffer_size = (pcm_fs / 1000);
-
-    uint16_t *pdm_buffer = malloc(pdm_buffer_size * sizeof(uint16_t));
-    int16_t *pcm_buffer = malloc(pcm_buffer_size * sizeof(int16_t));
-
-    printf("Filtering %lu PDM Samples at %.2f kHz with a decimation factor of %u\n", WORD_SIZE * pdm_size_words,
-           (double) pdm_fs / 1000., decimation_factor);
-    printf("The filter shift the sampling frequency from %.2f kHz to %.2f kHz\n", (double) pdm_fs / 1000.,
-           (double) pcm_fs / 1000.);
+    uint16_t pdm_buffer[pdm_buffer_size];
+    uint16_t pcm_buffer[pcm_buffer_size];
 
     size_t pcm_sound_index = 0;
+    size_t pdm_sound_index = 0;
+    printf("Filtering PDM Signal");
+    while (pcm_sound_index < pcm_sample_count) {
+        memcpy(pdm_buffer, pdm_sound + pdm_sound_index, pdm_buffer_size * sizeof(uint16_t));
+        pdm_sound_index += pdm_sound_index;
 
-    for (size_t pdm_index = 0; pdm_index < pdm_size_words; pdm_index += pdm_buffer_size) {
-        memcpy(pdm_buffer, pdm_sound + pdm_index, pdm_buffer_size * sizeof(uint16_t));
+        size_t filtered = pdm_fir_flt_chunk(&filter_config, pcm_buffer, pdm_buffer, pdm_buffer_size);
 
-        size_t filtered = pdm_fir_flt_chunk(&filter_config, (uint16_t *) pcm_buffer, pdm_buffer, pdm_buffer_size);
 
-        memcpy(pcm_buffer + pcm_sound_index, pcm_buffer, filtered * sizeof(uint16_t));
+        memcpy(pcm_sound + pcm_sound_index, pcm_buffer, filtered * sizeof(uint16_t));
         pcm_sound_index += filtered;
-
     }
+    printf("Filtered %ld Samples sampled at %.2f kHz (%.2f kHz / %d)\n", pcm_sound_index, (double) pcm_fs / 1000.,
+           (double) pdm_fs / 1000., decimation_factor);
 
-
-    printf("Filtered %lu PCM Samples\n", pcm_size_bytes / sizeof(int16_t));
 
     printf("Opening \"%s\"\n", output_file_name);
     FILE *output_fp = fopen(output_file_name, "wb");
@@ -132,8 +134,8 @@ int main(int argc, char *argv[]) {
     }
 
     printf("Writing PCM Samples to \"%s\"\n", output_file_name);
-    fwrite(pcm_sound, pcm_size_bytes, 1, output_fp);
-    printf("Wrote %lu bytes to \"%s\"\n", pcm_size_bytes, output_file_name);
+    fwrite(pcm_sound, pcm_sample_count * sizeof(uint16_t), 1, output_fp);
+    printf("Wrote %lu bytes to \"%s\"\n", pcm_sample_count * sizeof(uint16_t), output_file_name);
     fclose(output_fp);
     printf("\"%s\" closed !\n", output_file_name);
 
@@ -142,8 +144,6 @@ int main(int argc, char *argv[]) {
     free(output_file_name);
     free(pdm_sound);
     free(pcm_sound);
-    free(pdm_buffer);
-    free(pcm_buffer);
     return 0;
 }
 
@@ -158,6 +158,6 @@ void print_usage(FILE *stream, char *program_name, bool help_mode) {
         fprintf(stream, "\nOptional arguments:\n");
         fprintf(stream, "    -h                  Show this help message\n");
         fprintf(stream, "    -f FACTOR           Decimation Factor of the filter\n");
-        fprintf(stream, "    -s SAMPLING         Sampling Frequency of the PDM Signal");
+        fprintf(stream, "    -s SAMPLING         Sampling Frequency of the PDM Signal\n");
     }
 }
