@@ -14,20 +14,28 @@
  * @brief Struct Containing the filter internal Data
  */
 typedef struct {
-    uint16_t buffer[PDM_FTL_TAPS];     /** Sample Buffer*/
-    int next_tap;                      /** Circular buffer index*/
+    /** Sample Buffer*/
+    uint16_t buffer[PDM_FTL_TAPS];
+    /** Circular buffer index*/
+    int next_tap;
 } pdm_fir_filter_t;
 
 /**
  * @brief Struct Containing the Config of the Filter
  */
 typedef struct {
-    pdm_fir_filter_t *fir_filter;    /** FIR Filter*/
-    uint16_t decimation_factor;      /** Factor between PDM_fs and PCM_fs  (multiple of 16)*/
-    int16_t input_offset;            /** Offset to apply to the PCM Signal BEFORE amplification */
-    int16_t output_offset;           /** Offset to apply to the PCM Signal AFTER amplification */
-    uint16_t linear_gain;            /** Amplification Factor (linear) */
-    uint8_t bit_scale;               /** Number of bits used for the output PCM samples */
+    /** FIR Filter */
+    pdm_fir_filter_t *fir_filter;
+    /** Factor between PDM_fs and PCM_fs  (multiple of 16)*/
+    uint16_t decimation_factor;
+    /** Offset to apply to the PCM Signal BEFORE amplification */
+    int16_t input_offset;
+    /** Offset to apply to the PCM Signal AFTER amplification */
+    int16_t output_offset;
+    /** Amplification Factor (linear) */
+    uint16_t linear_gain;
+    /** Number of bits used for the output PCM samples */
+    uint8_t bit_scale;
 } pdm_fir_filter_config_t;
 
 /**
