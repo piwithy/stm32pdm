@@ -21,9 +21,10 @@ Le script `generate_fir_filter` nous permet de généré la Look Up table utilis
 |Paramètre|Valeur Recommander | Effet|
 |:-|:-|:-|
 | taps | 16 | Cette valeur correspond à l'ordre du filtre du filtre numérique|
-| Sampling Frequency | Pour un facteur de décimation de $`D`$: $`fs_{PDM} = D * fs_{PCM}`$  | Cette valeur correspond a la fréquence d'échantillonnage ($`fs_{PDM}`$) du signal PDM
+| Sampling Frequency | Pour un facteur de décimation de $`D`$: $`fs_{PDM} = D * fs_{PCM}`$  | Cette valeur correspond a la fréquence d'échantillonnage  ($`fs_{PDM}`$) du signal PDM |
+| Cutoff Frequency | $`\leq \fraq{fs_{PCM}}{2}`$ | Fréquence de Coupure du filtre, cette fréquence doit être inférieur ou égale à $`\fraq{fs_{PCM}}{2}`$ pour respecter le condition de Shannon |
 
-Avant de générér la Look Up Table d'un filtre PDM on va répondre 2 plusieurs Question:
+Avant de générér la Look Up Table d'un filtre PDM on va répondre 2 Questions :
  1. A quelle fréquence est échantillonné notre signal PDM ?
  2. Qu'elle fréquence échantillonnage visé pour le signal PCM ?
 
