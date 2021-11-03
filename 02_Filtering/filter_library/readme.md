@@ -14,6 +14,44 @@
 # Générer un filtre
 
 
+Le script `generate_fir_filter` nous permet de généré la Look Up table utilisé par la bibliothèque de filtrage. Pour ce faire le script a besoin de plusieurs valeurs:
+
+<table>
+<thead>
+<tr>
+<th> Paramètre </th>
+<th> Valeur Recommandé </th>
+<th> Effet </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> taps </td>
+<td> 16 </td>
+<td> Cette valeur correspond à l'ordre du filtre du filtre numérique
+</tr>
+<tr>
+<td> Sampling Frequency </td>
+<td> Pour un facteur de decimation de 64: $`fs_{PDM} = 64 * fs_{PCM}`$ </td>
+<td> Cette valeur correspond à la fréquence d'échantillonnage du Signal PDM
+</tr>
+</tbody>
+</table>
+
+
+|Paramètre|Valeur Recommander | Effet|
+|:-|:-|:-|
+|
+
+Avant de générér la Look Up Table d'un filtre PDM on va répondre 2 plusieurs Question:
+ 1. A quelle fréquence est échantillonné notre signal PDM ?
+ 2. Qu'elle fréquence échantillonnage visé pour le signal PCM ?
+
+
+
+
+
+
 ## Exemple de pdm_fir/pdm_fir_.h
 ```c
 #ifndef PDM_FIR__H
