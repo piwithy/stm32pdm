@@ -14,7 +14,7 @@
 # Pipeline de filtrage
 Le filtre implémenté par cette librairie applique le pipeline de filtrage suivant:
 
-![pipeline filtrage](../../00_Documentation/imgs/02_Filtering/filter_library/filter_chain.svg)
+![pipeline filtrage](../../00_Documentation/imgs/02_Filtering/filter_library/filter_chain.png)
 
 
 # Générer un filtre
