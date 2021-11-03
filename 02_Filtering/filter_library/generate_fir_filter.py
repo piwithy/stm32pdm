@@ -69,7 +69,7 @@ def gen_header(f: PDMFir, prog_name: str):
                "#define PDM_FIR__H",
                "/**",
                " * @file pdm_fir_.h",
-               " * @brief File containing Generated LUT of the Fir filter",
+               " * @brief File containing Generated LUT of the FIR filter",
                " * @date Generation: {}".format(gen_date),
                " */",
                ""
