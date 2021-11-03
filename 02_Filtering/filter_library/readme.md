@@ -56,7 +56,7 @@ Avant de générer la Look Up Table d'un filtre PDM on va répondre 2 Questions 
 
  2. A quelle fréquence est échantillonné notre signal PDM ?
 
-Dans cette exemple rechercheons un signal PCM a $`48 kHz`$, qui serat issue du filtre avec un facteur de décimation $`D`$ de 64. Le signal PDM sera donc échantillonné à $`3.072 MHz`$ ($`fs_{PDM}= D * fs_{PCM} = 64 * 48 * 10^{3} = 3.072 * 10^{6}`) 
+Dans cette exemple rechercheons un signal PCM a $`48 kHz`$, qui serat issue du filtre avec un facteur de décimation $`D`$ de 64. Le signal PDM sera donc échantillonné à $`3.072 MHz`$ ($`fs_{PDM}= D * fs_{PCM} = 64 * 48 * 10^{3} = 3.072 * 10^{6}`$)
 
 
 
