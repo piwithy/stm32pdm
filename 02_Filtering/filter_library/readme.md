@@ -52,11 +52,14 @@ optional arguments:
 ## Exemple de génération
 
 Avant de générer la Look Up Table d'un filtre PDM on va répondre 2 Questions :
- 1. A quelle fréquence est échantillonné notre signal PDM ?
+ 1. Qu'elle fréquence échantillonnage visé pour le signal PCM ?
 
-Dans cette exemple nous allons généré
+ 2. A quelle fréquence est échantillonné notre signal PDM ?
 
- 2. Qu'elle fréquence échantillonnage visé pour le signal PCM ?
+Dans cette exemple rechercheons un signal PCM a $`48 kHz`$, qui serat issue du filtre avec un facteur de décimation $`D`$ de 64. Le signal PDM sera donc échantillonné à $`3.072 MHz`$ ($`fs_{PDM}= D * fs_{PCM} = 64 * 48 * 10^{3} = 3.072 * 10^{6}`) 
+
+
+
 
 
 
