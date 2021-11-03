@@ -21,7 +21,7 @@ Le script `generate_fir_filter` nous permet de généré la Look Up table utilis
 |Paramètre|Valeur Recommander | Effet|
 |:-|:-|:-|
 | taps | 16 | Cette valeur correspond à l'ordre du filtre du filtre numérique|
-| Sampling Frequency | Pour un facteur de decimation de 64: $`fs_{PDM} = 64 * fs_{PCM}`$  | Cette valeur correspond à la fréquence d'échantillonnage du Signal PDM
+| Sampling Frequency | Pour un facteur de decimation de 64: <br />$`fs_{PDM} = 64 * fs_{PCM}`$  | Cette valeur correspond à la fréquence d'échantillonnage du Signal PDM
 
 Avant de générér la Look Up Table d'un filtre PDM on va répondre 2 plusieurs Question:
  1. A quelle fréquence est échantillonné notre signal PDM ?
