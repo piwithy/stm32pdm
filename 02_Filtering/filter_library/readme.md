@@ -11,22 +11,53 @@
 |*pdm_fir/pdm_fir_.h* | Fichier généré par `generate_fir_filter`, il contien la Look Up Table utilisé par le filtre ainsi certaines constantes du filtre
 
 
+# Pipeline de filtrage
+Le filtre implémenté par cette librairie applique le pipeline de filtrage suivant:
+
+![pipeline filtrage](../../00_Documentation/imgs/02_Filtering/filter_library/filter_chain.svg)
+
+
 # Générer un filtre
 
 
 Le script `generate_fir_filter` nous permet de généré la Look Up table utilisé par la bibliothèque de filtrage. Pour ce faire le script a besoin de plusieurs valeurs:
 
-
-
 |Paramètre|Valeur Recommander | Effet|
 |:-|:-|:-|
 | taps | 16 | Cette valeur correspond à l'ordre du filtre du filtre numérique|
 | Sampling Frequency | Pour un facteur de décimation de $`D`$: $`fs_{PDM} = D * fs_{PCM}`$  | Cette valeur correspond a la fréquence d'échantillonnage  ($`fs_{PDM}`$) du signal PDM |
-| Cutoff Frequency | $`\leq \frac{fs_{PCM}}{2}`$ | Fréquence de Coupure du filtre, cette fréquence doit être inférieur ou égale à $`\frac{fs_{PCM}}{2}`$ pour respecter le condition de Shannon |
+| Cutoff Frequency | $`\leq \frac{fs_{PCM}}{2}`$ | Fréquence de Coupure du filtre, cette fréquence doit être inférieur ou égale à $`\frac{fs_{PCM}}{2}`$ pour respecter la condition de Shannon |
+| Scale Bits | 30 | Cette valeur règle le nombre de bit maximum qui sur lesquels sera encodé un échantillon PCM après filtrage
 
-Avant de générér la Look Up Table d'un filtre PDM on va répondre 2 Questions :
+Message d'aide du script:
+```
+usage: generate_pdm_fir.py [-h] -t <n_taps> -s <sampling_frequency> -c <cutoff_frequency> -b <scale_bits> [-p]
+
+Python script to generate PDM Taps for the PDM FIR library
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -t <n_taps>, --taps <n_taps>
+                        number of taps used by the filter
+  -s <sampling_frequency>, --sampling <sampling_frequency>
+                        Sampling frequency of the Signal to Filter
+  -c <cutoff_frequency>, --cutoff <cutoff_frequency>
+                        Cutoff frequency of the filter (up to target PCM frequency / 2)
+  -b <scale_bits>, --bits <scale_bits>
+                        Maximum number of bits used in the filter output
+  -p, --plot            Plot filter characteristics
+
+```
+
+## Exemple de génération
+
+Avant de générer la Look Up Table d'un filtre PDM on va répondre 2 Questions :
  1. A quelle fréquence est échantillonné notre signal PDM ?
+
+Dans cette exemple nous allons généré
+
  2. Qu'elle fréquence échantillonnage visé pour le signal PCM ?
+
 
 
 
