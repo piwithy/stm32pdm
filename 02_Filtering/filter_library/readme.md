@@ -3,15 +3,15 @@
 # Fichiers
 | Fichier | Objectif |
 | :-------|:---------|
-|generate_fir_filter.py| Script Python permettant de générer la Look Up Yable utilisé par le filtre |
+|generate_fir_filter.py| Script Python permettant de générer la Look Up Table utilisée par le filtre |
 |pdm_fir/| Dossier contenant les sources du filtre |
 | pdm_fir/pdm_fir.h | fichier d’entête du filtre|
 |pdm_fir/pdm_fir.c | fichier de source du filtre|
-|*pdm_fir/pdm_fir_.h* | Fichier généré par `generate_fir_filter`, il contient la Look Up Table utilisée par le filtre ainsi certaines constantes du filtre.
+|*pdm_fir/pdm_fir_.h* | Fichier généré par`generate_fir_filter.py`, il contient la Look Up Table du filtre ainsi certaines de ses constantes.
 
 
 # Pipeline de filtrage
-Le filtre implémenté par cette librairie applique le pipeline de filtrage suivant :
+Le filtre implémenté par cette librairie applique le pipeline de filtrage suivant :
 
 ![pipeline filtrage](../../00_Documentation/imgs/02_Filtering/filter_library/filter_chain.png)
 
@@ -19,16 +19,16 @@ Le filtre implémenté par cette librairie applique le pipeline de filtrage suiv
 # Générer un filtre
 
 
-Le script `generate_fir_filter` nous permet de généré la Look Up table utilisée par la bibliothèque de filtrage. Pour ce faire le script a besoin de plusieurs valeurs :
+Ce script `generate_fir_filter` nous permet de générer la Look Up Table utilisée par la bibliothèque de filtrage. Pour ce faire le script a besoin de plusieurs valeurs :
 
 |Paramètre|Valeur Recommander | Effet|
 |:-|:-|:-|
-| taps | 16 | Cette valeur correspond à l’ordre du filtre du filtre numérique|
-| Sampling Frequency | Pour un facteur de décimation de $`D`$ : $`fs_{PDM} = D * fs_{PCM}`$ | Cette valeur correspond a la fréquence d’échantillonnage ($`fs_{PDM}`$) du signal PDM |
-| Cutoff Frequency | $`\leq \frac{fs_{PCM}}{2}`$ | Fréquence de Coupure du filtre, cette fréquence doit être inférieur ou égale à $`\frac{fs_{PCM}}{2}`$ pour respecter la condition de Shannon |
-| Scale Bits | 30 | Cette valeur règle le nombre de bits maximum qui sur lesquels sera encodé un échantillon PCM après filtrage
+| taps | 16 | Cette valeur correspond à l’ordre du filtre numérique|
+| Sampling Frequency | Pour un facteur de décimation de $`D`$ : $`fs_{PDM} = D * fs_{PCM}`$ | Cette valeur correspond à la fréquence d’échantillonnage ($`fs_{PDM}`$) du signal PDM |
+| Cutoff Frequency | $`\leq \frac{fs_{PCM}}{2}`$ | Fréquence de Coupure du filtre, cette fréquence doit être inférieure ou égale à $`\frac{fs_{PCM}}{2}`$ pour respecter la condition de Shannon |
+| Scale Bits | 30 | Cette valeur règle le nombre de bits maximum utilisés par un échantillon PCM.
 
-Message d’aide du script :
+Message d’aide du script :
 ```
 usage : generate_pdm_fir.py [-h] -t <n_taps> -s <sampling_frequency> -c <cutoff_frequency> -b <scale_bits> [-p]
 
@@ -50,18 +50,18 @@ optional arguments:
 
 ## Exemple de génération
 
-Avant de générer la Look Up Table d’un filtre PDM, on va répondre 2 questions :
- 1. À quelle fréquence veut-on échantillonner le signal PCM ?
+Avant de générer la Look Up Table d’un filtre PDM, on va répondre 2 questions :
+ 1. À quelle fréquence veut-on échantillonner le signal PCM ?
 
-Le signal PCM recherché sera échantillonné à $`48 kHz`$ ce qui nous donne une fréquence de coupure maximum de $`24 kHz`$ afin de se donner de la marge on va utilisé une fréquence de coupure a $`20 kHz`$, cette limitation dans la bande passante n’est pas un problème, car la fréquence maximum qui peut être perçue par l’oreille humaine est au voisinage de $`20 kHz`$  
+On cherche à produire un signal PCM échantillonné à $`48 kHz`$ ce qui nous donne une fréquence de coupure maximale de $`24 kHz`$ afin de se donner de la marge on va utilisé une fréquence de coupure a $`20 kHz`$, cette limitation dans la bande passante n’est pas un problème, car la fréquence maximum qui peut être perçue par l’oreille humaine est au voisinage de $`20 kHz`$  
 
- 2. À quelle fréquence est échantillonné notre signal PDM ?
+ 2. À quelle fréquence est échantillonné notre signal PDM ?
 
-Dans cet exemple voulons un signal PCM a $`48 kHz`$, qui sera issue du filtre avec un facteur de décimation $`D`$ de 64. Le signal PDM sera donc échantillonné à $`3.072 MHz`$ ($`fs_{PDM}= D * fs_{PCM} = 64 * 48 * 10^{3} = 3.072 * 10^{6}`$).
+Dans cet exemple, voulons un signal PCM à $`48 kHz`$, qui sera issu du filtre avec un facteur de décimation $`D`$ de 64. Le signal PDM sera donc échantillonné à $`3.072 MHz`$ ($`fs_{PDM}= D * fs_{PCM} = 64 * 48 * 10^{3} = 3.072 * 10^{6}`$).
 
 
 
-Nous allons donc utiliser les paramètres suivants :
+Nous allons donc utiliser les paramètres suivants :
 
  - taps : 16
  - sampling_frequency : 3072000
@@ -77,11 +77,11 @@ source venv/bin/activate
 python 02_Filtering/filter_library/generate_fir_filter.py -t 16 -s 3072000 -c 20000 -b 30 -p
 ```
 
-l'option `-p` trace la courbe de réponse en fréquence du filtre dans notre cas elle est la suivante :
+l’option `-p` trace la courbe de réponse en fréquence du filtre dans notre cas elle est la suivante :
 
 ![pipeline filtrage](../../00_Documentation/imgs/02_Filtering/filter_library/Frequency_Response.png)
 
-On retrouve en console la sortie suivante :
+On retrouve en console la sortie suivante :
 
 ```
 Generating PDM Filter LUT:
@@ -166,13 +166,13 @@ static const int byte_coeff[PDM_FTL_TAPS*2][256] = {
 
 ### PC
 
-L'intégration de la bibliothèque dans un Projet CMAKE "*classique*" se fait en plusieurs étapes :
+L’intégration de la bibliothèque dans un Projet CMAKE "*classique*" se fait en plusieurs étapes :
  1. Copier la librairie une fois la LUT généré (cf. [générer un filtre](#générer_un_filtre)) dans le dossier contenant les librairies
- 2. Dans le fichier `CMakeLists.txt` ajouter à l'instruction `include_directories` le dossier contenant la librairie.
- 3. Dans le fichier `CMakeLists.txt` ajouter à l'instruction `add_executable` le fichier `pdm_fir.c`
+ 2. Dans le fichier, `CMakeLists.txt` ajoutez à l’instruction `include_directories` le dossier contenant la librairie.
+ 3. Dans le fichier, `CMakeLists.txt` ajoutez à l’instruction `add_executable` le fichier `pdm_fir.c`
 
-exemple :
-Pour un projet CMake avec l'arborescence suivante :
+exemple :
+Pour un projet CMake avec l’arborescence suivante :
 ```
  /
  |_inc/
@@ -187,7 +187,7 @@ Pour un projet CMake avec l'arborescence suivante :
  |_CMakeLists.txt
 ```
 
-On retrouvera le fichier `CMakeLists.txt` suivant une fois la librairie intégrée :
+On retrouvera le fichier `CMakeLists.txt` suivant une fois la librairie intégrée :
 ```cmake
 cmake_minimum_required(VERSION 3.16)
 project(pdm_filter LANGUAGES C)
@@ -203,34 +203,40 @@ add_executable(pdm_filter lib/pdm_fir/pdm_fir.c src/main.c)
 
 ### STM32 (projet [Clion](https://www.jetbrains.com/fr-fr/clion/))
 
-L'intégration de la librairie à un projet Clion pour STM32CubeMX (cf. [STM32CubeMX projects](https://www.jetbrains.com/help/clion/embedded-development.html)) est un peu plus complexe, car le fichier `CMakeLists.txt` est généré automatiquement par Clion à chaque génération du code par CubeMX. Il faut donc opérer nos modifications dans un fichier nommé `CMakeLists_template.txt`. Dans ce cas il faut suivre les étapes suivantes :
+L’intégration de la librairie à un projet Clion pour STM32CubeMX (cf. [STM32CubeMX projects](https://www.jetbrains.com/help/clion/embedded-development.html)) est un peu plus complexe, car le fichier `CMakeLists.txt` est généré automatiquement par Clion à chaque génération du code par CubeMX. Il faut donc opérer nos modifications dans un fichier nommé`CMakeLists_template.txt`. Dans ce cas, il faut suivre les étapes suivantes :
  1. Copier la librairie une fois la LUT généré (cf. [générer un filtre](#générer_un_filtre)) à la racine du projet
 
- 2. Dans le fichier `CMakeLists_template.txt` modifier l'instruction : `include_directories(${includes})` de façon a ce quelle soit la suivante : `include_directories(${includes} pdm_fir)`
+ 2. Dans le fichier, `CMakeLists_template.txt` modifiez l’instruction : `include_directories(${includes})` de la manière suivante : `include_directories(${includes} pdm_fir)`
 
- 3. Dans le fichier `CMakeLists_template.txt` modifier l'instruction : `file(GLOB_RECURSE SOURCES ${sources})` de façon a ce quelle soit la suivante : `file(GLOB_RECURSE SOURCES ${sources} "pdm_fir/*.*")`
- 3. Regénérer les sources à partir de CubeMX (pour rafraichir le projet dans Clion et regénérer le `CMakeLists.txt`)
+ 3. Dans le fichier, `CMakeLists_template.txt` modifiez l’instruction : `file(GLOB_RECURSE SOURCES ${sources})` de la manière suivante : `file(GLOB_RECURSE SOURCES ${sources} "pdm_fir/*.*")`
+ 3. Régénérez les sources à partir de CubeMX (afin de rafraichir le projet dans Clion et donc de régénérer le`CMakeLists.txt`)
 
 
-## Makefile STM32
+## Makefile STM32
 
-L'intégration de la librairie a un projet Makefile STM32 généré par CubeMX :
+L’intégration de la librairie a un projet Makefile STM32 généré par CubeMX :
  1. Copier la librairie une fois la LUT généré (cf. [Générer un filtre](#générer_un_filtre)) à la racine du projet
- 2. Dans le fichier `Makefile` section : `CFLAGS` ajouter à la variable `C_INCLUDES` une ligne : `-Ipdm_fir/`. (ajouter un `\` à la fin de la ligne précédente)
+ 2. Dans le fichier `Makefile` section : `CFLAGS` ajouter à la variable `C_INCLUDES` une ligne :`-Ipdm_fir/`. (ajouter un `\` à la fin de la ligne précédente)
  3. Dans le fichier `Makefile` section : `source` ajouter à la variable `C_SOURCES` une ligne : `pdm_fir/pdm_fir.c`. (ajouter un `\` à la fin de la ligne précédente)
 
 
 # Structures de Données
-## pdm_fit_filter_t
+## pdm_fir_filter_t
 
 ```c
 typedef struct {
     uint16_t    buffer[PDM_FTL_TAPS];
-    int         next_tap;
+    size_t      next_tap;
 } pdm_fir_filter_t;
 ```
+| Variable | Type | Rôles |
+|:---------|:-----|:------|
+| `buffer` | `uitn16[PDM_FTL_TAPS]` | Tableau `PDM_FTL_TAPS` entier non signé sur 16 bit $`\in [0; 65535]`$. Ce tableau sert de mémoire tampon au filtre FIR.|
+|`next_tap`| `size_t` | Cette variable indique l’emplacement dans le tableau `buffer` de l’échantillon suivant|
 
-## pdm_fit_filter_config_t
+
+
+## pdm_fir_filter_config_t
 ```c
 typedef struct {
     pdm_fir_filter_t*   fir_filter;
@@ -242,11 +248,22 @@ typedef struct {
 } pdm_fir_filter_config_t;
 ```
 
+| Variable | Type | Rôles |
+|:---------|:-----|:------|
+| `fir_fiter` | `pdm_fir_filter_t*` | pointeur vers une structure [pdm_fir_filter_t](#pdm_fir_filter_t)|
+|`decimation_factor`| `uint16_t` | Entier non signé sur 16 bits représentant le facteur de décimation $`D`$ du filtre FIR ($`fs_{PCM} = \frac{fs_{PDM}}{D}`$). Dans l’implémentation du filtre, ce facteur doit être un multiple de 16 avec une valeur minimale de 16.|
+|`input_offset`| `int16_t`| Entier signé sur 16 bits représentant l’offset à appliquer avant l’amplification du signal PCM (cf. [Pipeline de filtrage](#pipeline_de_filtrage))|
+|`output_offset`| `int16_t`| Entier signé sur 16 bits représentant l’offset à appliquer après l’amplification du signal PCM (cf. [Pipeline de filtrage](#pipeline_de_filtrage))|
+|`linear_gain`| `uint16_t`| Entier non signé sur 16 bits représentant le facteur amplification linéaire appliqué au signal PCM (cf. [Pipeline de filtrage](#pipeline_de_filtrage))|
+|`bit_scale`| `uint8_t` | Entier non signé sur 8 bits représentant le nombre de bits utilisé par les échantillons PCM (:warning: Doit être inférieur au `bit_scale` défini à la génération : warning:)
+
+
+
 # Fonctions
 
 ## pdm_fir_flt_init
 
-prototype:
+prototype :
 ```c
 void pdm_fir_flt_init(pdm_fit_filter_t *f);
 ```
@@ -260,7 +277,7 @@ Cette Fonction initialise la structure de données utilisée par le filtre PDM
 
 ## pdm_fir_flt_config_init
 
-prototype :
+prototype :
 ```c
 void pdm_fir_flt_config_init(pdm_fir_filter_config_t *f, uint16_t decimation_factor, int16_t input_offset, int16_t output_offset, uint16_t linear_gain, uint8_t bit_scale);
 
@@ -274,13 +291,13 @@ void pdm_fir_flt_config_init(pdm_fir_filter_config_t *f, uint16_t decimation_fac
 | `input_offset` | `int16_t` | Offset à appliquer sur les échantillons PCM AVANT leur amplification |
 | `output_offset` | `int16_t` | Offset à appliquer sur les échantillons PCM APRÈS leur amplification
 | `linear_gain` | `uint16_t` | Gain linéaire à appliquer sur le signal PCM |
-| `bit_scale` | `uint8_t` | Tailles des échantillons PCM en bits (Doit être inférieur au `bit_scale` définit à la génération)
+| `bit_scale` | `uint8_t` | Tailles des échantillons PCM en bits (Doit être inférieur au `bit_scale` défini à la génération)
 
 Cette Fonction initialise le filtre PDM et sa configuration
 
 ## pdm_fir_flt_config_deInit
 
-prototype :
+prototype :
 ```c
 void pdm_fir_flt_config_deInit(pdm_fir_filter_config_t *f);
 
@@ -295,7 +312,7 @@ Cette Fonction désalloue les données allouées dynamiquement par la fonction [
 
 ## pdm_fir_flt_put
 
-prototype :
+prototype :
 ```c
 void pdm_fir_flt_put(pdm_fir_filter_t *f, uint16_t bits);
 
@@ -305,13 +322,13 @@ void pdm_fir_flt_put(pdm_fir_filter_t *f, uint16_t bits);
 | Paramètre | Type | Commentaire |
 |:---------:|:----:|:------------|
 | `f`       | `pdm_fir_filter_t*` | Structure contenant les données du filtre |
-| `bits`    | `uint16_t` | Tailles des échantillons PCM en bits (doit être inférieur au `bit_scale` définit à la génération) |
+| `bits`    | `uint16_t` | Tailles des échantillons PCM en bits (doit être inférieur au `bit_scale` défini à la génération) |
 
-Cette Fonction ajoute un mot PDM de 16 bit au filtre
+Cette Fonction ajoute un mot PDM de 16 bit au filtre
 
 ## pdm_fir_flt_get
 
-prototype :
+prototype :
 ```c
 void pdm_fir_flt_get(pdm_fir_filter_t *f, int out_bits);
 
@@ -321,13 +338,13 @@ void pdm_fir_flt_get(pdm_fir_filter_t *f, int out_bits);
 | Paramètre | Type | Commentaire |
 |:---------:|:----:|:------------|
 | `f`       | `pdm_fir_filter_t*` | Structure contenant les données du filtre |
-| `out_bits`    | `int` | Mot PDM (16 échantillons, MSB first) |
+| `out_bits`    | `int` | Mot PDM (16 échantillons, MSB en premier) |
 
-Cette Fonction extrait un échantillon PCM du filtre dont la valeur appartient à $`[-2^{out\_bits-1}; 2^{out\_bits -1}-1 ]`$ cependant dans certain cas il faut tronquer la valeur
+Cette Fonction extrait un échantillon PCM du filtre dont la valeur appartient à $`[-2^{out\_bits-1}; 2^{out\_bits -1}-1 ]`$ cependant dans certain cas, la valeur doit être tronquée pour éviter d’éventuel inversement de signe aux valeurs minimales et maximales d’un échantillon PCM
 
 ## pdm_fir_flt_chunk
 
-prototype :
+prototype :
 ```c
 uint32_t pdm_fir_flt_chunk(pdm_fir_filter_config_t *f, uint16_t *pcm_output, const uint16_t *pdm_input, uint32_t pdm_size);
 
@@ -338,16 +355,16 @@ uint32_t pdm_fir_flt_chunk(pdm_fir_filter_config_t *f, uint16_t *pcm_output, con
 |:---------:|:----:|:------------|
 | `f`       | `pdm_fir_filter_config_t*` | Structure contenant les données du filtre ainsi que sa configuration |
 | `pcm_output`| `uint16_t*` | Buffer de sortie des échantillons PCM |
-| `pdm_input` | `const uint16_t*` | Buffer d'entrée des échantillons PDM |
-| `pdm_size` | `uint32_t` | Nombre de mots de 16 échantillons PDM à filtrer
+| `pdm_input` | `const uint16_t*` | Buffer d’entrée des échantillons PDM |
+| `pdm_size` | `uint32_t` | Nombre de mots de 16 échantillons PDM à filtrer
 
-Retour :
+Retour :
 
 |Type | Commentaire |
 |:---:|:-----------|
-| `uint32_t` |  Nombre d'échantillons PCM filtré |
+| `uint32_t` |  Nombre d’échantillons PCM filtré |
 
-Cette Fonction filtre le buffer PDM pour se faire la fonction applique l'algorithme suivant
+Cette Fonction filtre le buffer PDM grâce à l’algorithme suivant :
 ```
 FONCTION pdm_fir_ftl_chunk(f, pcm_output, pdm_input, pdm_size)
     decimation_word = f->decimation_factor / 16
