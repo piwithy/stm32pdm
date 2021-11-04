@@ -167,7 +167,7 @@ static const int byte_coeff[PDM_FTL_TAPS*2][256] = {
 ### PC
 
 L’intégration de la bibliothèque dans un Projet CMAKE "*classique*" se fait en plusieurs étapes :
- 1. Copier la librairie une fois la LUT généré (cf. [générer un filtre](#générer_un_filtre)) dans le dossier contenant les librairies
+ 1. Copier la librairie une fois la LUT généré (cf. [générer un filtre](#générer-un-filtre)) dans le dossier contenant les librairies
  2. Dans le fichier, `CMakeLists.txt` ajoutez à l’instruction `include_directories` le dossier contenant la librairie.
  3. Dans le fichier, `CMakeLists.txt` ajoutez à l’instruction `add_executable` le fichier `pdm_fir.c`
 
@@ -204,7 +204,7 @@ add_executable(pdm_filter lib/pdm_fir/pdm_fir.c src/main.c)
 ### STM32 (projet [Clion](https://www.jetbrains.com/fr-fr/clion/))
 
 L’intégration de la librairie à un projet Clion pour STM32CubeMX (cf. [STM32CubeMX projects](https://www.jetbrains.com/help/clion/embedded-development.html)) est un peu plus complexe, car le fichier `CMakeLists.txt` est généré automatiquement par Clion à chaque génération du code par CubeMX. Il faut donc opérer nos modifications dans un fichier nommé`CMakeLists_template.txt`. Dans ce cas, il faut suivre les étapes suivantes :
- 1. Copier la librairie une fois la LUT généré (cf. [générer un filtre](#générer_un_filtre)) à la racine du projet
+ 1. Copier la librairie une fois la LUT généré (cf. [générer un filtre](#générer-un-filtre)) à la racine du projet
 
  2. Dans le fichier, `CMakeLists_template.txt` modifiez l’instruction : `include_directories(${includes})` de la manière suivante : `include_directories(${includes} pdm_fir)`
 
@@ -215,7 +215,7 @@ L’intégration de la librairie à un projet Clion pour STM32CubeMX (cf. [STM32
 ## Makefile STM32
 
 L’intégration de la librairie a un projet Makefile STM32 généré par CubeMX :
- 1. Copier la librairie une fois la LUT généré (cf. [Générer un filtre](#générer_un_filtre)) à la racine du projet
+ 1. Copier la librairie une fois la LUT généré (cf. [Générer un filtre](#générer-un-filtre)) à la racine du projet
  2. Dans le fichier `Makefile` section : `CFLAGS` ajouter à la variable `C_INCLUDES` une ligne :`-Ipdm_fir/`. (ajouter un `\` à la fin de la ligne précédente)
  3. Dans le fichier `Makefile` section : `source` ajouter à la variable `C_SOURCES` une ligne : `pdm_fir/pdm_fir.c`. (ajouter un `\` à la fin de la ligne précédente)
 
@@ -252,9 +252,9 @@ typedef struct {
 |:---------|:-----|:------|
 | `fir_fiter` | `pdm_fir_filter_t*` | pointeur vers une structure [pdm_fir_filter_t](#pdm_fir_filter_t)|
 |`decimation_factor`| `uint16_t` | Entier non signé sur 16 bits représentant le facteur de décimation $`D`$ du filtre FIR ($`fs_{PCM} = \frac{fs_{PDM}}{D}`$). Dans l’implémentation du filtre, ce facteur doit être un multiple de 16 avec une valeur minimale de 16.|
-|`input_offset`| `int16_t`| Entier signé sur 16 bits représentant l’offset à appliquer avant l’amplification du signal PCM (cf. [Pipeline de filtrage](#pipeline_de_filtrage))|
-|`output_offset`| `int16_t`| Entier signé sur 16 bits représentant l’offset à appliquer après l’amplification du signal PCM (cf. [Pipeline de filtrage](#pipeline_de_filtrage))|
-|`linear_gain`| `uint16_t`| Entier non signé sur 16 bits représentant le facteur amplification linéaire appliqué au signal PCM (cf. [Pipeline de filtrage](#pipeline_de_filtrage))|
+|`input_offset`| `int16_t`| Entier signé sur 16 bits représentant l’offset à appliquer avant l’amplification du signal PCM (cf. [Pipeline de filtrage](#pipeline-de-filtrage))|
+|`output_offset`| `int16_t`| Entier signé sur 16 bits représentant l’offset à appliquer après l’amplification du signal PCM (cf. [Pipeline de filtrage](#pipeline-de-filtrage))|
+|`linear_gain`| `uint16_t`| Entier non signé sur 16 bits représentant le facteur amplification linéaire appliqué au signal PCM (cf. [Pipeline de filtrage](#pipeline-de-filtrage))|
 |`bit_scale`| `uint8_t` | Entier non signé sur 8 bits représentant le nombre de bits utilisé par les échantillons PCM (:warning: Doit être inférieur au `bit_scale` défini à la génération : warning:)
 
 
