@@ -1,6 +1,6 @@
 <h1> 01_PCM_PDM_Toolbox </h1>
 
-Ce dossier contient un ensemble de scripts Python pour le traitement des signaux PDM, PCM et WAV. Ces scripts sont développés pour **Python 3.8.X**
+Ce dossier contient un ensemble de scripts Python pour le traitement des signaux PDM, PCM et WAV. Ces scripts sont développés pour **Python 3.8.X**.
 
 
 # Scripts
@@ -11,7 +11,7 @@ Ce dossier contient un ensemble de scripts Python pour le traitement des signaux
 |[pcm2plot.py](#pcm-2-plot)| Tracer les composantes temporelles et fréquentielles de signaux PCM|
 |[pcm2wav.py](#pcm-2-wav)| Convertir un signal PCM en fichier WAV|
 |[wav2plot.py](#wav-2-plot) | Tracer les composantes temporelles et fréquentielles de fichier WAV
-|[raw_capture.py](#raw-capture)| Capturer les données transmise par la carte sur le port série
+|[raw_capture.py](#raw-capture)| Capturer les données transmises par la carte sur le port série
 
 # Installation des modules Python nécessaires
 ```bash
@@ -106,7 +106,7 @@ optional arguments:
 ```
 
 ### Exemple d’utilisation
-On veut tracer les composantes temporelles et Fréquencielles du signal que l’on à générer dans l’exemple de [PCM Generator](#pcm-generator) afin de s’assurer que l’on a bien les 6 composantes Frequencielles  a 1,2,3,4,5 et 6 kHz
+On veut tracer les composantes temporelles et Fréquencielles du signal que l’on a généré dans l’exemple de [PCM Generator](#pcm-generator) afin de s’assurer que l’on a bien les 6 composantes Frequencielles a 1, 2, 3, 4, 5 et 6 kHz
 
 On exécute la commande suivante :
 ```bash
@@ -118,13 +118,13 @@ On obtient alors figure suivante :
 
 ![Generated PCM](../00_Documentation/imgs/01_PCM_PDM_Toolbox/time_and_frequency_waveform.png)
 
-Pour mieux distinguer les fréquences j’ai régénéré le même signal, mais sur 100 ms :
+Pour mieux distinguer les fréquences, j’ai régénéré le même signal, mais sur 100 ms :
 
 ![Generated PCM](../00_Documentation/imgs/01_PCM_PDM_Toolbox/time_and_frequency_waveform_100ms.png)
 
 # PCM 2 WAV
 
-Ce script permet de "convertir" les signaux PCM en fichier son WAV
+Ce script permet de « convertir » les signaux PCM en fichier son WAV
 
 ### Message d’aide
 ```
@@ -176,7 +176,7 @@ optional arguments:
 ```
 
 ### Exemple d’utilisation
-On veut tracer les composantes temporelles et fréquentielles du signal que l’on a généré dans l’exemple de [PCM Generator](#pcm-generator) puis converti en fichier `WAV`dans l’exemple de [PCM 2 WAV](#pcm-2-wav) afin de s’assurer que l’on a bien les 6 composantes fréquentielles à 1,2,3,4,5 et 6 kHz
+On veut tracer les composantes temporelles et fréquentielles du signal que l’on a généré dans l’exemple de [PCM Generator](#pcm-generator) puis converti en fichier `WAV`dans l’exemple de [PCM 2 WAV](#pcm-2-wav) afin de s’assurer que l’on a bien les 6 composantes fréquentielles à 1, 2, 3, 4, 5 et 6 kHz
 
 On exécute la commande suivante :
 ```bash
@@ -207,7 +207,7 @@ File: .\waveform.wav
 ```
 
 
-Pour mieux distinguer les fréquences j’ai régénéré le même signal, mais sur 100 ms :
+Pour mieux distinguer les fréquences, j’ai régénéré le même signal, mais sur 100 ms :
 
 ![Generated PCM](../00_Documentation/imgs/01_PCM_PDM_Toolbox/time_and_frequency_waveform_100ms_wav.png)
 
@@ -261,11 +261,11 @@ python 01_PCM_PDM_Toolbox/pcm2pdm.py waveform.pcm waveform.pdm
 
 On obtient alors figure suivante :
 
-![PCM to PDM](../00_Documentation/imgs/01_PCM_PDM_Toolbox/pcm_pdm_converted.png)
+![PCM To PDM](../00_Documentation/imgs/01_PCM_PDM_Toolbox/pcm_pdm_converted.png)
 
-Pour permettre un traitement par le Programme C de filtrage j’ai régénéré le signale avec une fréquence d’échantillonnage $`fs=3.072MHz = 48 kHz*64`$ :
+Pour permettre un traitement par le Programme C de filtrage j’ai régénéré le signal avec une fréquence d’échantillonnage $`fs=3.072MHz = 48 kHz*64`$ :
 
-![PCM to PDM](../00_Documentation/imgs/01_PCM_PDM_Toolbox/pcm_pdm_converted_3072kHz.png)
+![PCM To PDM](../00_Documentation/imgs/01_PCM_PDM_Toolbox/pcm_pdm_converted_3072kHz.png)
 
 # Raw Capture
 
@@ -287,9 +287,9 @@ optional arguments:
 ```
 
 ### Exemple d’utilisation
-Si on veut capturer les données enregistrés par [parrot](#wip)
+Si on veut capturer les données enregistrées par [parrot](#wip)
 
-Dans mon cas le port serie de la carte est connecté sur le port COM4
+Dans mon cas le port série de la carte est connecté sur le port COM4
 
 On exécute la commande suivante :
 ```bash
@@ -297,14 +297,14 @@ On exécute la commande suivante :
 python 01_PCM_PDM_Toolbox/raw_capture.py 'captured.pcm' '/dev/ttyUSB0' -b 115200
 ```
 
-On obtient alors un fichier Wav qui une fois fournis a [WAV 2 Plot](#Wav_to_plot) nous donne la figure suivante:
+On obtient alors un fichier Wav qui une fois fournis à [WAV 2 Plot](#Wav_to_plot) nous donne la figure suivante :
 
 ![Captured WAV](../00_Documentation/imgs/01_PCM_PDM_Toolbox/raw_capture_from_parrot_WAV.png)
 
-On obtiens les relevés suivant sur l'oscilloscope ("Channel 1": DAC Gauche, "Channel 2": DAC Droit):
+On obtient les relevés suivants sur l’oscilloscope (« Channel 1 » : DAC Gauche, « Channel 2 » : DAC Droit) :
 
 ![Relevés oscilloscope](../00_Documentation/imgs/01_PCM_PDM_Toolbox/raw_capture_from_parrot_DSO.png)
 
-Capture d'écran de l'oscilloscope:
+Capture d’écran de l’oscilloscope :
 
-![Capture d'ecran oscilloscope](../00_Documentation/imgs/01_PCM_PDM_Toolbox/raw_capture_from_parrot_DSO_screen.png)
+![Capture d’écran oscilloscope](../00_Documentation/imgs/01_PCM_PDM_Toolbox/raw_capture_from_parrot_DSO_screen.png)
