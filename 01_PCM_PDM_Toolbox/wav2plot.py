@@ -46,7 +46,7 @@ def main():
             "Duration           ": "{:.2f} s".format(metadata[3] / metadata[2]),
             "Compression type   ": metadata[4],
             "Compression name   ": metadata[5],
-            "Size Coherent      ": "Yes" if file_dict["size_ok"] else "No",
+            "Size Consistent    ": "Yes" if file_dict["size_ok"] else "No",
             "Signal Minimum     ": np.min(sig),
             "Signal Maximum     ": np.max(sig),
             "Signal Average     ": "{:.2f}".format(np.average(sig)),
