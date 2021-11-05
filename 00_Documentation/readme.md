@@ -15,3 +15,4 @@ Ce dossier contient les documentations relatives au développement du projet sur
 | Nom | Contenu |
 |:----|:--------|
 |imgs | Images utilisées par les documents Markdown |
+|[Reporting](Reporting/readme.md) | Dossier contenant les email de repporting Hebdomadaire
