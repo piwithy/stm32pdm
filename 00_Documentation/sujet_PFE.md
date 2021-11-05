@@ -1,7 +1,7 @@
 # Traitement de signal audio embarqué temps réel sur carte STM32
 
 ### Dates du stage :
-22 Septembre 2021 &rarr ; 30 Novembre 2021 (10 semaines)
+22 Septembre 2021 &rarr; 30 Novembre 2021 (10 semaines)
 
 ### Livrables :
  - Démonstrateur : 26 Novembre 12 h
