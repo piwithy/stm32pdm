@@ -1,0 +1,275 @@
+\hypertarget{main_8c}{}\doxysection{Core/\+Src/main.c File Reference}
+\label{main_8c}\index{Core/Src/main.c@{Core/Src/main.c}}
+
+
+\+: Main program body  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pdm\+\_\+fir.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+Include dependency graph for main.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8c_a23aa58182443d27b9d7e1d8b614038d3}\label{main_8c_a23aa58182443d27b9d7e1d8b614038d3}} 
+\#define \mbox{\hyperlink{main_8c_a23aa58182443d27b9d7e1d8b614038d3}{S\+O\+U\+N\+D\+\_\+\+FS}}~48000
+\begin{DoxyCompactList}\small\item\em P\+CM Sampling frequency in Hz. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_ab1141db887e2eff7f1ab2bc5a5c82d5f}\label{main_8c_ab1141db887e2eff7f1ab2bc5a5c82d5f}} 
+\#define \mbox{\hyperlink{main_8c_ab1141db887e2eff7f1ab2bc5a5c82d5f}{D\+E\+C\+I\+M\+A\+T\+I\+O\+N\+\_\+\+F\+A\+C\+T\+OR}}~64
+\begin{DoxyCompactList}\small\item\em P\+DM -\/$>$ P\+CM Sampling frequency factor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_a92ed8507d1cd2331ad09275c5c4c1c89}\label{main_8c_a92ed8507d1cd2331ad09275c5c4c1c89}} 
+\#define \mbox{\hyperlink{main_8c_a92ed8507d1cd2331ad09275c5c4c1c89}{W\+O\+R\+D\+\_\+\+S\+I\+ZE}}~16
+\begin{DoxyCompactList}\small\item\em Number of P\+DM Sample in A Word. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_acba1569e11ab39fe9cd10610fa9b9078}\label{main_8c_acba1569e11ab39fe9cd10610fa9b9078}} 
+\#define \mbox{\hyperlink{main_8c_acba1569e11ab39fe9cd10610fa9b9078}{P\+D\+M\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}~((\mbox{\hyperlink{main_8c_a23aa58182443d27b9d7e1d8b614038d3}{S\+O\+U\+N\+D\+\_\+\+FS}} / 1000) $\ast$ (\mbox{\hyperlink{main_8c_ab1141db887e2eff7f1ab2bc5a5c82d5f}{D\+E\+C\+I\+M\+A\+T\+I\+O\+N\+\_\+\+F\+A\+C\+T\+OR}} / \mbox{\hyperlink{main_8c_a92ed8507d1cd2331ad09275c5c4c1c89}{W\+O\+R\+D\+\_\+\+S\+I\+ZE}}))
+\begin{DoxyCompactList}\small\item\em P\+DM Processing buffer size (Contain 1ms of P\+DM Sample) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_afb134291fff6dfdc86740cbc3db6bb62}\label{main_8c_afb134291fff6dfdc86740cbc3db6bb62}} 
+\#define \mbox{\hyperlink{main_8c_afb134291fff6dfdc86740cbc3db6bb62}{P\+C\+M\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}~(\mbox{\hyperlink{main_8c_a23aa58182443d27b9d7e1d8b614038d3}{S\+O\+U\+N\+D\+\_\+\+FS}}/1000)
+\begin{DoxyCompactList}\small\item\em P\+CM Processing buffer size (Contain 1ms of P\+DM Sample) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_a8a964ebf95ce5485144152db73c035db}\label{main_8c_a8a964ebf95ce5485144152db73c035db}} 
+\#define \mbox{\hyperlink{main_8c_a8a964ebf95ce5485144152db73c035db}{L\+I\+N\+E\+A\+R\+\_\+\+G\+A\+IN}}~10
+\begin{DoxyCompactList}\small\item\em Linear Gain applied on P\+CM Samples. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8c_a1d6b4f7764aab0c79216f2472693fbb6}\label{main_8c_a1d6b4f7764aab0c79216f2472693fbb6}} 
+typedef enum \mbox{\hyperlink{main_8c_aaa7d0c0562a28f5035b4ece2ed2f1ce0}{program\+\_\+state}} \mbox{\hyperlink{main_8c_a1d6b4f7764aab0c79216f2472693fbb6}{program\+\_\+state\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Enum of States the Program can Take. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{main_8c_aaa7d0c0562a28f5035b4ece2ed2f1ce0}{program\+\_\+state}} \{ \mbox{\hyperlink{main_8c_aaa7d0c0562a28f5035b4ece2ed2f1ce0afd6a0e4343048b10646dd2976cc5ad18}{I\+D\+LE}}, 
+\mbox{\hyperlink{main_8c_aaa7d0c0562a28f5035b4ece2ed2f1ce0a875fadf1437508cebb97bb5c3445cbdc}{R\+E\+C\+O\+R\+D\+I\+NG}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum of States the Program can Take. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8c_a70af21c671abfcc773614a9a4f63d920}{System\+Clock\+\_\+\+Config}} (void)
+\begin{DoxyCompactList}\small\item\em System Clock Configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_ac3e769eacc58946595a7ecc1b69ae0eb}{H\+A\+L\+\_\+\+S\+A\+I\+\_\+\+Rx\+Half\+Cplt\+Callback}} (S\+A\+I\+\_\+\+Handle\+Type\+Def $\ast$hsai)
+\begin{DoxyCompactList}\small\item\em Rx Transfer half completed callback. S\+AI D\+MA Buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_ae465346926adb160d40f7b961e9aa711}{H\+A\+L\+\_\+\+S\+A\+I\+\_\+\+Rx\+Cplt\+Callback}} (S\+A\+I\+\_\+\+Handle\+Type\+Def $\ast$hsai)
+\begin{DoxyCompactList}\small\item\em Rx Transfer completed callback. S\+AI D\+MA Buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a1e6d4a65a346357fb4c70f8df2d7eb4e}{H\+A\+L\+\_\+\+D\+A\+C\+\_\+\+Conv\+Half\+Cplt\+Callback\+Ch1}} (D\+A\+C\+\_\+\+Handle\+Type\+Def $\ast$hdac1)
+\begin{DoxyCompactList}\small\item\em Tx Transfer half completed callback. D\+AC D\+MA Buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_ab462ed213be3351f4fa506a1fad8ec79}{H\+A\+L\+\_\+\+D\+A\+C\+\_\+\+Conv\+Cplt\+Callback\+Ch1}} (D\+A\+C\+\_\+\+Handle\+Type\+Def $\ast$hdac1)
+\begin{DoxyCompactList}\small\item\em Tx Transfer completed callback. D\+AC D\+MA Buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\begin{DoxyCompactList}\small\item\em The application entry point. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__TIM__Exported__Functions__Group9_ga8a3b0ad512a6e6c6157440b68d395eac}{H\+A\+L\+\_\+\+T\+I\+M\+\_\+\+Period\+Elapsed\+Callback}} (\mbox{\hyperlink{structTIM__HandleTypeDef}{T\+I\+M\+\_\+\+Handle\+Type\+Def}} $\ast$htim)
+\begin{DoxyCompactList}\small\item\em Period elapsed callback in non blocking mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a1730ffe1e560465665eb47d9264826f9}{Error\+\_\+\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em This function is executed in case of error occurrence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8c_a40a0d1383beda58531dfda6218720e45}\label{main_8c_a40a0d1383beda58531dfda6218720e45}} 
+D\+A\+C\+\_\+\+Handle\+Type\+Def {\bfseries hdac}
+\item 
+\mbox{\Hypertarget{main_8c_a0b091a815a18763d1ae04b35c8dc931f}\label{main_8c_a0b091a815a18763d1ae04b35c8dc931f}} 
+\mbox{\hyperlink{group__DMA__Exported__Types_ga41b754a906b86bce54dc79938970138b}{D\+M\+A\+\_\+\+Handle\+Type\+Def}} {\bfseries hdma\+\_\+dac1}
+\item 
+\mbox{\Hypertarget{main_8c_aae5d903ccfcaf671396b79ed15eec0a3}\label{main_8c_aae5d903ccfcaf671396b79ed15eec0a3}} 
+\mbox{\hyperlink{group__DMA__Exported__Types_ga41b754a906b86bce54dc79938970138b}{D\+M\+A\+\_\+\+Handle\+Type\+Def}} {\bfseries hdma\+\_\+dac2}
+\item 
+\mbox{\Hypertarget{main_8c_a76991041f48e92db7d37e7cf2eea187f}\label{main_8c_a76991041f48e92db7d37e7cf2eea187f}} 
+S\+A\+I\+\_\+\+Handle\+Type\+Def {\bfseries hsai\+\_\+\+Block\+A1}
+\item 
+\mbox{\Hypertarget{main_8c_a0ff83ddfa8cce7de5ed80d623781408e}\label{main_8c_a0ff83ddfa8cce7de5ed80d623781408e}} 
+\mbox{\hyperlink{group__DMA__Exported__Types_ga41b754a906b86bce54dc79938970138b}{D\+M\+A\+\_\+\+Handle\+Type\+Def}} {\bfseries hdma\+\_\+sai1\+\_\+a}
+\item 
+\mbox{\Hypertarget{main_8c_a2c80fd5510e2990a59a5c90d745c716c}\label{main_8c_a2c80fd5510e2990a59a5c90d745c716c}} 
+\mbox{\hyperlink{structTIM__HandleTypeDef}{T\+I\+M\+\_\+\+Handle\+Type\+Def}} {\bfseries htim2}
+\item 
+\mbox{\Hypertarget{main_8c_a2cf715bef37f7e8ef385a30974a5f0d5}\label{main_8c_a2cf715bef37f7e8ef385a30974a5f0d5}} 
+\mbox{\hyperlink{group__UART__Exported__Types_ga5de4a49eb132735325e706f406c69d6e}{U\+A\+R\+T\+\_\+\+Handle\+Type\+Def}} {\bfseries huart1}
+\item 
+\mbox{\Hypertarget{main_8c_a2159eec6d06e5e79a430b7a6b57fa281}\label{main_8c_a2159eec6d06e5e79a430b7a6b57fa281}} 
+uint8\+\_\+t \mbox{\hyperlink{main_8c_a2159eec6d06e5e79a430b7a6b57fa281}{sai\+\_\+flag}} = 1
+\begin{DoxyCompactList}\small\item\em Flag lowered when S\+AI buffer Callbacks to indicate that the one half of the S\+AI buffer is ready to be read. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_adb789be6d02c43e11a34939e723663c8}\label{main_8c_adb789be6d02c43e11a34939e723663c8}} 
+uint8\+\_\+t \mbox{\hyperlink{main_8c_adb789be6d02c43e11a34939e723663c8}{sai\+\_\+half}} = 0
+\begin{DoxyCompactList}\small\item\em Flag indicating Witch half of the S\+AI is ready to be read. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_a84f26de44b972e5bce1fd601777d1e33}\label{main_8c_a84f26de44b972e5bce1fd601777d1e33}} 
+uint8\+\_\+t \mbox{\hyperlink{main_8c_a84f26de44b972e5bce1fd601777d1e33}{dac\+\_\+flag}} = 1
+\begin{DoxyCompactList}\small\item\em Flag lowered when D\+AC buffer Callbacks to indicate that one half of the D\+AC buffer Has been read. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_adcaeb63b7d6c42e41349a7fca122522b}\label{main_8c_adcaeb63b7d6c42e41349a7fca122522b}} 
+uint8\+\_\+t \mbox{\hyperlink{main_8c_adcaeb63b7d6c42e41349a7fca122522b}{dac\+\_\+half}} = 0
+\begin{DoxyCompactList}\small\item\em Flag indicating Witch half of the S\+AI is ready to be written to. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\+: Main program body 
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2021 S\+T\+Microelectronics. All rights reserved.\end{center} }
+
+This software component is licensed by ST under B\+SD 3-\/Clause license, the \char`\"{}\+License\char`\"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: opensource.\+org/licenses/\+B\+S\+D-\/3-\/\+Clause 
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{main_8c_aaa7d0c0562a28f5035b4ece2ed2f1ce0}\label{main_8c_aaa7d0c0562a28f5035b4ece2ed2f1ce0}} 
+\index{main.c@{main.c}!program\_state@{program\_state}}
+\index{program\_state@{program\_state}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{program\_state}{program\_state}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{main_8c_aaa7d0c0562a28f5035b4ece2ed2f1ce0}{program\+\_\+state}}}
+
+
+
+Enum of States the Program can Take. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IDLE@{IDLE}!main.c@{main.c}}\index{main.c@{main.c}!IDLE@{IDLE}}}\mbox{\Hypertarget{main_8c_aaa7d0c0562a28f5035b4ece2ed2f1ce0afd6a0e4343048b10646dd2976cc5ad18}\label{main_8c_aaa7d0c0562a28f5035b4ece2ed2f1ce0afd6a0e4343048b10646dd2976cc5ad18}} 
+I\+D\+LE&Program Waiting for User Input. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RECORDING@{RECORDING}!main.c@{main.c}}\index{main.c@{main.c}!RECORDING@{RECORDING}}}\mbox{\Hypertarget{main_8c_aaa7d0c0562a28f5035b4ece2ed2f1ce0a875fadf1437508cebb97bb5c3445cbdc}\label{main_8c_aaa7d0c0562a28f5035b4ece2ed2f1ce0a875fadf1437508cebb97bb5c3445cbdc}} 
+R\+E\+C\+O\+R\+D\+I\+NG&Program is outputing in real time captured output on the D\+AC. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8c_a1730ffe1e560465665eb47d9264826f9}\label{main_8c_a1730ffe1e560465665eb47d9264826f9}} 
+\index{main.c@{main.c}!Error\_Handler@{Error\_Handler}}
+\index{Error\_Handler@{Error\_Handler}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Error\_Handler()}{Error\_Handler()}}
+{\footnotesize\ttfamily void Error\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function is executed in case of error occurrence. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{main_8c_ab462ed213be3351f4fa506a1fad8ec79}\label{main_8c_ab462ed213be3351f4fa506a1fad8ec79}} 
+\index{main.c@{main.c}!HAL\_DAC\_ConvCpltCallbackCh1@{HAL\_DAC\_ConvCpltCallbackCh1}}
+\index{HAL\_DAC\_ConvCpltCallbackCh1@{HAL\_DAC\_ConvCpltCallbackCh1}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_DAC\_ConvCpltCallbackCh1()}{HAL\_DAC\_ConvCpltCallbackCh1()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+D\+A\+C\+\_\+\+Conv\+Cplt\+Callback\+Ch1 (\begin{DoxyParamCaption}\item[{D\+A\+C\+\_\+\+Handle\+Type\+Def $\ast$}]{hdac1 }\end{DoxyParamCaption})}
+
+
+
+Tx Transfer completed callback. D\+AC D\+MA Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hdac1} & pointer to a D\+A\+C\+\_\+\+Handle\+Type\+Def structure that contains the configuration information for D\+AC module. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{main_8c_a1e6d4a65a346357fb4c70f8df2d7eb4e}\label{main_8c_a1e6d4a65a346357fb4c70f8df2d7eb4e}} 
+\index{main.c@{main.c}!HAL\_DAC\_ConvHalfCpltCallbackCh1@{HAL\_DAC\_ConvHalfCpltCallbackCh1}}
+\index{HAL\_DAC\_ConvHalfCpltCallbackCh1@{HAL\_DAC\_ConvHalfCpltCallbackCh1}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_DAC\_ConvHalfCpltCallbackCh1()}{HAL\_DAC\_ConvHalfCpltCallbackCh1()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+D\+A\+C\+\_\+\+Conv\+Half\+Cplt\+Callback\+Ch1 (\begin{DoxyParamCaption}\item[{D\+A\+C\+\_\+\+Handle\+Type\+Def $\ast$}]{hdac1 }\end{DoxyParamCaption})}
+
+
+
+Tx Transfer half completed callback. D\+AC D\+MA Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hdac1} & pointer to a D\+A\+C\+\_\+\+Handle\+Type\+Def structure that contains the configuration information for D\+AC module. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{main_8c_ae465346926adb160d40f7b961e9aa711}\label{main_8c_ae465346926adb160d40f7b961e9aa711}} 
+\index{main.c@{main.c}!HAL\_SAI\_RxCpltCallback@{HAL\_SAI\_RxCpltCallback}}
+\index{HAL\_SAI\_RxCpltCallback@{HAL\_SAI\_RxCpltCallback}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_SAI\_RxCpltCallback()}{HAL\_SAI\_RxCpltCallback()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+S\+A\+I\+\_\+\+Rx\+Cplt\+Callback (\begin{DoxyParamCaption}\item[{S\+A\+I\+\_\+\+Handle\+Type\+Def $\ast$}]{hsai }\end{DoxyParamCaption})}
+
+
+
+Rx Transfer completed callback. S\+AI D\+MA Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hsai} & pointer to a S\+A\+I\+\_\+\+Handle\+Type\+Def structure that contains the configuration information for S\+AI module. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{main_8c_ac3e769eacc58946595a7ecc1b69ae0eb}\label{main_8c_ac3e769eacc58946595a7ecc1b69ae0eb}} 
+\index{main.c@{main.c}!HAL\_SAI\_RxHalfCpltCallback@{HAL\_SAI\_RxHalfCpltCallback}}
+\index{HAL\_SAI\_RxHalfCpltCallback@{HAL\_SAI\_RxHalfCpltCallback}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_SAI\_RxHalfCpltCallback()}{HAL\_SAI\_RxHalfCpltCallback()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+S\+A\+I\+\_\+\+Rx\+Half\+Cplt\+Callback (\begin{DoxyParamCaption}\item[{S\+A\+I\+\_\+\+Handle\+Type\+Def $\ast$}]{hsai }\end{DoxyParamCaption})}
+
+
+
+Rx Transfer half completed callback. S\+AI D\+MA Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hsai} & pointer to a S\+A\+I\+\_\+\+Handle\+Type\+Def structure that contains the configuration information for S\+AI module. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{main_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{main_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+The application entry point. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em int} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{main_8c_a70af21c671abfcc773614a9a4f63d920}\label{main_8c_a70af21c671abfcc773614a9a4f63d920}} 
+\index{main.c@{main.c}!SystemClock\_Config@{SystemClock\_Config}}
+\index{SystemClock\_Config@{SystemClock\_Config}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{SystemClock\_Config()}{SystemClock\_Config()}}
+{\footnotesize\ttfamily void System\+Clock\+\_\+\+Config (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+System Clock Configuration. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Macro to configure S\+A\+I1\+BlockA clock source selection
+
+Configure the main internal regulator output voltage
+
+Initializes the R\+CC Oscillators according to the specified parameters in the \mbox{\hyperlink{structRCC__OscInitTypeDef}{R\+C\+C\+\_\+\+Osc\+Init\+Type\+Def}} structure.
+
+Initializes the C\+PU, A\+HB and A\+PB buses clocks
