@@ -1,0 +1,7 @@
+<map id="DMAEx" name="DMAEx">
+<area shape="rect" id="node1" href="$group__DMAEx__Exported__Functions.html" title="DMAEx Exported functions." alt="" coords="349,5,547,31"/>
+<area shape="rect" id="node2" href="$group__DMAEx__Private__Functions.html" title="DMAEx Private functions." alt="" coords="355,55,541,80"/>
+<area shape="rect" id="node3" href="$group__STM32F4xx__HAL__Driver.html" title=" " alt="" coords="5,55,184,80"/>
+<area shape="rect" id="node5" title="DMA Extended HAL module driver." alt="" coords="232,55,301,80"/>
+<area shape="rect" id="node4" href="$group__DMAEx__Exported__Types.html" title="DMAEx Exported types." alt="" coords="362,104,534,129"/>
+</map>
