@@ -1,0 +1,5 @@
+<map id="USB_HOST/Target/usbh_platform.h" name="USB_HOST/Target/usbh_platform.h">
+<area shape="rect" id="node1" title=": Header for usbh_platform.c file." alt="" coords="103,5,273,47"/>
+<area shape="rect" id="node2" href="$usbh__conf_8c.html" title=": This file implements the board support package for the USB host library" alt="" coords="5,95,176,136"/>
+<area shape="rect" id="node3" href="$usbh__platform_8c.html" title=": This file implements the USB platform" alt="" coords="200,95,371,136"/>
+</map>

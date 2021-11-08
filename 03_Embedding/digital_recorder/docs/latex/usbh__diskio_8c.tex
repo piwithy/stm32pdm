@@ -1,0 +1,143 @@
+\hypertarget{usbh__diskio_8c}{}\doxysection{F\+A\+T\+F\+S/\+Target/usbh\+\_\+diskio.c File Reference}
+\label{usbh__diskio_8c}\index{FATFS/Target/usbh\_diskio.c@{FATFS/Target/usbh\_diskio.c}}
+
+
+U\+SB Host Disk I/O driver.  
+
+
+{\ttfamily \#include \char`\"{}ff\+\_\+gen\+\_\+drv.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usbh\+\_\+diskio.\+h\char`\"{}}\newline
+Include dependency graph for usbh\+\_\+diskio.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{usbh__diskio_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{usbh__diskio_8c_ab0322f47722f2f035b2df3d7eb5721f3}\label{usbh__diskio_8c_ab0322f47722f2f035b2df3d7eb5721f3}} 
+\#define {\bfseries U\+S\+B\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+ZE}~512
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+D\+S\+T\+A\+T\+US \mbox{\hyperlink{usbh__diskio_8c_ae247a4ec1b45ad15252a54af6c259f24}{U\+S\+B\+H\+\_\+initialize}} (B\+Y\+TE lun)
+\begin{DoxyCompactList}\small\item\em Initializes a Drive. \end{DoxyCompactList}\item 
+D\+S\+T\+A\+T\+US \mbox{\hyperlink{usbh__diskio_8c_a6e20ec1e9582c18b0337af89bb7d2403}{U\+S\+B\+H\+\_\+status}} (B\+Y\+TE lun)
+\begin{DoxyCompactList}\small\item\em Gets Disk Status. \end{DoxyCompactList}\item 
+D\+R\+E\+S\+U\+LT \mbox{\hyperlink{usbh__diskio_8c_a5349188ae7d52bb22907536ad8819d07}{U\+S\+B\+H\+\_\+read}} (B\+Y\+TE lun, B\+Y\+TE $\ast$buff, D\+W\+O\+RD sector, U\+I\+NT count)
+\begin{DoxyCompactList}\small\item\em Reads Sector(s) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{usbh__diskio_8c_a9a6d2911e643acc80a61bd769f54d61b}\label{usbh__diskio_8c_a9a6d2911e643acc80a61bd769f54d61b}} 
+\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} {\bfseries h\+U\+S\+B\+\_\+\+Host}
+\item 
+const \mbox{\hyperlink{structDiskio__drvTypeDef}{Diskio\+\_\+drv\+Type\+Def}} {\bfseries U\+S\+B\+H\+\_\+\+Driver}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+U\+SB Host Disk I/O driver. 
+
+(based on usbh\+\_\+diskio\+\_\+template.\+c v2.\+0.\+2) \begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2021 S\+T\+Microelectronics. All rights reserved.\end{center} }
+
+This software component is licensed by ST under Ultimate Liberty license S\+L\+A0044, the \char`\"{}\+License\char`\"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: www.\+st.\+com/\+S\+L\+A0044 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{usbh__diskio_8c_ae247a4ec1b45ad15252a54af6c259f24}\label{usbh__diskio_8c_ae247a4ec1b45ad15252a54af6c259f24}} 
+\index{usbh\_diskio.c@{usbh\_diskio.c}!USBH\_initialize@{USBH\_initialize}}
+\index{USBH\_initialize@{USBH\_initialize}!usbh\_diskio.c@{usbh\_diskio.c}}
+\doxysubsubsection{\texorpdfstring{USBH\_initialize()}{USBH\_initialize()}}
+{\footnotesize\ttfamily D\+S\+T\+A\+T\+US U\+S\+B\+H\+\_\+initialize (\begin{DoxyParamCaption}\item[{B\+Y\+TE}]{lun }\end{DoxyParamCaption})}
+
+
+
+Initializes a Drive. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lun} & \+: lun id \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em D\+S\+T\+A\+T\+US} & Operation status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{usbh__diskio_8c_a5349188ae7d52bb22907536ad8819d07}\label{usbh__diskio_8c_a5349188ae7d52bb22907536ad8819d07}} 
+\index{usbh\_diskio.c@{usbh\_diskio.c}!USBH\_read@{USBH\_read}}
+\index{USBH\_read@{USBH\_read}!usbh\_diskio.c@{usbh\_diskio.c}}
+\doxysubsubsection{\texorpdfstring{USBH\_read()}{USBH\_read()}}
+{\footnotesize\ttfamily D\+R\+E\+S\+U\+LT U\+S\+B\+H\+\_\+read (\begin{DoxyParamCaption}\item[{B\+Y\+TE}]{lun,  }\item[{B\+Y\+TE $\ast$}]{buff,  }\item[{D\+W\+O\+RD}]{sector,  }\item[{U\+I\+NT}]{count }\end{DoxyParamCaption})}
+
+
+
+Reads Sector(s) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lun} & \+: lun id \\
+\hline
+{\em $\ast$buff} & Data buffer to store read data \\
+\hline
+{\em sector} & Sector address (L\+BA) \\
+\hline
+{\em count} & Number of sectors to read (1..128) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em D\+R\+E\+S\+U\+LT} & Operation result \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{usbh__diskio_8c_a6e20ec1e9582c18b0337af89bb7d2403}\label{usbh__diskio_8c_a6e20ec1e9582c18b0337af89bb7d2403}} 
+\index{usbh\_diskio.c@{usbh\_diskio.c}!USBH\_status@{USBH\_status}}
+\index{USBH\_status@{USBH\_status}!usbh\_diskio.c@{usbh\_diskio.c}}
+\doxysubsubsection{\texorpdfstring{USBH\_status()}{USBH\_status()}}
+{\footnotesize\ttfamily D\+S\+T\+A\+T\+US U\+S\+B\+H\+\_\+status (\begin{DoxyParamCaption}\item[{B\+Y\+TE}]{lun }\end{DoxyParamCaption})}
+
+
+
+Gets Disk Status. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lun} & \+: lun id \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em D\+S\+T\+A\+T\+US} & Operation status \\
+\hline
+\end{DoxyRetVals}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{usbh__diskio_8c_ab280a92502c7485b193592eb7af27a9d}\label{usbh__diskio_8c_ab280a92502c7485b193592eb7af27a9d}} 
+\index{usbh\_diskio.c@{usbh\_diskio.c}!USBH\_Driver@{USBH\_Driver}}
+\index{USBH\_Driver@{USBH\_Driver}!usbh\_diskio.c@{usbh\_diskio.c}}
+\doxysubsubsection{\texorpdfstring{USBH\_Driver}{USBH\_Driver}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structDiskio__drvTypeDef}{Diskio\+\_\+drv\+Type\+Def}} U\+S\+B\+H\+\_\+\+Driver}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{  \mbox{\hyperlink{usbh__diskio_8c_ae247a4ec1b45ad15252a54af6c259f24}{USBH\_initialize}},}
+\DoxyCodeLine{  \mbox{\hyperlink{usbh__diskio_8c_a6e20ec1e9582c18b0337af89bb7d2403}{USBH\_status}},}
+\DoxyCodeLine{  \mbox{\hyperlink{usbh__diskio_8c_a5349188ae7d52bb22907536ad8819d07}{USBH\_read}},}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{ }
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{ }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

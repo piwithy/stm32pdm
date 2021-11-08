@@ -1,0 +1,130 @@
+\hypertarget{usbh__msc__bot_8h}{}\doxysection{Middlewares/\+S\+T/\+S\+T\+M32\+\_\+\+U\+S\+B\+\_\+\+Host\+\_\+\+Library/\+Class/\+M\+S\+C/\+Inc/usbh\+\_\+msc\+\_\+bot.h File Reference}
+\label{usbh__msc__bot_8h}\index{Middlewares/ST/STM32\_USB\_Host\_Library/Class/MSC/Inc/usbh\_msc\_bot.h@{Middlewares/ST/STM32\_USB\_Host\_Library/Class/MSC/Inc/usbh\_msc\_bot.h}}
+
+
+Header file for \mbox{\hyperlink{usbh__msc__bot_8c}{usbh\+\_\+msc\+\_\+bot.\+c}}.  
+
+
+{\ttfamily \#include \char`\"{}usbh\+\_\+core.\+h\char`\"{}}\newline
+Include dependency graph for usbh\+\_\+msc\+\_\+bot.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{usbh__msc__bot_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{usbh__msc__bot_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{unionBOT__CBWTypeDef}{B\+O\+T\+\_\+\+C\+B\+W\+Type\+Def}}
+\item 
+struct \mbox{\hyperlink{structBOT__CBWTypeDef_1_1____CBW}{B\+O\+T\+\_\+\+C\+B\+W\+Type\+Def\+::\+\_\+\+\_\+\+C\+BW}}
+\item 
+union \mbox{\hyperlink{unionBOT__CSWTypeDef}{B\+O\+T\+\_\+\+C\+S\+W\+Type\+Def}}
+\item 
+struct \mbox{\hyperlink{structBOT__CSWTypeDef_1_1____CSW}{B\+O\+T\+\_\+\+C\+S\+W\+Type\+Def\+::\+\_\+\+\_\+\+C\+SW}}
+\item 
+struct \mbox{\hyperlink{structBOT__HandleTypeDef}{B\+O\+T\+\_\+\+Handle\+Type\+Def}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries B\+O\+T\+\_\+\+C\+B\+W\+\_\+\+S\+I\+G\+N\+A\+T\+U\+RE}~0x43425355U
+\item 
+\#define {\bfseries B\+O\+T\+\_\+\+C\+B\+W\+\_\+\+T\+AG}~0x20304050U
+\item 
+\#define {\bfseries B\+O\+T\+\_\+\+C\+S\+W\+\_\+\+S\+I\+G\+N\+A\+T\+U\+RE}~0x53425355U
+\item 
+\#define {\bfseries B\+O\+T\+\_\+\+C\+B\+W\+\_\+\+L\+E\+N\+G\+TH}~31U
+\item 
+\#define {\bfseries B\+O\+T\+\_\+\+C\+S\+W\+\_\+\+L\+E\+N\+G\+TH}~13U
+\item 
+\#define {\bfseries B\+O\+T\+\_\+\+S\+E\+N\+D\+\_\+\+C\+S\+W\+\_\+\+D\+I\+S\+A\+B\+LE}~0U
+\item 
+\#define {\bfseries B\+O\+T\+\_\+\+S\+E\+N\+D\+\_\+\+C\+S\+W\+\_\+\+E\+N\+A\+B\+LE}~1U
+\item 
+\#define {\bfseries B\+O\+T\+\_\+\+D\+I\+R\+\_\+\+IN}~0U
+\item 
+\#define {\bfseries B\+O\+T\+\_\+\+D\+I\+R\+\_\+\+O\+UT}~1U
+\item 
+\#define {\bfseries B\+O\+T\+\_\+\+D\+I\+R\+\_\+\+B\+O\+TH}~2U
+\item 
+\#define {\bfseries B\+O\+T\+\_\+\+P\+A\+G\+E\+\_\+\+L\+E\+N\+G\+TH}~512U
+\item 
+\#define {\bfseries B\+O\+T\+\_\+\+C\+B\+W\+\_\+\+C\+B\+\_\+\+L\+E\+N\+G\+TH}~16U
+\item 
+\#define {\bfseries M\+A\+X\+\_\+\+B\+U\+L\+K\+\_\+\+S\+T\+A\+L\+L\+\_\+\+C\+O\+U\+N\+T\+\_\+\+L\+I\+M\+IT}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{group__USBH__MSC__BOT__Exported__Types_gae4fc2ac141859b11ab174a02427c0872}\label{group__USBH__MSC__BOT__Exported__Types_gae4fc2ac141859b11ab174a02427c0872}} 
+enum {\bfseries B\+O\+T\+\_\+\+Status\+Type\+Def} \{ {\bfseries B\+O\+T\+\_\+\+OK} = 0, 
+{\bfseries B\+O\+T\+\_\+\+F\+A\+IL} = 1, 
+{\bfseries B\+O\+T\+\_\+\+P\+H\+A\+S\+E\+\_\+\+E\+R\+R\+OR} = 2, 
+{\bfseries B\+O\+T\+\_\+\+B\+U\+SY} = 3
+ \}
+\item 
+\mbox{\Hypertarget{group__USBH__MSC__BOT__Exported__Types_gafa43beec41d480e1d56e28a26a5d77ee}\label{group__USBH__MSC__BOT__Exported__Types_gafa43beec41d480e1d56e28a26a5d77ee}} 
+enum {\bfseries B\+O\+T\+\_\+\+C\+M\+D\+State\+Type\+Def} \{ {\bfseries B\+O\+T\+\_\+\+C\+M\+D\+\_\+\+I\+D\+LE} = 0, 
+{\bfseries B\+O\+T\+\_\+\+C\+M\+D\+\_\+\+S\+E\+ND}, 
+{\bfseries B\+O\+T\+\_\+\+C\+M\+D\+\_\+\+W\+A\+IT}
+ \}
+\item 
+\mbox{\Hypertarget{group__USBH__MSC__BOT__Exported__Types_gae3d7a4d8a5dc090089cf1c49afeaefff}\label{group__USBH__MSC__BOT__Exported__Types_gae3d7a4d8a5dc090089cf1c49afeaefff}} 
+enum {\bfseries B\+O\+T\+\_\+\+C\+S\+W\+Status\+Type\+Def} \{ {\bfseries B\+O\+T\+\_\+\+C\+S\+W\+\_\+\+C\+M\+D\+\_\+\+P\+A\+S\+S\+ED} = 0x00, 
+{\bfseries B\+O\+T\+\_\+\+C\+S\+W\+\_\+\+C\+M\+D\+\_\+\+F\+A\+I\+L\+ED} = 0x01, 
+{\bfseries B\+O\+T\+\_\+\+C\+S\+W\+\_\+\+P\+H\+A\+S\+E\+\_\+\+E\+R\+R\+OR} = 0x02
+ \}
+\item 
+\mbox{\Hypertarget{group__USBH__MSC__BOT__Exported__Types_gad1b2b72aba60db4104f03a5a2ba29794}\label{group__USBH__MSC__BOT__Exported__Types_gad1b2b72aba60db4104f03a5a2ba29794}} 
+enum {\bfseries B\+O\+T\+\_\+\+State\+Type\+Def} \{ \newline
+{\bfseries B\+O\+T\+\_\+\+S\+E\+N\+D\+\_\+\+C\+BW} = 1, 
+{\bfseries B\+O\+T\+\_\+\+S\+E\+N\+D\+\_\+\+C\+B\+W\+\_\+\+W\+A\+IT}, 
+{\bfseries B\+O\+T\+\_\+\+D\+A\+T\+A\+\_\+\+IN}, 
+{\bfseries B\+O\+T\+\_\+\+D\+A\+T\+A\+\_\+\+I\+N\+\_\+\+W\+A\+IT}, 
+\newline
+{\bfseries B\+O\+T\+\_\+\+D\+A\+T\+A\+\_\+\+O\+UT}, 
+{\bfseries B\+O\+T\+\_\+\+D\+A\+T\+A\+\_\+\+O\+U\+T\+\_\+\+W\+A\+IT}, 
+{\bfseries B\+O\+T\+\_\+\+R\+E\+C\+E\+I\+V\+E\+\_\+\+C\+SW}, 
+{\bfseries B\+O\+T\+\_\+\+R\+E\+C\+E\+I\+V\+E\+\_\+\+C\+S\+W\+\_\+\+W\+A\+IT}, 
+\newline
+{\bfseries B\+O\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+IN}, 
+{\bfseries B\+O\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+O\+UT}, 
+{\bfseries B\+O\+T\+\_\+\+U\+N\+R\+E\+C\+O\+V\+E\+R\+E\+D\+\_\+\+E\+R\+R\+OR}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__BOT__Exported__FunctionsPrototype_ga73acc9624d1072de6ae51d9648ef75af}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+B\+O\+T\+\_\+\+R\+E\+Q\+\_\+\+Reset}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+B\+O\+T\+\_\+\+R\+E\+Q\+\_\+\+Reset The function the M\+SC B\+OT Reset request. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__BOT__Exported__FunctionsPrototype_ga946931a6c51c5b34cff012828a97b425}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+B\+O\+T\+\_\+\+R\+E\+Q\+\_\+\+Get\+Max\+L\+UN}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t $\ast$Maxlun)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+B\+O\+T\+\_\+\+R\+E\+Q\+\_\+\+Get\+Max\+L\+UN The function the M\+SC B\+OT Get\+Max\+L\+UN request. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__BOT__Exported__FunctionsPrototype_gae7b8cafe9859382074f9151d20c6472a}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+B\+O\+T\+\_\+\+Init}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+B\+O\+T\+\_\+\+Init The function Initializes the B\+OT protocol. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__BOT__Exported__FunctionsPrototype_gabb49375ba88d9b6c4e65353663a74a3e}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+B\+O\+T\+\_\+\+Process}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+B\+O\+T\+\_\+\+Process The function handle the B\+OT protocol. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def {\bfseries U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+B\+O\+T\+\_\+\+Error} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for \mbox{\hyperlink{usbh__msc__bot_8c}{usbh\+\_\+msc\+\_\+bot.\+c}}. 
+
+\begin{DoxyAuthor}{Author}
+M\+CD Application Team 
+\end{DoxyAuthor}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2015 S\+T\+Microelectronics. All rights reserved.\end{center} }
+
+This software component is licensed by ST under Ultimate Liberty license S\+L\+A0044, the \char`\"{}\+License\char`\"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: www.\+st.\+com/\+S\+L\+A0044 

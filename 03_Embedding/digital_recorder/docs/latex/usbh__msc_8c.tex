@@ -1,0 +1,52 @@
+\hypertarget{usbh__msc_8c}{}\doxysection{Middlewares/\+S\+T/\+S\+T\+M32\+\_\+\+U\+S\+B\+\_\+\+Host\+\_\+\+Library/\+Class/\+M\+S\+C/\+Src/usbh\+\_\+msc.c File Reference}
+\label{usbh__msc_8c}\index{Middlewares/ST/STM32\_USB\_Host\_Library/Class/MSC/Src/usbh\_msc.c@{Middlewares/ST/STM32\_USB\_Host\_Library/Class/MSC/Src/usbh\_msc.c}}
+{\ttfamily \#include \char`\"{}usbh\+\_\+msc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usbh\+\_\+msc\+\_\+bot.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usbh\+\_\+msc\+\_\+scsi.\+h\char`\"{}}\newline
+Include dependency graph for usbh\+\_\+msc.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{usbh__msc_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USBH__MSC__CORE__Private__Functions_ga36fc7e5a7f59878901a05b88b00cf8b7}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Is\+Ready}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Is\+Ready The function check if the M\+SC function is ready. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USBH__MSC__CORE__Private__Functions_ga14f48f48c89f48909031526837818ce1}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Get\+Max\+L\+UN}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Get\+Max\+L\+UN The function return the Max L\+UN supported. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USBH__MSC__CORE__Private__Functions_ga2614df97651ee0fbe3ef5c6977204277}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Unit\+Is\+Ready}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Unit\+Is\+Ready The function check whether a L\+UN is ready. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__CORE__Private__Functions_ga3249672d4ec2adc4fb48bef384161bb5}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Get\+L\+U\+N\+Info}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun, \mbox{\hyperlink{structMSC__LUNTypeDef}{M\+S\+C\+\_\+\+L\+U\+N\+Type\+Def}} $\ast$info)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Get\+L\+U\+N\+Info The function return a L\+UN information. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__CORE__Private__Functions_gaebc67929259039d8a002e9db23766e75}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Read}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun, uint32\+\_\+t address, uint8\+\_\+t $\ast$pbuf, uint32\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Read The function performs a Read operation. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__CORE__Private__Functions_ga3e84f80a818d19708997203ac5f9893b}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Write}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun, uint32\+\_\+t address, uint8\+\_\+t $\ast$pbuf, uint32\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Write The function performs a Write operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structUSBH__ClassTypeDef}{U\+S\+B\+H\+\_\+\+Class\+Type\+Def}} {\bfseries U\+S\+B\+H\+\_\+msc}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+M\+CD Application Team 
+\end{DoxyAuthor}
+\hypertarget{usbh__msc_8c_autotoc_md0}{}\doxysubsection{@brief   This file implements the M\+S\+C class driver functions}\label{usbh__msc_8c_autotoc_md0}
+\hypertarget{usbh__msc_8c_autotoc_md1}{}\doxysubsection{M\+S\+C Class  Description}\label{usbh__msc_8c_autotoc_md1}
+This module manages the M\+SC class V1.\+0 following the "Universal Serial Bus Mass Storage Class (M\+SC) Bulk-\/\+Only Transport (B\+OT) Version 1.\+0 Sep. 31, 1999". This driver implements the following aspects of the specification\+:
+\begin{DoxyItemize}
+\item Bulk-\/\+Only Transport protocol
+\item Subclass \+: S\+C\+SI transparent command set (ref. S\+C\+SI Primary Commands -\/ 3 (S\+P\+C-\/3))
+\end{DoxyItemize}
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2015 S\+T\+Microelectronics. All rights reserved.\end{center} }
+
+This software component is licensed by ST under Ultimate Liberty license S\+L\+A0044, the \char`\"{}\+License\char`\"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: www.\+st.\+com/\+S\+L\+A0044 

@@ -1,0 +1,52 @@
+<map id="Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h" name="Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h">
+<area shape="rect" id="node1" title="This file contains aliases definition for the STM32Cube HAL constants macros and functions maintained..." alt="" coords="2310,5,2497,61"/>
+<area shape="rect" id="node2" href="$stm32f4xx__hal__def_8h.html" title="This file contains HAL common defines, enumeration, macros and structures definitions." alt="" coords="2312,109,2495,165"/>
+<area shape="rect" id="node3" href="$stm32f4xx__hal__cortex_8h.html" title="Header file of CORTEX HAL module." alt="" coords="1215,317,1397,373"/>
+<area shape="rect" id="node33" href="$stm32f4xx__hal__dma_8h.html" title="Header file of DMA HAL module." alt="" coords="1421,317,1604,373"/>
+<area shape="rect" id="node34" href="$stm32f4xx__hal__dma__ex_8h.html" title="Header file of DMA HAL extension module." alt="" coords="1473,213,1656,269"/>
+<area shape="rect" id="node35" href="$stm32f4xx__hal__exti_8h.html" title="Header file of EXTI HAL module." alt="" coords="1628,317,1811,373"/>
+<area shape="rect" id="node36" href="$stm32f4xx__hal__flash_8h.html" title="Header file of FLASH HAL module." alt="" coords="1835,317,2017,373"/>
+<area shape="rect" id="node37" href="$stm32f4xx__hal__flash__ex_8h.html" title="Header file of FLASH HAL Extension module." alt="" coords="1783,213,1965,269"/>
+<area shape="rect" id="node38" href="$stm32f4xx__hal__gpio_8h.html" title="Header file of GPIO HAL module." alt="" coords="2041,317,2224,373"/>
+<area shape="rect" id="node39" href="$stm32f4xx__hal__gpio__ex_8h.html" title="Header file of GPIO HAL Extension module." alt="" coords="2041,213,2224,269"/>
+<area shape="rect" id="node40" href="$stm32f4xx__ll__usb_8h.html" title="Header file of USB Low Layer HAL module." alt="" coords="2248,213,2431,269"/>
+<area shape="rect" id="node42" href="$stm32f4xx__hal__pwr_8h.html" title="Header file of PWR HAL module." alt="" coords="2455,317,2637,373"/>
+<area shape="rect" id="node43" href="$stm32f4xx__hal__pwr__ex_8h.html" title="Header file of PWR HAL Extension module." alt="" coords="2507,213,2689,269"/>
+<area shape="rect" id="node44" href="$stm32f4xx__hal__rcc_8h.html" title="Header file of RCC HAL module." alt="" coords="2661,317,2844,373"/>
+<area shape="rect" id="node45" href="$stm32f4xx__hal__rcc__ex_8h.html" title="Header file of RCC HAL Extension module." alt="" coords="2765,213,2948,269"/>
+<area shape="rect" id="node46" href="$stm32f4xx__hal__sai_8h.html" title="Header file of SAI HAL module." alt="" coords="2868,317,3051,373"/>
+<area shape="rect" id="node47" href="$stm32f4xx__hal__sai__ex_8h.html" title="Header file of SAI Extension HAL module." alt="" coords="3488,213,3671,269"/>
+<area shape="rect" id="node48" href="$stm32f4xx__hal__tim_8h.html" title="Header file of TIM HAL module." alt="" coords="3075,317,3257,373"/>
+<area shape="rect" id="node49" href="$stm32f4xx__hal__tim__ex_8h.html" title="Header file of TIM HAL Extended module." alt="" coords="3075,213,3257,269"/>
+<area shape="rect" id="node50" href="$stm32f4xx__hal__uart_8h.html" title="Header file of UART HAL module." alt="" coords="3281,213,3464,269"/>
+<area shape="rect" id="node4" href="$stm32f4xx__hal__conf_8h_source.html" title=" " alt="" coords="2265,421,2414,463"/>
+<area shape="rect" id="node5" href="$stm32f4xx__hal_8h.html" title="This file contains all the functions prototypes for the HAL module driver." alt="" coords="2237,511,2442,552"/>
+<area shape="rect" id="node6" href="$main_8h.html" title=": Header for main.c file. This file contains the common defines of the application." alt="" coords="387,615,511,641"/>
+<area shape="rect" id="node10" href="$ffconf_8h_source.html" title=" " alt="" coords="530,711,685,738"/>
+<area shape="rect" id="node11" href="$usbh__conf_8h.html" title=": Header for usbh_conf.c file." alt="" coords="709,704,879,745"/>
+<area shape="rect" id="node12" href="$stm32f4xx__hal_8c.html" title="HAL module driver. This is the common part of the HAL initialization." alt="" coords="675,607,881,649"/>
+<area shape="rect" id="node13" href="$stm32f4xx__hal__cortex_8c.html" title="CORTEX HAL module driver. This file provides firmware functions to manage the following functionaliti..." alt="" coords="905,600,1088,656"/>
+<area shape="rect" id="node14" href="$stm32f4xx__hal__dma_8c.html" title="DMA HAL module driver." alt="" coords="1112,600,1295,656"/>
+<area shape="rect" id="node15" href="$stm32f4xx__hal__dma__ex_8c.html" title="DMA Extension HAL module driver This file provides firmware functions to manage the following functio..." alt="" coords="1319,600,1501,656"/>
+<area shape="rect" id="node16" href="$stm32f4xx__hal__exti_8c.html" title="EXTI HAL module driver. This file provides firmware functions to manage the following functionalities..." alt="" coords="1525,600,1708,656"/>
+<area shape="rect" id="node17" href="$stm32f4xx__hal__flash_8c.html" title="FLASH HAL module driver. This file provides firmware functions to manage the following functionalitie..." alt="" coords="1732,600,1915,656"/>
+<area shape="rect" id="node18" href="$stm32f4xx__hal__flash__ex_8c.html" title="Extended FLASH HAL module driver. This file provides firmware functions to manage the following funct..." alt="" coords="1939,600,2121,656"/>
+<area shape="rect" id="node19" href="$stm32f4xx__hal__flash__ramfunc_8c.html" title="FLASH RAMFUNC module driver. This file provides a FLASH firmware functions which should be executed f..." alt="" coords="2145,600,2328,656"/>
+<area shape="rect" id="node20" href="$stm32f4xx__hal__gpio_8c.html" title="GPIO HAL module driver. This file provides firmware functions to manage the following functionalities..." alt="" coords="2352,600,2535,656"/>
+<area shape="rect" id="node21" href="$stm32f4xx__hal__hcd_8c.html" title="HCD HAL module driver. This file provides firmware functions to manage the following functionalities ..." alt="" coords="2559,600,2741,656"/>
+<area shape="rect" id="node22" href="$stm32f4xx__hal__pwr_8c.html" title="PWR HAL module driver. This file provides firmware functions to manage the following functionalities ..." alt="" coords="2765,600,2948,656"/>
+<area shape="rect" id="node23" href="$stm32f4xx__hal__pwr__ex_8c.html" title="Extended PWR HAL module driver. This file provides firmware functions to manage the following functio..." alt="" coords="2972,600,3155,656"/>
+<area shape="rect" id="node24" href="$stm32f4xx__hal__rcc_8c.html" title="RCC HAL module driver. This file provides firmware functions to manage the following functionalities ..." alt="" coords="3179,600,3361,656"/>
+<area shape="rect" id="node25" href="$stm32f4xx__hal__rcc__ex_8c.html" title="Extension RCC HAL module driver. This file provides firmware functions to manage the following functi..." alt="" coords="3385,600,3568,656"/>
+<area shape="rect" id="node26" href="$stm32f4xx__hal__sai_8c.html" title="SAI HAL module driver. This file provides firmware functions to manage the following functionalities ..." alt="" coords="3592,600,3775,656"/>
+<area shape="rect" id="node27" href="$stm32f4xx__hal__sai__ex_8c.html" title="SAI Extension HAL module driver. This file provides firmware functions to manage the following functi..." alt="" coords="3799,600,3981,656"/>
+<area shape="rect" id="node28" href="$stm32f4xx__hal__tim_8c.html" title="TIM HAL module driver. This file provides firmware functions to manage the following functionalities ..." alt="" coords="4005,600,4188,656"/>
+<area shape="rect" id="node29" href="$stm32f4xx__hal__tim__ex_8c.html" title="TIM HAL module driver. This file provides firmware functions to manage the following functionalities ..." alt="" coords="4212,600,4395,656"/>
+<area shape="rect" id="node30" href="$stm32f4xx__hal__uart_8c.html" title="UART HAL module driver. This file provides firmware functions to manage the following functionalities..." alt="" coords="4419,600,4601,656"/>
+<area shape="rect" id="node31" href="$stm32f4xx__ll__usb_8c.html" title="USB Low Layer HAL module driver." alt="" coords="4625,600,4808,656"/>
+<area shape="rect" id="node32" href="$usb__host_8h.html" title=": Header for usb_host.c file." alt="" coords="78,615,273,641"/>
+<area shape="rect" id="node7" href="$main_8c.html" title=": Main program body" alt="" coords="5,711,129,738"/>
+<area shape="rect" id="node8" href="$stm32f4xx__hal__msp_8c.html" title="This file provides code for the MSP Initialization and de&#45;Initialization codes." alt="" coords="355,704,505,745"/>
+<area shape="rect" id="node9" href="$stm32f4xx__it_8c.html" title="Interrupt Service Routines." alt="" coords="153,711,331,738"/>
+<area shape="rect" id="node41" href="$stm32f4xx__hal__hcd_8h.html" title="Header file of HCD HAL module." alt="" coords="2248,317,2431,373"/>
+</map>

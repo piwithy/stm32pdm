@@ -1,0 +1,814 @@
+\hypertarget{group__USBH__CORE__Exported__FunctionsPrototype}{}\doxysection{U\+S\+B\+H\+\_\+\+C\+O\+R\+E\+\_\+\+Exported\+\_\+\+Functions\+Prototype}
+\label{group__USBH__CORE__Exported__FunctionsPrototype}\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+Collaboration diagram for U\+S\+B\+H\+\_\+\+C\+O\+R\+E\+\_\+\+Exported\+\_\+\+Functions\+Prototype\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{group__USBH__CORE__Exported__FunctionsPrototype}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_gaba8ea76d522fd97f9b70308dced05326}{U\+S\+B\+H\+\_\+\+Init}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, void($\ast$p\+Usr\+Func)(\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t id), uint8\+\_\+t id)
+\begin{DoxyCompactList}\small\item\em H\+C\+D\+\_\+\+Init Initialize the H\+O\+ST Core. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_ga4efaf12e10a729ffc6720fb4052f7710}{U\+S\+B\+H\+\_\+\+De\+Init}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em H\+C\+D\+\_\+\+Init De-\/\+Initialize the Host portion of the driver. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_ga180cf3b55f4fc5de077039882acd487b}{U\+S\+B\+H\+\_\+\+Register\+Class}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, \mbox{\hyperlink{structUSBH__ClassTypeDef}{U\+S\+B\+H\+\_\+\+Class\+Type\+Def}} $\ast$pclass)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Register\+Class Link class driver to Host Core. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_ga13d5830fd9ded5d562814d33d52e8fe4}{U\+S\+B\+H\+\_\+\+Select\+Interface}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t interface)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Select\+Interface Select current interface. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_ga1bc80c793ec0bf42a700109223103fe3}{U\+S\+B\+H\+\_\+\+Find\+Interface}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t Class, uint8\+\_\+t Sub\+Class, uint8\+\_\+t Protocol)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Find\+Interface Find the interface index for a specific class. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_ga260b30701dc2ed2baa1c4515d13132da}{U\+S\+B\+H\+\_\+\+Get\+Active\+Class}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Get\+Active\+Class Return Device Class. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_gaea6efa21c1d2a874877a79ba346ea7e8}{U\+S\+B\+H\+\_\+\+Find\+Interface\+Index}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t interface\+\_\+number, uint8\+\_\+t alt\+\_\+settings)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Find\+Interface\+Index Find the interface index for a specific class interface and alternate setting number. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_ga23b501db3410c909e438087e3578f126}{U\+S\+B\+H\+\_\+\+Is\+Port\+Enabled}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em H\+C\+D\+\_\+\+Is\+Port\+Enabled Is Port Enabled. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_gaa267a3a2318063e408c98c1dd5c9ab7c}{U\+S\+B\+H\+\_\+\+Start}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Start Start the U\+SB Host Core. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_ga142f35af61cbaa7b46ad05192e110f3e}{U\+S\+B\+H\+\_\+\+Stop}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Stop Stop the U\+SB Host Core. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_ga062f57a607ec9bcd9866d09f9bbbe9a8}{U\+S\+B\+H\+\_\+\+Process}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Process Background process of the U\+SB Core. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_gadeee2cb33967ba983115df499122641c}{U\+S\+B\+H\+\_\+\+Re\+Enumerate}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em H\+C\+D\+\_\+\+Re\+Enumerate Perform a new Enumeration phase. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_ga5b46d8afbd254c9172b84d791d438306}{U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Init}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em Initialize the low level portion of the host driver. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_ga69ba6969d548a428bc4a5aa6eb2e135a}{U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+De\+Init}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em De-\/\+Initialize the low level portion of the host driver. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_gae895412b62103a712cfd2f1841d1420a}{U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Start}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em Start the low level portion of the host driver. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_ga874eb40ed9b76406ffa64c20e47258cd}{U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Stop}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em Stop the low level portion of the host driver. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_ga2f6ef784e583c4a5f7e50dac45908d4c}{U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Connect}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Connect Handle U\+SB Host connexion event. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_ga31fdc6286963f6456a543524d5c79085}{U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Disconnect}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Disconnect Handle U\+SB Host disconnection event. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Speed\+Type\+Def \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_gaf3c4ca2987ab678661d8d293adb02095}{U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Get\+Speed}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em Return the U\+SB host speed from the low level driver. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_ga1844d882f66ca6a49f3c8eba7c88c24a}{U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Reset\+Port}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em Reset the Host port of the low level driver. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_ga46e36c65b21fa6bb30cc618588ed590c}{U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Get\+Last\+Xfer\+Size}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t pipe)
+\begin{DoxyCompactList}\small\item\em Return the last transferred packet size. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_gacb4111af58651c28ebe4a557ca568b24}{U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Driver\+V\+B\+US}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t state)
+\begin{DoxyCompactList}\small\item\em Drive V\+B\+US. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_ga0ce965d06b7a5595d724fd660e30f8a4}{U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Open\+Pipe}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t pipe, uint8\+\_\+t epnum, uint8\+\_\+t dev\+\_\+address, uint8\+\_\+t speed, uint8\+\_\+t ep\+\_\+type, uint16\+\_\+t mps)
+\begin{DoxyCompactList}\small\item\em Open a pipe of the low level driver. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_gaefb43a461debda9e4b1a5e4023e799ee}{U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Close\+Pipe}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t pipe)
+\begin{DoxyCompactList}\small\item\em Close a pipe of the low level driver. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_ga6d5456368ad4cb95eecae935e54f49cb}{U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Submit\+U\+RB}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t pipe, uint8\+\_\+t direction, uint8\+\_\+t ep\+\_\+type, uint8\+\_\+t token, uint8\+\_\+t $\ast$pbuff, uint16\+\_\+t length, uint8\+\_\+t do\+\_\+ping)
+\begin{DoxyCompactList}\small\item\em Submit a new U\+RB to the low level driver. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+U\+R\+B\+State\+Type\+Def \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_ga78cc4409546dfc6ddcb9477f94cc2659}{U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Get\+U\+R\+B\+State}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t pipe)
+\begin{DoxyCompactList}\small\item\em Get a U\+RB state from the low level driver. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_gab272f515d41419156ec959281d5716e0}{U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Set\+Toggle}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t pipe, uint8\+\_\+t toggle)
+\begin{DoxyCompactList}\small\item\em Set toggle for a pipe. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_ga6271b251ae9bd23740e91276cdb7d3ba}{U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Get\+Toggle}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t pipe)
+\begin{DoxyCompactList}\small\item\em Return the current toggle of a pipe. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_gaae127a7825c1f34cc7f362efe64351a1}{U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Port\+Disabled}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Port\+Disabled Port Disabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_ga891d5594f8a37d6d7b3d951a4a67337a}{U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Port\+Enabled}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Port\+Enabled Port Enabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_gaf8dfc197668e8ffd47a9ee2e162ad2d5}{U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Set\+Timer}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint32\+\_\+t time)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Set\+Timer Set the initial Host Timer tick. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_gae0f681d7955eda8cd450cc7cf5ea081e}{U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Inc\+Timer}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Inc\+Timer Increment Host Timer tick. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__USBH__CORE__Exported__FunctionsPrototype_ga641108182e7e56c085e2d539ae060deb}{U\+S\+B\+H\+\_\+\+Delay}} (uint32\+\_\+t Delay)
+\begin{DoxyCompactList}\small\item\em Delay routine for the U\+SB Host Library. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_ga4efaf12e10a729ffc6720fb4052f7710}\label{group__USBH__CORE__Exported__FunctionsPrototype_ga4efaf12e10a729ffc6720fb4052f7710}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_DeInit@{USBH\_DeInit}}
+\index{USBH\_DeInit@{USBH\_DeInit}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_DeInit()}{USBH\_DeInit()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+De\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost }\end{DoxyParamCaption})}
+
+
+
+H\+C\+D\+\_\+\+Init De-\/\+Initialize the Host portion of the driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & Status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_ga641108182e7e56c085e2d539ae060deb}\label{group__USBH__CORE__Exported__FunctionsPrototype_ga641108182e7e56c085e2d539ae060deb}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_Delay@{USBH\_Delay}}
+\index{USBH\_Delay@{USBH\_Delay}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_Delay()}{USBH\_Delay()}}
+{\footnotesize\ttfamily void U\+S\+B\+H\+\_\+\+Delay (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{Delay }\end{DoxyParamCaption})}
+
+
+
+Delay routine for the U\+SB Host Library. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Delay} & Delay in ms \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_ga1bc80c793ec0bf42a700109223103fe3}\label{group__USBH__CORE__Exported__FunctionsPrototype_ga1bc80c793ec0bf42a700109223103fe3}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_FindInterface@{USBH\_FindInterface}}
+\index{USBH\_FindInterface@{USBH\_FindInterface}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_FindInterface()}{USBH\_FindInterface()}}
+{\footnotesize\ttfamily uint8\+\_\+t U\+S\+B\+H\+\_\+\+Find\+Interface (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{Class,  }\item[{uint8\+\_\+t}]{Sub\+Class,  }\item[{uint8\+\_\+t}]{Protocol }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+Find\+Interface Find the interface index for a specific class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em Class} & Class code \\
+\hline
+{\em Sub\+Class} & Sub\+Class code \\
+\hline
+{\em Protocol} & Protocol code \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em interface} & index in the configuration structure \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+\+: (1)interface index 0x\+FF means interface index not found 
+\end{DoxyNote}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_gaea6efa21c1d2a874877a79ba346ea7e8}\label{group__USBH__CORE__Exported__FunctionsPrototype_gaea6efa21c1d2a874877a79ba346ea7e8}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_FindInterfaceIndex@{USBH\_FindInterfaceIndex}}
+\index{USBH\_FindInterfaceIndex@{USBH\_FindInterfaceIndex}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_FindInterfaceIndex()}{USBH\_FindInterfaceIndex()}}
+{\footnotesize\ttfamily uint8\+\_\+t U\+S\+B\+H\+\_\+\+Find\+Interface\+Index (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{interface\+\_\+number,  }\item[{uint8\+\_\+t}]{alt\+\_\+settings }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+Find\+Interface\+Index Find the interface index for a specific class interface and alternate setting number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em interface\+\_\+number} & interface number \\
+\hline
+{\em alt\+\_\+settings} & \+: alternate setting number \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em interface} & index in the configuration structure \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+\+: (1)interface index 0x\+FF means interface index not found 
+\end{DoxyNote}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_ga260b30701dc2ed2baa1c4515d13132da}\label{group__USBH__CORE__Exported__FunctionsPrototype_ga260b30701dc2ed2baa1c4515d13132da}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_GetActiveClass@{USBH\_GetActiveClass}}
+\index{USBH\_GetActiveClass@{USBH\_GetActiveClass}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_GetActiveClass()}{USBH\_GetActiveClass()}}
+{\footnotesize\ttfamily uint8\+\_\+t U\+S\+B\+H\+\_\+\+Get\+Active\+Class (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+Get\+Active\+Class Return Device Class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em interface} & Interface index \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Class} & Code \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_gaba8ea76d522fd97f9b70308dced05326}\label{group__USBH__CORE__Exported__FunctionsPrototype_gaba8ea76d522fd97f9b70308dced05326}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_Init@{USBH\_Init}}
+\index{USBH\_Init@{USBH\_Init}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_Init()}{USBH\_Init()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{void($\ast$)(\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t id)}]{p\+Usr\+Func,  }\item[{uint8\+\_\+t}]{id }\end{DoxyParamCaption})}
+
+
+
+H\+C\+D\+\_\+\+Init Initialize the H\+O\+ST Core. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em p\+Usr\+Func} & User Callback \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & Status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_ga23b501db3410c909e438087e3578f126}\label{group__USBH__CORE__Exported__FunctionsPrototype_ga23b501db3410c909e438087e3578f126}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_IsPortEnabled@{USBH\_IsPortEnabled}}
+\index{USBH\_IsPortEnabled@{USBH\_IsPortEnabled}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_IsPortEnabled()}{USBH\_IsPortEnabled()}}
+{\footnotesize\ttfamily uint8\+\_\+t U\+S\+B\+H\+\_\+\+Is\+Port\+Enabled (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost }\end{DoxyParamCaption})}
+
+
+
+H\+C\+D\+\_\+\+Is\+Port\+Enabled Is Port Enabled. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_gaefb43a461debda9e4b1a5e4023e799ee}\label{group__USBH__CORE__Exported__FunctionsPrototype_gaefb43a461debda9e4b1a5e4023e799ee}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_LL\_ClosePipe@{USBH\_LL\_ClosePipe}}
+\index{USBH\_LL\_ClosePipe@{USBH\_LL\_ClosePipe}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_LL\_ClosePipe()}{USBH\_LL\_ClosePipe()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Close\+Pipe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{pipe }\end{DoxyParamCaption})}
+
+
+
+Close a pipe of the low level driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+{\em pipe} & Pipe index \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_ga2f6ef784e583c4a5f7e50dac45908d4c}\label{group__USBH__CORE__Exported__FunctionsPrototype_ga2f6ef784e583c4a5f7e50dac45908d4c}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_LL\_Connect@{USBH\_LL\_Connect}}
+\index{USBH\_LL\_Connect@{USBH\_LL\_Connect}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_LL\_Connect()}{USBH\_LL\_Connect()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Connect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Connect Handle U\+SB Host connexion event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+B\+H\+\_\+\+Status} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_ga69ba6969d548a428bc4a5aa6eb2e135a}\label{group__USBH__CORE__Exported__FunctionsPrototype_ga69ba6969d548a428bc4a5aa6eb2e135a}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_LL\_DeInit@{USBH\_LL\_DeInit}}
+\index{USBH\_LL\_DeInit@{USBH\_LL\_DeInit}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_LL\_DeInit()}{USBH\_LL\_DeInit()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+De\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost }\end{DoxyParamCaption})}
+
+
+
+De-\/\+Initialize the low level portion of the host driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_ga31fdc6286963f6456a543524d5c79085}\label{group__USBH__CORE__Exported__FunctionsPrototype_ga31fdc6286963f6456a543524d5c79085}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_LL\_Disconnect@{USBH\_LL\_Disconnect}}
+\index{USBH\_LL\_Disconnect@{USBH\_LL\_Disconnect}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_LL\_Disconnect()}{USBH\_LL\_Disconnect()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Disconnect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Disconnect Handle U\+SB Host disconnection event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+B\+H\+\_\+\+Status} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_gacb4111af58651c28ebe4a557ca568b24}\label{group__USBH__CORE__Exported__FunctionsPrototype_gacb4111af58651c28ebe4a557ca568b24}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_LL\_DriverVBUS@{USBH\_LL\_DriverVBUS}}
+\index{USBH\_LL\_DriverVBUS@{USBH\_LL\_DriverVBUS}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_LL\_DriverVBUS()}{USBH\_LL\_DriverVBUS()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Driver\+V\+B\+US (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{state }\end{DoxyParamCaption})}
+
+
+
+Drive V\+B\+US. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+{\em state} & \+: V\+B\+US state This parameter can be one of the these values\+: 0 \+: V\+B\+US Inactive 1 \+: V\+B\+US Active \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Status} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_ga46e36c65b21fa6bb30cc618588ed590c}\label{group__USBH__CORE__Exported__FunctionsPrototype_ga46e36c65b21fa6bb30cc618588ed590c}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_LL\_GetLastXferSize@{USBH\_LL\_GetLastXferSize}}
+\index{USBH\_LL\_GetLastXferSize@{USBH\_LL\_GetLastXferSize}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_LL\_GetLastXferSize()}{USBH\_LL\_GetLastXferSize()}}
+{\footnotesize\ttfamily uint32\+\_\+t U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Get\+Last\+Xfer\+Size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{pipe }\end{DoxyParamCaption})}
+
+
+
+Return the last transferred packet size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+{\em pipe} & Pipe index \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Packet} & size \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_gaf3c4ca2987ab678661d8d293adb02095}\label{group__USBH__CORE__Exported__FunctionsPrototype_gaf3c4ca2987ab678661d8d293adb02095}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_LL\_GetSpeed@{USBH\_LL\_GetSpeed}}
+\index{USBH\_LL\_GetSpeed@{USBH\_LL\_GetSpeed}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_LL\_GetSpeed()}{USBH\_LL\_GetSpeed()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Speed\+Type\+Def U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Get\+Speed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost }\end{DoxyParamCaption})}
+
+
+
+Return the U\+SB host speed from the low level driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & speeds \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_ga6271b251ae9bd23740e91276cdb7d3ba}\label{group__USBH__CORE__Exported__FunctionsPrototype_ga6271b251ae9bd23740e91276cdb7d3ba}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_LL\_GetToggle@{USBH\_LL\_GetToggle}}
+\index{USBH\_LL\_GetToggle@{USBH\_LL\_GetToggle}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_LL\_GetToggle()}{USBH\_LL\_GetToggle()}}
+{\footnotesize\ttfamily uint8\+\_\+t U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Get\+Toggle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{pipe }\end{DoxyParamCaption})}
+
+
+
+Return the current toggle of a pipe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+{\em pipe} & Pipe index \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em toggle} & (0/1) \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_ga78cc4409546dfc6ddcb9477f94cc2659}\label{group__USBH__CORE__Exported__FunctionsPrototype_ga78cc4409546dfc6ddcb9477f94cc2659}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_LL\_GetURBState@{USBH\_LL\_GetURBState}}
+\index{USBH\_LL\_GetURBState@{USBH\_LL\_GetURBState}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_LL\_GetURBState()}{USBH\_LL\_GetURBState()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+U\+R\+B\+State\+Type\+Def U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Get\+U\+R\+B\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{pipe }\end{DoxyParamCaption})}
+
+
+
+Get a U\+RB state from the low level driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+{\em pipe} & Pipe index This parameter can be a value from 1 to 15 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+RB} & state This parameter can be one of the these values\+: \begin{DoxyItemize}
+\item U\+R\+B\+\_\+\+I\+D\+LE \item U\+R\+B\+\_\+\+D\+O\+NE \item U\+R\+B\+\_\+\+N\+O\+T\+R\+E\+A\+DY \item U\+R\+B\+\_\+\+N\+Y\+ET \item U\+R\+B\+\_\+\+E\+R\+R\+OR \item U\+R\+B\+\_\+\+S\+T\+A\+LL \end{DoxyItemize}
+\\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_gae0f681d7955eda8cd450cc7cf5ea081e}\label{group__USBH__CORE__Exported__FunctionsPrototype_gae0f681d7955eda8cd450cc7cf5ea081e}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_LL\_IncTimer@{USBH\_LL\_IncTimer}}
+\index{USBH\_LL\_IncTimer@{USBH\_LL\_IncTimer}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_LL\_IncTimer()}{USBH\_LL\_IncTimer()}}
+{\footnotesize\ttfamily void U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Inc\+Timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Inc\+Timer Increment Host Timer tick. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_ga5b46d8afbd254c9172b84d791d438306}\label{group__USBH__CORE__Exported__FunctionsPrototype_ga5b46d8afbd254c9172b84d791d438306}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_LL\_Init@{USBH\_LL\_Init}}
+\index{USBH\_LL\_Init@{USBH\_LL\_Init}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_LL\_Init()}{USBH\_LL\_Init()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost }\end{DoxyParamCaption})}
+
+
+
+Initialize the low level portion of the host driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_ga0ce965d06b7a5595d724fd660e30f8a4}\label{group__USBH__CORE__Exported__FunctionsPrototype_ga0ce965d06b7a5595d724fd660e30f8a4}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_LL\_OpenPipe@{USBH\_LL\_OpenPipe}}
+\index{USBH\_LL\_OpenPipe@{USBH\_LL\_OpenPipe}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_LL\_OpenPipe()}{USBH\_LL\_OpenPipe()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Open\+Pipe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{pipe\+\_\+num,  }\item[{uint8\+\_\+t}]{epnum,  }\item[{uint8\+\_\+t}]{dev\+\_\+address,  }\item[{uint8\+\_\+t}]{speed,  }\item[{uint8\+\_\+t}]{ep\+\_\+type,  }\item[{uint16\+\_\+t}]{mps }\end{DoxyParamCaption})}
+
+
+
+Open a pipe of the low level driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+{\em pipe\+\_\+num} & Pipe index \\
+\hline
+{\em epnum} & Endpoint number \\
+\hline
+{\em dev\+\_\+address} & Device U\+SB address \\
+\hline
+{\em speed} & Device Speed \\
+\hline
+{\em ep\+\_\+type} & Endpoint type \\
+\hline
+{\em mps} & Endpoint max packet size \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_gaae127a7825c1f34cc7f362efe64351a1}\label{group__USBH__CORE__Exported__FunctionsPrototype_gaae127a7825c1f34cc7f362efe64351a1}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_LL\_PortDisabled@{USBH\_LL\_PortDisabled}}
+\index{USBH\_LL\_PortDisabled@{USBH\_LL\_PortDisabled}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_LL\_PortDisabled()}{USBH\_LL\_PortDisabled()}}
+{\footnotesize\ttfamily void U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Port\+Disabled (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Port\+Disabled Port Disabled. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_ga891d5594f8a37d6d7b3d951a4a67337a}\label{group__USBH__CORE__Exported__FunctionsPrototype_ga891d5594f8a37d6d7b3d951a4a67337a}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_LL\_PortEnabled@{USBH\_LL\_PortEnabled}}
+\index{USBH\_LL\_PortEnabled@{USBH\_LL\_PortEnabled}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_LL\_PortEnabled()}{USBH\_LL\_PortEnabled()}}
+{\footnotesize\ttfamily void U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Port\+Enabled (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+Port\+Enabled Port Enabled. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_ga1844d882f66ca6a49f3c8eba7c88c24a}\label{group__USBH__CORE__Exported__FunctionsPrototype_ga1844d882f66ca6a49f3c8eba7c88c24a}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_LL\_ResetPort@{USBH\_LL\_ResetPort}}
+\index{USBH\_LL\_ResetPort@{USBH\_LL\_ResetPort}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_LL\_ResetPort()}{USBH\_LL\_ResetPort()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Reset\+Port (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost }\end{DoxyParamCaption})}
+
+
+
+Reset the Host port of the low level driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_gaf8dfc197668e8ffd47a9ee2e162ad2d5}\label{group__USBH__CORE__Exported__FunctionsPrototype_gaf8dfc197668e8ffd47a9ee2e162ad2d5}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_LL\_SetTimer@{USBH\_LL\_SetTimer}}
+\index{USBH\_LL\_SetTimer@{USBH\_LL\_SetTimer}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_LL\_SetTimer()}{USBH\_LL\_SetTimer()}}
+{\footnotesize\ttfamily void U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Set\+Timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint32\+\_\+t}]{time }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Set\+Timer Set the initial Host Timer tick. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_gab272f515d41419156ec959281d5716e0}\label{group__USBH__CORE__Exported__FunctionsPrototype_gab272f515d41419156ec959281d5716e0}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_LL\_SetToggle@{USBH\_LL\_SetToggle}}
+\index{USBH\_LL\_SetToggle@{USBH\_LL\_SetToggle}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_LL\_SetToggle()}{USBH\_LL\_SetToggle()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Set\+Toggle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{pipe,  }\item[{uint8\+\_\+t}]{toggle }\end{DoxyParamCaption})}
+
+
+
+Set toggle for a pipe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+{\em pipe} & Pipe index \\
+\hline
+{\em toggle} & toggle (0/1) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Status} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_gae895412b62103a712cfd2f1841d1420a}\label{group__USBH__CORE__Exported__FunctionsPrototype_gae895412b62103a712cfd2f1841d1420a}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_LL\_Start@{USBH\_LL\_Start}}
+\index{USBH\_LL\_Start@{USBH\_LL\_Start}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_LL\_Start()}{USBH\_LL\_Start()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost }\end{DoxyParamCaption})}
+
+
+
+Start the low level portion of the host driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_ga874eb40ed9b76406ffa64c20e47258cd}\label{group__USBH__CORE__Exported__FunctionsPrototype_ga874eb40ed9b76406ffa64c20e47258cd}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_LL\_Stop@{USBH\_LL\_Stop}}
+\index{USBH\_LL\_Stop@{USBH\_LL\_Stop}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_LL\_Stop()}{USBH\_LL\_Stop()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Stop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost }\end{DoxyParamCaption})}
+
+
+
+Stop the low level portion of the host driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_ga6d5456368ad4cb95eecae935e54f49cb}\label{group__USBH__CORE__Exported__FunctionsPrototype_ga6d5456368ad4cb95eecae935e54f49cb}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_LL\_SubmitURB@{USBH\_LL\_SubmitURB}}
+\index{USBH\_LL\_SubmitURB@{USBH\_LL\_SubmitURB}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_LL\_SubmitURB()}{USBH\_LL\_SubmitURB()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+L\+L\+\_\+\+Submit\+U\+RB (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{pipe,  }\item[{uint8\+\_\+t}]{direction,  }\item[{uint8\+\_\+t}]{ep\+\_\+type,  }\item[{uint8\+\_\+t}]{token,  }\item[{uint8\+\_\+t $\ast$}]{pbuff,  }\item[{uint16\+\_\+t}]{length,  }\item[{uint8\+\_\+t}]{do\+\_\+ping }\end{DoxyParamCaption})}
+
+
+
+Submit a new U\+RB to the low level driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+{\em pipe} & Pipe index This parameter can be a value from 1 to 15 \\
+\hline
+{\em direction} & \+: Channel number This parameter can be one of the these values\+: 0 \+: Output 1 \+: Input \\
+\hline
+{\em ep\+\_\+type} & \+: Endpoint Type This parameter can be one of the these values\+: \begin{DoxyItemize}
+\item E\+P\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+T\+RL\+: Control type \item E\+P\+\_\+\+T\+Y\+P\+E\+\_\+\+I\+S\+OC\+: Isochrounous type \item E\+P\+\_\+\+T\+Y\+P\+E\+\_\+\+B\+U\+LK\+: Bulk type \item E\+P\+\_\+\+T\+Y\+P\+E\+\_\+\+I\+N\+TR\+: Interrupt type \end{DoxyItemize}
+\\
+\hline
+{\em token} & \+: Endpoint Type This parameter can be one of the these values\+: \begin{DoxyItemize}
+\item 0\+: P\+I\+D\+\_\+\+S\+E\+T\+UP \item 1\+: P\+I\+D\+\_\+\+D\+A\+TA \end{DoxyItemize}
+\\
+\hline
+{\em pbuff} & \+: pointer to U\+RB data \\
+\hline
+{\em length} & \+: Length of U\+RB data \\
+\hline
+{\em do\+\_\+ping} & \+: activate do ping protocol (for high speed only) This parameter can be one of the these values\+: 0 \+: do ping inactive 1 \+: do ping active \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Status} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_ga062f57a607ec9bcd9866d09f9bbbe9a8}\label{group__USBH__CORE__Exported__FunctionsPrototype_ga062f57a607ec9bcd9866d09f9bbbe9a8}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_Process@{USBH\_Process}}
+\index{USBH\_Process@{USBH\_Process}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_Process()}{USBH\_Process()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+Process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+Process Background process of the U\+SB Core. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & Status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_gadeee2cb33967ba983115df499122641c}\label{group__USBH__CORE__Exported__FunctionsPrototype_gadeee2cb33967ba983115df499122641c}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_ReEnumerate@{USBH\_ReEnumerate}}
+\index{USBH\_ReEnumerate@{USBH\_ReEnumerate}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_ReEnumerate()}{USBH\_ReEnumerate()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+Re\+Enumerate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost }\end{DoxyParamCaption})}
+
+
+
+H\+C\+D\+\_\+\+Re\+Enumerate Perform a new Enumeration phase. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & Status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_ga180cf3b55f4fc5de077039882acd487b}\label{group__USBH__CORE__Exported__FunctionsPrototype_ga180cf3b55f4fc5de077039882acd487b}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_RegisterClass@{USBH\_RegisterClass}}
+\index{USBH\_RegisterClass@{USBH\_RegisterClass}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_RegisterClass()}{USBH\_RegisterClass()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+Register\+Class (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{\mbox{\hyperlink{structUSBH__ClassTypeDef}{U\+S\+B\+H\+\_\+\+Class\+Type\+Def}} $\ast$}]{pclass }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+Register\+Class Link class driver to Host Core. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & \+: Host Handle \\
+\hline
+{\em pclass} & Class handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & Status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_ga13d5830fd9ded5d562814d33d52e8fe4}\label{group__USBH__CORE__Exported__FunctionsPrototype_ga13d5830fd9ded5d562814d33d52e8fe4}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_SelectInterface@{USBH\_SelectInterface}}
+\index{USBH\_SelectInterface@{USBH\_SelectInterface}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_SelectInterface()}{USBH\_SelectInterface()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+Select\+Interface (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{interface }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+Select\+Interface Select current interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em interface} & Interface number \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & Status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_gaa267a3a2318063e408c98c1dd5c9ab7c}\label{group__USBH__CORE__Exported__FunctionsPrototype_gaa267a3a2318063e408c98c1dd5c9ab7c}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_Start@{USBH\_Start}}
+\index{USBH\_Start@{USBH\_Start}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_Start()}{USBH\_Start()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+Start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+Start Start the U\+SB Host Core. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & Status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__CORE__Exported__FunctionsPrototype_ga142f35af61cbaa7b46ad05192e110f3e}\label{group__USBH__CORE__Exported__FunctionsPrototype_ga142f35af61cbaa7b46ad05192e110f3e}} 
+\index{USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}!USBH\_Stop@{USBH\_Stop}}
+\index{USBH\_Stop@{USBH\_Stop}!USBH\_CORE\_Exported\_FunctionsPrototype@{USBH\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_Stop()}{USBH\_Stop()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+Stop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+Stop Stop the U\+SB Host Core. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & Status \\
+\hline
+\end{DoxyRetVals}

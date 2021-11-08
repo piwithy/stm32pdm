@@ -1,0 +1,415 @@
+\hypertarget{group__USBH__CORE__Exported__Types}{}\doxysection{U\+S\+B\+H\+\_\+\+C\+O\+R\+E\+\_\+\+Exported\+\_\+\+Types}
+\label{group__USBH__CORE__Exported__Types}\index{USBH\_CORE\_Exported\_Types@{USBH\_CORE\_Exported\_Types}}
+Collaboration diagram for U\+S\+B\+H\+\_\+\+C\+O\+R\+E\+\_\+\+Exported\+\_\+\+Types\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{group__USBH__CORE__Exported__Types}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structuint16__t__uint8__t_1_1BW}{uint16\+\_\+t\+\_\+uint8\+\_\+t\+::\+BW}}
+\item 
+struct \mbox{\hyperlink{struct__USB__Setup_1_1__SetupPkt__Struc}{\+\_\+\+U\+S\+B\+\_\+\+Setup\+::\+\_\+\+Setup\+Pkt\+\_\+\+Struc}}
+\item 
+struct \mbox{\hyperlink{structUSBH__CtrlTypeDef}{U\+S\+B\+H\+\_\+\+Ctrl\+Type\+Def}}
+\item 
+struct \mbox{\hyperlink{structUSBH__DeviceTypeDef}{U\+S\+B\+H\+\_\+\+Device\+Type\+Def}}
+\item 
+struct \mbox{\hyperlink{structUSBH__ClassTypeDef}{U\+S\+B\+H\+\_\+\+Class\+Type\+Def}}
+\item 
+struct \mbox{\hyperlink{struct__USBH__HandleTypeDef}{\+\_\+\+U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gabd1c4389061dcd7b9f84f5adf15d58f1}\label{group__USBH__CORE__Exported__Types_gabd1c4389061dcd7b9f84f5adf15d58f1}} 
+typedef struct \mbox{\hyperlink{struct__USBH__HandleTypeDef}{\+\_\+\+U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} {\bfseries U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gabc2b09e7daec442d1efdad50fe79ffca}\label{group__USBH__CORE__Exported__Types_gabc2b09e7daec442d1efdad50fe79ffca}} 
+enum {\bfseries U\+S\+B\+H\+\_\+\+Speed\+Type\+Def} \{ {\bfseries U\+S\+B\+H\+\_\+\+S\+P\+E\+E\+D\+\_\+\+H\+I\+GH} = 0U, 
+{\bfseries U\+S\+B\+H\+\_\+\+S\+P\+E\+E\+D\+\_\+\+F\+U\+LL} = 1U, 
+{\bfseries U\+S\+B\+H\+\_\+\+S\+P\+E\+E\+D\+\_\+\+L\+OW} = 2U
+ \}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga81eabd93c12fee3a5222bff76145f115}\label{group__USBH__CORE__Exported__Types_ga81eabd93c12fee3a5222bff76145f115}} 
+enum {\bfseries H\+O\+S\+T\+\_\+\+State\+Type\+Def} \{ \newline
+{\bfseries H\+O\+S\+T\+\_\+\+I\+D\+LE} = 0U, 
+{\bfseries H\+O\+S\+T\+\_\+\+D\+E\+V\+\_\+\+W\+A\+I\+T\+\_\+\+F\+O\+R\+\_\+\+A\+T\+T\+A\+C\+H\+M\+E\+NT}, 
+{\bfseries H\+O\+S\+T\+\_\+\+D\+E\+V\+\_\+\+A\+T\+T\+A\+C\+H\+ED}, 
+{\bfseries H\+O\+S\+T\+\_\+\+D\+E\+V\+\_\+\+D\+I\+S\+C\+O\+N\+N\+E\+C\+T\+ED}, 
+\newline
+{\bfseries H\+O\+S\+T\+\_\+\+D\+E\+T\+E\+C\+T\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+S\+P\+E\+ED}, 
+{\bfseries H\+O\+S\+T\+\_\+\+E\+N\+U\+M\+E\+R\+A\+T\+I\+ON}, 
+{\bfseries H\+O\+S\+T\+\_\+\+C\+L\+A\+S\+S\+\_\+\+R\+E\+Q\+U\+E\+ST}, 
+{\bfseries H\+O\+S\+T\+\_\+\+I\+N\+P\+UT}, 
+\newline
+{\bfseries H\+O\+S\+T\+\_\+\+S\+E\+T\+\_\+\+C\+O\+N\+F\+I\+G\+U\+R\+A\+T\+I\+ON}, 
+{\bfseries H\+O\+S\+T\+\_\+\+S\+E\+T\+\_\+\+W\+A\+K\+E\+U\+P\+\_\+\+F\+E\+A\+T\+U\+RE}, 
+{\bfseries H\+O\+S\+T\+\_\+\+C\+H\+E\+C\+K\+\_\+\+C\+L\+A\+SS}, 
+{\bfseries H\+O\+S\+T\+\_\+\+C\+L\+A\+SS}, 
+\newline
+{\bfseries H\+O\+S\+T\+\_\+\+S\+U\+S\+P\+E\+N\+D\+ED}, 
+{\bfseries H\+O\+S\+T\+\_\+\+A\+B\+O\+R\+T\+\_\+\+S\+T\+A\+TE}
+ \}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga8e75fecc709643844d56ffffbe7898f7}\label{group__USBH__CORE__Exported__Types_ga8e75fecc709643844d56ffffbe7898f7}} 
+enum {\bfseries E\+N\+U\+M\+\_\+\+State\+Type\+Def} \{ \newline
+{\bfseries E\+N\+U\+M\+\_\+\+I\+D\+LE} = 0U, 
+{\bfseries E\+N\+U\+M\+\_\+\+G\+E\+T\+\_\+\+F\+U\+L\+L\+\_\+\+D\+E\+V\+\_\+\+D\+E\+SC}, 
+{\bfseries E\+N\+U\+M\+\_\+\+S\+E\+T\+\_\+\+A\+D\+DR}, 
+{\bfseries E\+N\+U\+M\+\_\+\+G\+E\+T\+\_\+\+C\+F\+G\+\_\+\+D\+E\+SC}, 
+\newline
+{\bfseries E\+N\+U\+M\+\_\+\+G\+E\+T\+\_\+\+F\+U\+L\+L\+\_\+\+C\+F\+G\+\_\+\+D\+E\+SC}, 
+{\bfseries E\+N\+U\+M\+\_\+\+G\+E\+T\+\_\+\+M\+F\+C\+\_\+\+S\+T\+R\+I\+N\+G\+\_\+\+D\+E\+SC}, 
+{\bfseries E\+N\+U\+M\+\_\+\+G\+E\+T\+\_\+\+P\+R\+O\+D\+U\+C\+T\+\_\+\+S\+T\+R\+I\+N\+G\+\_\+\+D\+E\+SC}, 
+{\bfseries E\+N\+U\+M\+\_\+\+G\+E\+T\+\_\+\+S\+E\+R\+I\+A\+L\+N\+U\+M\+\_\+\+S\+T\+R\+I\+N\+G\+\_\+\+D\+E\+SC}
+ \}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga4dbe17a58008a313bd2097e5e8572605}\label{group__USBH__CORE__Exported__Types_ga4dbe17a58008a313bd2097e5e8572605}} 
+enum {\bfseries C\+T\+R\+L\+\_\+\+State\+Type\+Def} \{ \newline
+{\bfseries C\+T\+R\+L\+\_\+\+I\+D\+LE} = 0U, 
+{\bfseries C\+T\+R\+L\+\_\+\+S\+E\+T\+UP}, 
+{\bfseries C\+T\+R\+L\+\_\+\+S\+E\+T\+U\+P\+\_\+\+W\+A\+IT}, 
+{\bfseries C\+T\+R\+L\+\_\+\+D\+A\+T\+A\+\_\+\+IN}, 
+\newline
+{\bfseries C\+T\+R\+L\+\_\+\+D\+A\+T\+A\+\_\+\+I\+N\+\_\+\+W\+A\+IT}, 
+{\bfseries C\+T\+R\+L\+\_\+\+D\+A\+T\+A\+\_\+\+O\+UT}, 
+{\bfseries C\+T\+R\+L\+\_\+\+D\+A\+T\+A\+\_\+\+O\+U\+T\+\_\+\+W\+A\+IT}, 
+{\bfseries C\+T\+R\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+IN}, 
+\newline
+{\bfseries C\+T\+R\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+I\+N\+\_\+\+W\+A\+IT}, 
+{\bfseries C\+T\+R\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+O\+UT}, 
+{\bfseries C\+T\+R\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+O\+U\+T\+\_\+\+W\+A\+IT}, 
+{\bfseries C\+T\+R\+L\+\_\+\+E\+R\+R\+OR}, 
+\newline
+{\bfseries C\+T\+R\+L\+\_\+\+S\+T\+A\+L\+L\+ED}, 
+{\bfseries C\+T\+R\+L\+\_\+\+C\+O\+M\+P\+L\+E\+TE}
+ \}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga717af3a61392bd11268916bc767f0318}\label{group__USBH__CORE__Exported__Types_ga717af3a61392bd11268916bc767f0318}} 
+enum {\bfseries C\+M\+D\+\_\+\+State\+Type\+Def} \{ {\bfseries C\+M\+D\+\_\+\+I\+D\+LE} = 0U, 
+{\bfseries C\+M\+D\+\_\+\+S\+E\+ND}, 
+{\bfseries C\+M\+D\+\_\+\+W\+A\+IT}
+ \}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga88037a8cb1d282dc42072c5d361591d5}\label{group__USBH__CORE__Exported__Types_ga88037a8cb1d282dc42072c5d361591d5}} 
+enum {\bfseries U\+S\+B\+H\+\_\+\+U\+R\+B\+State\+Type\+Def} \{ \newline
+{\bfseries U\+S\+B\+H\+\_\+\+U\+R\+B\+\_\+\+I\+D\+LE} = 0U, 
+{\bfseries U\+S\+B\+H\+\_\+\+U\+R\+B\+\_\+\+D\+O\+NE}, 
+{\bfseries U\+S\+B\+H\+\_\+\+U\+R\+B\+\_\+\+N\+O\+T\+R\+E\+A\+DY}, 
+{\bfseries U\+S\+B\+H\+\_\+\+U\+R\+B\+\_\+\+N\+Y\+ET}, 
+\newline
+{\bfseries U\+S\+B\+H\+\_\+\+U\+R\+B\+\_\+\+E\+R\+R\+OR}, 
+{\bfseries U\+S\+B\+H\+\_\+\+U\+R\+B\+\_\+\+S\+T\+A\+LL}
+ \}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga3c51368b2f45804a599a6b01e1d04369}\label{group__USBH__CORE__Exported__Types_ga3c51368b2f45804a599a6b01e1d04369}} 
+enum {\bfseries U\+S\+B\+H\+\_\+\+O\+S\+Event\+Type\+Def} \{ \newline
+{\bfseries U\+S\+B\+H\+\_\+\+P\+O\+R\+T\+\_\+\+E\+V\+E\+NT} = 1U, 
+{\bfseries U\+S\+B\+H\+\_\+\+U\+R\+B\+\_\+\+E\+V\+E\+NT}, 
+{\bfseries U\+S\+B\+H\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+E\+V\+E\+NT}, 
+{\bfseries U\+S\+B\+H\+\_\+\+C\+L\+A\+S\+S\+\_\+\+E\+V\+E\+NT}, 
+\newline
+{\bfseries U\+S\+B\+H\+\_\+\+S\+T\+A\+T\+E\+\_\+\+C\+H\+A\+N\+G\+E\+D\+\_\+\+E\+V\+E\+NT}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gaf420fddc8a5c2a365a3602226f4deafa}\label{group__USBH__CORE__Exported__Types_gaf420fddc8a5c2a365a3602226f4deafa}} 
+uint16\+\_\+t {\bfseries uint16\+\_\+t\+\_\+uint8\+\_\+t\+::w}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga7514a98586d9250b72b9e894efd9f791}\label{group__USBH__CORE__Exported__Types_ga7514a98586d9250b72b9e894efd9f791}} 
+uint8\+\_\+t {\bfseries uint16\+\_\+t\+\_\+uint8\+\_\+t\+::\+B\+W\+::msb}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gabeaae55c94b84aaaaa13743b7c79ffc2}\label{group__USBH__CORE__Exported__Types_gabeaae55c94b84aaaaa13743b7c79ffc2}} 
+uint8\+\_\+t {\bfseries uint16\+\_\+t\+\_\+uint8\+\_\+t\+::\+B\+W\+::lsb}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga9bd9304e89c72f660cd8407fffe9f2b2}\label{group__USBH__CORE__Exported__Types_ga9bd9304e89c72f660cd8407fffe9f2b2}} 
+struct \mbox{\hyperlink{structuint16__t__uint8__t_1_1BW}{uint16\+\_\+t\+\_\+uint8\+\_\+t\+::\+BW}} {\bfseries uint16\+\_\+t\+\_\+uint8\+\_\+t\+::bw}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gacb4a845b9f6116d6449b0758afeec1dd}\label{group__USBH__CORE__Exported__Types_gacb4a845b9f6116d6449b0758afeec1dd}} 
+uint32\+\_\+t {\bfseries \+\_\+\+U\+S\+B\+\_\+\+Setup\+::d8} \mbox{[}2\mbox{]}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gaad47748cac525b2ae1b6ab562d9a0b5e}\label{group__USBH__CORE__Exported__Types_gaad47748cac525b2ae1b6ab562d9a0b5e}} 
+uint8\+\_\+t {\bfseries \+\_\+\+U\+S\+B\+\_\+\+Setup\+::\+\_\+\+Setup\+Pkt\+\_\+\+Struc\+::bm\+Request\+Type}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gaea6cfe660f20bcbd0efbc3a1e7be6e8f}\label{group__USBH__CORE__Exported__Types_gaea6cfe660f20bcbd0efbc3a1e7be6e8f}} 
+uint8\+\_\+t {\bfseries \+\_\+\+U\+S\+B\+\_\+\+Setup\+::\+\_\+\+Setup\+Pkt\+\_\+\+Struc\+::b\+Request}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga835f7583a7ba15123fdeedccd0be7966}\label{group__USBH__CORE__Exported__Types_ga835f7583a7ba15123fdeedccd0be7966}} 
+\mbox{\hyperlink{unionuint16__t__uint8__t}{uint16\+\_\+t\+\_\+uint8\+\_\+t}} {\bfseries \+\_\+\+U\+S\+B\+\_\+\+Setup\+::\+\_\+\+Setup\+Pkt\+\_\+\+Struc\+::w\+Value}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga793fd9df780bcdc7835270ab8533f0e1}\label{group__USBH__CORE__Exported__Types_ga793fd9df780bcdc7835270ab8533f0e1}} 
+\mbox{\hyperlink{unionuint16__t__uint8__t}{uint16\+\_\+t\+\_\+uint8\+\_\+t}} {\bfseries \+\_\+\+U\+S\+B\+\_\+\+Setup\+::\+\_\+\+Setup\+Pkt\+\_\+\+Struc\+::w\+Index}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gaad411297f29bbe67788110293868c497}\label{group__USBH__CORE__Exported__Types_gaad411297f29bbe67788110293868c497}} 
+\mbox{\hyperlink{unionuint16__t__uint8__t}{uint16\+\_\+t\+\_\+uint8\+\_\+t}} {\bfseries \+\_\+\+U\+S\+B\+\_\+\+Setup\+::\+\_\+\+Setup\+Pkt\+\_\+\+Struc\+::w\+Length}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gabc8b4d507b953b3acbe84eaba27903ca}\label{group__USBH__CORE__Exported__Types_gabc8b4d507b953b3acbe84eaba27903ca}} 
+struct \mbox{\hyperlink{struct__USB__Setup_1_1__SetupPkt__Struc}{\+\_\+\+U\+S\+B\+\_\+\+Setup\+::\+\_\+\+Setup\+Pkt\+\_\+\+Struc}} {\bfseries \+\_\+\+U\+S\+B\+\_\+\+Setup\+::b}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gaae5e7526e8a0bc1cc43ffecfe0aafba0}\label{group__USBH__CORE__Exported__Types_gaae5e7526e8a0bc1cc43ffecfe0aafba0}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Desc\+Header\+::b\+Length}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gaee7f8b032cbdab06aa11ba7d977e8c4c}\label{group__USBH__CORE__Exported__Types_gaee7f8b032cbdab06aa11ba7d977e8c4c}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Desc\+Header\+::b\+Descriptor\+Type}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gaee0e432523ce9d981254d92519f31b9c}\label{group__USBH__CORE__Exported__Types_gaee0e432523ce9d981254d92519f31b9c}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Device\+Descriptor\+::b\+Length}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gac2f5357897d6e562ddfc27e49ddf2d3a}\label{group__USBH__CORE__Exported__Types_gac2f5357897d6e562ddfc27e49ddf2d3a}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Device\+Descriptor\+::b\+Descriptor\+Type}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga58379cf0cc336526fe5c6aa6ef2b1e72}\label{group__USBH__CORE__Exported__Types_ga58379cf0cc336526fe5c6aa6ef2b1e72}} 
+uint16\+\_\+t {\bfseries \+\_\+\+Device\+Descriptor\+::bcd\+U\+SB}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gaabda611e50cb957ec2955685a30aaaf4}\label{group__USBH__CORE__Exported__Types_gaabda611e50cb957ec2955685a30aaaf4}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Device\+Descriptor\+::b\+Device\+Class}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga6c1cbade861bf4229360188c36527468}\label{group__USBH__CORE__Exported__Types_ga6c1cbade861bf4229360188c36527468}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Device\+Descriptor\+::b\+Device\+Sub\+Class}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gab0773ef028d003591c624126b1a8431e}\label{group__USBH__CORE__Exported__Types_gab0773ef028d003591c624126b1a8431e}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Device\+Descriptor\+::b\+Device\+Protocol}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga66fec582c60a7ba353ad2c0b34558e97}\label{group__USBH__CORE__Exported__Types_ga66fec582c60a7ba353ad2c0b34558e97}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Device\+Descriptor\+::b\+Max\+Packet\+Size}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gad34a0cb06b645c032877d7c74d83af98}\label{group__USBH__CORE__Exported__Types_gad34a0cb06b645c032877d7c74d83af98}} 
+uint16\+\_\+t {\bfseries \+\_\+\+Device\+Descriptor\+::id\+Vendor}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga744f50dfc5ed68cd75a1928ef2eed8e1}\label{group__USBH__CORE__Exported__Types_ga744f50dfc5ed68cd75a1928ef2eed8e1}} 
+uint16\+\_\+t {\bfseries \+\_\+\+Device\+Descriptor\+::id\+Product}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga1c8e0d5ddc4eb0ca7a2a091d43642860}\label{group__USBH__CORE__Exported__Types_ga1c8e0d5ddc4eb0ca7a2a091d43642860}} 
+uint16\+\_\+t {\bfseries \+\_\+\+Device\+Descriptor\+::bcd\+Device}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gac02e20cf2baf7d86b9202dea3b12cfcd}\label{group__USBH__CORE__Exported__Types_gac02e20cf2baf7d86b9202dea3b12cfcd}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Device\+Descriptor\+::i\+Manufacturer}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga891f1473e2b19713633706a58f4f8cd6}\label{group__USBH__CORE__Exported__Types_ga891f1473e2b19713633706a58f4f8cd6}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Device\+Descriptor\+::i\+Product}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga045e36f7805b5d1dfb6bbbec3a6c1d13}\label{group__USBH__CORE__Exported__Types_ga045e36f7805b5d1dfb6bbbec3a6c1d13}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Device\+Descriptor\+::i\+Serial\+Number}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gac222eac5cfd5e0a0b28475e7e3fb6d40}\label{group__USBH__CORE__Exported__Types_gac222eac5cfd5e0a0b28475e7e3fb6d40}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Device\+Descriptor\+::b\+Num\+Configurations}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga2dbf1ebb6b8163cf823c148afc6b1340}\label{group__USBH__CORE__Exported__Types_ga2dbf1ebb6b8163cf823c148afc6b1340}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Endpoint\+Descriptor\+::b\+Length}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga0bc555a2ddf05b682cbb6ffd908fe7dd}\label{group__USBH__CORE__Exported__Types_ga0bc555a2ddf05b682cbb6ffd908fe7dd}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Endpoint\+Descriptor\+::b\+Descriptor\+Type}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga6740896fcf87c14623e8054be62d49cd}\label{group__USBH__CORE__Exported__Types_ga6740896fcf87c14623e8054be62d49cd}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Endpoint\+Descriptor\+::b\+Endpoint\+Address}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga6f701baf86f7bd135b1e0418291624a4}\label{group__USBH__CORE__Exported__Types_ga6f701baf86f7bd135b1e0418291624a4}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Endpoint\+Descriptor\+::bm\+Attributes}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gafe66b7f28fb148fdec26a21d2df73940}\label{group__USBH__CORE__Exported__Types_gafe66b7f28fb148fdec26a21d2df73940}} 
+uint16\+\_\+t {\bfseries \+\_\+\+Endpoint\+Descriptor\+::w\+Max\+Packet\+Size}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga6572fe79f59390369edd82a3fcf3856d}\label{group__USBH__CORE__Exported__Types_ga6572fe79f59390369edd82a3fcf3856d}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Endpoint\+Descriptor\+::b\+Interval}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga1af5f9d6b03fccb71e4f992c2626303e}\label{group__USBH__CORE__Exported__Types_ga1af5f9d6b03fccb71e4f992c2626303e}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Interface\+Descriptor\+::b\+Length}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gaa32170d416038b92cd896f46e1ca6150}\label{group__USBH__CORE__Exported__Types_gaa32170d416038b92cd896f46e1ca6150}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Interface\+Descriptor\+::b\+Descriptor\+Type}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga0d386fc3bf932b456b23c352154e73e5}\label{group__USBH__CORE__Exported__Types_ga0d386fc3bf932b456b23c352154e73e5}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Interface\+Descriptor\+::b\+Interface\+Number}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gac58c9652ddfeac9515aa0ee76ef1d29a}\label{group__USBH__CORE__Exported__Types_gac58c9652ddfeac9515aa0ee76ef1d29a}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Interface\+Descriptor\+::b\+Alternate\+Setting}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gaf1e6914ad45210f83180f4cd9dceb92c}\label{group__USBH__CORE__Exported__Types_gaf1e6914ad45210f83180f4cd9dceb92c}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Interface\+Descriptor\+::b\+Num\+Endpoints}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga01e936390d2118442b09bcd45554c651}\label{group__USBH__CORE__Exported__Types_ga01e936390d2118442b09bcd45554c651}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Interface\+Descriptor\+::b\+Interface\+Class}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga01b9837dc889ce8df45483d228a4b296}\label{group__USBH__CORE__Exported__Types_ga01b9837dc889ce8df45483d228a4b296}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Interface\+Descriptor\+::b\+Interface\+Sub\+Class}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga70c2c18f43aac2e6d88d7c209ea1bb98}\label{group__USBH__CORE__Exported__Types_ga70c2c18f43aac2e6d88d7c209ea1bb98}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Interface\+Descriptor\+::b\+Interface\+Protocol}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga8628ec1d6cb061e4348a116e3a283ffc}\label{group__USBH__CORE__Exported__Types_ga8628ec1d6cb061e4348a116e3a283ffc}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Interface\+Descriptor\+::i\+Interface}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga97e8875a29666f8480c910ca9eb5182a}\label{group__USBH__CORE__Exported__Types_ga97e8875a29666f8480c910ca9eb5182a}} 
+\mbox{\hyperlink{struct__EndpointDescriptor}{U\+S\+B\+H\+\_\+\+Ep\+Desc\+Type\+Def}} {\bfseries \+\_\+\+Interface\+Descriptor\+::\+Ep\+\_\+\+Desc} \mbox{[}U\+S\+B\+H\+\_\+\+M\+A\+X\+\_\+\+N\+U\+M\+\_\+\+E\+N\+D\+P\+O\+I\+N\+TS\mbox{]}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga4800c22b75e3be5c958f6b1f8e3121f1}\label{group__USBH__CORE__Exported__Types_ga4800c22b75e3be5c958f6b1f8e3121f1}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Configuration\+Descriptor\+::b\+Length}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga56731796aa8fcaabe9fe076fcb93a633}\label{group__USBH__CORE__Exported__Types_ga56731796aa8fcaabe9fe076fcb93a633}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Configuration\+Descriptor\+::b\+Descriptor\+Type}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gaa3de1cddc0e3705ac2077c21120d62fa}\label{group__USBH__CORE__Exported__Types_gaa3de1cddc0e3705ac2077c21120d62fa}} 
+uint16\+\_\+t {\bfseries \+\_\+\+Configuration\+Descriptor\+::w\+Total\+Length}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga618a921e6b613e36f15bb3658ea06615}\label{group__USBH__CORE__Exported__Types_ga618a921e6b613e36f15bb3658ea06615}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Configuration\+Descriptor\+::b\+Num\+Interfaces}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gac3daa11d7ec8423e677fc15dbe5ad174}\label{group__USBH__CORE__Exported__Types_gac3daa11d7ec8423e677fc15dbe5ad174}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Configuration\+Descriptor\+::b\+Configuration\+Value}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga0a0470b95ebfa9c5c8f89a6e03bf2ec2}\label{group__USBH__CORE__Exported__Types_ga0a0470b95ebfa9c5c8f89a6e03bf2ec2}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Configuration\+Descriptor\+::i\+Configuration}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gabf03ced428c6adb7f121f0013106c934}\label{group__USBH__CORE__Exported__Types_gabf03ced428c6adb7f121f0013106c934}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Configuration\+Descriptor\+::bm\+Attributes}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga3499e4adeb3928d2ac078584099774d4}\label{group__USBH__CORE__Exported__Types_ga3499e4adeb3928d2ac078584099774d4}} 
+uint8\+\_\+t {\bfseries \+\_\+\+Configuration\+Descriptor\+::b\+Max\+Power}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga99487b699c8b2a185bc9845ab802f9ff}\label{group__USBH__CORE__Exported__Types_ga99487b699c8b2a185bc9845ab802f9ff}} 
+\mbox{\hyperlink{struct__InterfaceDescriptor}{U\+S\+B\+H\+\_\+\+Interface\+Desc\+Type\+Def}} {\bfseries \+\_\+\+Configuration\+Descriptor\+::\+Itf\+\_\+\+Desc} \mbox{[}U\+S\+B\+H\+\_\+\+M\+A\+X\+\_\+\+N\+U\+M\+\_\+\+I\+N\+T\+E\+R\+F\+A\+C\+ES\mbox{]}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga898da4c69360741357aed73aa677d28e}\label{group__USBH__CORE__Exported__Types_ga898da4c69360741357aed73aa677d28e}} 
+uint8\+\_\+t {\bfseries U\+S\+B\+H\+\_\+\+Ctrl\+Type\+Def\+::pipe\+\_\+in}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga71d9bae3062035d141f462d913ee3f1c}\label{group__USBH__CORE__Exported__Types_ga71d9bae3062035d141f462d913ee3f1c}} 
+uint8\+\_\+t {\bfseries U\+S\+B\+H\+\_\+\+Ctrl\+Type\+Def\+::pipe\+\_\+out}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gae377f09a70f77defe5b98d05887cd892}\label{group__USBH__CORE__Exported__Types_gae377f09a70f77defe5b98d05887cd892}} 
+uint8\+\_\+t {\bfseries U\+S\+B\+H\+\_\+\+Ctrl\+Type\+Def\+::pipe\+\_\+size}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gab9382fa795fc9e84b4bb29b30417600d}\label{group__USBH__CORE__Exported__Types_gab9382fa795fc9e84b4bb29b30417600d}} 
+uint8\+\_\+t $\ast$ {\bfseries U\+S\+B\+H\+\_\+\+Ctrl\+Type\+Def\+::buff}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gafb3ea9628e5e323eb3b3822fa8b71470}\label{group__USBH__CORE__Exported__Types_gafb3ea9628e5e323eb3b3822fa8b71470}} 
+uint16\+\_\+t {\bfseries U\+S\+B\+H\+\_\+\+Ctrl\+Type\+Def\+::length}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gae05f7704a0ca3185dc58bde1521f3eee}\label{group__USBH__CORE__Exported__Types_gae05f7704a0ca3185dc58bde1521f3eee}} 
+uint16\+\_\+t {\bfseries U\+S\+B\+H\+\_\+\+Ctrl\+Type\+Def\+::timer}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gac52dbe60defda13b4c98f214f5dea073}\label{group__USBH__CORE__Exported__Types_gac52dbe60defda13b4c98f214f5dea073}} 
+\mbox{\hyperlink{union__USB__Setup}{U\+S\+B\+\_\+\+Setup\+\_\+\+Type\+Def}} {\bfseries U\+S\+B\+H\+\_\+\+Ctrl\+Type\+Def\+::setup}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gad04d3e6872331115cfc04e15bda2d9ab}\label{group__USBH__CORE__Exported__Types_gad04d3e6872331115cfc04e15bda2d9ab}} 
+C\+T\+R\+L\+\_\+\+State\+Type\+Def {\bfseries U\+S\+B\+H\+\_\+\+Ctrl\+Type\+Def\+::state}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gad3ce749d315f33f0bf3b30306a6b393b}\label{group__USBH__CORE__Exported__Types_gad3ce749d315f33f0bf3b30306a6b393b}} 
+uint8\+\_\+t {\bfseries U\+S\+B\+H\+\_\+\+Ctrl\+Type\+Def\+::errorcount}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga00609ad1a4187eb2521e35a72acb4394}\label{group__USBH__CORE__Exported__Types_ga00609ad1a4187eb2521e35a72acb4394}} 
+uint8\+\_\+t {\bfseries U\+S\+B\+H\+\_\+\+Device\+Type\+Def\+::\+Cfg\+Desc\+\_\+\+Raw} \mbox{[}U\+S\+B\+H\+\_\+\+M\+A\+X\+\_\+\+S\+I\+Z\+E\+\_\+\+C\+O\+N\+F\+I\+G\+U\+R\+A\+T\+I\+ON\mbox{]}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga7b11abbbf504a4f96f23ea7163b022ad}\label{group__USBH__CORE__Exported__Types_ga7b11abbbf504a4f96f23ea7163b022ad}} 
+uint8\+\_\+t {\bfseries U\+S\+B\+H\+\_\+\+Device\+Type\+Def\+::\+Data} \mbox{[}U\+S\+B\+H\+\_\+\+M\+A\+X\+\_\+\+D\+A\+T\+A\+\_\+\+B\+U\+F\+F\+ER\mbox{]}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga37beb0dbc865b53bc197391c87f26728}\label{group__USBH__CORE__Exported__Types_ga37beb0dbc865b53bc197391c87f26728}} 
+uint8\+\_\+t {\bfseries U\+S\+B\+H\+\_\+\+Device\+Type\+Def\+::address}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gaf80c94bac44a5f956dd899b8fad523f8}\label{group__USBH__CORE__Exported__Types_gaf80c94bac44a5f956dd899b8fad523f8}} 
+uint8\+\_\+t {\bfseries U\+S\+B\+H\+\_\+\+Device\+Type\+Def\+::speed}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga7f0b8f834ecbd8f8309bffaa2cad25a0}\label{group__USBH__CORE__Exported__Types_ga7f0b8f834ecbd8f8309bffaa2cad25a0}} 
+uint8\+\_\+t {\bfseries U\+S\+B\+H\+\_\+\+Device\+Type\+Def\+::\+Enum\+Cnt}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga0c37b8603a7a96f5b745b97150a5654d}\label{group__USBH__CORE__Exported__Types_ga0c37b8603a7a96f5b745b97150a5654d}} 
+uint8\+\_\+t {\bfseries U\+S\+B\+H\+\_\+\+Device\+Type\+Def\+::\+Rst\+Cnt}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gaf89e8153b5f4081590b7e8c70e9e924d}\label{group__USBH__CORE__Exported__Types_gaf89e8153b5f4081590b7e8c70e9e924d}} 
+\mbox{\hyperlink{core__sc300_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} uint8\+\_\+t {\bfseries U\+S\+B\+H\+\_\+\+Device\+Type\+Def\+::is\+\_\+connected}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gafce8518944f1413ff973db4e792f4ab3}\label{group__USBH__CORE__Exported__Types_gafce8518944f1413ff973db4e792f4ab3}} 
+\mbox{\hyperlink{core__sc300_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} uint8\+\_\+t {\bfseries U\+S\+B\+H\+\_\+\+Device\+Type\+Def\+::is\+\_\+disconnected}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga59de526fcd098bf254fc1df1737d8cf1}\label{group__USBH__CORE__Exported__Types_ga59de526fcd098bf254fc1df1737d8cf1}} 
+\mbox{\hyperlink{core__sc300_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} uint8\+\_\+t {\bfseries U\+S\+B\+H\+\_\+\+Device\+Type\+Def\+::is\+\_\+\+Re\+Enumerated}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga58cc638bf8021d857c2d5d9b56a45313}\label{group__USBH__CORE__Exported__Types_ga58cc638bf8021d857c2d5d9b56a45313}} 
+uint8\+\_\+t {\bfseries U\+S\+B\+H\+\_\+\+Device\+Type\+Def\+::\+Port\+Enabled}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga50304d0b98c4b120ac2ca7de4ac3cc8a}\label{group__USBH__CORE__Exported__Types_ga50304d0b98c4b120ac2ca7de4ac3cc8a}} 
+uint8\+\_\+t {\bfseries U\+S\+B\+H\+\_\+\+Device\+Type\+Def\+::current\+\_\+interface}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga0debf3ef2d7554bab97cc99638b08218}\label{group__USBH__CORE__Exported__Types_ga0debf3ef2d7554bab97cc99638b08218}} 
+\mbox{\hyperlink{struct__DeviceDescriptor}{U\+S\+B\+H\+\_\+\+Dev\+Desc\+Type\+Def}} {\bfseries U\+S\+B\+H\+\_\+\+Device\+Type\+Def\+::\+Dev\+Desc}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga0d6d97837a750b16167016e4fbd0446d}\label{group__USBH__CORE__Exported__Types_ga0d6d97837a750b16167016e4fbd0446d}} 
+\mbox{\hyperlink{struct__ConfigurationDescriptor}{U\+S\+B\+H\+\_\+\+Cfg\+Desc\+Type\+Def}} {\bfseries U\+S\+B\+H\+\_\+\+Device\+Type\+Def\+::\+Cfg\+Desc}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gaa6d91616a2e451c407cc09b1d74d03d9}\label{group__USBH__CORE__Exported__Types_gaa6d91616a2e451c407cc09b1d74d03d9}} 
+const char $\ast$ {\bfseries U\+S\+B\+H\+\_\+\+Class\+Type\+Def\+::\+Name}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga367e041343c3e85ae7f2a80682d08be6}\label{group__USBH__CORE__Exported__Types_ga367e041343c3e85ae7f2a80682d08be6}} 
+uint8\+\_\+t {\bfseries U\+S\+B\+H\+\_\+\+Class\+Type\+Def\+::\+Class\+Code}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga33e94aac699d1f90afc266e3964c8827}\label{group__USBH__CORE__Exported__Types_ga33e94aac699d1f90afc266e3964c8827}} 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def($\ast$ {\bfseries U\+S\+B\+H\+\_\+\+Class\+Type\+Def\+::\+Init} )(struct \mbox{\hyperlink{struct__USBH__HandleTypeDef}{\+\_\+\+U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gae071ede3d5ab05cf46bf4f6c757ff0b9}\label{group__USBH__CORE__Exported__Types_gae071ede3d5ab05cf46bf4f6c757ff0b9}} 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def($\ast$ {\bfseries U\+S\+B\+H\+\_\+\+Class\+Type\+Def\+::\+De\+Init} )(struct \mbox{\hyperlink{struct__USBH__HandleTypeDef}{\+\_\+\+U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gaba1193112e04970ede4d1c7b8fad859c}\label{group__USBH__CORE__Exported__Types_gaba1193112e04970ede4d1c7b8fad859c}} 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def($\ast$ {\bfseries U\+S\+B\+H\+\_\+\+Class\+Type\+Def\+::\+Requests} )(struct \mbox{\hyperlink{struct__USBH__HandleTypeDef}{\+\_\+\+U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga28282ab0789131fa93fd16167be4a685}\label{group__USBH__CORE__Exported__Types_ga28282ab0789131fa93fd16167be4a685}} 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def($\ast$ {\bfseries U\+S\+B\+H\+\_\+\+Class\+Type\+Def\+::\+Bgnd\+Process} )(struct \mbox{\hyperlink{struct__USBH__HandleTypeDef}{\+\_\+\+U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gabd76518e43a8004d8c4662239db9c7c6}\label{group__USBH__CORE__Exported__Types_gabd76518e43a8004d8c4662239db9c7c6}} 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def($\ast$ {\bfseries U\+S\+B\+H\+\_\+\+Class\+Type\+Def\+::\+S\+O\+F\+Process} )(struct \mbox{\hyperlink{struct__USBH__HandleTypeDef}{\+\_\+\+U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga7526a9c3f460432ab1574906c4f9ab7a}\label{group__USBH__CORE__Exported__Types_ga7526a9c3f460432ab1574906c4f9ab7a}} 
+void $\ast$ {\bfseries U\+S\+B\+H\+\_\+\+Class\+Type\+Def\+::p\+Data}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gaebeca1cee5f6ddff4b7ea9313bc97f77}\label{group__USBH__CORE__Exported__Types_gaebeca1cee5f6ddff4b7ea9313bc97f77}} 
+\mbox{\hyperlink{core__sc300_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} H\+O\+S\+T\+\_\+\+State\+Type\+Def {\bfseries \+\_\+\+U\+S\+B\+H\+\_\+\+Handle\+Type\+Def\+::g\+State}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga75645eaa489f7f91581a366436b77130}\label{group__USBH__CORE__Exported__Types_ga75645eaa489f7f91581a366436b77130}} 
+E\+N\+U\+M\+\_\+\+State\+Type\+Def {\bfseries \+\_\+\+U\+S\+B\+H\+\_\+\+Handle\+Type\+Def\+::\+Enum\+State}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gab65df227657d934567b240b1a7a1d156}\label{group__USBH__CORE__Exported__Types_gab65df227657d934567b240b1a7a1d156}} 
+C\+M\+D\+\_\+\+State\+Type\+Def {\bfseries \+\_\+\+U\+S\+B\+H\+\_\+\+Handle\+Type\+Def\+::\+Request\+State}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga88296b4509fa110a9cb16526691e8e24}\label{group__USBH__CORE__Exported__Types_ga88296b4509fa110a9cb16526691e8e24}} 
+\mbox{\hyperlink{structUSBH__CtrlTypeDef}{U\+S\+B\+H\+\_\+\+Ctrl\+Type\+Def}} {\bfseries \+\_\+\+U\+S\+B\+H\+\_\+\+Handle\+Type\+Def\+::\+Control}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga2cf3cc4eac4e53c70d0ee062ba689c84}\label{group__USBH__CORE__Exported__Types_ga2cf3cc4eac4e53c70d0ee062ba689c84}} 
+\mbox{\hyperlink{structUSBH__DeviceTypeDef}{U\+S\+B\+H\+\_\+\+Device\+Type\+Def}} {\bfseries \+\_\+\+U\+S\+B\+H\+\_\+\+Handle\+Type\+Def\+::device}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga9edd023795d5872ca4447cd9e99f3b9f}\label{group__USBH__CORE__Exported__Types_ga9edd023795d5872ca4447cd9e99f3b9f}} 
+\mbox{\hyperlink{structUSBH__ClassTypeDef}{U\+S\+B\+H\+\_\+\+Class\+Type\+Def}} $\ast$ {\bfseries \+\_\+\+U\+S\+B\+H\+\_\+\+Handle\+Type\+Def\+::p\+Class} \mbox{[}U\+S\+B\+H\+\_\+\+M\+A\+X\+\_\+\+N\+U\+M\+\_\+\+S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+C\+L\+A\+SS\mbox{]}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gac5a952da42839cd0ed8584fdc2f4583c}\label{group__USBH__CORE__Exported__Types_gac5a952da42839cd0ed8584fdc2f4583c}} 
+\mbox{\hyperlink{structUSBH__ClassTypeDef}{U\+S\+B\+H\+\_\+\+Class\+Type\+Def}} $\ast$ {\bfseries \+\_\+\+U\+S\+B\+H\+\_\+\+Handle\+Type\+Def\+::p\+Active\+Class}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga249d5ac1bcea6ba3048c2b5188845425}\label{group__USBH__CORE__Exported__Types_ga249d5ac1bcea6ba3048c2b5188845425}} 
+uint32\+\_\+t {\bfseries \+\_\+\+U\+S\+B\+H\+\_\+\+Handle\+Type\+Def\+::\+Class\+Number}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga6b5132692b806781496d4c2625c2b8c5}\label{group__USBH__CORE__Exported__Types_ga6b5132692b806781496d4c2625c2b8c5}} 
+uint32\+\_\+t {\bfseries \+\_\+\+U\+S\+B\+H\+\_\+\+Handle\+Type\+Def\+::\+Pipes} \mbox{[}16\mbox{]}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gae3b1fbe885866353de9da3ab84c5b488}\label{group__USBH__CORE__Exported__Types_gae3b1fbe885866353de9da3ab84c5b488}} 
+\mbox{\hyperlink{core__sc300_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} uint32\+\_\+t {\bfseries \+\_\+\+U\+S\+B\+H\+\_\+\+Handle\+Type\+Def\+::\+Timer}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gac52d49712fd38f4571e3cf9477407aa7}\label{group__USBH__CORE__Exported__Types_gac52d49712fd38f4571e3cf9477407aa7}} 
+uint32\+\_\+t {\bfseries \+\_\+\+U\+S\+B\+H\+\_\+\+Handle\+Type\+Def\+::\+Timeout}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gaaaaa69c0fa3f09a8de7606dcf261fca0}\label{group__USBH__CORE__Exported__Types_gaaaaa69c0fa3f09a8de7606dcf261fca0}} 
+uint8\+\_\+t {\bfseries \+\_\+\+U\+S\+B\+H\+\_\+\+Handle\+Type\+Def\+::id}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_ga29fb612dde34e5128dd6c42b27098872}\label{group__USBH__CORE__Exported__Types_ga29fb612dde34e5128dd6c42b27098872}} 
+void $\ast$ {\bfseries \+\_\+\+U\+S\+B\+H\+\_\+\+Handle\+Type\+Def\+::p\+Data}
+\item 
+\mbox{\Hypertarget{group__USBH__CORE__Exported__Types_gaf272484f39e5ae84cff78d30be6a4830}\label{group__USBH__CORE__Exported__Types_gaf272484f39e5ae84cff78d30be6a4830}} 
+void($\ast$ {\bfseries \+\_\+\+U\+S\+B\+H\+\_\+\+Handle\+Type\+Def\+::p\+User} )(struct \mbox{\hyperlink{struct__USBH__HandleTypeDef}{\+\_\+\+U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$p\+Handle, uint8\+\_\+t id)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}

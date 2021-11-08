@@ -1,0 +1,47 @@
+\hypertarget{usbh__pipes_8h}{}\doxysection{Middlewares/\+S\+T/\+S\+T\+M32\+\_\+\+U\+S\+B\+\_\+\+Host\+\_\+\+Library/\+Core/\+Inc/usbh\+\_\+pipes.h File Reference}
+\label{usbh__pipes_8h}\index{Middlewares/ST/STM32\_USB\_Host\_Library/Core/Inc/usbh\_pipes.h@{Middlewares/ST/STM32\_USB\_Host\_Library/Core/Inc/usbh\_pipes.h}}
+
+
+Header file for \mbox{\hyperlink{usbh__pipes_8c}{usbh\+\_\+pipes.\+c}}.  
+
+
+{\ttfamily \#include \char`\"{}usbh\+\_\+core.\+h\char`\"{}}\newline
+Include dependency graph for usbh\+\_\+pipes.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{usbh__pipes_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{usbh__pipes_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__PIPES__Exported__FunctionsPrototype_ga95e4dd6f05ca2c5943a7b63348b61d56}{U\+S\+B\+H\+\_\+\+Open\+Pipe}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t pipe\+\_\+num, uint8\+\_\+t epnum, uint8\+\_\+t dev\+\_\+address, uint8\+\_\+t speed, uint8\+\_\+t ep\+\_\+type, uint16\+\_\+t mps)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Open\+\_\+\+Pipe Open a pipe. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__PIPES__Exported__FunctionsPrototype_gae0b745be17f5d3e5ef19032602f81b6f}{U\+S\+B\+H\+\_\+\+Close\+Pipe}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t pipe\+\_\+num)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Close\+Pipe Close a pipe. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USBH__PIPES__Exported__FunctionsPrototype_ga35bd197654f5477fb9436eba06e9cad3}{U\+S\+B\+H\+\_\+\+Alloc\+Pipe}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t ep\+\_\+addr)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Alloc\+\_\+\+Pipe Allocate a new Pipe. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__PIPES__Exported__FunctionsPrototype_gae5a6f5bd4f58b827e719c11835980966}{U\+S\+B\+H\+\_\+\+Free\+Pipe}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t idx)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Free\+\_\+\+Pipe Free the U\+SB Pipe. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for \mbox{\hyperlink{usbh__pipes_8c}{usbh\+\_\+pipes.\+c}}. 
+
+\begin{DoxyAuthor}{Author}
+M\+CD Application Team 
+\end{DoxyAuthor}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2015 S\+T\+Microelectronics. All rights reserved.\end{center} }
+
+This software component is licensed by ST under Ultimate Liberty license S\+L\+A0044, the \char`\"{}\+License\char`\"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: www.\+st.\+com/\+S\+L\+A0044 

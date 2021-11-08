@@ -1,0 +1,7 @@
+<map id="USBH_DeviceTypeDef" name="USBH_DeviceTypeDef">
+<area shape="rect" id="node1" title=" " alt="" coords="41,273,205,300"/>
+<area shape="rect" id="node2" href="$struct__DeviceDescriptor.html" title=" " alt="" coords="5,184,147,211"/>
+<area shape="rect" id="node3" href="$struct__ConfigurationDescriptor.html" title=" " alt="" coords="171,184,354,211"/>
+<area shape="rect" id="node4" href="$struct__InterfaceDescriptor.html" title=" " alt="" coords="185,95,340,121"/>
+<area shape="rect" id="node5" href="$struct__EndpointDescriptor.html" title=" " alt="" coords="186,5,339,32"/>
+</map>

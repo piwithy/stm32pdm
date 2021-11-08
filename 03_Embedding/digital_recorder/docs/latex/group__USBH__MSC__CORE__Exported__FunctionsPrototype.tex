@@ -1,0 +1,170 @@
+\hypertarget{group__USBH__MSC__CORE__Exported__FunctionsPrototype}{}\doxysection{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+C\+O\+R\+E\+\_\+\+Exported\+\_\+\+Functions\+Prototype}
+\label{group__USBH__MSC__CORE__Exported__FunctionsPrototype}\index{USBH\_MSC\_CORE\_Exported\_FunctionsPrototype@{USBH\_MSC\_CORE\_Exported\_FunctionsPrototype}}
+Collaboration diagram for U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+C\+O\+R\+E\+\_\+\+Exported\+\_\+\+Functions\+Prototype\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__USBH__MSC__CORE__Exported__FunctionsPrototype}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USBH__MSC__CORE__Exported__FunctionsPrototype_ga36fc7e5a7f59878901a05b88b00cf8b7}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Is\+Ready}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Is\+Ready The function check if the M\+SC function is ready. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USBH__MSC__CORE__Exported__FunctionsPrototype_ga14f48f48c89f48909031526837818ce1}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Get\+Max\+L\+UN}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Get\+Max\+L\+UN The function return the Max L\+UN supported. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USBH__MSC__CORE__Exported__FunctionsPrototype_ga2614df97651ee0fbe3ef5c6977204277}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Unit\+Is\+Ready}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Unit\+Is\+Ready The function check whether a L\+UN is ready. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__CORE__Exported__FunctionsPrototype_ga3249672d4ec2adc4fb48bef384161bb5}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Get\+L\+U\+N\+Info}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun, \mbox{\hyperlink{structMSC__LUNTypeDef}{M\+S\+C\+\_\+\+L\+U\+N\+Type\+Def}} $\ast$info)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Get\+L\+U\+N\+Info The function return a L\+UN information. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__CORE__Exported__FunctionsPrototype_gaebc67929259039d8a002e9db23766e75}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Read}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun, uint32\+\_\+t address, uint8\+\_\+t $\ast$pbuf, uint32\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Read The function performs a Read operation. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__CORE__Exported__FunctionsPrototype_ga3e84f80a818d19708997203ac5f9893b}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Write}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun, uint32\+\_\+t address, uint8\+\_\+t $\ast$pbuf, uint32\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Write The function performs a Write operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__USBH__MSC__CORE__Exported__FunctionsPrototype_ga3249672d4ec2adc4fb48bef384161bb5}\label{group__USBH__MSC__CORE__Exported__FunctionsPrototype_ga3249672d4ec2adc4fb48bef384161bb5}} 
+\index{USBH\_MSC\_CORE\_Exported\_FunctionsPrototype@{USBH\_MSC\_CORE\_Exported\_FunctionsPrototype}!USBH\_MSC\_GetLUNInfo@{USBH\_MSC\_GetLUNInfo}}
+\index{USBH\_MSC\_GetLUNInfo@{USBH\_MSC\_GetLUNInfo}!USBH\_MSC\_CORE\_Exported\_FunctionsPrototype@{USBH\_MSC\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_MSC\_GetLUNInfo()}{USBH\_MSC\_GetLUNInfo()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Get\+L\+U\+N\+Info (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{lun,  }\item[{\mbox{\hyperlink{structMSC__LUNTypeDef}{M\+S\+C\+\_\+\+L\+U\+N\+Type\+Def}} $\ast$}]{info }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Get\+L\+U\+N\+Info The function return a L\+UN information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+{\em lun} & logical Unit Number \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & Status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__MSC__CORE__Exported__FunctionsPrototype_ga14f48f48c89f48909031526837818ce1}\label{group__USBH__MSC__CORE__Exported__FunctionsPrototype_ga14f48f48c89f48909031526837818ce1}} 
+\index{USBH\_MSC\_CORE\_Exported\_FunctionsPrototype@{USBH\_MSC\_CORE\_Exported\_FunctionsPrototype}!USBH\_MSC\_GetMaxLUN@{USBH\_MSC\_GetMaxLUN}}
+\index{USBH\_MSC\_GetMaxLUN@{USBH\_MSC\_GetMaxLUN}!USBH\_MSC\_CORE\_Exported\_FunctionsPrototype@{USBH\_MSC\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_MSC\_GetMaxLUN()}{USBH\_MSC\_GetMaxLUN()}}
+{\footnotesize\ttfamily uint8\+\_\+t U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Get\+Max\+L\+UN (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Get\+Max\+L\+UN The function return the Max L\+UN supported. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em logical} & Unit Number supported \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__MSC__CORE__Exported__FunctionsPrototype_ga36fc7e5a7f59878901a05b88b00cf8b7}\label{group__USBH__MSC__CORE__Exported__FunctionsPrototype_ga36fc7e5a7f59878901a05b88b00cf8b7}} 
+\index{USBH\_MSC\_CORE\_Exported\_FunctionsPrototype@{USBH\_MSC\_CORE\_Exported\_FunctionsPrototype}!USBH\_MSC\_IsReady@{USBH\_MSC\_IsReady}}
+\index{USBH\_MSC\_IsReady@{USBH\_MSC\_IsReady}!USBH\_MSC\_CORE\_Exported\_FunctionsPrototype@{USBH\_MSC\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_MSC\_IsReady()}{USBH\_MSC\_IsReady()}}
+{\footnotesize\ttfamily uint8\+\_\+t U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Is\+Ready (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Is\+Ready The function check if the M\+SC function is ready. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & Status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__MSC__CORE__Exported__FunctionsPrototype_gaebc67929259039d8a002e9db23766e75}\label{group__USBH__MSC__CORE__Exported__FunctionsPrototype_gaebc67929259039d8a002e9db23766e75}} 
+\index{USBH\_MSC\_CORE\_Exported\_FunctionsPrototype@{USBH\_MSC\_CORE\_Exported\_FunctionsPrototype}!USBH\_MSC\_Read@{USBH\_MSC\_Read}}
+\index{USBH\_MSC\_Read@{USBH\_MSC\_Read}!USBH\_MSC\_CORE\_Exported\_FunctionsPrototype@{USBH\_MSC\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_MSC\_Read()}{USBH\_MSC\_Read()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Read (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{lun,  }\item[{uint32\+\_\+t}]{address,  }\item[{uint8\+\_\+t $\ast$}]{pbuf,  }\item[{uint32\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Read The function performs a Read operation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+{\em lun} & logical Unit Number \\
+\hline
+{\em address} & sector address \\
+\hline
+{\em pbuf} & pointer to data \\
+\hline
+{\em length} & number of sector to read \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & Status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__MSC__CORE__Exported__FunctionsPrototype_ga2614df97651ee0fbe3ef5c6977204277}\label{group__USBH__MSC__CORE__Exported__FunctionsPrototype_ga2614df97651ee0fbe3ef5c6977204277}} 
+\index{USBH\_MSC\_CORE\_Exported\_FunctionsPrototype@{USBH\_MSC\_CORE\_Exported\_FunctionsPrototype}!USBH\_MSC\_UnitIsReady@{USBH\_MSC\_UnitIsReady}}
+\index{USBH\_MSC\_UnitIsReady@{USBH\_MSC\_UnitIsReady}!USBH\_MSC\_CORE\_Exported\_FunctionsPrototype@{USBH\_MSC\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_MSC\_UnitIsReady()}{USBH\_MSC\_UnitIsReady()}}
+{\footnotesize\ttfamily uint8\+\_\+t U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Unit\+Is\+Ready (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{lun }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Unit\+Is\+Ready The function check whether a L\+UN is ready. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+{\em lun} & logical Unit Number \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Lun} & status (0\+: not ready / 1\+: ready) \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__MSC__CORE__Exported__FunctionsPrototype_ga3e84f80a818d19708997203ac5f9893b}\label{group__USBH__MSC__CORE__Exported__FunctionsPrototype_ga3e84f80a818d19708997203ac5f9893b}} 
+\index{USBH\_MSC\_CORE\_Exported\_FunctionsPrototype@{USBH\_MSC\_CORE\_Exported\_FunctionsPrototype}!USBH\_MSC\_Write@{USBH\_MSC\_Write}}
+\index{USBH\_MSC\_Write@{USBH\_MSC\_Write}!USBH\_MSC\_CORE\_Exported\_FunctionsPrototype@{USBH\_MSC\_CORE\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_MSC\_Write()}{USBH\_MSC\_Write()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{lun,  }\item[{uint32\+\_\+t}]{address,  }\item[{uint8\+\_\+t $\ast$}]{pbuf,  }\item[{uint32\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Write The function performs a Write operation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+{\em lun} & logical Unit Number \\
+\hline
+{\em address} & sector address \\
+\hline
+{\em pbuf} & pointer to data \\
+\hline
+{\em length} & number of sector to write \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & Status \\
+\hline
+\end{DoxyRetVals}

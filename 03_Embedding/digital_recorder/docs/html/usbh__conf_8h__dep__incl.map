@@ -1,0 +1,31 @@
+<map id="USB_HOST/Target/usbh_conf.h" name="USB_HOST/Target/usbh_conf.h">
+<area shape="rect" id="node1" title=": Header for usbh_conf.c file." alt="" coords="1036,5,1207,47"/>
+<area shape="rect" id="node2" href="$usbh__core_8h.html" title="Header file for usbh_core.c." alt="" coords="905,199,1084,255"/>
+<area shape="rect" id="node21" href="$usbh__ioreq_8h.html" title="Header file for usbh_ioreq.c." alt="" coords="1556,303,1735,359"/>
+<area shape="rect" id="node29" href="$usbh__def_8h.html" title="Definitions used in the USB host library." alt="" coords="905,95,1084,151"/>
+<area shape="rect" id="node3" href="$ffconf_8h_source.html" title=" " alt="" coords="907,525,1061,552"/>
+<area shape="rect" id="node10" href="$usb__host_8c.html" title=": This file implements the USB Host" alt="" coords="436,979,631,1006"/>
+<area shape="rect" id="node14" href="$usbh__diskio_8h.html" title="Header for usbh_diskio.c module." alt="" coords="571,622,767,649"/>
+<area shape="rect" id="node15" href="$usbh__msc_8h.html" title="This file contains all the prototypes for the usbh_msc.c." alt="" coords="440,407,624,463"/>
+<area shape="rect" id="node19" href="$usbh__msc__bot_8h.html" title="Header file for usbh_msc_bot.c." alt="" coords="225,303,412,359"/>
+<area shape="rect" id="node20" href="$usbh__msc__scsi_8h.html" title="Header file for usbh_msc_scsi.c." alt="" coords="437,303,627,359"/>
+<area shape="rect" id="node23" href="$usbh__pipes_8h.html" title="Header file for usbh_pipes.c." alt="" coords="703,303,881,359"/>
+<area shape="rect" id="node25" href="$usbh__ctlreq_8h.html" title="Header file for usbh_ctlreq.c." alt="" coords="905,303,1084,359"/>
+<area shape="rect" id="node27" href="$usbh__core_8c.html" title="This file implements the functions for the core state machine process the enumeration and the control..." alt="" coords="1108,303,1287,359"/>
+<area shape="rect" id="node28" href="$usbh__conf_8c.html" title=": This file implements the board support package for the USB host library" alt="" coords="1311,310,1481,351"/>
+<area shape="rect" id="node4" href="$ff_8h_source.html" title=" " alt="" coords="893,615,1075,656"/>
+<area shape="rect" id="node5" href="$fatfs_8h.html" title="Header for fatfs applications." alt="" coords="997,801,1131,827"/>
+<area shape="rect" id="node11" href="$ff__gen__drv_8h.html" title="Header for ff_gen_drv.c module." alt="" coords="790,704,973,745"/>
+<area shape="rect" id="node6" href="$main_8c.html" title=": Main program body" alt="" coords="1053,979,1177,1006"/>
+<area shape="rect" id="node7" href="$fatfs_8c.html" title="Code for fatfs applications." alt="" coords="789,890,923,917"/>
+<area shape="rect" id="node8" href="$file__handling_8h.html" title="Header of the file handling library." alt="" coords="947,883,1077,924"/>
+<area shape="rect" id="node9" href="$file__handling_8c.html" title="Sources of the file handling library." alt="" coords="899,972,1029,1013"/>
+<area shape="rect" id="node12" href="$usbh__diskio_8c.html" title="USB Host Disk I/O driver." alt="" coords="571,801,765,827"/>
+<area shape="rect" id="node13" href="$ff__gen__drv_8c.html" title="FatFs generic low level driver." alt="" coords="790,793,973,835"/>
+<area shape="rect" id="node16" href="$usbh__msc_8c.html" title=" " alt="" coords="621,511,805,567"/>
+<area shape="rect" id="node17" href="$usbh__msc__bot_8c.html" title="This file includes the BOT protocol related functions." alt="" coords="93,511,280,567"/>
+<area shape="rect" id="node18" href="$usbh__msc__scsi_8c.html" title="This file implements the SCSI commands." alt="" coords="305,511,495,567"/>
+<area shape="rect" id="node22" href="$usbh__ioreq_8c.html" title="This file handles the issuing of the USB transactions." alt="" coords="1556,407,1735,463"/>
+<area shape="rect" id="node24" href="$usbh__pipes_8c.html" title="This file implements functions for opening and closing Pipes." alt="" coords="749,407,928,463"/>
+<area shape="rect" id="node26" href="$usbh__ctlreq_8c.html" title="This file implements the control requests for device enumeration." alt="" coords="952,407,1131,463"/>
+</map>

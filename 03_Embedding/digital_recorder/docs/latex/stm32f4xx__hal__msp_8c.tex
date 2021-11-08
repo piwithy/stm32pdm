@@ -1,0 +1,79 @@
+\hypertarget{stm32f4xx__hal__msp_8c}{}\doxysection{Core/\+Src/stm32f4xx\+\_\+hal\+\_\+msp.c File Reference}
+\label{stm32f4xx__hal__msp_8c}\index{Core/Src/stm32f4xx\_hal\_msp.c@{Core/Src/stm32f4xx\_hal\_msp.c}}
+
+
+This file provides code for the M\+SP Initialization and de-\/\+Initialization codes.  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+Include dependency graph for stm32f4xx\+\_\+hal\+\_\+msp.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{stm32f4xx__hal__msp_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{stm32f4xx__hal__msp_8c_gae4fb8e66865c87d0ebab74a726a6891f}{H\+A\+L\+\_\+\+Msp\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Initialize the M\+SP. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__UART__Exported__Functions__Group1_ga0e553b32211877322f949b14801bbfa7}{H\+A\+L\+\_\+\+U\+A\+R\+T\+\_\+\+Msp\+Init}} (\mbox{\hyperlink{group__UART__Exported__Types_ga5de4a49eb132735325e706f406c69d6e}{U\+A\+R\+T\+\_\+\+Handle\+Type\+Def}} $\ast$huart)
+\begin{DoxyCompactList}\small\item\em U\+A\+RT M\+SP Initialization This function configures the hardware resources used in this example. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__UART__Exported__Functions__Group1_ga718f39804e3b910d738a0e1e46151188}{H\+A\+L\+\_\+\+U\+A\+R\+T\+\_\+\+Msp\+De\+Init}} (\mbox{\hyperlink{group__UART__Exported__Types_ga5de4a49eb132735325e706f406c69d6e}{U\+A\+R\+T\+\_\+\+Handle\+Type\+Def}} $\ast$huart)
+\begin{DoxyCompactList}\small\item\em U\+A\+RT M\+SP De-\/\+Initialization This function freeze the hardware resources used in this example. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{stm32f4xx__hal__msp_8c_ae6196683176c27592bf706a813105ad4}{H\+A\+L\+\_\+\+S\+A\+I\+\_\+\+Msp\+Init}} (S\+A\+I\+\_\+\+Handle\+Type\+Def $\ast$hsai)
+\item 
+void \mbox{\hyperlink{stm32f4xx__hal__msp_8c_a8327b1392a5000f552a9b8d35a0ae6ca}{H\+A\+L\+\_\+\+S\+A\+I\+\_\+\+Msp\+De\+Init}} (S\+A\+I\+\_\+\+Handle\+Type\+Def $\ast$hsai)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{stm32f4xx__hal__msp_8c_a0ff83ddfa8cce7de5ed80d623781408e}\label{stm32f4xx__hal__msp_8c_a0ff83ddfa8cce7de5ed80d623781408e}} 
+\mbox{\hyperlink{group__DMA__Exported__Types_ga41b754a906b86bce54dc79938970138b}{D\+M\+A\+\_\+\+Handle\+Type\+Def}} {\bfseries hdma\+\_\+sai1\+\_\+a}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file provides code for the M\+SP Initialization and de-\/\+Initialization codes. 
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2021 S\+T\+Microelectronics. All rights reserved.\end{center} }
+
+This software component is licensed by ST under B\+SD 3-\/Clause license, the \char`\"{}\+License\char`\"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: opensource.\+org/licenses/\+B\+S\+D-\/3-\/\+Clause 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{stm32f4xx__hal__msp_8c_gae4fb8e66865c87d0ebab74a726a6891f}\label{stm32f4xx__hal__msp_8c_gae4fb8e66865c87d0ebab74a726a6891f}} 
+\index{stm32f4xx\_hal\_msp.c@{stm32f4xx\_hal\_msp.c}!HAL\_MspInit@{HAL\_MspInit}}
+\index{HAL\_MspInit@{HAL\_MspInit}!stm32f4xx\_hal\_msp.c@{stm32f4xx\_hal\_msp.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_MspInit()}{HAL\_MspInit()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+weak void H\+A\+L\+\_\+\+Msp\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initialize the M\+SP. 
+
+Initializes the Global M\+SP.
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{stm32f4xx__hal__msp_8c_a8327b1392a5000f552a9b8d35a0ae6ca}\label{stm32f4xx__hal__msp_8c_a8327b1392a5000f552a9b8d35a0ae6ca}} 
+\index{stm32f4xx\_hal\_msp.c@{stm32f4xx\_hal\_msp.c}!HAL\_SAI\_MspDeInit@{HAL\_SAI\_MspDeInit}}
+\index{HAL\_SAI\_MspDeInit@{HAL\_SAI\_MspDeInit}!stm32f4xx\_hal\_msp.c@{stm32f4xx\_hal\_msp.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_SAI\_MspDeInit()}{HAL\_SAI\_MspDeInit()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+S\+A\+I\+\_\+\+Msp\+De\+Init (\begin{DoxyParamCaption}\item[{S\+A\+I\+\_\+\+Handle\+Type\+Def $\ast$}]{hsai }\end{DoxyParamCaption})}
+
+S\+A\+I1\+\_\+\+A\+\_\+\+Block\+\_\+A G\+P\+IO Configuration P\+E4 -\/-\/-\/---$>$ S\+A\+I1\+\_\+\+F\+S\+\_\+A P\+E5 -\/-\/-\/---$>$ S\+A\+I1\+\_\+\+S\+C\+K\+\_\+A P\+E6 -\/-\/-\/---$>$ S\+A\+I1\+\_\+\+S\+D\+\_\+A\mbox{\Hypertarget{stm32f4xx__hal__msp_8c_ae6196683176c27592bf706a813105ad4}\label{stm32f4xx__hal__msp_8c_ae6196683176c27592bf706a813105ad4}} 
+\index{stm32f4xx\_hal\_msp.c@{stm32f4xx\_hal\_msp.c}!HAL\_SAI\_MspInit@{HAL\_SAI\_MspInit}}
+\index{HAL\_SAI\_MspInit@{HAL\_SAI\_MspInit}!stm32f4xx\_hal\_msp.c@{stm32f4xx\_hal\_msp.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_SAI\_MspInit()}{HAL\_SAI\_MspInit()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+S\+A\+I\+\_\+\+Msp\+Init (\begin{DoxyParamCaption}\item[{S\+A\+I\+\_\+\+Handle\+Type\+Def $\ast$}]{hsai }\end{DoxyParamCaption})}
+
+Initializes the peripherals clock
+
+S\+A\+I1\+\_\+\+A\+\_\+\+Block\+\_\+A G\+P\+IO Configuration P\+E4 -\/-\/-\/---$>$ S\+A\+I1\+\_\+\+F\+S\+\_\+A P\+E5 -\/-\/-\/---$>$ S\+A\+I1\+\_\+\+S\+C\+K\+\_\+A P\+E6 -\/-\/-\/---$>$ S\+A\+I1\+\_\+\+S\+D\+\_\+A

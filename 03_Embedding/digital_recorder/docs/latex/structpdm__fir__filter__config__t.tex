@@ -1,0 +1,82 @@
+\hypertarget{structpdm__fir__filter__config__t}{}\doxysection{pdm\+\_\+fir\+\_\+filter\+\_\+config\+\_\+t Struct Reference}
+\label{structpdm__fir__filter__config__t}\index{pdm\_fir\_filter\_config\_t@{pdm\_fir\_filter\_config\_t}}
+
+
+Struct Containing the Config of the Filter.  
+
+
+
+
+{\ttfamily \#include $<$pdm\+\_\+fir.\+h$>$}
+
+
+
+Collaboration diagram for pdm\+\_\+fir\+\_\+filter\+\_\+config\+\_\+t\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{structpdm__fir__filter__config__t__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structpdm__fir__filter__t}{pdm\+\_\+fir\+\_\+filter\+\_\+t}} $\ast$ \mbox{\hyperlink{structpdm__fir__filter__config__t_ad8abd5365ba659d893572a2c01c2ad7a}{fir\+\_\+filter}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structpdm__fir__filter__config__t_a499d5fb94bff7466f4ac006a1beb1fce}{decimation\+\_\+factor}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{structpdm__fir__filter__config__t_a17531318f13b0b5f74830f4092f92b61}{input\+\_\+offset}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{structpdm__fir__filter__config__t_acf3d06244974e8b6dd97c750dfab34cc}{output\+\_\+offset}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structpdm__fir__filter__config__t_a530adbeb66486caffd051a28ac6c3b77}{linear\+\_\+gain}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structpdm__fir__filter__config__t_adb15b3d08aa642a8abb029051fd4cd4c}{bit\+\_\+scale}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struct Containing the Config of the Filter. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structpdm__fir__filter__config__t_adb15b3d08aa642a8abb029051fd4cd4c}\label{structpdm__fir__filter__config__t_adb15b3d08aa642a8abb029051fd4cd4c}} 
+\index{pdm\_fir\_filter\_config\_t@{pdm\_fir\_filter\_config\_t}!bit\_scale@{bit\_scale}}
+\index{bit\_scale@{bit\_scale}!pdm\_fir\_filter\_config\_t@{pdm\_fir\_filter\_config\_t}}
+\doxysubsubsection{\texorpdfstring{bit\_scale}{bit\_scale}}
+{\footnotesize\ttfamily uint8\+\_\+t pdm\+\_\+fir\+\_\+filter\+\_\+config\+\_\+t\+::bit\+\_\+scale}
+
+Number of bits used for the output P\+CM samples \mbox{\Hypertarget{structpdm__fir__filter__config__t_a499d5fb94bff7466f4ac006a1beb1fce}\label{structpdm__fir__filter__config__t_a499d5fb94bff7466f4ac006a1beb1fce}} 
+\index{pdm\_fir\_filter\_config\_t@{pdm\_fir\_filter\_config\_t}!decimation\_factor@{decimation\_factor}}
+\index{decimation\_factor@{decimation\_factor}!pdm\_fir\_filter\_config\_t@{pdm\_fir\_filter\_config\_t}}
+\doxysubsubsection{\texorpdfstring{decimation\_factor}{decimation\_factor}}
+{\footnotesize\ttfamily uint16\+\_\+t pdm\+\_\+fir\+\_\+filter\+\_\+config\+\_\+t\+::decimation\+\_\+factor}
+
+Factor between P\+D\+M\+\_\+fs and P\+C\+M\+\_\+fs (multiple of 16) \mbox{\Hypertarget{structpdm__fir__filter__config__t_ad8abd5365ba659d893572a2c01c2ad7a}\label{structpdm__fir__filter__config__t_ad8abd5365ba659d893572a2c01c2ad7a}} 
+\index{pdm\_fir\_filter\_config\_t@{pdm\_fir\_filter\_config\_t}!fir\_filter@{fir\_filter}}
+\index{fir\_filter@{fir\_filter}!pdm\_fir\_filter\_config\_t@{pdm\_fir\_filter\_config\_t}}
+\doxysubsubsection{\texorpdfstring{fir\_filter}{fir\_filter}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structpdm__fir__filter__t}{pdm\+\_\+fir\+\_\+filter\+\_\+t}}$\ast$ pdm\+\_\+fir\+\_\+filter\+\_\+config\+\_\+t\+::fir\+\_\+filter}
+
+F\+IR Filter \mbox{\Hypertarget{structpdm__fir__filter__config__t_a17531318f13b0b5f74830f4092f92b61}\label{structpdm__fir__filter__config__t_a17531318f13b0b5f74830f4092f92b61}} 
+\index{pdm\_fir\_filter\_config\_t@{pdm\_fir\_filter\_config\_t}!input\_offset@{input\_offset}}
+\index{input\_offset@{input\_offset}!pdm\_fir\_filter\_config\_t@{pdm\_fir\_filter\_config\_t}}
+\doxysubsubsection{\texorpdfstring{input\_offset}{input\_offset}}
+{\footnotesize\ttfamily int16\+\_\+t pdm\+\_\+fir\+\_\+filter\+\_\+config\+\_\+t\+::input\+\_\+offset}
+
+Offset to apply to the P\+CM Signal B\+E\+F\+O\+RE amplification \mbox{\Hypertarget{structpdm__fir__filter__config__t_a530adbeb66486caffd051a28ac6c3b77}\label{structpdm__fir__filter__config__t_a530adbeb66486caffd051a28ac6c3b77}} 
+\index{pdm\_fir\_filter\_config\_t@{pdm\_fir\_filter\_config\_t}!linear\_gain@{linear\_gain}}
+\index{linear\_gain@{linear\_gain}!pdm\_fir\_filter\_config\_t@{pdm\_fir\_filter\_config\_t}}
+\doxysubsubsection{\texorpdfstring{linear\_gain}{linear\_gain}}
+{\footnotesize\ttfamily uint16\+\_\+t pdm\+\_\+fir\+\_\+filter\+\_\+config\+\_\+t\+::linear\+\_\+gain}
+
+Amplification Factor (linear) \mbox{\Hypertarget{structpdm__fir__filter__config__t_acf3d06244974e8b6dd97c750dfab34cc}\label{structpdm__fir__filter__config__t_acf3d06244974e8b6dd97c750dfab34cc}} 
+\index{pdm\_fir\_filter\_config\_t@{pdm\_fir\_filter\_config\_t}!output\_offset@{output\_offset}}
+\index{output\_offset@{output\_offset}!pdm\_fir\_filter\_config\_t@{pdm\_fir\_filter\_config\_t}}
+\doxysubsubsection{\texorpdfstring{output\_offset}{output\_offset}}
+{\footnotesize\ttfamily int16\+\_\+t pdm\+\_\+fir\+\_\+filter\+\_\+config\+\_\+t\+::output\+\_\+offset}
+
+Offset to apply to the P\+CM Signal A\+F\+T\+ER amplification 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+pdm\+\_\+fir/\mbox{\hyperlink{pdm__fir_8h}{pdm\+\_\+fir.\+h}}\end{DoxyCompactItemize}
