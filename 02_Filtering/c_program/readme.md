@@ -150,4 +150,16 @@ La documentation doxigen est disponible [ici](docs/html/files.html)
 
 # Algorithme Appliqué par le programme
 
-![Algorithme](../../00_Documentation/imgs/02_Filtering/c_program/algo.svg)
+```mermaid
+flowchart TD
+    A([Début])-->B[Traitement des Arguments];
+    B-->C[Chargement en mémoire du fichier PDM];
+    C--> D[Initialisation du filtre PDM];
+    D --> E{Fin du Fichier PDM ?};
+    E --->|oui| F[enregistrement des Echantillons PCM];
+    F --> G([Fin]);
+    E -->|Non| H[Copie du Block de 1ms D'echatillons PDM suivant dans les Buffer];
+    H --> I[Filtrage du Buffer PDM];
+    I--> J[Copie des échantillons PCM produit dans le son]
+    J--> E;
+```
