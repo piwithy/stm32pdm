@@ -5,7 +5,7 @@ Ce dossier contient les sources des 3 démonstrateurs développées pour la cib
 - [Direct Output](direct_output/readme.md ): ce démonstrateur joue en temps réel sur le DAC les sons captés par la carte
 - [Digital Recorder](digital_recoder/readme.md) : Ce démonstrateur lors de l’appui sur le bouton `USER` le démonstrateur enregistre les sons ambiants sur une clé USB lors d’un deuxième appui, il arrête l’enregistrement.
 
-## Peripheriques utilisés Par les demonstrateur
+## Périphériques utilisés par les démonstrateurs
 
 |                   |GPIO   | DAC   | RCC   | SAI 1 | SYS   | USART 1   | TIM 2 | USB_HS |
 |:---               |:---:  |:---:  |:---:  |:-----:|:---:  |:-------:  |:-----:|:------:|
@@ -13,9 +13,9 @@ Ce dossier contient les sources des 3 démonstrateurs développées pour la cib
 |Direct Output      |X      |X      |X      |X      |X      |           |X      |        |
 |Digital Recoder    |X      |       |X      |X      |X      |X          |       |X       |
 
-## Configuration des Peripheriques
+## Configuration des Périphériques
 
-### Pinout
+### Pins utilisés par l’ensemble des Périphériques
 
 <table>
 	<thead>
@@ -119,7 +119,662 @@ Ce dossier contient les sources des 3 démonstrateurs développées pour la cib
         </tr><tr>
             <td> PC4 </td>
             <td> USB_PSO </td>
-            <td> Active l'alimentation de l'esclave USB par la carte (0 &rarr; Alimenté, 1 &rarr; Non alimenté)</td>
+            <td> Active l’alimentation du périphérique USB par la carte (0 &rarr; alimenté, 1 &rarr; Non alimenté)</td>
         </tr>
 	</tbody>
 </table>
+
+Vue des pins activés sur le microcontrôleur :
+
+![All peripheral Pinout](../00_Documentation/imgs/03_Embedding/general/all_peripherals_pinout.png)
+
+### Configuration
+#### Périphériques
+##### System Core/GPIO
+Pour configurer un Pin, il faut cliquer dessus dans la vue composant (`Pinout View`) puis sélectionner un type dans le menu contextuel :
+![pin mode selection](../00_Documentation/imgs/03_Embedding/general/pin_mode_selection.png)
+
+###### MODE
+
+N/A
+
+###### Configuration
+
+| Pin Name | Signal on Pin | PGIO output Level | GPIO Mode                                             | GPIO Pull-up/Pull-down      | Maximum Output Speed | User Label | Type            |
+| -------- | ------------- | ----------------- | ----------------------------------------------------- | --------------------------- | :------------------: | ------------ | --------------- |
+| PAO/WKUP | N/A           | N/A               | **External Event with Rising edge trigger detection** | No pull-up and no pull-down |         N/A          | **USER_BTN** | **GPIO_EXTIO**  |
+| PC4      | N/A           | **Low**           | Output Push Pull                                      | No pull-up and no pull-down |         Low          | **USB_PSO**  | **GPIO_Output** |
+| PG13     | N/A           | Low               | Output Push Pull                                      | No pull-up and no pull-down |         Low          | **LD3**      | **GPIO_Output** |
+| PG14     | N/A           | Low               | Output Push Pull                                      | No pull-up and no pull-down |         Low          | **LD4**      | **GPIO_Output** |
+
+
+##### System Core/RCC
+###### MODE
+
+| Clé                          | Valeur                          |
+| ---------------------------- | ------------------------------- |
+| High Speed Clock (HSE)       | **Crystal / Ceramic Resonator** |
+| Low Speed Clock (LSE)        | Disable                         |
+| Master Clock Output 1        | No                              |
+| Master Clock Output 2        | No                              |
+| Audio Clock Input (I2S_CKIN) | No                              |
+
+###### Configuration
+
+Par défaut
+
+
+##### System Core/SYS
+
+###### MODE
+
+| Clé             | Valeur          |
+| --------------- | --------------- |
+| Debug           | **Serial Wire** |
+| System Wake Up  | N/A             |
+| Timebase Source | **TIM6**        |
+
+###### Configuration
+
+N/A
+
+##### Analog/DAC
+###### MODE
+
+| Clé                | Valeur  |
+| ------------------ | ------- |
+| OUT1 Configuration | **Yes** |
+| OUT2 Configuration | **Yes** |
+| External Trigger   | No      |
+
+###### Configuration
+
+<table>
+    <thead>
+    	<tr>
+        	<th>Clé</th>
+            <th>Valeur</th>
+        </tr>
+    </thead>
+    <tbody>
+    	<tr>
+        	<td style="text-align: center" colspan="2">DAC Out1 Settings</td>
+        </tr>
+        <tr>
+        	<td>Output Buffer</td>
+            <td>Enable</td>
+        </tr>
+        <tr>
+        	<td>Trigger</td>
+            <td style="font-weight: bolder;">Timer 2 Trigger Out event</td>
+        </tr>
+        <tr>
+            <td>Wave Generation mode</td>
+            <td>Disabled</td>
+        </tr>
+            	<tr>
+        	<td style="text-align: center" colspan="2">DAC Out2 Settings</td>
+        </tr>
+        <tr>
+        	<td>Output Buffer</td>
+            <td>Enable</td>
+        </tr>
+        <tr>
+        	<td>Trigger</td>
+            <td style="font-weight: bolder;">Timer 2 Trigger Out event</td>
+        </tr>
+        <tr>
+            <td>Wave Generation mode</td>
+            <td>Disabled</td>
+        </tr>
+    </tbody>
+</table>
+
+###### DMA
+
+| DMA Request | Stream       | Direction            | Priority | Mode         | Data Width    |
+| ----------- | ------------ | -------------------- | -------- | ------------ | ------------- |
+| **DAC1**    | DMA1 Stream5 | Memory to Peripheral | Low      | **Circular** | **Half Word** |
+| **DAC2**    | DMA1 Stream6 | Memory to Peripheral | Low      | **Circular** | **Half Word** |
+
+##### Timers/TIM2
+###### MODE
+
+| Clé                        | Valeur             |
+| -------------------------- | ------------------ |
+| Slave Mode                 | Disable            |
+| Trigger Source             | Disable            |
+| Clock Source               | **Internal Clock** |
+| Channel1                   | Disable            |
+| Channel2                   | Disable            |
+| Channel3                   | Disable            |
+| Channel4                   | Disable            |
+| Combined Channels          | Disable            |
+| Use ETR as Clearing Source | N/A                |
+| XOR Activation             | N/A                |
+| One Pulse Mode             | No                 |
+
+###### Configuration
+
+Pour determiner les Valeurs de `Prescaler`($`PSC`$) et `Counter Period ` ($`ARR`$) appliquer la formule suivante:
+
+```math
+(PSC + 1) * (ARR + 1) = \frac{f_{TIM}}{f_{SYS}}
+```
+
+Dans notre utilisation des Les timers servent a produire un evenement a $`F_{TIM}`$ a partir de la fréquence de l'horloge du système:
+```mermaid
+graph LR
+    START[ ] --->|F_SYS| B[TIMx] --->|F_TIM| END[ ];
+	style START fill:#FFFFFF00, stroke:#FFFFFF00;
+	style END fill:#FFFFFF00, stroke:#FFFFFF00;
+```
+
+La valeur $`F_{TIM}`$ corespondant a la frequence de l'evenement liée au remplissage du Conteur lié au Timer
+La velur $`F_{SYS}`$ Correspond a la fréqence de l'horloge a l'entrée du Timmer (cf. [STM32F427xx STM32F429xx Datasheet](../00_Documentation/stm32f429zi.pdf) `Figure 4. STM32F427xx and STM32F429xx block diagram` page 20) dans notre cas le Timer 2 Est alimenté par l'horloge `APB1 Timer Clock`
+
+Par exemble pour obtenir $`f_{TIM} = 48 kHz`$ avec $`f_{SYS}=72 MHz`$ on configure $`PSC=0`$ et donc
+```math
+ARR=\frac{f_{TIM}}{f_{SYS}} - 1 = \frac{72 * 10^{6}}{48* 10{^3}} - 1 = 1499
+```
+
+<table>
+    <thead>
+    	<tr>
+        	<th>Clé</th>
+            <th>Valeur</th>
+        </tr>
+    </thead>
+    <tbody>
+    	<tr>
+        	<td style="text-align: center" colspan="2">Counter Settings</td>
+        </tr>
+        <tr>
+        	<td>Prescaler (PSC - 16bits)</td>
+            <td>0</td>
+        </tr>
+        <tr>
+        	<td>Counter Mode</td>
+            <td>Up</td>
+        </tr>
+        <tr>
+        	<td>Counter Period (AutoReload Register 32 bits)</td>
+            <td style="font-weight: bolder;">1499</td>
+        </tr>
+        <tr>
+            <td>Internal Clock Division (CKD)</td>
+            <td>No Division</td>
+        </tr>
+        <tr>
+            <td>auto-reload preload</td>
+            <td>Disable</td>
+        </tr>
+            	<tr>
+        	<td style="text-align: center" colspan="2">Trigger Output (TGRO) Parameters</td>
+        </tr>
+        <tr>
+        	<td>Master/Slave Mode (MSM Bit)</td>
+            <td>Disable (Trigger input Effect not deleyed)</td>
+        </tr>
+        <tr>
+        	<td>Trigger Event Selection</td>
+            <td style="font-weight: bolder;">Update Event</td>
+        </tr>
+    </tbody>
+</table>
+
+##### Connectivy/USART1
+
+###### MODE
+
+| Clé | Valeur |
+|:----|:-------|
+|Mode |**Asynchronous**|
+|Hardware Flow Control (RS232) | Disable |
+
+###### Configuration
+
+<table>
+    <thead>
+    	<tr>
+        	<th>Clé</th>
+            <th>Valeur</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        	<td style="text-align: center" colspan="2">Basic Parameters</td>
+        </tr>
+        <tr>
+        	<td>Baud Rate</td>
+            <td>115200 Bits/s</td>
+        </tr>
+        <tr>
+        	<td>Word Length</td>
+            <td >8 Bits (including Parity)</td>
+        </tr>
+        <tr>
+        	<td>Parity</td>
+            <td >None</td>
+        </tr>
+        <tr>
+        	<td>Stop Bits</td>
+            <td >1</td>
+        </tr>
+        <tr>
+        	<td style="text-align: center" colspan="2">Advanced Settings</td>
+        </tr>
+        <tr>
+            <td>Data Direction</td>
+            <td>Receive and Transmit</td>
+        </tr>
+		<tr>
+			<td>Over Sampling</td>
+			<td>16 Samples</td>
+		</tr>
+    </tbody>
+</table>
+
+##### Connectivy/USB_OTG_HS
+###### MODE
+
+| Clé | Valeur |
+|:----|:-------|
+|<span style="color:gray">*External Phy*</span> | <span style="color:gray">*Disable*</span> |
+|Internal FS Phy | **Host_Only**|
+|<div style="background-color:crimson;color:white">Activate_SOF</div> | No
+|Activate_VBUS | **Yes**|
+
+###### Configuration
+| Clé | Valeur |
+|:----|:-------|
+|Speed | Host Full Speed (12MBits/s) |
+|Enable Internal IP DMA| Disable|
+| Physical Interface | Internal Phy |
+|Signal Start of frame | Disable |
+
+##### Multimedia/SAI
+###### MODE
+
+| Clé        | Valeur     |
+| ---------- | ---------- |
+| SAI_A Mode | **Master** |
+| SAI_B Mode | Disable    |
+
+
+###### Configuration
+
+<table>
+    <thead>
+    	<tr>
+        	<th>Clé</th>
+            <th>Valeur</th>
+        </tr>
+    </thead>
+    <tbody>
+    	<tr>
+        	<td style="text-align: center" colspan="2">SAI A</td>
+        </tr>
+        <tr>
+        	<td style="text-align: center" colspan="2">Basic Parameters</td>
+        </tr>
+        <tr>
+        	<td>Protocol</td>
+            <td>Free</td>
+        </tr>
+        <tr>
+        	<td>Audio Mode</td>
+            <td style="font-weight: bolder;">Master Receive</td>
+        </tr>
+        <tr>
+        	<td>Frame Length (only Even Values)</td>
+            <td style="font-weight: bolder;">64 Bits</td>
+        </tr>
+        <tr>
+        	<td>Data Size</td>
+            <td style="font-weight: bolder;">16 Bits</td>
+        </tr>
+        <tr>
+            <td>Slot Size</td>
+            <td>DataSize</td>
+        </tr>
+        <tr>
+        	<td style="text-align: center" colspan="2">Frame Parameters</td>
+        </tr>
+        <tr>
+            <td>First Bit</td>
+            <td>MSB First</td>
+        </tr>
+        <tr>
+        	<td>Frame Synchro Active Level Length</td>
+            <td style="font-weight: bolder;">32</td>
+        </tr>
+        <tr>
+        	<td>Frame Synchro Definition</td>
+            <td style="font-weight: bolder;">Channel Identification</td>
+        </tr>
+        <tr>
+        	<td>Frame Synchro Polarity</td>
+            <td>Active Low</td>
+        </tr>
+        <tr>
+        	<td>Frame Synchro Offset</td>
+            <td>First Bit</td>
+        </tr>
+        <tr>
+        	<td style="text-align: center" colspan="2">Slot Parameters</td>
+        </tr>
+        <tr>
+        	<td>First Bit Offset</td>
+            <td>0</td>
+        </tr>
+        <tr>
+        	<td>Number of Slots (Only Even Values)</td>
+            <td style="font-weight: bolder;">4</td>
+        </tr>
+        <tr>
+        	<td>Slot Active Final Value</td>
+            <td style="font-weight: lighter;">0x000FFFF</td>
+        </tr>
+        <tr>
+        	<td>Slot Active </td>
+            <td style="font-weight: bolder;">All</td>
+        </tr>
+        <tr>
+        	<td style="text-align: center" colspan="2">Clock Parameters</td>
+        </tr>
+        <tr>
+        	<td>Clock Source</td>
+            <td style="font-weight: lighter;">SAI PLL Clock</td>
+        </tr>
+        <tr>
+        	<td>Master Clock Divider</td>
+            <td style="font-weight: bolder;">Disable</td>
+        </tr>
+        <tr>
+        	<td>Real Audio Fequency</td>
+            <td style="font-weight: lighter;">48.0 kHz</td>
+        </tr>
+        <tr>
+        	<td>Error Between Selected</td>
+            <td style="font-weight: lighter;">-65.5 %</td>
+        </tr>
+        <tr>
+        	<td>Clock Strobing</td>
+            <td style="font-weight: bolder;">Rizing Edge</td>
+        </tr>
+        <tr>
+        	<td style="text-align: center" colspan="2">Advanced Parameters</td>
+        </tr>
+        <tr>
+        	<td>FIFO Threshold</td>
+            <td>Empty</td>
+        </tr>
+        <tr>
+        	<td>Output Drive</td>
+            <td>Disabled</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+###### DMA
+
+| DMA Request | Stream       | Direction            | Priority | Mode         | Data Width    |
+| ----------- | ------------ | -------------------- | -------- | ------------ | ------------- |
+| **SAI1_A**  | DMA2 Stream1 | Peripheral to Memory | Low      | **Circular** | **Half Word** |
+
+
+##### Middleware/FATFS
+###### Mode
+| Clé | Valeur |
+|:----|:-------|
+|<span style="color:gray">*External SDRAM*</span> | <span style="color:gray">*No*</span> |
+|<span style="color:gray">*External SRAM*</span> | <span style="color:gray">*No*</span> |
+|<span style="color:gray">*SD Card*</span> | <span style="color:gray">*No*</span> |
+|USB Disk| **Yes** |
+|User-Defined| No |
+
+###### Mode
+
+<table>
+	<thead>
+		<tr>
+			<th> Clé </th>
+			<th> Valeur </th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="text-align:center" colspan="2"> Version </td>
+		</tr>
+		<tr>
+			<td style="color:grey;"> FATFS Version </td>
+			<td style="color:grey"> R0.12c</td>
+		</tr>
+		<tr>
+			<td style="text-align:center" colspan="2"> Function Parameters </td>
+		</tr>
+		<tr>
+			<td> FS_READONLY (Read-only mode) </td>
+			<td> Disabled</td>
+		</tr>
+		<tr>
+			<td> FS_MINIMIZE (Minimization level) </td>
+			<td> Disabled</td>
+		</tr>
+		<tr>
+			<td> USE_STRFUNC (String functions) </td>
+			<td> Enabled with LF->CRLF conversion</td>
+		</tr>
+		<tr>
+			<td> USE_FIND (Find functions) </td>
+			<td> Disabled </td>
+		</tr>
+		<tr>
+			<td> USE_MKFS (Make filesystem functions) </td>
+			<td> Enabled </td>
+		</tr>
+		<tr>
+			<td> USE_FASTSEEK (Fast seek functions) </td>
+			<td> Enabled </td>
+		</tr>
+		<tr>
+			<td> USE_EXPAND (f_expend functions) </td>
+			<td> Disabled </td>
+		</tr>
+		<tr>
+			<td> USE_CHMOD (Change attributes functions) </td>
+			<td> Disabled </td>
+		</tr>
+		<tr>
+			<td> USE_LABEL (Volume label functions) </td>
+			<td> Disabled </td>
+		</tr>
+		<tr>
+			<td> USE_FORWARD (Forward functions) </td>
+			<td> Disabled </td>
+		</tr>
+		<tr>
+			<td style="text-align:center" colspan="2"> Local and Namespace Parameters </td>
+		</tr>
+		<tr>
+			<td> CODE_PAGE (Code page on target) </td>
+			<td> Latin 1</td>
+		</tr>
+		<tr>
+			<td>USE_LFN (Use Long Filename)</td>
+			<td style="font-weight:Bolder">Enabled with static working buffer on the BSS</td>
+		</tr>
+		<tr>
+			<td>MAX_LFN (Max Long Filename)</td>
+			<td style="font-weight:Bolder">255</td>
+		</tr>
+		<tr>
+			<td>LFN_UNICODE (Enable Unicode)</td>
+			<td>ANSI/OEM</td>
+		</tr>
+		<tr>
+			<td>STRF_ENCODE (Character encoding)</td>
+			<td>UTF-8</td>
+		</tr>
+		<tr>
+			<td>FS_RPATH (Relative Path)</td>
+			<td>Disabled</td>
+		</tr>
+		<tr>
+			<td style="text-align:center" colspan="2"> Physical Drive Parameters </td>
+		</tr>
+		<tr>
+			<td>VOLUMES (Logical drives)</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>MAX_SS (Maximum Sector Size)</td>
+			<td style="font-weight:bolder;">4096</td>
+		</tr>
+		<tr>
+			<td>MIN_SS (Minimum Sector Size)</td>
+			<td>512</td>
+		</tr>
+		<tr>
+			<td>MULTI_PARTITION (Volume partitions feature)</td>
+			<td>Disabled</td>
+		</tr>
+		<tr>
+			<td>USE_TRIM (Erase feature)</td>
+			<td>Disabled</td>
+		</tr>
+		<tr>
+			<td>FS_NOFSINFO (Force full FAT Scan)</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td style="text-align:center" colspan="2"> System Parameters </td>
+		</tr>
+		<tr>
+			<td>FS_TINY (Tiny mode)</td>
+			<td>Disabled</td>
+		</tr>
+		<tr>
+			<td>FS_EXFAT (Support of exFAT file system)</td>
+			<td style="font-weight:bolder">Enabled</td>
+		</tr>
+		<tr>
+			<td>FS_NORTC (Timestamp Feature)</td>
+			<td>Dynamic timestamp</td>
+		</tr>
+		<tr>
+			<td>FS_REENTRANT (Re-Entrancy)</td>
+			<td>Disabled</td>
+		</tr>
+		<tr>
+			<td>FS_TIMEOUT (Timeout ticks)</td>
+			<td>1000</td>
+		</tr>
+		<tr>
+			<td>FS_LOCK (Number of files opened simultaneously)</td>
+			<td>2</td>
+		</tr>
+	</tbody>
+
+</table>
+
+
+##### Middleware/USB_HOST
+###### Mode
+| Clé | Valeur |
+|:----|:-------|
+|Class For HS IP | **Mass Storage Host Class** |
+|<span style="color:gray">*Class For HS IP*</span> | <span style="color:gray">*Disable*</span> |
+
+
+###### Mode
+
+<table>
+	<thead>
+		<tr>
+			<th> Clé </th>
+			<th> Valeur </th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="text-align:center" colspan="2"> Host Configuration </td>
+		</tr>
+		<tr>
+			<td> USBH_MAX_NUM_ENDPOINTS (Maximum number of endpoints) </td>
+			<td> 2</td>
+		</tr>
+		<tr>
+			<td> USBH_MAX_NUM_INTERFACES (Maximun number of interfaces)</td>
+			<td> 2 </td>
+		</tr>
+		<tr>
+			<td>USBH_MAX_NUM_SUPPORTED_CLASS (Maximun number of supported class)</td>
+			<td> 1 </td>
+		</tr>
+		<tr>
+			<td>USBH_MAX_NUM_CONFIGURATION (Maximun number of supported configuration)</td>
+			<td> 1 </td>
+		</tr>
+		<tr>
+			<td>USBH_KEEP_CFG_DESCRIPTOR (Keep the configuration into RAM)</td>
+			<td> Enabled </td>
+		</tr>
+		<tr>
+			<td>USBH_MAX_SIZE_CONFIGURATION (Maximun size in bytes for the Configuration Descriptor)</td>
+			<td> 256 Byte(s)</td>
+		</tr>
+		<tr>
+			<td>USBH_MAX_DATA_BUFFER (Maximun size of temporary data)</td>
+			<td>512 Byte(s)</td>
+		</tr>
+		<tr>
+			<td>USBH_DEBUG_LEVEL (USBH Debug Level)</td>
+			<td>0. No debug message</td>
+		</tr>
+		<tr>
+			<td style="text-align:center" colspan="2"> CMSIS_RTOS </td>
+		</tr>
+		<tr>
+			<td>USBH_USE_OS (Enable the support of an RTOS) </td>
+			<td>Disabled</td>
+		</tr>
+	</tbody>
+</table>
+
+###### Platform Settings
+
+|Name          |IPs or Components| Found Solution   | I2C Addr | BSP API |
+|:-------------|:----------------|:-----------------|:---------|:--------|
+|Drive_VBUS_HS | **GPIO:Output** |**PC4 [USB_PSO]** | *N/A*    |*Unknown*|
+
+
+#### Horloges
+Pour configurer les Holorges il faut definir plusieurs fréquences que l'on utilise sur la carte:
+- `SAI-A clock (MHz)` Correspond a la frequence d'echatillonage du signal PDM ($`fs_{PDM}`$) pour la determiner:
+Avec $`D`$ le facteur de decimation (mutliple de 16) et $`fs_{PCM}`$ la frequance d'echantillonage recherché pour le signal PCM.
+```math
+fs_{PDM} = D * fs_{PCM}
+```
+
+- `48 MHz Clocks (MHz)` Correspond à une horloge cadencer a 48 Mhz utilisé l'interface USB
+
+- `HCLK (MHz)` Correspond a l'horloge System et gère directement les valeur des holorges `APB1-2` qui sont a l'entrée des Timers
+
+pour mieux comprendre prenons l'exempe; suviant:
+- `SAI-A clock (MHz)` :
+```math
+fs_{PDM} = D * fs_{PCM} = 64 * 48 * 10^3 = 3.072 * 10^6
+```
+on configurera donc `SAI-A Clock` a 3.072 MHz
+
+- `48 MHz Clock` sera configuré a 48 MHz
+
+- `HCLK` sera configuré a 72 MHz
+
+Ce qui nous donnne le schema d'horloges suivant:
+
+![Clocks](../00_Documentation/imgs/03_Embedding/general/Clocks.png)

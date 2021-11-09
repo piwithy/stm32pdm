@@ -365,6 +365,9 @@ Retour :
 | `uint32_t` |  Nombre d’échantillons PCM filtré |
 
 Cette Fonction filtre le buffer PDM grâce à l’algorithme suivant :
+
+
+
 ```
 FONCTION pdm_fir_ftl_chunk(f, pcm_output, pdm_input, pdm_size)
     decimation_word = f->decimation_factor / 16
@@ -379,7 +382,7 @@ FONCTION pdm_fir_ftl_chunk(f, pcm_output, pdm_input, pdm_size)
             pcm_sample = (2^f->bit_scale) - 1
         FIN SI
         SI pcm_sample INFÉRIEUR STRICT A -((2^f->bit_scale) - 1)
-            pcm_sample = -(2^f->bit_scale) - 1
+            pcm_sample = -((2^f->bit_scale) - 1)
         FIN SI
         pcm_buffer[i] = pcm_sample
     FIN POUR
