@@ -13,6 +13,16 @@
 # Pipeline de filtrage
 Le filtre implémenté par cette librairie applique le pipeline de filtrage suivant :
 
+
+```mermaid
+
+graph LR
+    %%{config:{"securityLevel": "loose", "flowchart": {"htmlLabels": true}}}%%
+    PDM_INPUT[ ]
+    x((<img width='50px' height='50px' src='https://iconscout.com/ms-icon-310x310.png'/>))
+
+```
+
 ![pipeline filtrage](../../00_Documentation/imgs/02_Filtering/filter_library/filter_chain.png)
 
 
