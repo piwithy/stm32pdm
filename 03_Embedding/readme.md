@@ -319,7 +319,7 @@ ARR=\frac{f_{TIM}}{f_{SYS}} - 1 = \frac{72 * 10^{6}}{48* 10{^3}} - 1 = 1499
         </tr>
         <tr>
         	<td>Trigger Event Selection</td>
-            <td style="font-weight: bolder;">Update Event</td>
+            <td ><strong>Update Event</strong></td>
         </tr>
     </tbody>
 </table>
@@ -425,15 +425,15 @@ ARR=\frac{f_{TIM}}{f_{SYS}} - 1 = \frac{72 * 10^{6}}{48* 10{^3}} - 1 = 1499
         </tr>
         <tr>
         	<td>Audio Mode</td>
-            <td style="font-weight: bolder;">Master Receive</td>
+            <td ><strong>Master Receive</strong></td>
         </tr>
         <tr>
         	<td>Frame Length (only Even Values)</td>
-            <td style="font-weight: bolder;">64 Bits</td>
+            <td><strong>64 Bits</strong></td>
         </tr>
         <tr>
         	<td>Data Size</td>
-            <td style="font-weight: bolder;">16 Bits</td>
+            <td><strong>16 Bits</strong></td>
         </tr>
         <tr>
             <td>Slot Size</td>
@@ -448,11 +448,11 @@ ARR=\frac{f_{TIM}}{f_{SYS}} - 1 = \frac{72 * 10^{6}}{48* 10{^3}} - 1 = 1499
         </tr>
         <tr>
         	<td>Frame Synchro Active Level Length</td>
-            <td style="font-weight: bolder;">32</td>
+            <td><strong>32</strong></td>
         </tr>
         <tr>
         	<td>Frame Synchro Definition</td>
-            <td style="font-weight: bolder;">Channel Identification</td>
+            <td><strong>Channel Identification</strong></td>
         </tr>
         <tr>
         	<td>Frame Synchro Polarity</td>
@@ -471,38 +471,38 @@ ARR=\frac{f_{TIM}}{f_{SYS}} - 1 = \frac{72 * 10^{6}}{48* 10{^3}} - 1 = 1499
         </tr>
         <tr>
         	<td>Number of Slots (Only Even Values)</td>
-            <td style="font-weight: bolder;">4</td>
+            <td><strong>4</strong></td>
         </tr>
         <tr>
         	<td>Slot Active Final Value</td>
-            <td style="font-weight: lighter;">0x000FFFF</td>
+            <td><em>0x000FFFF</em></td>
         </tr>
         <tr>
         	<td>Slot Active </td>
-            <td style="font-weight: bolder;">All</td>
+            <td><strong>All</strong></td>
         </tr>
         <tr>
         	<td style="text-align: center" colspan="2">Clock Parameters</td>
         </tr>
         <tr>
         	<td>Clock Source</td>
-            <td style="font-weight: lighter;">SAI PLL Clock</td>
+            <td><em>SAI PLL Clock</em></td>
         </tr>
         <tr>
         	<td>Master Clock Divider</td>
-            <td style="font-weight: bolder;">Disable</td>
+            <td><strong>Disable</strong></td>
         </tr>
         <tr>
         	<td>Real Audio Frequency</td>
-            <td style="font-weight: lighter;">48.0 kHz</td>
+            <td><em>48.0 kHz<em></td>
         </tr>
         <tr>
         	<td>Error Between Selected</td>
-            <td style="font-weight: lighter;">-65.5%</td>
+            <td><em>-65.5%</em></td>
         </tr>
         <tr>
         	<td>Clock Strobing</td>
-            <td style="font-weight: bolder;">Rizing Edge</td>
+            <td><strong>Rizing Edge</strong></td>
         </tr>
         <tr>
         	<td style="text-align: center" colspan="2">Advanced Parameters</td>
@@ -548,14 +548,14 @@ ARR=\frac{f_{TIM}}{f_{SYS}} - 1 = \frac{72 * 10^{6}}{48* 10{^3}} - 1 = 1499
 	</thead>
 	<tbody>
 		<tr>
-			<td style="text-align:center" colspan="2"> Version </td>
+			<td style="text-align: center" colspan="2"> Version </td>
 		</tr>
 		<tr>
 			<td style="color:grey;"> FATFS Version </td>
 			<td style="color:grey"> R0.12c</td>
 		</tr>
 		<tr>
-			<td style="text-align:center" colspan="2"> Function Parameters </td>
+			<td style="text-align: center" colspan="2"> Function Parameters </td>
 		</tr>
 		<tr>
 			<td> FS_READONLY (Read-only mode) </td>
@@ -598,7 +598,7 @@ ARR=\frac{f_{TIM}}{f_{SYS}} - 1 = \frac{72 * 10^{6}}{48* 10{^3}} - 1 = 1499
 			<td> Disabled </td>
 		</tr>
 		<tr>
-			<td style="text-align:center" colspan="2"> Local and Namespace Parameters </td>
+			<td style="text-align: center" colspan="2"> Local and Namespace Parameters </td>
 		</tr>
 		<tr>
 			<td> CODE_PAGE (Code page on target) </td>
@@ -606,11 +606,11 @@ ARR=\frac{f_{TIM}}{f_{SYS}} - 1 = \frac{72 * 10^{6}}{48* 10{^3}} - 1 = 1499
 		</tr>
 		<tr>
 			<td>USE_LFN (Use Long Filename)</td>
-			<td style="font-weight:Bolder">Enabled with static working buffer on the BSS</td>
+			<td><strong>Enabled with static working buffer on the BSS</strong></td>
 		</tr>
 		<tr>
 			<td>MAX_LFN (Max Long Filename)</td>
-			<td style="font-weight:Bolder">255</td>
+			<td><strong>255</strong></td>
 		</tr>
 		<tr>
 			<td>LFN_UNICODE (Enable Unicode)</td>
@@ -625,7 +625,7 @@ ARR=\frac{f_{TIM}}{f_{SYS}} - 1 = \frac{72 * 10^{6}}{48* 10{^3}} - 1 = 1499
 			<td>Disabled</td>
 		</tr>
 		<tr>
-			<td style="text-align:center" colspan="2"> Physical Drive Parameters </td>
+			<td style="text-align: center" colspan="2"> Physical Drive Parameters </td>
 		</tr>
 		<tr>
 			<td>VOLUMES (Logical drives)</td>
@@ -633,7 +633,7 @@ ARR=\frac{f_{TIM}}{f_{SYS}} - 1 = \frac{72 * 10^{6}}{48* 10{^3}} - 1 = 1499
 		</tr>
 		<tr>
 			<td>MAX_SS (Maximum Sector Size)</td>
-			<td style="font-weight:bolder;">4096</td>
+			<td><strong>4096</strong></td>
 		</tr>
 		<tr>
 			<td>MIN_SS (Minimum Sector Size)</td>
@@ -652,7 +652,7 @@ ARR=\frac{f_{TIM}}{f_{SYS}} - 1 = \frac{72 * 10^{6}}{48* 10{^3}} - 1 = 1499
 			<td>0</td>
 		</tr>
 		<tr>
-			<td style="text-align:center" colspan="2"> System Parameters </td>
+			<td style="text-align: center" colspan="2"> System Parameters </td>
 		</tr>
 		<tr>
 			<td>FS_TINY (Tiny mode)</td>
@@ -660,7 +660,7 @@ ARR=\frac{f_{TIM}}{f_{SYS}} - 1 = \frac{72 * 10^{6}}{48* 10{^3}} - 1 = 1499
 		</tr>
 		<tr>
 			<td>FS_EXFAT (Support of exFAT file system)</td>
-			<td style="font-weight:bolder">Enabled</td>
+			<td><strong>Enabled</strong></td>
 		</tr>
 		<tr>
 			<td>FS_NORTC (Timestamp Feature)</td>
