@@ -84,7 +84,7 @@ graph TB
 
 Code de la machine d'états:
 
-```C
+```c
 uint32_t idle_counter = 0;
     uint32_t cool_down = 0;
     const uint16_t *to_copy = void_buff;
