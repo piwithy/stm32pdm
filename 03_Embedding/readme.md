@@ -22,8 +22,8 @@ Ce dossier contient les sources des 3 démonstrateurs développées pour la cib
 		<tr>
 			<th>PIN</th>
 			<th>Signal</th>
-            <th>Commentaire</th>
-            <th>Péripherique</th>
+			<th>Commentaire</th>
+			<th>Péripherique</th>
 		<tr>
 	</thead>
 	<tbody>
@@ -31,96 +31,97 @@ Ce dossier contient les sources des 3 démonstrateurs développées pour la cib
 			<td>PA0</td>
 			<td>USER_BUTTON</td>
 			<td>Bouton Bleu de la carte</td>
-			 <td style="text-align: center; vertical-align: middle;" rowspan="3">GPIO</td>
-        </tr>
-        <tr>
+			<td style="text-align: center; vertical-align: middle;" rowspan="3">GPIO</td>
+		</tr>
+		<tr>
 			<td>PG13</td>
 			<td>LD3</td>
 			<td>LED Verte</td>
-        </tr>
+		</tr>
 		<tr>
 			<td>PG14</td>
 			<td>LD4</td>
 			<td>LED Rouge</td>
 		<tr>
-        <tr>
-        	<td>PA4</td>
-            <td>DAC_OUT1</td>
-            <td>Canal Gauche du DAC (Fil Rouge)</td>
-            <td style="text-align: center; vertical-align: middle;" rowspan="2">DAC</td>
-        </tr>
-        <tr>
-        	<td>PA5</td>
-            <td>DAC_OUT2</td>
-            <td>Canal Droit du DAC (Fil Blanc)</td>
-        </tr>
-        <tr>
-        	<td>PH0</td>
-            <td>RCC_OSC_IN</td>
-            <td style="vertical-align: middle;" rowspan="2">Signaux de l'oscillateur</td>
-            <td style="text-align: center; vertical-align: middle;" rowspan="2">RCC</td>
-        </tr>
-         <tr>
-        	<td>PH1</td>
-            <td>RCC_OSC_OUT</td>
-        </tr>
-        <tr>
-        	<td>PE4</td>
-            <td>SAI_FS_A</td>
-            <td>SAI SELECT</td>
-            <td style="text-align: center; vertical-align: middle;" rowspan="3">SAI 1</td>
-        </tr>
-         <tr>
-        	<td>PE5</td>
-            <td>SAI_SCK_A</td>
-            <td>SAI CLOCK</td>
-        </tr>
-        <tr>
-        	<td>PE6</td>
-            <td>SAI_SD_A</td>
-            <td>SAI DATA</td>
-        </tr>
-        <tr>
-        	<td>PA13</td>
-            <td>SYS_JTMS-SWDIO</td>
-            <td style="vertical-align: middle;" rowspan="2">Lignes de DEBUG</td>
-            <td style="text-align: center; vertical-align: middle;" rowspan="2">SYS</td>
-        </tr>
-         <tr>
-        	<td>PA14</td>
-            <td>SYS_JTCK-SWCLK</td>
-        </tr>
-        <tr>
-        	<td>PA9</td>
-            <td>USART1_TX</td>
-            <td>Canal TX de l'USART 1</td>
-             <td style="text-align: center; vertical-align: middle;" rowspan="2">USART 1</td>
-        </tr>
-        <tr>
-        	<td>PA9</td>
-            <td>USART1_RX</td>
-            <td>Canal RX de l'USART 1</td>
-        </tr>
-        <tr>
-            <td> PB13 </td>
-            <td> USB_OTG_HS_VBUS </td>
-            <td> Signal USB 2.0 VBUS</td>
-            <td style="text-align: center; vertical-align: middle;" rowspan="4"> USB_HS </td>
-        </tr>
-        <tr>
-            <td> PB14 </td>
-            <td> USB_OTG_HS_DM</td>
-            <td> Signal USB 2.0 D-</td>
-        </tr>
-        <tr>
-            <td> PD15</td>
-            <td> USB_OTG_HS_DP</td>
-            <td> Signal USB 2.0 D+ </td>
-        </tr><tr>
-            <td> PC4 </td>
-            <td> USB_PSO </td>
-            <td> Active l’alimentation du périphérique USB par la carte (0 &rarr; alimenté, 1 &rarr; Non alimenté)</td>
-        </tr>
+		<tr>
+			<td>PA4</td>
+			<td>DAC_OUT1</td>
+			<td>Canal Gauche du DAC (Fil Rouge)</td>
+			<td style="text-align: center; vertical-align: middle;" rowspan="2">DAC</td>
+		</tr>
+		<tr>
+			<td>PA5</td>
+			<td>DAC_OUT2</td>
+			<td>Canal Droit du DAC (Fil Blanc)</td>
+		</tr>
+		<tr>
+		<td>PH0</td>
+			<td>RCC_OSC_IN</td>
+			<td style="vertical-align: middle;" rowspan="2">Signaux de l'oscillateur</td>
+			<td style="text-align: center; vertical-align: middle;" rowspan="2">RCC</td>
+		</tr>
+		<tr>
+			<td>PH1</td>
+			<td>RCC_OSC_OUT</td>
+		</tr>
+		<tr>
+			<td>PE4</td>
+			<td>SAI_FS_A</td>
+			<td>SAI SELECT</td>
+			<td style="text-align: center; vertical-align: middle;" rowspan="3">SAI 1</td>
+		</tr>
+		<tr>
+			<td>PE5</td>
+			<td>SAI_SCK_A</td>
+			<td>SAI CLOCK</td>
+		</tr>
+		<tr>
+			<td>PE6</td>
+			<td>SAI_SD_A</td>
+			<td>SAI DATA</td>
+		</tr>
+		<tr>
+			<td>PA13</td>
+			<td>SYS_JTMS-SWDIO</td>
+			<td style="vertical-align: middle;" rowspan="2">Lignes de DEBUG</td>
+			<td style="text-align: center; vertical-align: middle;" rowspan="2">SYS</td>
+		</tr>
+		<tr>
+			<td>PA14</td>
+			<td>SYS_JTCK-SWCLK</td>
+		</tr>
+		<tr>
+			<td>PA9</td>
+			<td>USART1_TX</td>
+			<td>Canal TX de l'USART 1</td>
+			<td style="text-align: center; vertical-align: middle;" rowspan="2">USART 1</td>
+		</tr>
+		<tr>
+			<td>PA9</td>
+			<td>USART1_RX</td>
+			<td>Canal RX de l'USART 1</td>
+		</tr>
+		<tr>
+			<td> PB13 </td>
+			<td> USB_OTG_HS_VBUS </td>
+			<td> Signal USB 2.0 VBUS</td>
+			<td style="text-align: center; vertical-align: middle;" rowspan="4"> USB_HS </td>
+		</tr>
+		<tr>
+			<td> PB14 </td>
+			<td> USB_OTG_HS_DM</td>
+			<td> Signal USB 2.0 D-</td>
+		</tr>
+		<tr>
+			<td> PD15</td>
+			<td> USB_OTG_HS_DP</td>
+			<td> Signal USB 2.0 D+ </td>
+		</tr>
+		<tr>
+			<td> PC4 </td>
+			<td> USB_PSO </td>
+			<td> Active l’alimentation du périphérique USB par la carte (0 &rarr; alimenté, 1 &rarr; Non alimenté)</td>
+		</tr>
 	</tbody>
 </table>
 
@@ -256,13 +257,13 @@ N/A
 
 ###### Configuration
 
-Pour determiner les Valeurs de `Prescaler`($`PSC`$) et `Counter Period ` ($`ARR`$) appliquer la formule suivante:
+Pour déterminer la valeur de `Prescaler`($`PSC`$) et de `Counter Period ` ($`ARR`$) appliquer la formule suivante :
 
 ```math
 (PSC + 1) * (ARR + 1) = \frac{f_{TIM}}{f_{SYS}}
 ```
 
-Dans notre utilisation des Les timers servent a produire un evenement a $`F_{TIM}`$ a partir de la fréquence de l'horloge du système:
+Dans notre cas, les timers servent à produire un événement à $`F_{TIM}`$ à partir de la fréquence $`F_{SYS}`$ de l'horloge du système :
 ```mermaid
 graph LR
     START[ ] --->|F_SYS| B[TIMx] --->|F_TIM| END[ ];
@@ -270,10 +271,10 @@ graph LR
 	style END fill:#FFFFFF00, stroke:#FFFFFF00;
 ```
 
-La valeur $`F_{TIM}`$ corespondant a la frequence de l'evenement liée au remplissage du Conteur lié au Timer
-La velur $`F_{SYS}`$ Correspond a la fréqence de l'horloge a l'entrée du Timmer (cf. [STM32F427xx STM32F429xx Datasheet](../00_Documentation/stm32f429zi.pdf) `Figure 4. STM32F427xx and STM32F429xx block diagram` page 20) dans notre cas le Timer 2 Est alimenté par l'horloge `APB1 Timer Clock`
+La valeur $`F_{TIM}`$ correspond à la fréquence de l'événement liée au remplissage du conteur lié au timer
+La valeur $`F_{SYS}`$ correspond à la fréquence de l'horloge à l'entrée du timer (cf. [STM32F427xx STM32F429xx Datasheet](../00_Documentation/stm32f429zi.pdf) `Figure 4. STM32F427xx and STM32F429xx block diagram` page 20) dans notre cas `TIM2` est alimenté par l'horloge `APB1 Timer Clock`
 
-Par exemble pour obtenir $`f_{TIM} = 48 kHz`$ avec $`f_{SYS}=72 MHz`$ on configure $`PSC=0`$ et donc
+Par exemple, pour obtenir $`f_{TIM} = 48 kHz`$ avec $`f_{SYS}=72 MHz`$ on configure $`PSC=0`$ et donc
 ```math
 ARR=\frac{f_{TIM}}{f_{SYS}} - 1 = \frac{72 * 10^{6}}{48* 10{^3}} - 1 = 1499
 ```
@@ -290,7 +291,7 @@ ARR=\frac{f_{TIM}}{f_{SYS}} - 1 = \frac{72 * 10^{6}}{48* 10{^3}} - 1 = 1499
         	<td style="text-align: center" colspan="2">Counter Settings</td>
         </tr>
         <tr>
-        	<td>Prescaler (PSC - 16bits)</td>
+        	<td>Prescaler (PSC - 16 bits value)</td>
             <td>0</td>
         </tr>
         <tr>
@@ -298,7 +299,7 @@ ARR=\frac{f_{TIM}}{f_{SYS}} - 1 = \frac{72 * 10^{6}}{48* 10{^3}} - 1 = 1499
             <td>Up</td>
         </tr>
         <tr>
-        	<td>Counter Period (AutoReload Register 32 bits)</td>
+        	<td>Counter Period (AutoReload Register - 32 bits value)</td>
             <td style="font-weight: bolder;">1499</td>
         </tr>
         <tr>
@@ -314,7 +315,7 @@ ARR=\frac{f_{TIM}}{f_{SYS}} - 1 = \frac{72 * 10^{6}}{48* 10{^3}} - 1 = 1499
         </tr>
         <tr>
         	<td>Master/Slave Mode (MSM Bit)</td>
-            <td>Disable (Trigger input Effect not deleyed)</td>
+            <td>Disable (Trigger input Effect not delayed)</td>
         </tr>
         <tr>
         	<td>Trigger Event Selection</td>
@@ -323,7 +324,7 @@ ARR=\frac{f_{TIM}}{f_{SYS}} - 1 = \frac{72 * 10^{6}}{48* 10{^3}} - 1 = 1499
     </tbody>
 </table>
 
-##### Connectivy/USART1
+##### Connectivity/USART1
 
 ###### MODE
 
@@ -375,7 +376,7 @@ ARR=\frac{f_{TIM}}{f_{SYS}} - 1 = \frac{72 * 10^{6}}{48* 10{^3}} - 1 = 1499
     </tbody>
 </table>
 
-##### Connectivy/USB_OTG_HS
+##### Connectivity/USB_OTG_HS
 ###### MODE
 
 | Clé | Valeur |
@@ -492,12 +493,12 @@ ARR=\frac{f_{TIM}}{f_{SYS}} - 1 = \frac{72 * 10^{6}}{48* 10{^3}} - 1 = 1499
             <td style="font-weight: bolder;">Disable</td>
         </tr>
         <tr>
-        	<td>Real Audio Fequency</td>
+        	<td>Real Audio Frequency</td>
             <td style="font-weight: lighter;">48.0 kHz</td>
         </tr>
         <tr>
         	<td>Error Between Selected</td>
-            <td style="font-weight: lighter;">-65.5 %</td>
+            <td style="font-weight: lighter;">-65.5%</td>
         </tr>
         <tr>
         	<td>Clock Strobing</td>
@@ -753,28 +754,28 @@ ARR=\frac{f_{TIM}}{f_{SYS}} - 1 = \frac{72 * 10^{6}}{48* 10{^3}} - 1 = 1499
 
 
 #### Horloges
-Pour configurer les Holorges il faut definir plusieurs fréquences que l'on utilise sur la carte:
-- `SAI-A clock (MHz)` Correspond a la frequence d'echatillonage du signal PDM ($`fs_{PDM}`$) pour la determiner:
-Avec $`D`$ le facteur de decimation (mutliple de 16) et $`fs_{PCM}`$ la frequance d'echantillonage recherché pour le signal PCM.
+Pour configurer les Holorges, il faut définir plusieurs fréquences que l'on utilise sur la carte :
+- `SAI-A clock (MHz)` Corresponds à la fréquence d'échantillonnage du signal PDM ($`fs_{PDM}`$) pour la déterminer :
+Avec $`D`$ le facteur de décimation (multiple de 16) et $`fs_{PCM}`$ la fréquence d'échantillonnage recherché pour le signal PCM.
 ```math
 fs_{PDM} = D * fs_{PCM}
 ```
 
-- `48 MHz Clocks (MHz)` Correspond à une horloge cadencer a 48 Mhz utilisé l'interface USB
+- `48 MHz Clocks (MHz)` Corresponds à une horloge cadencée à 48 MHz utilisés par l'interface USB
 
-- `HCLK (MHz)` Correspond a l'horloge System et gère directement les valeur des holorges `APB1-2` qui sont a l'entrée des Timers
+- `HCLK (MHz)` Corresponds à l'horloge système, elle influe directement sur les horloges`APBx Timer Clocks`, pour l'utilisation de `TIM2` c'est l'horloge `APB2 timer clocks` qui nous intéresse.
 
-pour mieux comprendre prenons l'exempe; suviant:
+Pour mieux comprendre, prenons l'exemple; suivant :
 - `SAI-A clock (MHz)` :
 ```math
 fs_{PDM} = D * fs_{PCM} = 64 * 48 * 10^3 = 3.072 * 10^6
 ```
-on configurera donc `SAI-A Clock` a 3.072 MHz
+on configurera donc `SAI-A Clock` a 3.072 MHz
 
-- `48 MHz Clock` sera configuré a 48 MHz
+- `48 MHz Clock` sera configuré à 48 MHz
 
-- `HCLK` sera configuré a 72 MHz
+- `HCLK` sera configuré à 72 MHz
 
-Ce qui nous donnne le schema d'horloges suivant:
+Ce qui nous donne le schéma d'horloges suivant :
 
 ![Clocks](../00_Documentation/imgs/03_Embedding/general/Clocks.png)
