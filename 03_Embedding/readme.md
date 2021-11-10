@@ -300,7 +300,7 @@ ARR=\frac{f_{TIM}}{f_{SYS}} - 1 = \frac{72 * 10^{6}}{48* 10{^3}} - 1 = 1499
         </tr>
         <tr>
         	<td>Counter Period (AutoReload Register - 32 bits value)</td>
-            <td style="font-weight: bolder;">**1499**</td>
+            <td><strong>1499</strong></td>
         </tr>
         <tr>
             <td>Internal Clock Division (CKD)</td>
