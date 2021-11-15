@@ -1,0 +1,60 @@
+\hypertarget{group__USBH__MSC__BOT__Exported__Types}{}\doxysection{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+B\+O\+T\+\_\+\+Exported\+\_\+\+Types}
+\label{group__USBH__MSC__BOT__Exported__Types}\index{USBH\_MSC\_BOT\_Exported\_Types@{USBH\_MSC\_BOT\_Exported\_Types}}
+Collaboration diagram for U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+B\+O\+T\+\_\+\+Exported\+\_\+\+Types\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__USBH__MSC__BOT__Exported__Types}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{unionBOT__CBWTypeDef}{B\+O\+T\+\_\+\+C\+B\+W\+Type\+Def}}
+\item 
+union \mbox{\hyperlink{unionBOT__CSWTypeDef}{B\+O\+T\+\_\+\+C\+S\+W\+Type\+Def}}
+\item 
+struct \mbox{\hyperlink{structBOT__HandleTypeDef}{B\+O\+T\+\_\+\+Handle\+Type\+Def}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{group__USBH__MSC__BOT__Exported__Types_gae4fc2ac141859b11ab174a02427c0872}\label{group__USBH__MSC__BOT__Exported__Types_gae4fc2ac141859b11ab174a02427c0872}} 
+enum {\bfseries B\+O\+T\+\_\+\+Status\+Type\+Def} \{ {\bfseries B\+O\+T\+\_\+\+OK} = 0, 
+{\bfseries B\+O\+T\+\_\+\+F\+A\+IL} = 1, 
+{\bfseries B\+O\+T\+\_\+\+P\+H\+A\+S\+E\+\_\+\+E\+R\+R\+OR} = 2, 
+{\bfseries B\+O\+T\+\_\+\+B\+U\+SY} = 3
+ \}
+\item 
+\mbox{\Hypertarget{group__USBH__MSC__BOT__Exported__Types_gafa43beec41d480e1d56e28a26a5d77ee}\label{group__USBH__MSC__BOT__Exported__Types_gafa43beec41d480e1d56e28a26a5d77ee}} 
+enum {\bfseries B\+O\+T\+\_\+\+C\+M\+D\+State\+Type\+Def} \{ {\bfseries B\+O\+T\+\_\+\+C\+M\+D\+\_\+\+I\+D\+LE} = 0, 
+{\bfseries B\+O\+T\+\_\+\+C\+M\+D\+\_\+\+S\+E\+ND}, 
+{\bfseries B\+O\+T\+\_\+\+C\+M\+D\+\_\+\+W\+A\+IT}
+ \}
+\item 
+\mbox{\Hypertarget{group__USBH__MSC__BOT__Exported__Types_gae3d7a4d8a5dc090089cf1c49afeaefff}\label{group__USBH__MSC__BOT__Exported__Types_gae3d7a4d8a5dc090089cf1c49afeaefff}} 
+enum {\bfseries B\+O\+T\+\_\+\+C\+S\+W\+Status\+Type\+Def} \{ {\bfseries B\+O\+T\+\_\+\+C\+S\+W\+\_\+\+C\+M\+D\+\_\+\+P\+A\+S\+S\+ED} = 0x00, 
+{\bfseries B\+O\+T\+\_\+\+C\+S\+W\+\_\+\+C\+M\+D\+\_\+\+F\+A\+I\+L\+ED} = 0x01, 
+{\bfseries B\+O\+T\+\_\+\+C\+S\+W\+\_\+\+P\+H\+A\+S\+E\+\_\+\+E\+R\+R\+OR} = 0x02
+ \}
+\item 
+\mbox{\Hypertarget{group__USBH__MSC__BOT__Exported__Types_gad1b2b72aba60db4104f03a5a2ba29794}\label{group__USBH__MSC__BOT__Exported__Types_gad1b2b72aba60db4104f03a5a2ba29794}} 
+enum {\bfseries B\+O\+T\+\_\+\+State\+Type\+Def} \{ \newline
+{\bfseries B\+O\+T\+\_\+\+S\+E\+N\+D\+\_\+\+C\+BW} = 1, 
+{\bfseries B\+O\+T\+\_\+\+S\+E\+N\+D\+\_\+\+C\+B\+W\+\_\+\+W\+A\+IT}, 
+{\bfseries B\+O\+T\+\_\+\+D\+A\+T\+A\+\_\+\+IN}, 
+{\bfseries B\+O\+T\+\_\+\+D\+A\+T\+A\+\_\+\+I\+N\+\_\+\+W\+A\+IT}, 
+\newline
+{\bfseries B\+O\+T\+\_\+\+D\+A\+T\+A\+\_\+\+O\+UT}, 
+{\bfseries B\+O\+T\+\_\+\+D\+A\+T\+A\+\_\+\+O\+U\+T\+\_\+\+W\+A\+IT}, 
+{\bfseries B\+O\+T\+\_\+\+R\+E\+C\+E\+I\+V\+E\+\_\+\+C\+SW}, 
+{\bfseries B\+O\+T\+\_\+\+R\+E\+C\+E\+I\+V\+E\+\_\+\+C\+S\+W\+\_\+\+W\+A\+IT}, 
+\newline
+{\bfseries B\+O\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+IN}, 
+{\bfseries B\+O\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+O\+UT}, 
+{\bfseries B\+O\+T\+\_\+\+U\+N\+R\+E\+C\+O\+V\+E\+R\+E\+D\+\_\+\+E\+R\+R\+OR}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}

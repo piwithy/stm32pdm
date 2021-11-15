@@ -1,0 +1,164 @@
+\hypertarget{pdm__fir_8c}{}\doxysection{pdm\+\_\+fir/pdm\+\_\+fir.c File Reference}
+\label{pdm__fir_8c}\index{pdm\_fir/pdm\_fir.c@{pdm\_fir/pdm\_fir.c}}
+
+
+Implementation file of the P\+DM F\+IR.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}pdm\+\_\+fir.\+h\char`\"{}}\newline
+Include dependency graph for pdm\+\_\+fir.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{pdm__fir_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{pdm__fir_8c_a1f18200697fd2cf05d685431949b8e14}{pdm\+\_\+fir\+\_\+flt\+\_\+init}} (\mbox{\hyperlink{structpdm__fir__filter__t}{pdm\+\_\+fir\+\_\+filter\+\_\+t}} $\ast$f)
+\begin{DoxyCompactList}\small\item\em Initialize filter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{pdm__fir_8c_a803fea7244c604f321da59aa08b9a4e0}{pdm\+\_\+fir\+\_\+flt\+\_\+put}} (\mbox{\hyperlink{structpdm__fir__filter__t}{pdm\+\_\+fir\+\_\+filter\+\_\+t}} $\ast$f, uint16\+\_\+t bits)
+\begin{DoxyCompactList}\small\item\em Put 16 bits of input P\+DM signal (M\+SB first) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{pdm__fir_8c_a76a82f5708e976cb768000609aaa3d78}{pdm\+\_\+fir\+\_\+flt\+\_\+get}} (const \mbox{\hyperlink{structpdm__fir__filter__t}{pdm\+\_\+fir\+\_\+filter\+\_\+t}} $\ast$f, int out\+\_\+bits)
+\begin{DoxyCompactList}\small\item\em Retrieve output value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{pdm__fir_8c_af1ace5c2268f854e6b80db353f2e44ed}{pdm\+\_\+fir\+\_\+flt\+\_\+config\+\_\+init}} (\mbox{\hyperlink{structpdm__fir__filter__config__t}{pdm\+\_\+fir\+\_\+filter\+\_\+config\+\_\+t}} $\ast$f, uint16\+\_\+t decimation\+\_\+factor, int16\+\_\+t input\+\_\+offset, int16\+\_\+t output\+\_\+offset, uint16\+\_\+t linear\+\_\+gain, uint8\+\_\+t bit\+\_\+scale)
+\begin{DoxyCompactList}\small\item\em Initialize config \& filter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{pdm__fir_8c_a289c7873d55a575e0d78274861873681}{pdm\+\_\+fir\+\_\+flt\+\_\+config\+\_\+de\+Init}} (\mbox{\hyperlink{structpdm__fir__filter__config__t}{pdm\+\_\+fir\+\_\+filter\+\_\+config\+\_\+t}} $\ast$f)
+\begin{DoxyCompactList}\small\item\em de\+Initialize config \& filter \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{pdm__fir_8c_a349c3e652268d0ebdd6a9204ddcecc8b}{pdm\+\_\+fir\+\_\+flt\+\_\+chunk}} (\mbox{\hyperlink{structpdm__fir__filter__config__t}{pdm\+\_\+fir\+\_\+filter\+\_\+config\+\_\+t}} $\ast$f, uint16\+\_\+t $\ast$pcm\+\_\+output, const uint16\+\_\+t $\ast$pdm\+\_\+input, uint32\+\_\+t pdm\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Filter a chunk of P\+DM Data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation file of the P\+DM F\+IR. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{pdm__fir_8c_a349c3e652268d0ebdd6a9204ddcecc8b}\label{pdm__fir_8c_a349c3e652268d0ebdd6a9204ddcecc8b}} 
+\index{pdm\_fir.c@{pdm\_fir.c}!pdm\_fir\_flt\_chunk@{pdm\_fir\_flt\_chunk}}
+\index{pdm\_fir\_flt\_chunk@{pdm\_fir\_flt\_chunk}!pdm\_fir.c@{pdm\_fir.c}}
+\doxysubsubsection{\texorpdfstring{pdm\_fir\_flt\_chunk()}{pdm\_fir\_flt\_chunk()}}
+{\footnotesize\ttfamily uint32\+\_\+t pdm\+\_\+fir\+\_\+flt\+\_\+chunk (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structpdm__fir__filter__config__t}{pdm\+\_\+fir\+\_\+filter\+\_\+config\+\_\+t}} $\ast$}]{f,  }\item[{uint16\+\_\+t $\ast$}]{pcm\+\_\+output,  }\item[{const uint16\+\_\+t $\ast$}]{pdm\+\_\+input,  }\item[{uint32\+\_\+t}]{pdm\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Filter a chunk of P\+DM Data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & fir filter Config \\
+\hline
+{\em pcm\+\_\+output} & P\+CM output Buffer \\
+\hline
+{\em pdm\+\_\+input} & P\+DM Input Buffer \\
+\hline
+{\em pdm\+\_\+size} & Size of the P\+DM Buffer (in 16 bit word) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of P\+CM Samples written in the buffer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{pdm__fir_8c_a289c7873d55a575e0d78274861873681}\label{pdm__fir_8c_a289c7873d55a575e0d78274861873681}} 
+\index{pdm\_fir.c@{pdm\_fir.c}!pdm\_fir\_flt\_config\_deInit@{pdm\_fir\_flt\_config\_deInit}}
+\index{pdm\_fir\_flt\_config\_deInit@{pdm\_fir\_flt\_config\_deInit}!pdm\_fir.c@{pdm\_fir.c}}
+\doxysubsubsection{\texorpdfstring{pdm\_fir\_flt\_config\_deInit()}{pdm\_fir\_flt\_config\_deInit()}}
+{\footnotesize\ttfamily void pdm\+\_\+fir\+\_\+flt\+\_\+config\+\_\+de\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structpdm__fir__filter__config__t}{pdm\+\_\+fir\+\_\+filter\+\_\+config\+\_\+t}} $\ast$}]{f }\end{DoxyParamCaption})}
+
+
+
+de\+Initialize config \& filter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & filter config \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{pdm__fir_8c_af1ace5c2268f854e6b80db353f2e44ed}\label{pdm__fir_8c_af1ace5c2268f854e6b80db353f2e44ed}} 
+\index{pdm\_fir.c@{pdm\_fir.c}!pdm\_fir\_flt\_config\_init@{pdm\_fir\_flt\_config\_init}}
+\index{pdm\_fir\_flt\_config\_init@{pdm\_fir\_flt\_config\_init}!pdm\_fir.c@{pdm\_fir.c}}
+\doxysubsubsection{\texorpdfstring{pdm\_fir\_flt\_config\_init()}{pdm\_fir\_flt\_config\_init()}}
+{\footnotesize\ttfamily void pdm\+\_\+fir\+\_\+flt\+\_\+config\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structpdm__fir__filter__config__t}{pdm\+\_\+fir\+\_\+filter\+\_\+config\+\_\+t}} $\ast$}]{f,  }\item[{uint16\+\_\+t}]{decimation\+\_\+factor,  }\item[{int16\+\_\+t}]{input\+\_\+offset,  }\item[{int16\+\_\+t}]{output\+\_\+offset,  }\item[{uint16\+\_\+t}]{linear\+\_\+gain,  }\item[{uint8\+\_\+t}]{bit\+\_\+scale }\end{DoxyParamCaption})}
+
+
+
+Initialize config \& filter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & filter config \\
+\hline
+{\em decimation\+\_\+factor} & Decimation factor of the filter \\
+\hline
+{\em input\+\_\+offset} & offset to be applied on the sample before amplification \\
+\hline
+{\em output\+\_\+offset} & offset to be applied on the sample after amplification \\
+\hline
+{\em linear\+\_\+gain} & amplification coefficient \\
+\hline
+{\em bit\+\_\+scale} & number of output bits (output right aligned) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{pdm__fir_8c_a76a82f5708e976cb768000609aaa3d78}\label{pdm__fir_8c_a76a82f5708e976cb768000609aaa3d78}} 
+\index{pdm\_fir.c@{pdm\_fir.c}!pdm\_fir\_flt\_get@{pdm\_fir\_flt\_get}}
+\index{pdm\_fir\_flt\_get@{pdm\_fir\_flt\_get}!pdm\_fir.c@{pdm\_fir.c}}
+\doxysubsubsection{\texorpdfstring{pdm\_fir\_flt\_get()}{pdm\_fir\_flt\_get()}}
+{\footnotesize\ttfamily int pdm\+\_\+fir\+\_\+flt\+\_\+get (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structpdm__fir__filter__t}{pdm\+\_\+fir\+\_\+filter\+\_\+t}} $\ast$}]{f,  }\item[{int}]{out\+\_\+bits }\end{DoxyParamCaption})}
+
+
+
+Retrieve output value. 
+
+May be called at any rate since it does not change the filter state. The output ranges from -\/(2$\ast$$\ast$(out\+\_\+bits-\/1)) to +(2$\ast$$\ast$(out\+\_\+bits-\/1)). Those values correspond to all 0 or all 1 input signal. Note that the output value may still exceed this range so caller should truncate return value on its own if necessary.
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & pdm filter \\
+\hline
+{\em out\+\_\+bits} & number of bits of the sample \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{pdm__fir_8c_a1f18200697fd2cf05d685431949b8e14}\label{pdm__fir_8c_a1f18200697fd2cf05d685431949b8e14}} 
+\index{pdm\_fir.c@{pdm\_fir.c}!pdm\_fir\_flt\_init@{pdm\_fir\_flt\_init}}
+\index{pdm\_fir\_flt\_init@{pdm\_fir\_flt\_init}!pdm\_fir.c@{pdm\_fir.c}}
+\doxysubsubsection{\texorpdfstring{pdm\_fir\_flt\_init()}{pdm\_fir\_flt\_init()}}
+{\footnotesize\ttfamily void pdm\+\_\+fir\+\_\+flt\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structpdm__fir__filter__t}{pdm\+\_\+fir\+\_\+filter\+\_\+t}} $\ast$}]{f }\end{DoxyParamCaption})}
+
+
+
+Initialize filter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & pdm filter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{pdm__fir_8c_a803fea7244c604f321da59aa08b9a4e0}\label{pdm__fir_8c_a803fea7244c604f321da59aa08b9a4e0}} 
+\index{pdm\_fir.c@{pdm\_fir.c}!pdm\_fir\_flt\_put@{pdm\_fir\_flt\_put}}
+\index{pdm\_fir\_flt\_put@{pdm\_fir\_flt\_put}!pdm\_fir.c@{pdm\_fir.c}}
+\doxysubsubsection{\texorpdfstring{pdm\_fir\_flt\_put()}{pdm\_fir\_flt\_put()}}
+{\footnotesize\ttfamily void pdm\+\_\+fir\+\_\+flt\+\_\+put (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structpdm__fir__filter__t}{pdm\+\_\+fir\+\_\+filter\+\_\+t}} $\ast$}]{f,  }\item[{uint16\+\_\+t}]{bits }\end{DoxyParamCaption})}
+
+
+
+Put 16 bits of input P\+DM signal (M\+SB first) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & pdm filter \\
+\hline
+{\em bits} & P\+DM input word\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}

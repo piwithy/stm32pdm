@@ -1,0 +1,63 @@
+\hypertarget{group__USBH__MSC__CORE__Exported__Types}{}\doxysection{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+C\+O\+R\+E\+\_\+\+Exported\+\_\+\+Types}
+\label{group__USBH__MSC__CORE__Exported__Types}\index{USBH\_MSC\_CORE\_Exported\_Types@{USBH\_MSC\_CORE\_Exported\_Types}}
+Collaboration diagram for U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+C\+O\+R\+E\+\_\+\+Exported\+\_\+\+Types\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__USBH__MSC__CORE__Exported__Types}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structMSC__LUNTypeDef}{M\+S\+C\+\_\+\+L\+U\+N\+Type\+Def}}
+\item 
+struct \mbox{\hyperlink{struct__MSC__Process}{\+\_\+\+M\+S\+C\+\_\+\+Process}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{group__USBH__MSC__CORE__Exported__Types_ga0e348f2e69108927fe4e26386e29db0c}\label{group__USBH__MSC__CORE__Exported__Types_ga0e348f2e69108927fe4e26386e29db0c}} 
+\#define {\bfseries M\+A\+X\+\_\+\+S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+L\+UN}~2U
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{group__USBH__MSC__CORE__Exported__Types_ga40b40d51430e1563f233b684bbc67025}\label{group__USBH__MSC__CORE__Exported__Types_ga40b40d51430e1563f233b684bbc67025}} 
+typedef struct \mbox{\hyperlink{struct__MSC__Process}{\+\_\+\+M\+S\+C\+\_\+\+Process}} {\bfseries M\+S\+C\+\_\+\+Handle\+Type\+Def}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{group__USBH__MSC__CORE__Exported__Types_ga22bc9773ab072580009c57d6b3846f86}\label{group__USBH__MSC__CORE__Exported__Types_ga22bc9773ab072580009c57d6b3846f86}} 
+enum {\bfseries M\+S\+C\+\_\+\+State\+Type\+Def} \{ \newline
+{\bfseries M\+S\+C\+\_\+\+I\+N\+IT} = 0, 
+{\bfseries M\+S\+C\+\_\+\+I\+D\+LE}, 
+{\bfseries M\+S\+C\+\_\+\+T\+E\+S\+T\+\_\+\+U\+N\+I\+T\+\_\+\+R\+E\+A\+DY}, 
+{\bfseries M\+S\+C\+\_\+\+R\+E\+A\+D\+\_\+\+C\+A\+P\+A\+C\+I\+T\+Y10}, 
+\newline
+{\bfseries M\+S\+C\+\_\+\+R\+E\+A\+D\+\_\+\+I\+N\+Q\+U\+I\+RY}, 
+{\bfseries M\+S\+C\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+S\+E\+N\+SE}, 
+{\bfseries M\+S\+C\+\_\+\+R\+E\+AD}, 
+{\bfseries M\+S\+C\+\_\+\+W\+R\+I\+TE}, 
+\newline
+{\bfseries M\+S\+C\+\_\+\+U\+N\+R\+E\+C\+O\+V\+E\+R\+E\+D\+\_\+\+E\+R\+R\+OR}, 
+{\bfseries M\+S\+C\+\_\+\+P\+E\+R\+I\+O\+D\+I\+C\+\_\+\+C\+H\+E\+CK}
+ \}
+\item 
+\mbox{\Hypertarget{group__USBH__MSC__CORE__Exported__Types_gad424b9bc950574c703e69e6c3fa387b5}\label{group__USBH__MSC__CORE__Exported__Types_gad424b9bc950574c703e69e6c3fa387b5}} 
+enum {\bfseries M\+S\+C\+\_\+\+Error\+Type\+Def} \{ {\bfseries M\+S\+C\+\_\+\+OK}, 
+{\bfseries M\+S\+C\+\_\+\+N\+O\+T\+\_\+\+R\+E\+A\+DY}, 
+{\bfseries M\+S\+C\+\_\+\+E\+R\+R\+OR}
+ \}
+\item 
+\mbox{\Hypertarget{group__USBH__MSC__CORE__Exported__Types_ga2cd6db3a3eed7f8330da1205d0f82f18}\label{group__USBH__MSC__CORE__Exported__Types_ga2cd6db3a3eed7f8330da1205d0f82f18}} 
+enum {\bfseries M\+S\+C\+\_\+\+Req\+State\+Type\+Def} \{ {\bfseries M\+S\+C\+\_\+\+R\+E\+Q\+\_\+\+I\+D\+LE} = 0, 
+{\bfseries M\+S\+C\+\_\+\+R\+E\+Q\+\_\+\+R\+E\+S\+ET}, 
+{\bfseries M\+S\+C\+\_\+\+R\+E\+Q\+\_\+\+G\+E\+T\+\_\+\+M\+A\+X\+\_\+\+L\+UN}, 
+{\bfseries M\+S\+C\+\_\+\+R\+E\+Q\+\_\+\+E\+R\+R\+OR}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}

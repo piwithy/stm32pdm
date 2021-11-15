@@ -1,0 +1,122 @@
+\hypertarget{group__USBH__PIPES__Private__Functions}{}\doxysection{U\+S\+B\+H\+\_\+\+P\+I\+P\+E\+S\+\_\+\+Private\+\_\+\+Functions}
+\label{group__USBH__PIPES__Private__Functions}\index{USBH\_PIPES\_Private\_Functions@{USBH\_PIPES\_Private\_Functions}}
+Collaboration diagram for U\+S\+B\+H\+\_\+\+P\+I\+P\+E\+S\+\_\+\+Private\+\_\+\+Functions\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{group__USBH__PIPES__Private__Functions}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__PIPES__Private__Functions_ga95e4dd6f05ca2c5943a7b63348b61d56}{U\+S\+B\+H\+\_\+\+Open\+Pipe}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t pipe\+\_\+num, uint8\+\_\+t epnum, uint8\+\_\+t dev\+\_\+address, uint8\+\_\+t speed, uint8\+\_\+t ep\+\_\+type, uint16\+\_\+t mps)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Open\+\_\+\+Pipe Open a pipe. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__PIPES__Private__Functions_gae0b745be17f5d3e5ef19032602f81b6f}{U\+S\+B\+H\+\_\+\+Close\+Pipe}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t pipe\+\_\+num)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Close\+Pipe Close a pipe. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USBH__PIPES__Private__Functions_ga35bd197654f5477fb9436eba06e9cad3}{U\+S\+B\+H\+\_\+\+Alloc\+Pipe}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t ep\+\_\+addr)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Alloc\+\_\+\+Pipe Allocate a new Pipe. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__PIPES__Private__Functions_gae5a6f5bd4f58b827e719c11835980966}{U\+S\+B\+H\+\_\+\+Free\+Pipe}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t idx)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Free\+\_\+\+Pipe Free the U\+SB Pipe. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__USBH__PIPES__Private__Functions_ga35bd197654f5477fb9436eba06e9cad3}\label{group__USBH__PIPES__Private__Functions_ga35bd197654f5477fb9436eba06e9cad3}} 
+\index{USBH\_PIPES\_Private\_Functions@{USBH\_PIPES\_Private\_Functions}!USBH\_AllocPipe@{USBH\_AllocPipe}}
+\index{USBH\_AllocPipe@{USBH\_AllocPipe}!USBH\_PIPES\_Private\_Functions@{USBH\_PIPES\_Private\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBH\_AllocPipe()}{USBH\_AllocPipe()}}
+{\footnotesize\ttfamily uint8\+\_\+t U\+S\+B\+H\+\_\+\+Alloc\+Pipe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{ep\+\_\+addr }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+Alloc\+\_\+\+Pipe Allocate a new Pipe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em ep\+\_\+addr} & End point for which the Pipe to be allocated \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Pipe} & number \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__PIPES__Private__Functions_gae0b745be17f5d3e5ef19032602f81b6f}\label{group__USBH__PIPES__Private__Functions_gae0b745be17f5d3e5ef19032602f81b6f}} 
+\index{USBH\_PIPES\_Private\_Functions@{USBH\_PIPES\_Private\_Functions}!USBH\_ClosePipe@{USBH\_ClosePipe}}
+\index{USBH\_ClosePipe@{USBH\_ClosePipe}!USBH\_PIPES\_Private\_Functions@{USBH\_PIPES\_Private\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBH\_ClosePipe()}{USBH\_ClosePipe()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+Close\+Pipe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{pipe\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+Close\+Pipe Close a pipe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em pipe\+\_\+num} & Pipe Number \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & Status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__PIPES__Private__Functions_gae5a6f5bd4f58b827e719c11835980966}\label{group__USBH__PIPES__Private__Functions_gae5a6f5bd4f58b827e719c11835980966}} 
+\index{USBH\_PIPES\_Private\_Functions@{USBH\_PIPES\_Private\_Functions}!USBH\_FreePipe@{USBH\_FreePipe}}
+\index{USBH\_FreePipe@{USBH\_FreePipe}!USBH\_PIPES\_Private\_Functions@{USBH\_PIPES\_Private\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBH\_FreePipe()}{USBH\_FreePipe()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+Free\+Pipe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{idx }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+Free\+\_\+\+Pipe Free the U\+SB Pipe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em idx} & Pipe number to be freed \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & Status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__PIPES__Private__Functions_ga95e4dd6f05ca2c5943a7b63348b61d56}\label{group__USBH__PIPES__Private__Functions_ga95e4dd6f05ca2c5943a7b63348b61d56}} 
+\index{USBH\_PIPES\_Private\_Functions@{USBH\_PIPES\_Private\_Functions}!USBH\_OpenPipe@{USBH\_OpenPipe}}
+\index{USBH\_OpenPipe@{USBH\_OpenPipe}!USBH\_PIPES\_Private\_Functions@{USBH\_PIPES\_Private\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBH\_OpenPipe()}{USBH\_OpenPipe()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+Open\+Pipe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{pipe\+\_\+num,  }\item[{uint8\+\_\+t}]{epnum,  }\item[{uint8\+\_\+t}]{dev\+\_\+address,  }\item[{uint8\+\_\+t}]{speed,  }\item[{uint8\+\_\+t}]{ep\+\_\+type,  }\item[{uint16\+\_\+t}]{mps }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+Open\+\_\+\+Pipe Open a pipe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em pipe\+\_\+num} & Pipe Number \\
+\hline
+{\em dev\+\_\+address} & U\+SB Device address allocated to attached device \\
+\hline
+{\em speed} & \+: U\+SB device speed (Full/\+Low) \\
+\hline
+{\em ep\+\_\+type} & end point type (Bulk/int/ctl) \\
+\hline
+{\em mps} & max pkt size \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & Status \\
+\hline
+\end{DoxyRetVals}

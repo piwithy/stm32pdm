@@ -1,0 +1,9 @@
+<map id="USBH_CORE" name="USBH_CORE">
+<area shape="rect" id="node1" title="This file is the Header file for usbh_core.c." alt="" coords="183,120,285,145"/>
+<area shape="rect" id="node2" href="$group__USBH__CORE__Private__Functions.html" title=" " alt="" coords="333,5,557,31"/>
+<area shape="rect" id="node3" href="$group__USBH__CORE__Exported__Defines.html" title=" " alt="" coords="362,55,529,95"/>
+<area shape="rect" id="node4" href="$group__USBH__CORE__Private__Variables.html" title=" " alt="" coords="334,120,557,145"/>
+<area shape="rect" id="node6" href="$group__USBH__CORE__Private__Macros.html" title=" " alt="" coords="341,169,550,195"/>
+<area shape="rect" id="node7" href="$group__USBH__CORE__Private__Defines.html" title=" " alt="" coords="340,219,551,244"/>
+<area shape="rect" id="node5" href="$group__USBH__LIB__CORE.html" title=" " alt="" coords="5,120,135,145"/>
+</map>

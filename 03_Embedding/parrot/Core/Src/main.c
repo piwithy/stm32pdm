@@ -29,8 +29,18 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+/**
+ * @brief Enum of States the Program can Take
+ * */
 typedef enum {
-    IDLE, RECORDING, PLAYING, TRANSMITTING
+    /** @brief The Program is Waiting for user input*/
+    IDLE,
+    /** @brief The Program is Recording sound (max RECORD_TIME_MS ms)*/
+    RECORDING,
+    /** @brief The Program is Playing recorded Sound on DAC*/
+    PLAYING,
+    /** @brief The Program is Transmitting Recorded Sound over UART */
+    TRANSMITTING
 } program_state_t;
 /* USER CODE END PTD */
 
@@ -39,22 +49,34 @@ typedef enum {
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "EndlessLoop"
 
+/** @brief PCM Sampling frequency in Hz*/
 #define SOUND_FS 32000
+/** @brief PDM -> PCM Sampling frequency factor */
 #define DECIMATION_FACTOR 64
+
+/** @brief Number of PDM Sample in A Word */
 #define WORD_SIZE 16
 
 // 1ms of PDM data @SOUND_FS*DECIMATION_FACTOR in WORD of WORD_SIZE
+/** @brief PDM Processing buffer size (Contain 1ms of PDM Sample)*/
 #define PDM_BUFFER_SIZE ((SOUND_FS / 1000) * DECIMATION_FACTOR / WORD_SIZE)
+
 // 1ms of PCM_DATA in word of WORD_SIZE
+/** @brief PCM Processing buffer size  (Contain 1ms of PDM Sample)*/
 #define PCM_BUFFER_SIZE (SOUND_FS / 1000)
 
 // length in second of the played back sound
+
+/** @brief Maximum length of a record in ms */
 #define RECORD_TIME_MS 2985
 
+/** @brief Linear Gain applied on PCM Samples*/
 #define LINEAR_GAIN 9
 
+/** @brief Number of PCM samples to store in the recorded sound */
 #define SAMPLE_COUNT (RECORD_TIME_MS * (SOUND_FS/1000))
 
+/** @brief Macro configuring if the record is transmitted over UART (comment to disable UART transmission)*/
 #define TRANSMIT
 
 /* USER CODE END PD */
@@ -77,18 +99,51 @@ TIM_HandleTypeDef htim2;
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
+/** @brief PDM Receiving Buffer */
 uint16_t PDM_BUFFER[PDM_BUFFER_SIZE * 2];
+/** @brief PCM Processing Buffer */
 uint16_t PCM_BUFFER[PCM_BUFFER_SIZE];
+
+/** @brief PCM Record Buffer */
 uint16_t PCM_SOUND[SAMPLE_COUNT];
 
+/** @brief Left Channel DAC transmitting Buffer */
 uint16_t DAC_BUFFER_LEFT[PCM_BUFFER_SIZE * 2];
+/** @brief Right Channel DAC transmitting Buffer */
 uint16_t DAC_BUFFER_RIGHT[PCM_BUFFER_SIZE * 2];
 
 
-uint8_t sai_flag = 1, sai_half = 0;
-uint8_t dac_flag = 1, dac_half = 0;
+/** @brief Flag lowered when SAI buffer Callbacks to indicate that the one half of the SAI buffer is ready to be read*/
+uint8_t sai_flag = 1;
+/** @brief Flag indicating Witch half of the SAI is ready to be read */
+uint8_t sai_half = 0;
+/** @brief Flag lowered when DAC buffer Callbacks to indicate that one half of the DAC buffer Has been read*/
+uint8_t dac_flag = 1;
+/** @brief Flag indicating Witch half of the SAI is ready to be written to */
+uint8_t dac_half = 0;
+
 
 #ifdef TRANSMIT
+/**
+ * @brief Array Storing the WAV HEADER hear with the default values for an Empty File (16 bit Integer PCM, Mono, Sampled @ SOUND_FS).
+ *
+ * Header is composed as such:
+ * | Index | Size (Bytes) | Value                                       |
+ * |:------|:-------------|:--------------------------------------------|
+ * | 0     | 4            | "RIFF"                                      |
+ * | 1     | 4            | File Size in Bytes (Header + samples) - 8   |
+ * | 2     | 4            | "WAVE"                                      |
+ * | 3     | 4            | "fmt "                                      |
+ * | 4     | 4            | Number of bytes in the block - 16  (0x10)   |
+ * | 5_hi  | 2            | Sample Type (1: Integer PCM, 3: floating PCM, 65534: WAVE_FORMAT_EXTENSIBLE |
+ * | 5_lo  | 2            | Number of channels (1 &rarr; 6)              |
+ * | 6     | 4            | Sampling Frequency                           |
+ * | 7     | 4            | Byte rate (Bytes to read per second)         |
+ * | 8_hi  | 2            | bits per sample                              |
+ * | 8_lo  | 2            | Bytes per Block (All Channels)               |
+ * | 9     | 4            | "data"                                       |
+ * | 10    | 4            | Data size in bytes (Size in Bytes of the written PCM Samples)|
+ */
 uint32_t WAVE_HEADER[] = {
         // Declaration fichier
         ('F' << 24) + ('F' << 16) + ('I' << 8) + ('R' << 0), // 'RIFF'
@@ -300,6 +355,7 @@ int main(void) {
                     dac_flag = 1;
                 }
                 break;
+#ifdef TRANSMIT
             case TRANSMITTING:
                 //Optimizing sound for 16 bit WAV Samples
                 for (size_t i = 0; i < SAMPLE_COUNT; i++)
@@ -314,6 +370,7 @@ int main(void) {
                 }
                 program_state = IDLE;
                 break;
+#endif //TRANSMIT
             default:
                 break;
         }

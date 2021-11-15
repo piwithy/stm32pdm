@@ -1,0 +1,8 @@
+<map id="PWR Private Constants" name="PWR Private Constants">
+<area shape="rect" id="node1" href="$group__PWR__register__alias__address.html" title=" " alt="" coords="339,5,484,45"/>
+<area shape="rect" id="node2" title=" " alt="" coords="105,106,276,131"/>
+<area shape="rect" id="node3" href="$group__PWR__CR__register__alias.html" title=" " alt="" coords="328,69,495,109"/>
+<area shape="rect" id="node4" href="$group__PWR__PVD__EXTI__Line.html" title=" " alt="" coords="338,134,485,159"/>
+<area shape="rect" id="node5" href="$group__PWR__CSR__register__alias.html" title=" " alt="" coords="324,184,499,224"/>
+<area shape="rect" id="node6" href="$group__PWR.html" title="PWR HAL module driver." alt="" coords="5,106,57,131"/>
+</map>

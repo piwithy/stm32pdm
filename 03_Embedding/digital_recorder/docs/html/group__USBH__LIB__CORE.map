@@ -1,0 +1,13 @@
+<map id="USBH_LIB_CORE" name="USBH_LIB_CORE">
+<area shape="rect" id="node1" href="$group__USBH__CORE__Exported__Macros.html" title=" " alt="" coords="317,5,484,45"/>
+<area shape="rect" id="node2" href="$group__USBH__CORE.html" title="This file is the Header file for usbh_core.c." alt="" coords="349,70,452,95"/>
+<area shape="rect" id="node3" href="$group__USBH__DEF.html" title="This file is includes USB descriptors." alt="" coords="355,119,447,145"/>
+<area shape="rect" id="node4" href="$group__USBH__LIB.html" title=" " alt="" coords="5,234,92,259"/>
+<area shape="rect" id="node9" title=" " alt="" coords="140,234,269,259"/>
+<area shape="rect" id="node5" href="$group__USBH__CORE__Exported__Types.html" title=" " alt="" coords="317,169,484,209"/>
+<area shape="rect" id="node6" href="$group__USBH__IOREQ.html" title="This file is the header file for usbh_ioreq.c." alt="" coords="347,234,454,259"/>
+<area shape="rect" id="node7" href="$group__USBH__CORE__Exported__Variables.html" title=" " alt="" coords="317,284,484,324"/>
+<area shape="rect" id="node8" href="$group__USBH__CORE__Exported__FunctionsPrototype.html" title=" " alt="" coords="317,348,484,388"/>
+<area shape="rect" id="node10" href="$group__USBH__CTLREQ.html" title="This file is the." alt="" coords="342,413,459,438"/>
+<area shape="rect" id="node11" href="$group__USBH__PIPES.html" title="This file is the header file for usbh_pipes.c." alt="" coords="349,462,452,487"/>
+</map>

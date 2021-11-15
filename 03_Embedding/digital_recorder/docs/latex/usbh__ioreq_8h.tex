@@ -1,0 +1,75 @@
+\hypertarget{usbh__ioreq_8h}{}\doxysection{Middlewares/\+S\+T/\+S\+T\+M32\+\_\+\+U\+S\+B\+\_\+\+Host\+\_\+\+Library/\+Core/\+Inc/usbh\+\_\+ioreq.h File Reference}
+\label{usbh__ioreq_8h}\index{Middlewares/ST/STM32\_USB\_Host\_Library/Core/Inc/usbh\_ioreq.h@{Middlewares/ST/STM32\_USB\_Host\_Library/Core/Inc/usbh\_ioreq.h}}
+
+
+Header file for \mbox{\hyperlink{usbh__ioreq_8c}{usbh\+\_\+ioreq.\+c}}.  
+
+
+{\ttfamily \#include \char`\"{}usbh\+\_\+conf.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usbh\+\_\+core.\+h\char`\"{}}\newline
+Include dependency graph for usbh\+\_\+ioreq.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{usbh__ioreq_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{usbh__ioreq_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries U\+S\+B\+H\+\_\+\+P\+I\+D\+\_\+\+S\+E\+T\+UP}~0U
+\item 
+\#define {\bfseries U\+S\+B\+H\+\_\+\+P\+I\+D\+\_\+\+D\+A\+TA}~1U
+\item 
+\#define {\bfseries U\+S\+B\+H\+\_\+\+E\+P\+\_\+\+C\+O\+N\+T\+R\+OL}~0U
+\item 
+\#define {\bfseries U\+S\+B\+H\+\_\+\+E\+P\+\_\+\+I\+SO}~1U
+\item 
+\#define {\bfseries U\+S\+B\+H\+\_\+\+E\+P\+\_\+\+B\+U\+LK}~2U
+\item 
+\#define {\bfseries U\+S\+B\+H\+\_\+\+E\+P\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT}~3U
+\item 
+\#define {\bfseries U\+S\+B\+H\+\_\+\+S\+E\+T\+U\+P\+\_\+\+P\+K\+T\+\_\+\+S\+I\+ZE}~8U
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__IOREQ__Exported__FunctionsPrototype_ga174168b7bf3efbe5052b9337d036e168}{U\+S\+B\+H\+\_\+\+Ctl\+Send\+Setup}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t $\ast$buff, uint8\+\_\+t pipe\+\_\+num)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Ctl\+Send\+Setup Sends the Setup Packet to the Device. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__IOREQ__Exported__FunctionsPrototype_ga97b326e21dbe08e436d2953634d9f284}{U\+S\+B\+H\+\_\+\+Ctl\+Send\+Data}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t $\ast$buff, uint16\+\_\+t length, uint8\+\_\+t pipe\+\_\+num, uint8\+\_\+t do\+\_\+ping)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Ctl\+Send\+Data Sends a data Packet to the Device. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__IOREQ__Exported__FunctionsPrototype_gaae5faaa4aaed0c0ff68eb0c40a93c90b}{U\+S\+B\+H\+\_\+\+Ctl\+Receive\+Data}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t $\ast$buff, uint16\+\_\+t length, uint8\+\_\+t pipe\+\_\+num)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Ctl\+Receive\+Data Receives the Device Response to the Setup Packet. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__IOREQ__Exported__FunctionsPrototype_ga832ed1e4938daafe6c49b7a80f8bfa35}{U\+S\+B\+H\+\_\+\+Bulk\+Receive\+Data}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t $\ast$buff, uint16\+\_\+t length, uint8\+\_\+t pipe\+\_\+num)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Bulk\+Receive\+Data Receives IN bulk packet from device. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__IOREQ__Exported__FunctionsPrototype_ga1dcaf35bec574557e46b902364d4c35b}{U\+S\+B\+H\+\_\+\+Bulk\+Send\+Data}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t $\ast$buff, uint16\+\_\+t length, uint8\+\_\+t pipe\+\_\+num, uint8\+\_\+t do\+\_\+ping)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Bulk\+Send\+Data Sends the Bulk Packet to the device. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__IOREQ__Exported__FunctionsPrototype_ga0d68a8cdbd33f21cf31dd0baa3b90edf}{U\+S\+B\+H\+\_\+\+Interrupt\+Receive\+Data}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t $\ast$buff, uint8\+\_\+t length, uint8\+\_\+t pipe\+\_\+num)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Interrupt\+Receive\+Data Receives the Device Response to the Interrupt IN token. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__IOREQ__Exported__FunctionsPrototype_gab9fb0efb93cee153bad15486b61d5635}{U\+S\+B\+H\+\_\+\+Interrupt\+Send\+Data}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t $\ast$buff, uint8\+\_\+t length, uint8\+\_\+t pipe\+\_\+num)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Interrupt\+Send\+Data Sends the data on Interrupt O\+UT Endpoint. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__IOREQ__Exported__FunctionsPrototype_gab210c2c38b01baf953c24fc7fe7d1a75}{U\+S\+B\+H\+\_\+\+Isoc\+Receive\+Data}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t $\ast$buff, uint32\+\_\+t length, uint8\+\_\+t pipe\+\_\+num)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Isoc\+Receive\+Data Receives the Device Response to the Isochronous IN token. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__IOREQ__Exported__FunctionsPrototype_ga9c5ac11dfbedaeefdce63daeaf82b454}{U\+S\+B\+H\+\_\+\+Isoc\+Send\+Data}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t $\ast$buff, uint32\+\_\+t length, uint8\+\_\+t pipe\+\_\+num)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Isoc\+Send\+Data Sends the data on Isochronous O\+UT Endpoint. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for \mbox{\hyperlink{usbh__ioreq_8c}{usbh\+\_\+ioreq.\+c}}. 
+
+\begin{DoxyAuthor}{Author}
+M\+CD Application Team 
+\end{DoxyAuthor}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2015 S\+T\+Microelectronics. All rights reserved.\end{center} }
+
+This software component is licensed by ST under Ultimate Liberty license S\+L\+A0044, the \char`\"{}\+License\char`\"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: www.\+st.\+com/\+S\+L\+A0044 

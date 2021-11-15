@@ -1,0 +1,14 @@
+<map id="USBH_PIPES" name="USBH_PIPES">
+<area shape="rect" id="node1" href="$group__USBH__PIPES__Private__Variables.html" title=" " alt="" coords="339,5,494,45"/>
+<area shape="rect" id="node2" href="$group__USBH__PIPES__Private__Defines.html" title=" " alt="" coords="339,69,494,109"/>
+<area shape="rect" id="node3" href="$group__USBH__PIPES__Private__Functions.html" title=" " alt="" coords="339,133,494,173"/>
+<area shape="rect" id="node4" href="$group__USBH__PIPES__Exported__Macros.html" title=" " alt="" coords="333,197,500,237"/>
+<area shape="rect" id="node5" href="$group__USBH__PIPES__Private__Macros.html" title=" " alt="" coords="339,261,494,301"/>
+<area shape="rect" id="node6" href="$group__USBH__PIPES__Exported__Variables.html" title=" " alt="" coords="333,325,500,365"/>
+<area shape="rect" id="node7" href="$group__USBH__PIPES__Exported__Defines.html" title=" " alt="" coords="333,389,500,429"/>
+<area shape="rect" id="node8" href="$group__USBH__LIB__CORE.html" title=" " alt="" coords="5,301,135,326"/>
+<area shape="rect" id="node12" title="This file is the header file for usbh_pipes.c." alt="" coords="183,301,285,326"/>
+<area shape="rect" id="node9" href="$group__USBH__PIPES__Exported__Types.html" title=" " alt="" coords="333,453,500,493"/>
+<area shape="rect" id="node10" href="$group__USBH__PIPES__Exported__FunctionsPrototype.html" title=" " alt="" coords="333,517,500,557"/>
+<area shape="rect" id="node11" href="$group__USBH__PIPES__Private__TypesDefinitions.html" title=" " alt="" coords="339,581,494,621"/>
+</map>

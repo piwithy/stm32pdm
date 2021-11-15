@@ -1,0 +1,51 @@
+\hypertarget{usb__host_8c}{}\doxysection{U\+S\+B\+\_\+\+H\+O\+S\+T/\+App/usb\+\_\+host.c File Reference}
+\label{usb__host_8c}\index{USB\_HOST/App/usb\_host.c@{USB\_HOST/App/usb\_host.c}}
+
+
+\+: This file implements the U\+SB Host  
+
+
+{\ttfamily \#include \char`\"{}usb\+\_\+host.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usbh\+\_\+core.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usbh\+\_\+msc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}file\+\_\+handling.\+h\char`\"{}}\newline
+Include dependency graph for usb\+\_\+host.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{usb__host_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__USBH__HOST__Exported__FunctionsPrototype_gace60dba8c3a9f3522128ff6b56970eb6}{M\+X\+\_\+\+U\+S\+B\+\_\+\+H\+O\+S\+T\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em U\+SB Host initialization function. \end{DoxyCompactList}\item 
+void {\bfseries M\+X\+\_\+\+U\+S\+B\+\_\+\+H\+O\+S\+T\+\_\+\+Process} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{usb__host_8c_aefba07909c6ddf0be3cde930eeff52a9}\label{usb__host_8c_aefba07909c6ddf0be3cde930eeff52a9}} 
+uint8\+\_\+t {\bfseries usb\+\_\+mounted} = 0
+\item 
+\mbox{\Hypertarget{usb__host_8c_a01b9a9d8385a5b5629f66f8d9f1341ac}\label{usb__host_8c_a01b9a9d8385a5b5629f66f8d9f1341ac}} 
+\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} {\bfseries h\+Usb\+Host\+HS}
+\item 
+\mbox{\Hypertarget{usb__host_8c_a5d49101810173b00512882f4d9450fa4}\label{usb__host_8c_a5d49101810173b00512882f4d9450fa4}} 
+\mbox{\hyperlink{group__USBH__HOST_gaf9938846bd2b8b20906b069c56a9519f}{Application\+Type\+Def}} \mbox{\hyperlink{usb__host_8c_a5d49101810173b00512882f4d9450fa4}{Appli\+\_\+state}} = A\+P\+P\+L\+I\+C\+A\+T\+I\+O\+N\+\_\+\+I\+D\+LE
+\begin{DoxyCompactList}\small\item\em Variable storing the state of the U\+SB state machine (Idle, Start, Ready, Disconnect) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\+: This file implements the U\+SB Host 
+
+\begin{DoxyVersion}{Version}
+\+: v1.\+0\+\_\+\+Cube 
+\end{DoxyVersion}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2021 S\+T\+Microelectronics. All rights reserved.\end{center} }
+
+This software component is licensed by ST under Ultimate Liberty license S\+L\+A0044, the \char`\"{}\+License\char`\"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: www.\+st.\+com/\+S\+L\+A0044 

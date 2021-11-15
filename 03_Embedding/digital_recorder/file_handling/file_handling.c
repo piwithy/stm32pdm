@@ -1,6 +1,9 @@
-//
-// Created by jezegoup on 10/14/21.
-//
+/**
+  ******************************************************************************
+  * @file           file_handling.c
+  * @brief          Sources of the file handling library
+  ******************************************************************************
+  */
 #include "file_handling.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,22 +15,16 @@
 
 extern UART_HandleTypeDef huart1;
 
-FILINFO USBHfno;
-FRESULT fresult;  // result
-UINT br, bw;  // File read/write count
-
-/**** capacity related *****/
-//FATFS *pUSBHFatFS;
-//DWORD fre_clust;
-//uint32_t total, free_space;
+/** @brief  Read Counters */
+size_t br;
+/** @brief  Read Counters */
+size_t bw;  // File read/write count
 
 
-/** Mount USB Disk
- * Mount detected USB DIsk
- *
- * */
+
+
 FRESULT mount_usb(void) {
-    fresult = f_mount(&USBHFatFS, USBHPath, 1);
+    FRESULT fresult = f_mount(&USBHFatFS, USBHPath, 1);
     if (fresult == FR_OK) {
         char *str_buff = malloc(100 * sizeof(char));
         sprintf(str_buff, "USB Disk Mounted Successfully!\r\n");
@@ -42,12 +39,9 @@ FRESULT mount_usb(void) {
     return fresult;
 }
 
-/** UnMount USB Disk
- * UnMount mounted USB DIsk
- *
- * */
+
 FRESULT unmount_usb(void) {
-    fresult = f_mount(NULL, USBHPath, 1);
+    FRESULT fresult = f_mount(NULL, USBHPath, 1);
     if (fresult == FR_OK) {
         char *str_buff = malloc(100 * sizeof(char));
         sprintf(str_buff, "USB Disk Unmounted Successfully!\r\n\n");
@@ -59,15 +53,6 @@ FRESULT unmount_usb(void) {
         HAL_UART_Transmit(&huart1, (uint8_t *) str_buff, strlen(str_buff), HAL_MAX_DELAY);
         free(str_buff);
     }
-    return fresult;
-}
-
-FRESULT write_text(const char *file_name, const char *text) {
-    fresult = f_open(&USBHFile, file_name, FA_CREATE_ALWAYS | FA_WRITE);
-    if (fresult != FR_OK) return fresult;
-    f_write(&USBHFile, (char *) text, strlen(text), &bw);
-    if (fresult != FR_OK) return fresult;
-    f_close(&USBHFile);
     return fresult;
 }
 
@@ -86,7 +71,7 @@ FRESULT init_wav(const char *file_name, uint32_t fs) {
             ('a' << 24) + ('t' << 16) + ('a' << 8) + ('d' << 0), //'data'
             0
     };
-    fresult = f_open(&USBHFile, file_name, FA_CREATE_ALWAYS | FA_WRITE);
+    FRESULT fresult = f_open(&USBHFile, file_name, FA_CREATE_ALWAYS | FA_WRITE);
     if (fresult != FR_OK) return fresult;
     fresult = f_write(&USBHFile, (char *) header, 44, &bw);
     if (fresult == FR_OK) {
@@ -103,12 +88,12 @@ FRESULT init_wav(const char *file_name, uint32_t fs) {
 
 FRESULT write_wav(const uint16_t *pcm_data, uint32_t pcm_size) {
     // Writing DATA
-    fresult = f_write(&USBHFile, (char *) pcm_data, sizeof(uint16_t) * pcm_size, &bw);
+    FRESULT fresult = f_write(&USBHFile, (char *) pcm_data, sizeof(uint16_t) * pcm_size, &bw);
     return fresult;
 }
 
 FRESULT finish_wav(const char *file_name, uint32_t pcm_size) {
-    fresult = f_close(&USBHFile);
+    FRESULT fresult = f_close(&USBHFile);
     if (fresult != FR_OK) return fresult;
     fresult = f_open(&USBHFile, file_name, FA_OPEN_ALWAYS | FA_WRITE | FA_READ);
     if (fresult != FR_OK) return fresult;
@@ -123,16 +108,15 @@ FRESULT finish_wav(const char *file_name, uint32_t pcm_size) {
     f_rewind(&USBHFile);
     fresult = f_write(&USBHFile, (char *) header, 44, &bw);
     if (fresult != FR_OK) return fresult;
-    if (fresult == FR_OK) {
-        char *str_buff = malloc(100 * sizeof(char));
-        sprintf(str_buff, "Finished recording to \"%s\"\r\n", file_name);
-        HAL_UART_Transmit(&huart1, (uint8_t *) str_buff, strlen(str_buff), HAL_MAX_DELAY);
-        sprintf(str_buff, "\tSampling Frequency : %.2f kHz\r\n", (double) header[6] / 1000.);
-        HAL_UART_Transmit(&huart1, (uint8_t *) str_buff, strlen(str_buff), HAL_MAX_DELAY);
-        sprintf(str_buff, "\tRecord Length      : %.2f s\r\n", (double) pcm_size / header[6]);
-        HAL_UART_Transmit(&huart1, (uint8_t *) str_buff, strlen(str_buff), HAL_MAX_DELAY);
-        free(str_buff);
-    }
+
+    char *str_buff = malloc(100 * sizeof(char));
+    sprintf(str_buff, "Finished recording to \"%s\"\r\n", file_name);
+    HAL_UART_Transmit(&huart1, (uint8_t *) str_buff, strlen(str_buff), HAL_MAX_DELAY);
+    sprintf(str_buff, "\tSampling Frequency : %.2f kHz\r\n", (double) header[6] / 1000.);
+    HAL_UART_Transmit(&huart1, (uint8_t *) str_buff, strlen(str_buff), HAL_MAX_DELAY);
+    sprintf(str_buff, "\tRecord Length      : %.2f s\r\n", (double) pcm_size / header[6]);
+    HAL_UART_Transmit(&huart1, (uint8_t *) str_buff, strlen(str_buff), HAL_MAX_DELAY);
+    free(str_buff);
     return f_close(&USBHFile);
 
 }

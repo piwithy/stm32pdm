@@ -29,8 +29,14 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+/**
+ * @brief Enum of States the Program can Take
+ * */
 typedef enum program_state {
-    IDLE, RECORDING
+    /** @brief Program Waiting for User Input */
+    IDLE,
+    /** @brief Program is outputing in real time captured output on the DAC*/
+    RECORDING,
 } program_state_t;
 /* USER CODE END PTD */
 
@@ -40,16 +46,25 @@ typedef enum program_state {
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "EndlessLoop"
 
+/** @brief PCM Sampling frequency in Hz*/
 #define SOUND_FS 48000
+/** @brief PDM -> PCM Sampling frequency factor */
 #define DECIMATION_FACTOR 64
+
+/** @brief Number of PDM Sample in A Word */
 #define WORD_SIZE 16
 
-// 1ms @ SOUND_FS*DECIMATION_FACTOR (With WORD_SIZE samples per Word)
+// 1ms @ FS*DECIMATION_FACTOR (With PDM_WORD_SIZE samples per word)
+/** @brief PDM Processing buffer size (Contain 1ms of PDM Sample)*/
 #define PDM_BUFFER_SIZE ((SOUND_FS / 1000) * (DECIMATION_FACTOR / WORD_SIZE))
-// 1ms @ SOUND_FS (With 1 sample per Word)
+
+// 1ms @ FS (With 1 sample per word)
+/** @brief PCM Processing buffer size  (Contain 1ms of PDM Sample)*/
 #define PCM_BUFFER_SIZE (SOUND_FS/1000)
 
+/** @brief Linear Gain applied on PCM Samples*/
 #define LINEAR_GAIN 10
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -70,8 +85,15 @@ TIM_HandleTypeDef htim2;
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
-uint8_t sai_flag = 1, sai_half = 0;
-uint8_t dac_flag = 1, dac_half = 0;
+/** @brief Flag lowered when SAI buffer Callbacks to indicate that the one half of the SAI buffer is ready to be read*/
+uint8_t sai_flag = 1;
+/** @brief Flag indicating Witch half of the SAI is ready to be read */
+uint8_t sai_half = 0;
+/** @brief Flag lowered when DAC buffer Callbacks to indicate that one half of the DAC buffer Has been read*/
+uint8_t dac_flag = 1;
+/** @brief Flag indicating Witch half of the SAI is ready to be written to */
+uint8_t dac_half = 0;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -96,22 +118,45 @@ static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN 0 */
 
 // Configuring SAI Interruption Callbacks
+/**
+  * @brief Rx Transfer half completed callback. SAI DMA Buffer
+  * @param  hsai pointer to a SAI_HandleTypeDef structure that contains
+  *               the configuration information for SAI module.
+  * @retval None
+  */
 void HAL_SAI_RxHalfCpltCallback(SAI_HandleTypeDef *hsai) {
     sai_flag = 0;
     sai_half = 0;
 }
 
+/**
+  * @brief Rx Transfer completed callback. SAI DMA Buffer
+  * @param  hsai pointer to a SAI_HandleTypeDef structure that contains
+  *               the configuration information for SAI module.
+  * @retval None
+  */
 void HAL_SAI_RxCpltCallback(SAI_HandleTypeDef *hsai) {
     sai_flag = 0;
     sai_half = 1;
 }
 
 // Configuring DAC Interruption Callbacks
+/**
+  * @brief Tx Transfer half completed callback. DAC DMA Buffer
+  * @param  hdac1 pointer to a DAC_HandleTypeDef structure that contains
+  *               the configuration information for DAC module.
+  * @retval None
+  */
 void HAL_DAC_ConvHalfCpltCallbackCh1(DAC_HandleTypeDef *hdac1) {
     dac_flag = 0;
     dac_half = 0;
 }
-
+/**
+  * @brief Tx Transfer completed callback. DAC DMA Buffer
+  * @param  hdac1 pointer to a DAC_HandleTypeDef structure that contains
+  *               the configuration information for DAC module.
+  * @retval None
+  */
 void HAL_DAC_ConvCpltCallbackCh1(DAC_HandleTypeDef *hdac1) {
     dac_flag = 0;
     dac_half = 1;
@@ -127,7 +172,6 @@ int main(void) {
     /* USER CODE BEGIN 1 */
     // Declaring Initial STATE
     program_state_t current_state = IDLE;
-    uint8_t transition = 0;
     //declaring pdm_filter
     pdm_fir_filter_config_t pdm_filter;
 
@@ -138,11 +182,6 @@ int main(void) {
 
     // Constant (DAC centered Buffer) for IDLE State
     uint16_t void_buff[PCM_BUFFER_SIZE] = {[0 ... PCM_BUFFER_SIZE - 1] = 0x7FF};
-    /*uint8_t div_by = 24;
-    for (size_t i = 0; i < PCM_BUFFER_SIZE; i++) {
-        if (i % div_by >= (div_by / 2))
-            void_buff[i] = 0xFFF;
-    }*/
     // DAC Channels Buffer
     uint16_t dac_buffer_l[PCM_BUFFER_SIZE * 2] = {[0 ... 2 * PCM_BUFFER_SIZE - 1] = 0x7FF};
     uint16_t dac_buffer_r[PCM_BUFFER_SIZE * 2] = {[0 ... 2 * PCM_BUFFER_SIZE - 1] = 0X7FF};
@@ -175,12 +214,12 @@ int main(void) {
     MX_USART1_UART_Init();
     /* USER CODE BEGIN 2 */
     // Configuring PDM Filter
-    pdm_fir_flt_config_init(&pdm_filter, DECIMATION_FACTOR, -50, 0x7FF, 10, 12);
+    pdm_fir_flt_config_init(&pdm_filter, DECIMATION_FACTOR, -50, 0x7FF, LINEAR_GAIN, 12);
 
     // Starting SAI Capture on DMA
     HAL_SAI_Receive_DMA(&hsai_BlockA1, (uint8_t *) pdm_buffer, PDM_BUFFER_SIZE * 2);
 
-    // Starting DAC (left -> channel 1 -> PA4; right -> channel 1 -> PA5)
+    // Starting DAC (left -> channel 1 -> PA4; right -> channel 2 -> PA5)
     HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_1, (uint32_t *) dac_buffer_l, PCM_BUFFER_SIZE * 2, DAC_ALIGN_12B_R);
     HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_2, (uint32_t *) dac_buffer_r, PCM_BUFFER_SIZE * 2, DAC_ALIGN_12B_R);
 

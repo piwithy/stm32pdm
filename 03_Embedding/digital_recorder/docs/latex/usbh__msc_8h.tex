@@ -1,0 +1,119 @@
+\hypertarget{usbh__msc_8h}{}\doxysection{Middlewares/\+S\+T/\+S\+T\+M32\+\_\+\+U\+S\+B\+\_\+\+Host\+\_\+\+Library/\+Class/\+M\+S\+C/\+Inc/usbh\+\_\+msc.h File Reference}
+\label{usbh__msc_8h}\index{Middlewares/ST/STM32\_USB\_Host\_Library/Class/MSC/Inc/usbh\_msc.h@{Middlewares/ST/STM32\_USB\_Host\_Library/Class/MSC/Inc/usbh\_msc.h}}
+
+
+This file contains all the prototypes for the \mbox{\hyperlink{usbh__msc_8c}{usbh\+\_\+msc.\+c}}.  
+
+
+{\ttfamily \#include \char`\"{}usbh\+\_\+core.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usbh\+\_\+msc\+\_\+bot.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usbh\+\_\+msc\+\_\+scsi.\+h\char`\"{}}\newline
+Include dependency graph for usbh\+\_\+msc.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{usbh__msc_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{usbh__msc_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structMSC__LUNTypeDef}{M\+S\+C\+\_\+\+L\+U\+N\+Type\+Def}}
+\item 
+struct \mbox{\hyperlink{struct__MSC__Process}{\+\_\+\+M\+S\+C\+\_\+\+Process}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries M\+A\+X\+\_\+\+S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+L\+UN}~2U
+\item 
+\#define {\bfseries U\+S\+B\+\_\+\+R\+E\+Q\+\_\+\+B\+O\+T\+\_\+\+R\+E\+S\+ET}~0x\+F\+FU
+\item 
+\#define {\bfseries U\+S\+B\+\_\+\+R\+E\+Q\+\_\+\+G\+E\+T\+\_\+\+M\+A\+X\+\_\+\+L\+UN}~0x\+F\+EU
+\item 
+\#define {\bfseries U\+S\+B\+\_\+\+M\+S\+C\+\_\+\+C\+L\+A\+SS}~0x08U
+\item 
+\#define {\bfseries M\+S\+C\+\_\+\+B\+OT}~0x50U
+\item 
+\#define {\bfseries M\+S\+C\+\_\+\+T\+R\+A\+N\+S\+P\+A\+R\+E\+NT}~0x06U
+\item 
+\#define {\bfseries U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+C\+L\+A\+SS}~\&U\+S\+B\+H\+\_\+msc
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct__MSC__Process}{\+\_\+\+M\+S\+C\+\_\+\+Process}} {\bfseries M\+S\+C\+\_\+\+Handle\+Type\+Def}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{group__USBH__MSC__CORE__Exported__Types_ga22bc9773ab072580009c57d6b3846f86}\label{group__USBH__MSC__CORE__Exported__Types_ga22bc9773ab072580009c57d6b3846f86}} 
+enum {\bfseries M\+S\+C\+\_\+\+State\+Type\+Def} \{ \newline
+{\bfseries M\+S\+C\+\_\+\+I\+N\+IT} = 0, 
+{\bfseries M\+S\+C\+\_\+\+I\+D\+LE}, 
+{\bfseries M\+S\+C\+\_\+\+T\+E\+S\+T\+\_\+\+U\+N\+I\+T\+\_\+\+R\+E\+A\+DY}, 
+{\bfseries M\+S\+C\+\_\+\+R\+E\+A\+D\+\_\+\+C\+A\+P\+A\+C\+I\+T\+Y10}, 
+\newline
+{\bfseries M\+S\+C\+\_\+\+R\+E\+A\+D\+\_\+\+I\+N\+Q\+U\+I\+RY}, 
+{\bfseries M\+S\+C\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+S\+E\+N\+SE}, 
+{\bfseries M\+S\+C\+\_\+\+R\+E\+AD}, 
+{\bfseries M\+S\+C\+\_\+\+W\+R\+I\+TE}, 
+\newline
+{\bfseries M\+S\+C\+\_\+\+U\+N\+R\+E\+C\+O\+V\+E\+R\+E\+D\+\_\+\+E\+R\+R\+OR}, 
+{\bfseries M\+S\+C\+\_\+\+P\+E\+R\+I\+O\+D\+I\+C\+\_\+\+C\+H\+E\+CK}
+ \}
+\item 
+\mbox{\Hypertarget{group__USBH__MSC__CORE__Exported__Types_gad424b9bc950574c703e69e6c3fa387b5}\label{group__USBH__MSC__CORE__Exported__Types_gad424b9bc950574c703e69e6c3fa387b5}} 
+enum {\bfseries M\+S\+C\+\_\+\+Error\+Type\+Def} \{ {\bfseries M\+S\+C\+\_\+\+OK}, 
+{\bfseries M\+S\+C\+\_\+\+N\+O\+T\+\_\+\+R\+E\+A\+DY}, 
+{\bfseries M\+S\+C\+\_\+\+E\+R\+R\+OR}
+ \}
+\item 
+\mbox{\Hypertarget{group__USBH__MSC__CORE__Exported__Types_ga2cd6db3a3eed7f8330da1205d0f82f18}\label{group__USBH__MSC__CORE__Exported__Types_ga2cd6db3a3eed7f8330da1205d0f82f18}} 
+enum {\bfseries M\+S\+C\+\_\+\+Req\+State\+Type\+Def} \{ {\bfseries M\+S\+C\+\_\+\+R\+E\+Q\+\_\+\+I\+D\+LE} = 0, 
+{\bfseries M\+S\+C\+\_\+\+R\+E\+Q\+\_\+\+R\+E\+S\+ET}, 
+{\bfseries M\+S\+C\+\_\+\+R\+E\+Q\+\_\+\+G\+E\+T\+\_\+\+M\+A\+X\+\_\+\+L\+UN}, 
+{\bfseries M\+S\+C\+\_\+\+R\+E\+Q\+\_\+\+E\+R\+R\+OR}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USBH__MSC__CORE__Exported__FunctionsPrototype_ga36fc7e5a7f59878901a05b88b00cf8b7}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Is\+Ready}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Is\+Ready The function check if the M\+SC function is ready. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USBH__MSC__CORE__Exported__FunctionsPrototype_ga14f48f48c89f48909031526837818ce1}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Get\+Max\+L\+UN}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Get\+Max\+L\+UN The function return the Max L\+UN supported. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USBH__MSC__CORE__Exported__FunctionsPrototype_ga2614df97651ee0fbe3ef5c6977204277}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Unit\+Is\+Ready}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Unit\+Is\+Ready The function check whether a L\+UN is ready. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__CORE__Exported__FunctionsPrototype_ga3249672d4ec2adc4fb48bef384161bb5}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Get\+L\+U\+N\+Info}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun, \mbox{\hyperlink{structMSC__LUNTypeDef}{M\+S\+C\+\_\+\+L\+U\+N\+Type\+Def}} $\ast$info)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Get\+L\+U\+N\+Info The function return a L\+UN information. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__CORE__Exported__FunctionsPrototype_gaebc67929259039d8a002e9db23766e75}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Read}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun, uint32\+\_\+t address, uint8\+\_\+t $\ast$pbuf, uint32\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Read The function performs a Read operation. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__CORE__Exported__FunctionsPrototype_ga3e84f80a818d19708997203ac5f9893b}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Write}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun, uint32\+\_\+t address, uint8\+\_\+t $\ast$pbuf, uint32\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+Write The function performs a Write operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structUSBH__ClassTypeDef}{U\+S\+B\+H\+\_\+\+Class\+Type\+Def}} {\bfseries U\+S\+B\+H\+\_\+msc}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains all the prototypes for the \mbox{\hyperlink{usbh__msc_8c}{usbh\+\_\+msc.\+c}}. 
+
+\begin{DoxyAuthor}{Author}
+M\+CD Application Team 
+\end{DoxyAuthor}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2015 S\+T\+Microelectronics. All rights reserved.\end{center} }
+
+This software component is licensed by ST under Ultimate Liberty license S\+L\+A0044, the \char`\"{}\+License\char`\"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: www.\+st.\+com/\+S\+L\+A0044 

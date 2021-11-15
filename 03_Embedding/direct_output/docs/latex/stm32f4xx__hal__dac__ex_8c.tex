@@ -1,0 +1,47 @@
+\hypertarget{stm32f4xx__hal__dac__ex_8c}{}\doxysection{Drivers/\+S\+T\+M32\+F4xx\+\_\+\+H\+A\+L\+\_\+\+Driver/\+Src/stm32f4xx\+\_\+hal\+\_\+dac\+\_\+ex.c File Reference}
+\label{stm32f4xx__hal__dac__ex_8c}\index{Drivers/STM32F4xx\_HAL\_Driver/Src/stm32f4xx\_hal\_dac\_ex.c@{Drivers/STM32F4xx\_HAL\_Driver/Src/stm32f4xx\_hal\_dac\_ex.c}}
+
+
+Extended D\+AC H\+AL module driver. This file provides firmware functions to manage the extended functionalities of the D\+AC peripheral.  
+
+
+{\ttfamily \#include \char`\"{}stm32f4xx\+\_\+hal.\+h\char`\"{}}\newline
+Include dependency graph for stm32f4xx\+\_\+hal\+\_\+dac\+\_\+ex.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{stm32f4xx__hal__dac__ex_8c__incl}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Detailed Description}
+Extended D\+AC H\+AL module driver. This file provides firmware functions to manage the extended functionalities of the D\+AC peripheral. 
+
+\begin{DoxyAuthor}{Author}
+M\+CD Application Team \begin{DoxyVerb} ==============================================================================
+                     ##### How to use this driver #####
+ ==============================================================================
+   [..]
+
+    *** Dual mode IO operation ***
+    ==============================
+    [..]
+     (+) When Dual mode is enabled (i.e. DAC Channel1 and Channel2 are used simultaneously) :
+         Use HAL_DACEx_DualGetValue() to get digital data to be converted and use
+         HAL_DACEx_DualSetValue() to set digital value to converted simultaneously in
+         Channel 1 and Channel 2.
+
+    *** Signal generation operation ***
+    ===================================
+    [..]
+     (+) Use HAL_DACEx_TriangleWaveGenerate() to generate Triangle signal.
+     (+) Use HAL_DACEx_NoiseWaveGenerate() to generate Noise signal.\end{DoxyVerb}
+
+\end{DoxyAuthor}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2016 S\+T\+Microelectronics. All rights reserved.\end{center} }
+
+This software component is licensed by ST under B\+SD 3-\/Clause license, the \char`\"{}\+License\char`\"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: opensource.\+org/licenses/\+B\+S\+D-\/3-\/\+Clause 

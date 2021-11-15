@@ -1,0 +1,46 @@
+\hypertarget{usbh__msc__scsi_8c}{}\doxysection{Middlewares/\+S\+T/\+S\+T\+M32\+\_\+\+U\+S\+B\+\_\+\+Host\+\_\+\+Library/\+Class/\+M\+S\+C/\+Src/usbh\+\_\+msc\+\_\+scsi.c File Reference}
+\label{usbh__msc__scsi_8c}\index{Middlewares/ST/STM32\_USB\_Host\_Library/Class/MSC/Src/usbh\_msc\_scsi.c@{Middlewares/ST/STM32\_USB\_Host\_Library/Class/MSC/Src/usbh\_msc\_scsi.c}}
+
+
+This file implements the S\+C\+SI commands.  
+
+
+{\ttfamily \#include \char`\"{}usbh\+\_\+msc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usbh\+\_\+msc\+\_\+scsi.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usbh\+\_\+msc\+\_\+bot.\+h\char`\"{}}\newline
+Include dependency graph for usbh\+\_\+msc\+\_\+scsi.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{usbh__msc__scsi_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__SCSI__Private__Functions_ga4d201b03643534fa2729fbf047e1d5bc}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Test\+Unit\+Ready}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Test\+Unit\+Ready Issue Test\+Unit\+Ready command. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__SCSI__Private__Functions_gaca8d80496719ffa847cd560d39fb8eff}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Read\+Capacity}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun, \mbox{\hyperlink{structSCSI__CapacityTypeDef}{S\+C\+S\+I\+\_\+\+Capacity\+Type\+Def}} $\ast$capacity)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Read\+Capacity Issue Read Capacity command. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__SCSI__Private__Functions_ga9f7f31c9eac12d21d0a09f79b3bd4aa3}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Inquiry}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun, \mbox{\hyperlink{structSCSI__StdInquiryDataTypeDef}{S\+C\+S\+I\+\_\+\+Std\+Inquiry\+Data\+Type\+Def}} $\ast$inquiry)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Inquiry Issue Inquiry command. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__SCSI__Private__Functions_ga00c79d6991f6b3d7758f103c5417d5af}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Request\+Sense}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun, \mbox{\hyperlink{structSCSI__SenseTypeDef}{S\+C\+S\+I\+\_\+\+Sense\+Type\+Def}} $\ast$sense\+\_\+data)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Request\+Sense Issue Request\+Sense command. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__SCSI__Private__Functions_ga9b9df3631393cd232ef1b2117215657e}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Write}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun, uint32\+\_\+t address, uint8\+\_\+t $\ast$pbuf, uint32\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Write Issue write10 command. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__SCSI__Private__Functions_ga239f817ee6f84af1185993fb91d77cba}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Read}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun, uint32\+\_\+t address, uint8\+\_\+t $\ast$pbuf, uint32\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Read Issue Read10 command. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file implements the S\+C\+SI commands. 
+
+\begin{DoxyAuthor}{Author}
+M\+CD Application Team 
+\end{DoxyAuthor}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2015 S\+T\+Microelectronics. All rights reserved.\end{center} }
+
+This software component is licensed by ST under Ultimate Liberty license S\+L\+A0044, the \char`\"{}\+License\char`\"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: www.\+st.\+com/\+S\+L\+A0044 

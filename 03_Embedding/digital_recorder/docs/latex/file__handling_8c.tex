@@ -1,0 +1,143 @@
+\hypertarget{file__handling_8c}{}\doxysection{file\+\_\+handling/file\+\_\+handling.c File Reference}
+\label{file__handling_8c}\index{file\_handling/file\_handling.c@{file\_handling/file\_handling.c}}
+
+
+Sources of the file handling library.  
+
+
+{\ttfamily \#include \char`\"{}file\+\_\+handling.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+Include dependency graph for file\+\_\+handling.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{file__handling_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+F\+R\+E\+S\+U\+LT \mbox{\hyperlink{file__handling_8c_ab41c2009dacd04759a7bdb2c9f36c7a1}{mount\+\_\+usb}} (void)
+\begin{DoxyCompactList}\small\item\em Mount U\+SB Disk. \end{DoxyCompactList}\item 
+F\+R\+E\+S\+U\+LT \mbox{\hyperlink{file__handling_8c_a663da4d28c7d97b170fa2de5e171c1a7}{unmount\+\_\+usb}} (void)
+\begin{DoxyCompactList}\small\item\em un\+Mount U\+SB Disk \end{DoxyCompactList}\item 
+F\+R\+E\+S\+U\+LT \mbox{\hyperlink{file__handling_8c_aec260c4fa59192a4999f9d53571ba0af}{init\+\_\+wav}} (const char $\ast$file\+\_\+name, uint32\+\_\+t fs)
+\begin{DoxyCompactList}\small\item\em Initialize a new W\+AV File by creating the File pointer and Writing the file Header. \end{DoxyCompactList}\item 
+F\+R\+E\+S\+U\+LT \mbox{\hyperlink{file__handling_8c_aa0528e1b66f50415f4289311671305ed}{write\+\_\+wav}} (const uint16\+\_\+t $\ast$pcm\+\_\+data, uint32\+\_\+t pcm\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Write new P\+CM Samples to the opened file. \end{DoxyCompactList}\item 
+F\+R\+E\+S\+U\+LT \mbox{\hyperlink{file__handling_8c_a7dcb2235aacde7b8c66f7a6155741a1b}{finish\+\_\+wav}} (const char $\ast$file\+\_\+name, uint32\+\_\+t pcm\+\_\+size)
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Finishes\char`\"{} a W\+AV file by writing the size of it in the header and closing the file pointer \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{file__handling_8c_a2cf715bef37f7e8ef385a30974a5f0d5}\label{file__handling_8c_a2cf715bef37f7e8ef385a30974a5f0d5}} 
+\mbox{\hyperlink{group__UART__Exported__Types_ga5de4a49eb132735325e706f406c69d6e}{U\+A\+R\+T\+\_\+\+Handle\+Type\+Def}} {\bfseries huart1}
+\item 
+\mbox{\Hypertarget{file__handling_8c_ac120933e9035e2e9daaa5006e6ebe20d}\label{file__handling_8c_ac120933e9035e2e9daaa5006e6ebe20d}} 
+size\+\_\+t \mbox{\hyperlink{file__handling_8c_ac120933e9035e2e9daaa5006e6ebe20d}{br}}
+\begin{DoxyCompactList}\small\item\em Read Counters. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{file__handling_8c_ac9abca881461c0d026f53714b995e13e}\label{file__handling_8c_ac9abca881461c0d026f53714b995e13e}} 
+size\+\_\+t \mbox{\hyperlink{file__handling_8c_ac9abca881461c0d026f53714b995e13e}{bw}}
+\begin{DoxyCompactList}\small\item\em Read Counters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Sources of the file handling library. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{file__handling_8c_a7dcb2235aacde7b8c66f7a6155741a1b}\label{file__handling_8c_a7dcb2235aacde7b8c66f7a6155741a1b}} 
+\index{file\_handling.c@{file\_handling.c}!finish\_wav@{finish\_wav}}
+\index{finish\_wav@{finish\_wav}!file\_handling.c@{file\_handling.c}}
+\doxysubsubsection{\texorpdfstring{finish\_wav()}{finish\_wav()}}
+{\footnotesize\ttfamily F\+R\+E\+S\+U\+LT finish\+\_\+wav (\begin{DoxyParamCaption}\item[{const char $\ast$}]{file\+\_\+name,  }\item[{uint32\+\_\+t}]{pcm\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+\char`\"{}\+Finishes\char`\"{} a W\+AV file by writing the size of it in the header and closing the file pointer 
+
+\begin{DoxyAttention}{Attention}
+A Wav file have to be already Initialized by calling \mbox{\hyperlink{file__handling_8h_aec260c4fa59192a4999f9d53571ba0af}{init\+\_\+wav()}} before calling this function
+\end{DoxyAttention}
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+name} & Path to the file in the U\+SB Stick \\
+\hline
+{\em pcm\+\_\+size} & Number of P\+CM Samples in the file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status code associated with the operation 
+\end{DoxyReturn}
+\mbox{\Hypertarget{file__handling_8c_aec260c4fa59192a4999f9d53571ba0af}\label{file__handling_8c_aec260c4fa59192a4999f9d53571ba0af}} 
+\index{file\_handling.c@{file\_handling.c}!init\_wav@{init\_wav}}
+\index{init\_wav@{init\_wav}!file\_handling.c@{file\_handling.c}}
+\doxysubsubsection{\texorpdfstring{init\_wav()}{init\_wav()}}
+{\footnotesize\ttfamily F\+R\+E\+S\+U\+LT init\+\_\+wav (\begin{DoxyParamCaption}\item[{const char $\ast$}]{file\+\_\+name,  }\item[{uint32\+\_\+t}]{fs }\end{DoxyParamCaption})}
+
+
+
+Initialize a new W\+AV File by creating the File pointer and Writing the file Header. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+name} & Path to the file in the U\+SB Stick \\
+\hline
+{\em fs} & Sampling Frequency of the P\+CM samples \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status code associated with the operation 
+\end{DoxyReturn}
+\mbox{\Hypertarget{file__handling_8c_ab41c2009dacd04759a7bdb2c9f36c7a1}\label{file__handling_8c_ab41c2009dacd04759a7bdb2c9f36c7a1}} 
+\index{file\_handling.c@{file\_handling.c}!mount\_usb@{mount\_usb}}
+\index{mount\_usb@{mount\_usb}!file\_handling.c@{file\_handling.c}}
+\doxysubsubsection{\texorpdfstring{mount\_usb()}{mount\_usb()}}
+{\footnotesize\ttfamily F\+R\+E\+S\+U\+LT mount\+\_\+usb (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Mount U\+SB Disk. 
+
+\begin{DoxyReturn}{Returns}
+Status code associated with the operation 
+\end{DoxyReturn}
+\mbox{\Hypertarget{file__handling_8c_a663da4d28c7d97b170fa2de5e171c1a7}\label{file__handling_8c_a663da4d28c7d97b170fa2de5e171c1a7}} 
+\index{file\_handling.c@{file\_handling.c}!unmount\_usb@{unmount\_usb}}
+\index{unmount\_usb@{unmount\_usb}!file\_handling.c@{file\_handling.c}}
+\doxysubsubsection{\texorpdfstring{unmount\_usb()}{unmount\_usb()}}
+{\footnotesize\ttfamily F\+R\+E\+S\+U\+LT unmount\+\_\+usb (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+un\+Mount U\+SB Disk 
+
+\begin{DoxyReturn}{Returns}
+Status code associated with the operation 
+\end{DoxyReturn}
+\mbox{\Hypertarget{file__handling_8c_aa0528e1b66f50415f4289311671305ed}\label{file__handling_8c_aa0528e1b66f50415f4289311671305ed}} 
+\index{file\_handling.c@{file\_handling.c}!write\_wav@{write\_wav}}
+\index{write\_wav@{write\_wav}!file\_handling.c@{file\_handling.c}}
+\doxysubsubsection{\texorpdfstring{write\_wav()}{write\_wav()}}
+{\footnotesize\ttfamily F\+R\+E\+S\+U\+LT write\+\_\+wav (\begin{DoxyParamCaption}\item[{const uint16\+\_\+t $\ast$}]{pcm\+\_\+data,  }\item[{uint32\+\_\+t}]{pcm\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Write new P\+CM Samples to the opened file. 
+
+\begin{DoxyAttention}{Attention}
+A Wav file have to be already opened by calling \mbox{\hyperlink{file__handling_8h_aec260c4fa59192a4999f9d53571ba0af}{init\+\_\+wav()}} before calling this function
+\end{DoxyAttention}
+
+\begin{DoxyParams}{Parameters}
+{\em pcm\+\_\+data} & P\+CM samples to write in the W\+AV file \\
+\hline
+{\em pcm\+\_\+size} & Number of samples to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status code associated with the operation 
+\end{DoxyReturn}

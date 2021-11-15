@@ -1,0 +1,54 @@
+\hypertarget{usbh__ctlreq_8c}{}\doxysection{Middlewares/\+S\+T/\+S\+T\+M32\+\_\+\+U\+S\+B\+\_\+\+Host\+\_\+\+Library/\+Core/\+Src/usbh\+\_\+ctlreq.c File Reference}
+\label{usbh__ctlreq_8c}\index{Middlewares/ST/STM32\_USB\_Host\_Library/Core/Src/usbh\_ctlreq.c@{Middlewares/ST/STM32\_USB\_Host\_Library/Core/Src/usbh\_ctlreq.c}}
+
+
+This file implements the control requests for device enumeration.  
+
+
+{\ttfamily \#include \char`\"{}usbh\+\_\+ctlreq.\+h\char`\"{}}\newline
+Include dependency graph for usbh\+\_\+ctlreq.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{usbh__ctlreq_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CTLREQ__Private__Functions_ga966c4d20be7b21268e6beeb5b9bbe210}{U\+S\+B\+H\+\_\+\+Get\+\_\+\+Dev\+Desc}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Get\+\_\+\+Dev\+Desc Issue Get Device Descriptor command to the device. Once the response received, it parses the device descriptor and updates the status. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CTLREQ__Private__Functions_ga8d08e1dada6297478ddc8c0b5452a8be}{U\+S\+B\+H\+\_\+\+Get\+\_\+\+Cfg\+Desc}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Get\+\_\+\+Cfg\+Desc Issues Configuration Descriptor to the device. Once the response received, it parses the configuration descriptor and updates the status. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CTLREQ__Private__Functions_gac3f98f753df75f08d4ef94f0ea5b6616}{U\+S\+B\+H\+\_\+\+Get\+\_\+\+String\+Desc}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t string\+\_\+index, uint8\+\_\+t $\ast$buff, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Get\+\_\+\+String\+Desc Issues string Descriptor command to the device. Once the response received, it parses the string descriptor and updates the status. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CTLREQ__Private__Functions_gab3140a702c66e2f4141d276ae40d96ad}{U\+S\+B\+H\+\_\+\+Get\+Descriptor}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t req\+\_\+type, uint16\+\_\+t value\+\_\+idx, uint8\+\_\+t $\ast$buff, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Get\+Descriptor Issues Descriptor command to the device. Once the response received, it parses the descriptor and updates the status. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CTLREQ__Private__Functions_gabcdc05ccc311bee64d2b7d46ab3ba62b}{U\+S\+B\+H\+\_\+\+Set\+Address}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t Device\+Address)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Set\+Address This command sets the address to the connected device. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CTLREQ__Private__Functions_gad5cc51282e4d25b665c219ca14315dcf}{U\+S\+B\+H\+\_\+\+Set\+Cfg}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint16\+\_\+t cfg\+\_\+idx)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Set\+Cfg The command sets the configuration value to the connected device. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CTLREQ__Private__Functions_gac5c90b53cd042aa7608796da6f7218db}{U\+S\+B\+H\+\_\+\+Set\+Interface}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t ep\+\_\+num, uint8\+\_\+t alt\+Setting)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Set\+Interface The command sets the Interface value to the connected device. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CTLREQ__Private__Functions_gaee669ad38d6b36078d5c925273e28366}{U\+S\+B\+H\+\_\+\+Set\+Feature}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t w\+Value)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Set\+Feature The command sets the device features (remote wakeup feature,..) \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CTLREQ__Private__Functions_gacc383546c83957b52ccecb27207572a9}{U\+S\+B\+H\+\_\+\+Clr\+Feature}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t ep\+\_\+num)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Clr\+Feature This request is used to clear or disable a specific feature. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct__DescHeader}{U\+S\+B\+H\+\_\+\+Desc\+Header\+\_\+t}} $\ast$ \mbox{\hyperlink{group__USBH__CTLREQ__Private__Functions_ga2cb2630137307fd76ee509b5e5284005}{U\+S\+B\+H\+\_\+\+Get\+Next\+Desc}} (uint8\+\_\+t $\ast$pbuf, uint16\+\_\+t $\ast$ptr)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Get\+Next\+Desc This function return the next descriptor header. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__CTLREQ__Private__Functions_gaeb38a0e70c0faf2c542e9093ae7c6cc3}{U\+S\+B\+H\+\_\+\+Ctl\+Req}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t $\ast$buff, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+Ctl\+Req U\+S\+B\+H\+\_\+\+Ctl\+Req sends a control request and provide the status after completion of the request. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file implements the control requests for device enumeration. 
+
+\begin{DoxyAuthor}{Author}
+M\+CD Application Team 
+\end{DoxyAuthor}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2015 S\+T\+Microelectronics. All rights reserved.\end{center} }
+
+This software component is licensed by ST under Ultimate Liberty license S\+L\+A0044, the \char`\"{}\+License\char`\"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: www.\+st.\+com/\+S\+L\+A0044 

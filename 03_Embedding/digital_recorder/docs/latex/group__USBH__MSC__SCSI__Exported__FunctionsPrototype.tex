@@ -1,0 +1,180 @@
+\hypertarget{group__USBH__MSC__SCSI__Exported__FunctionsPrototype}{}\doxysection{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Exported\+\_\+\+Functions\+Prototype}
+\label{group__USBH__MSC__SCSI__Exported__FunctionsPrototype}\index{USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype@{USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype}}
+Collaboration diagram for U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Exported\+\_\+\+Functions\+Prototype\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__USBH__MSC__SCSI__Exported__FunctionsPrototype}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__SCSI__Exported__FunctionsPrototype_ga4d201b03643534fa2729fbf047e1d5bc}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Test\+Unit\+Ready}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Test\+Unit\+Ready Issue Test\+Unit\+Ready command. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__SCSI__Exported__FunctionsPrototype_gaca8d80496719ffa847cd560d39fb8eff}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Read\+Capacity}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun, \mbox{\hyperlink{structSCSI__CapacityTypeDef}{S\+C\+S\+I\+\_\+\+Capacity\+Type\+Def}} $\ast$capacity)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Read\+Capacity Issue Read Capacity command. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__SCSI__Exported__FunctionsPrototype_ga9f7f31c9eac12d21d0a09f79b3bd4aa3}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Inquiry}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun, \mbox{\hyperlink{structSCSI__StdInquiryDataTypeDef}{S\+C\+S\+I\+\_\+\+Std\+Inquiry\+Data\+Type\+Def}} $\ast$inquiry)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Inquiry Issue Inquiry command. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__SCSI__Exported__FunctionsPrototype_ga00c79d6991f6b3d7758f103c5417d5af}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Request\+Sense}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun, \mbox{\hyperlink{structSCSI__SenseTypeDef}{S\+C\+S\+I\+\_\+\+Sense\+Type\+Def}} $\ast$sense\+\_\+data)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Request\+Sense Issue Request\+Sense command. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__SCSI__Exported__FunctionsPrototype_ga9b9df3631393cd232ef1b2117215657e}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Write}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun, uint32\+\_\+t address, uint8\+\_\+t $\ast$pbuf, uint32\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Write Issue write10 command. \end{DoxyCompactList}\item 
+U\+S\+B\+H\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group__USBH__MSC__SCSI__Exported__FunctionsPrototype_ga239f817ee6f84af1185993fb91d77cba}{U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Read}} (\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$phost, uint8\+\_\+t lun, uint32\+\_\+t address, uint8\+\_\+t $\ast$pbuf, uint32\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Read Issue Read10 command. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__USBH__MSC__SCSI__Exported__FunctionsPrototype_ga9f7f31c9eac12d21d0a09f79b3bd4aa3}\label{group__USBH__MSC__SCSI__Exported__FunctionsPrototype_ga9f7f31c9eac12d21d0a09f79b3bd4aa3}} 
+\index{USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype@{USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype}!USBH\_MSC\_SCSI\_Inquiry@{USBH\_MSC\_SCSI\_Inquiry}}
+\index{USBH\_MSC\_SCSI\_Inquiry@{USBH\_MSC\_SCSI\_Inquiry}!USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype@{USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_MSC\_SCSI\_Inquiry()}{USBH\_MSC\_SCSI\_Inquiry()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Inquiry (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{lun,  }\item[{\mbox{\hyperlink{structSCSI__StdInquiryDataTypeDef}{S\+C\+S\+I\+\_\+\+Std\+Inquiry\+Data\+Type\+Def}} $\ast$}]{inquiry }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Inquiry Issue Inquiry command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+{\em lun} & Logical Unit Number \\
+\hline
+{\em capacity} & pointer to the inquiry structure \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & Status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__MSC__SCSI__Exported__FunctionsPrototype_ga239f817ee6f84af1185993fb91d77cba}\label{group__USBH__MSC__SCSI__Exported__FunctionsPrototype_ga239f817ee6f84af1185993fb91d77cba}} 
+\index{USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype@{USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype}!USBH\_MSC\_SCSI\_Read@{USBH\_MSC\_SCSI\_Read}}
+\index{USBH\_MSC\_SCSI\_Read@{USBH\_MSC\_SCSI\_Read}!USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype@{USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_MSC\_SCSI\_Read()}{USBH\_MSC\_SCSI\_Read()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Read (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{lun,  }\item[{uint32\+\_\+t}]{address,  }\item[{uint8\+\_\+t $\ast$}]{pbuf,  }\item[{uint32\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Read Issue Read10 command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+{\em lun} & Logical Unit Number \\
+\hline
+{\em address} & sector address \\
+\hline
+{\em pbuf} & pointer to data \\
+\hline
+{\em length} & number of sector to read \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & Status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__MSC__SCSI__Exported__FunctionsPrototype_gaca8d80496719ffa847cd560d39fb8eff}\label{group__USBH__MSC__SCSI__Exported__FunctionsPrototype_gaca8d80496719ffa847cd560d39fb8eff}} 
+\index{USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype@{USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype}!USBH\_MSC\_SCSI\_ReadCapacity@{USBH\_MSC\_SCSI\_ReadCapacity}}
+\index{USBH\_MSC\_SCSI\_ReadCapacity@{USBH\_MSC\_SCSI\_ReadCapacity}!USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype@{USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_MSC\_SCSI\_ReadCapacity()}{USBH\_MSC\_SCSI\_ReadCapacity()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Read\+Capacity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{lun,  }\item[{\mbox{\hyperlink{structSCSI__CapacityTypeDef}{S\+C\+S\+I\+\_\+\+Capacity\+Type\+Def}} $\ast$}]{capacity }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Read\+Capacity Issue Read Capacity command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+{\em lun} & Logical Unit Number \\
+\hline
+{\em capacity} & pointer to the capacity structure \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & Status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__MSC__SCSI__Exported__FunctionsPrototype_ga00c79d6991f6b3d7758f103c5417d5af}\label{group__USBH__MSC__SCSI__Exported__FunctionsPrototype_ga00c79d6991f6b3d7758f103c5417d5af}} 
+\index{USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype@{USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype}!USBH\_MSC\_SCSI\_RequestSense@{USBH\_MSC\_SCSI\_RequestSense}}
+\index{USBH\_MSC\_SCSI\_RequestSense@{USBH\_MSC\_SCSI\_RequestSense}!USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype@{USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_MSC\_SCSI\_RequestSense()}{USBH\_MSC\_SCSI\_RequestSense()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Request\+Sense (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{lun,  }\item[{\mbox{\hyperlink{structSCSI__SenseTypeDef}{S\+C\+S\+I\+\_\+\+Sense\+Type\+Def}} $\ast$}]{sense\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Request\+Sense Issue Request\+Sense command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+{\em lun} & Logical Unit Number \\
+\hline
+{\em capacity} & pointer to the sense data structure \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & Status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__MSC__SCSI__Exported__FunctionsPrototype_ga4d201b03643534fa2729fbf047e1d5bc}\label{group__USBH__MSC__SCSI__Exported__FunctionsPrototype_ga4d201b03643534fa2729fbf047e1d5bc}} 
+\index{USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype@{USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype}!USBH\_MSC\_SCSI\_TestUnitReady@{USBH\_MSC\_SCSI\_TestUnitReady}}
+\index{USBH\_MSC\_SCSI\_TestUnitReady@{USBH\_MSC\_SCSI\_TestUnitReady}!USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype@{USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_MSC\_SCSI\_TestUnitReady()}{USBH\_MSC\_SCSI\_TestUnitReady()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Test\+Unit\+Ready (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{lun }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Test\+Unit\+Ready Issue Test\+Unit\+Ready command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+{\em lun} & Logical Unit Number \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & Status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBH__MSC__SCSI__Exported__FunctionsPrototype_ga9b9df3631393cd232ef1b2117215657e}\label{group__USBH__MSC__SCSI__Exported__FunctionsPrototype_ga9b9df3631393cd232ef1b2117215657e}} 
+\index{USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype@{USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype}!USBH\_MSC\_SCSI\_Write@{USBH\_MSC\_SCSI\_Write}}
+\index{USBH\_MSC\_SCSI\_Write@{USBH\_MSC\_SCSI\_Write}!USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype@{USBH\_MSC\_SCSI\_Exported\_FunctionsPrototype}}
+\doxysubsubsection{\texorpdfstring{USBH\_MSC\_SCSI\_Write()}{USBH\_MSC\_SCSI\_Write()}}
+{\footnotesize\ttfamily U\+S\+B\+H\+\_\+\+Status\+Type\+Def U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__USBH__HandleTypeDef}{U\+S\+B\+H\+\_\+\+Handle\+Type\+Def}} $\ast$}]{phost,  }\item[{uint8\+\_\+t}]{lun,  }\item[{uint32\+\_\+t}]{address,  }\item[{uint8\+\_\+t $\ast$}]{pbuf,  }\item[{uint32\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+H\+\_\+\+M\+S\+C\+\_\+\+S\+C\+S\+I\+\_\+\+Write Issue write10 command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+{\em lun} & Logical Unit Number \\
+\hline
+{\em address} & sector address \\
+\hline
+{\em pbuf} & pointer to data \\
+\hline
+{\em length} & number of sector to write \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BH} & Status \\
+\hline
+\end{DoxyRetVals}
