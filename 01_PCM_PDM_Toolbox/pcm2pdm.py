@@ -27,7 +27,7 @@ def main():
     # PCM -> 16kHz, 16 bit ints
     print("Importing PCM data from \"{}\"".format(args.input[0]))
     pcm_signal_int = np.fromfile(args.input[0], dtype="int16")
-    #print("PCM Length: {}".format(pcm_signal_int.shape[0]))
+    # print("PCM Length: {}".format(pcm_signal_int.shape[0]))
     pcm_max = np.max(pcm_signal_int) if np.max(pcm_signal_int) != 0 else 1
     pcm_signal_float = np.array(pcm_signal_int, dtype='float64') / pcm_max
     pcm_n = pcm_signal_int.shape[0]
@@ -39,7 +39,7 @@ def main():
     print("Writing 16bits chunks of PDM in \"{}\"".format(args.output[0]))
 
     pdm_signal_16bits = np.zeros((int(pdm_signal.shape[0] / 16),), dtype="uint16")
-    #print("PDM_length: {}".format(pdm_signal_16bits.shape[0]))
+    # print("PDM_length: {}".format(pdm_signal_16bits.shape[0]))
     for i in range(int(pdm_signal.shape[0] / 16)):
         val = 0
         for j in range(16):
@@ -64,6 +64,12 @@ def main():
     axs[1].legend()
     axs[0].set_xlim((0, 1))
     axs[1].set_xlim((0, 1))
+
+    plt.figure()
+    plt.step(n, pdm_signal, label="PDM Signal", where="post")
+    plt.plot(n_pcm, (pcm_signal_float / 2) + .5, label="PCM Signal")
+    plt.xlim((0, 1))
+    plt.legend()
     plt.show()
 
 
