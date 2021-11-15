@@ -207,7 +207,7 @@ N/A
         </tr>
         <tr>
         	<td>Trigger</td>
-            <td style="font-weight: bolder;">Timer 2 Trigger Out event</td>
+            <td ><strong>Timer 2 Trigger Out event</strong></td>
         </tr>
         <tr>
             <td>Wave Generation mode</td>
@@ -222,7 +222,7 @@ N/A
         </tr>
         <tr>
         	<td>Trigger</td>
-            <td style="font-weight: bolder;">Timer 2 Trigger Out event</td>
+            <td ><strong>Timer 2 Trigger Out event</strong></td>
         </tr>
         <tr>
             <td>Wave Generation mode</td>

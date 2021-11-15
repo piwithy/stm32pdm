@@ -1,4 +1,4 @@
-<h1> Direct Output </h1>
+<h1> Digital Recorder </h1>
 
 # Machine d'état
 ```mermaid
