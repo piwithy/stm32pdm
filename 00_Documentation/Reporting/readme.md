@@ -8,7 +8,7 @@ Ce dossier contien une copies des emails de reporting
  - [Semaine 42 (18&rarr;22/10/2021)](s42.md) : Connexion à un casque
  - [Semaine 43 (25&rarr;29/10/2021)](s43.md) : Documentation
  - [Semaine 44 (01&rarr;05/11/2021)](s44.md) : Documentation
- - [Semaine 45 (08&rarr;12/11/2021)](s45.md)
+ - [Semaine 45 (08&rarr;12/11/2021)](s45.md) : Documentation
  - [Semaine 46 (15&rarr;19/11/2021)](s46.md)
  - [Semaine 47 (22&rarr;26/11/2021)](s47.md)
  - [Semaine 48 (29&rarr;30/11/2021)](s48.md)
