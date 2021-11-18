@@ -56,11 +56,11 @@ typedef enum program_state {
 
 // 1ms @ FS*DECIMATION_FACTOR (With PDM_WORD_SIZE samples per word)
 /** @brief PDM Processing buffer size (Contain 2ms of PDM Sample)*/
-#define PDM_BUFFER_SIZE  (2 * ((SOUND_FS / 1000) * (DECIMATION_FACTOR / WORD_SIZE)))
+#define PDM_BUFFER_SIZE ((SOUND_FS / 1000) * (DECIMATION_FACTOR / WORD_SIZE))
 
 // 1ms @ FS (With 1 sample per word)
 /** @brief PCM Processing buffer size  (Contain 2ms of PDM Sample)*/
-#define PCM_BUFFER_SIZE (2 * (SOUND_FS/1000))
+#define PCM_BUFFER_SIZE (SOUND_FS/1000)
 
 /** @brief Linear Gain applied on PCM Samples*/
 #define LINEAR_GAIN 10
