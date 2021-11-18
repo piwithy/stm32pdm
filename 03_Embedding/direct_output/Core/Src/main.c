@@ -55,12 +55,12 @@ typedef enum program_state {
 #define WORD_SIZE 16
 
 // 1ms @ FS*DECIMATION_FACTOR (With PDM_WORD_SIZE samples per word)
-/** @brief PDM Processing buffer size (Contain 1ms of PDM Sample)*/
-#define PDM_BUFFER_SIZE ((SOUND_FS / 1000) * (DECIMATION_FACTOR / WORD_SIZE))
+/** @brief PDM Processing buffer size (Contain 2ms of PDM Sample)*/
+#define PDM_BUFFER_SIZE  (2 * ((SOUND_FS / 1000) * (DECIMATION_FACTOR / WORD_SIZE)))
 
 // 1ms @ FS (With 1 sample per word)
-/** @brief PCM Processing buffer size  (Contain 1ms of PDM Sample)*/
-#define PCM_BUFFER_SIZE (SOUND_FS/1000)
+/** @brief PCM Processing buffer size  (Contain 2ms of PDM Sample)*/
+#define PCM_BUFFER_SIZE (2 * (SOUND_FS/1000))
 
 /** @brief Linear Gain applied on PCM Samples*/
 #define LINEAR_GAIN 10
@@ -151,6 +151,7 @@ void HAL_DAC_ConvHalfCpltCallbackCh1(DAC_HandleTypeDef *hdac1) {
     dac_flag = 0;
     dac_half = 0;
 }
+
 /**
   * @brief Tx Transfer completed callback. DAC DMA Buffer
   * @param  hdac1 pointer to a DAC_HandleTypeDef structure that contains
@@ -234,17 +235,25 @@ int main(void) {
     const uint16_t *to_copy = void_buff;
     HAL_GPIO_WritePin(GPIOG, LD4_Pin, GPIO_PIN_SET); // Ready LED
     while (1) {
+
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */
         if (!sai_flag) {
+            HAL_GPIO_WritePin(SAI_DMA_FLAG_GPIO_Port, SAI_DMA_FLAG_Pin, GPIO_PIN_SET);
             (void) pdm_fir_flt_chunk(&pdm_filter, pcm_buffer, pdm_buffer + sai_half * PDM_BUFFER_SIZE, PDM_BUFFER_SIZE);
+            HAL_GPIO_WritePin(SAI_DMA_FLAG_GPIO_Port, SAI_DMA_FLAG_Pin, GPIO_PIN_RESET);
             if (cool_down > 0) cool_down--;
             sai_flag = 1;
+
         }
         if (!dac_flag) {
+            HAL_GPIO_WritePin(DAC_DMA_FLAG_GPIO_Port, DAC_DMA_FLAG_Pin, GPIO_PIN_SET);
             memcpy(dac_buffer_l + dac_half * PCM_BUFFER_SIZE, to_copy, sizeof(uint16_t) * PCM_BUFFER_SIZE);
             memcpy(dac_buffer_r + dac_half * PCM_BUFFER_SIZE, to_copy, sizeof(uint16_t) * PCM_BUFFER_SIZE);
+            dac_flag = 1;
+            HAL_GPIO_WritePin(DAC_DMA_FLAG_GPIO_Port, DAC_DMA_FLAG_Pin, GPIO_PIN_RESET);
+            //HAL_GPIO_WritePin(GPIOD, SAI_DMA_FLAG_Pin, GPIO_PIN_SET);
         }
 
 
@@ -507,7 +516,11 @@ static void MX_GPIO_Init(void) {
     __HAL_RCC_GPIOE_CLK_ENABLE();
     __HAL_RCC_GPIOH_CLK_ENABLE();
     __HAL_RCC_GPIOA_CLK_ENABLE();
+    __HAL_RCC_GPIOD_CLK_ENABLE();
     __HAL_RCC_GPIOG_CLK_ENABLE();
+
+    /*Configure GPIO pin Output Level */
+    HAL_GPIO_WritePin(GPIOD, SAI_DMA_FLAG_Pin | DAC_DMA_FLAG_Pin, GPIO_PIN_RESET);
 
     /*Configure GPIO pin Output Level */
     HAL_GPIO_WritePin(GPIOG, LD3_Pin | LD4_Pin, GPIO_PIN_RESET);
@@ -517,6 +530,13 @@ static void MX_GPIO_Init(void) {
     GPIO_InitStruct.Mode = GPIO_MODE_EVT_RISING;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(USER_BTN_GPIO_Port, &GPIO_InitStruct);
+
+    /*Configure GPIO pins : SAI_DMA_FLAG_Pin DAC_DMA_FLAG_Pin */
+    GPIO_InitStruct.Pin = SAI_DMA_FLAG_Pin | DAC_DMA_FLAG_Pin;
+    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
     /*Configure GPIO pins : LD3_Pin LD4_Pin */
     GPIO_InitStruct.Pin = LD3_Pin | LD4_Pin;
