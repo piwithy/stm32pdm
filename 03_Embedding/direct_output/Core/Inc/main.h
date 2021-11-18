@@ -60,6 +60,10 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define USER_BTN_Pin GPIO_PIN_0
 #define USER_BTN_GPIO_Port GPIOA
+#define SAI_DMA_FLAG_Pin GPIO_PIN_6
+#define SAI_DMA_FLAG_GPIO_Port GPIOD
+#define DAC_DMA_FLAG_Pin GPIO_PIN_7
+#define DAC_DMA_FLAG_GPIO_Port GPIOD
 #define LD3_Pin GPIO_PIN_13
 #define LD3_GPIO_Port GPIOG
 #define LD4_Pin GPIO_PIN_14
