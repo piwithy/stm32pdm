@@ -260,7 +260,7 @@ N/A
 Pour déterminer la valeur de `Prescaler`($`PSC`$) et de `Counter Period ` ($`ARR`$) appliquer la formule suivante :
 
 ```math
-(PSC + 1) * (ARR + 1) = \frac{f_{TIM}}{f_{SYS}}
+(PSC + 1) * (ARR + 1) = \frac{f_{SYS}}{f_{TIM}}
 ```
 
 Dans notre cas, les timers servent à produire un événement à $`F_{TIM}`$ à partir de la fréquence $`F_{SYS}`$ de l'horloge du système :
@@ -276,7 +276,7 @@ La valeur $`F_{SYS}`$ correspond à la fréquence de l'horloge à l'entrée du t
 
 Par exemple, pour obtenir $`f_{TIM} = 48 kHz`$ avec $`f_{SYS}=72 MHz`$ on configure $`PSC=0`$ et donc
 ```math
-ARR=\frac{f_{TIM}}{f_{SYS}} - 1 = \frac{72 * 10^{6}}{48* 10{^3}} - 1 = 1499
+ARR=\frac{f_{SYS}}{f_{TIM}} - 1 = \frac{72 * 10^{6}}{48* 10{^3}} - 1 = 1499
 ```
 
 <table>
