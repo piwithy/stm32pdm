@@ -1,0 +1,682 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --mermaid-theme: default; --mermaid-sequence-numbers: off; --mermaid-flowchart-curve: linear; --mermaid--gantt-left-padding: 75; --sequence-theme: simple; }
+
+
+:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>Annexe_1_logigrammes_parrot</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='annexe-1--logigrammes-des-états-démonstrateur-parrot'><span>Annexe 1:  Logigrammes des États démonstrateur &quot;Parrot&quot;</span></h1><h2 id='machine-détat'><span>Machine détat</span></h2><div class="md-diagram-panel md-fences-adv-panel"><svg id="mermaidChart0" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="108.5" style="max-width: 1080.953125px;" viewBox="0 0 1080.953125 108.5"><style>#mermaidChart0{font-family:sans-serif;font-size:16px;fill:#333;}#mermaidChart0 .error-icon{fill:#552222;}#mermaidChart0 .error-text{fill:#552222;stroke:#552222;}#mermaidChart0 .edge-thickness-normal{stroke-width:2px;}#mermaidChart0 .edge-thickness-thick{stroke-width:3.5px;}#mermaidChart0 .edge-pattern-solid{stroke-dasharray:0;}#mermaidChart0 .edge-pattern-dashed{stroke-dasharray:3;}#mermaidChart0 .edge-pattern-dotted{stroke-dasharray:2;}#mermaidChart0 .marker{fill:#333333;}#mermaidChart0 .marker.cross{stroke:#333333;}#mermaidChart0 svg{font-family:sans-serif;font-size:16px;}#mermaidChart0 .label{font-family:sans-serif;color:#333;}#mermaidChart0 .label text{fill:#333;}#mermaidChart0 .node rect,#mermaidChart0 .node circle,#mermaidChart0 .node ellipse,#mermaidChart0 .node polygon,#mermaidChart0 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaidChart0 .node .label{text-align:center;}#mermaidChart0 .node.clickable{cursor:pointer;}#mermaidChart0 .arrowheadPath{fill:#333333;}#mermaidChart0 .edgePath .path{stroke:#333333;stroke-width:1.5px;}#mermaidChart0 .flowchart-link{stroke:#333333;fill:none;}#mermaidChart0 .edgeLabel{background-color:#e8e8e8;text-align:center;}#mermaidChart0 .edgeLabel rect{opacity:0.5;background-color:#e8e8e8;fill:#e8e8e8;}#mermaidChart0 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaidChart0 .cluster text{fill:#333;}#mermaidChart0 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:sans-serif;font-size:12px;background:hsl(80,100%,96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaidChart0:root{--mermaid-font-family:sans-serif;}#mermaidChart0:root{--mermaid-alt-font-family:sans-serif;}#mermaidChart0 flowchart{fill:apa;}</style><g><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath LS-INIT LE-IDLE" id="L-INIT-IDLE" style="opacity: 1;"><path class="path" d="M28,59.25L53,59.25L78,59.25" marker-end="url(#arrowhead32)" style="fill:none"></path><defs><marker id="arrowhead32" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-IDLE LE-RECORDING" id="L-IDLE-RECORDING" style="opacity: 1;"><path class="path" d="M144.828125,52.0087450680172L244.078125,30.5L343.328125,30.5" marker-end="url(#arrowhead33)" style="fill:none"></path><defs><marker id="arrowhead33" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-RECORDING LE-PLAYBACK" id="L-RECORDING-PLAYBACK" style="opacity: 1;"><path class="path" d="M472.359375,30.5L571.609375,30.5L670.859375,30.5" marker-end="url(#arrowhead34)" style="fill:none"></path><defs><marker id="arrowhead34" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-PLAYBACK LE-TRANSMIT" id="L-PLAYBACK-TRANSMIT" style="opacity: 1;"><path class="path" d="M785.40625,30.5L872.6640625,30.5L959.921875,47.94871760039124" marker-end="url(#arrowhead35)" style="fill:none"></path><defs><marker id="arrowhead35" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-TRANSMIT LE-IDLE" id="L-TRANSMIT-IDLE" style="opacity: 1;"><path class="path" d="M959.921875,70.55128239960877L872.6640625,88L728.1328125,88L571.609375,88L407.84375,88L244.078125,88L144.828125,66.49125493198281" marker-end="url(#arrowhead36)" style="fill:none"></path><defs><marker id="arrowhead36" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(244.078125,30.5)" style="opacity: 1;"><g transform="translate(-74.25,-12.5)" class="label"><rect rx="0" ry="0" width="148.5" height="25"></rect><foreignObject width="148.5" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>USER_BTN Pressed</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(571.609375,30.5)" style="opacity: 1;"><g transform="translate(-74.25,-12.5)" class="label"><rect rx="0" ry="0" width="148.5" height="25"></rect><foreignObject width="148.5" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>USER_BTN Pressed</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(872.6640625,30.5)" style="opacity: 1;"><g transform="translate(-62.2578125,-12.5)" class="label"><rect rx="0" ry="0" width="124.515625" height="25"></rect><foreignObject width="124.515625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Playback finished</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(571.609375,88)" style="opacity: 1;"><g transform="translate(-67.296875,-12.5)" class="label"><rect rx="0" ry="0" width="134.59375" height="25"></rect><foreignObject width="134.59375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Sound Transmitted</span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="flowchart-INIT-15" transform="translate(18,59.25)" style="opacity: 1;"><circle x="-10" y="-10" r="10" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(0,0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"></div></foreignObject></g></g></g><g class="node default" id="flowchart-IDLE-16" transform="translate(111.4140625,59.25)" style="opacity: 1;"><rect rx="22.5" ry="22.5" x="-33.4140625" y="-22.5" width="66.828125" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-17.7890625,-12.5)"><foreignObject width="35.578125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">IDLE</div></foreignObject></g></g></g><g class="node default" id="flowchart-RECORDING-17" transform="translate(407.84375,30.5)" style="opacity: 1;"><rect rx="22.5" ry="22.5" x="-64.515625" y="-22.5" width="129.03125" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-48.890625,-12.5)"><foreignObject width="97.78125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">RECORDING</div></foreignObject></g></g></g><g class="node default" id="flowchart-PLAYBACK-18" transform="translate(728.1328125,30.5)" style="opacity: 1;"><rect rx="22.5" ry="22.5" x="-57.2734375" y="-22.5" width="114.546875" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-41.6484375,-12.5)"><foreignObject width="83.296875" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">PLAYBACK</div></foreignObject></g></g></g><g class="node default" id="flowchart-TRANSMIT-19" transform="translate(1016.4375,59.25)" style="opacity: 1;"><rect rx="22.5" ry="22.5" x="-56.515625" y="-22.5" width="113.03125" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-40.890625,-12.5)"><foreignObject width="81.78125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">TRANSMIT</div></foreignObject></g></g></g></g></g></g></svg></div><h2 id='idle'><span>IDLE</span></h2><div class="md-diagram-panel md-fences-adv-panel"><svg id="mermaidChart1" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="1780.234375" style="max-width: 514.7249755859375px;" viewBox="0 0 514.7249755859375 1780.234375"><style>#mermaidChart1{font-family:sans-serif;font-size:16px;fill:#333;}#mermaidChart1 .error-icon{fill:#552222;}#mermaidChart1 .error-text{fill:#552222;stroke:#552222;}#mermaidChart1 .edge-thickness-normal{stroke-width:2px;}#mermaidChart1 .edge-thickness-thick{stroke-width:3.5px;}#mermaidChart1 .edge-pattern-solid{stroke-dasharray:0;}#mermaidChart1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaidChart1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaidChart1 .marker{fill:#333333;}#mermaidChart1 .marker.cross{stroke:#333333;}#mermaidChart1 svg{font-family:sans-serif;font-size:16px;}#mermaidChart1 .label{font-family:sans-serif;color:#333;}#mermaidChart1 .label text{fill:#333;}#mermaidChart1 .node rect,#mermaidChart1 .node circle,#mermaidChart1 .node ellipse,#mermaidChart1 .node polygon,#mermaidChart1 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaidChart1 .node .label{text-align:center;}#mermaidChart1 .node.clickable{cursor:pointer;}#mermaidChart1 .arrowheadPath{fill:#333333;}#mermaidChart1 .edgePath .path{stroke:#333333;stroke-width:1.5px;}#mermaidChart1 .flowchart-link{stroke:#333333;fill:none;}#mermaidChart1 .edgeLabel{background-color:#e8e8e8;text-align:center;}#mermaidChart1 .edgeLabel rect{opacity:0.5;background-color:#e8e8e8;fill:#e8e8e8;}#mermaidChart1 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaidChart1 .cluster text{fill:#333;}#mermaidChart1 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:sans-serif;font-size:12px;background:hsl(80,100%,96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaidChart1:root{--mermaid-font-family:sans-serif;}#mermaidChart1:root{--mermaid-alt-font-family:sans-serif;}#mermaidChart1 flowchart{fill:apa;}</style><g><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath LS-NEXT_STATE LE-FINISH" id="L-NEXT_STATE-FINISH" style="opacity: 1;"><path class="path" d="M366.6343765258789,1677.234359741211L366.6343765258789,1702.234359741211L366.6343765258789,1727.234359741211" marker-end="url(#arrowhead121)" style="fill:none"></path><defs><marker id="arrowhead121" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-INIT LE-SAI_FLAG" id="L-INIT-SAI_FLAG" style="opacity: 1;"><path class="path" d="M274.5484390258789,53L274.5484390258789,78L275.0484390258789,103.5" marker-end="url(#arrowhead122)" style="fill:none"></path><defs><marker id="arrowhead122" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-SAI_FLAG LE-DAC_FLAG_UP" id="L-SAI_FLAG-DAC_FLAG_UP" style="opacity: 1;"><path class="path" d="M223.7540816941489,235.58064266827L110.49609375,323.875L110.49609375,383.875L110.49609375,443.875L110.49609375,503.875L110.49609375,563.875L116.1404180817349,611.290834970023" marker-end="url(#arrowhead123)" style="fill:none"></path><defs><marker id="arrowhead123" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-SAI_FLAG LE-RESET_SAI_FLAG" id="L-SAI_FLAG-RESET_SAI_FLAG" style="opacity: 1;"><path class="path" d="M265.76143924632555,277.58800022044665L259.98828125,323.875L259.98828125,361.375" marker-end="url(#arrowhead124)" style="fill:none"></path><defs><marker id="arrowhead124" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-RESET_SAI_FLAG LE-FILTER" id="L-RESET_SAI_FLAG-FILTER" style="opacity: 1;"><path class="path" d="M259.98828125,406.375L259.98828125,443.875L259.98828125,481.375" marker-end="url(#arrowhead125)" style="fill:none"></path><defs><marker id="arrowhead125" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-FILTER LE-DAC_FLAG_UP" id="L-FILTER-DAC_FLAG_UP" style="opacity: 1;"><path class="path" d="M259.98828125,526.375L259.98828125,563.875L173.58164537319104,649.9003923214333" marker-end="url(#arrowhead126)" style="fill:none"></path><defs><marker id="arrowhead126" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-DAC_FLAG_UP LE-RESET_DAC_FLAG" id="L-DAC_FLAG_UP-RESET_DAC_FLAG" style="opacity: 1;"><path class="path" d="M115.6222461972444,782.5159931454866L109.6015625,829.4499969482422L109.6015625,866.9499969482422" marker-end="url(#arrowhead127)" style="fill:none"></path><defs><marker id="arrowhead127" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-RESET_DAC_FLAG LE-USER_BTN_PRESSED" id="L-RESET_DAC_FLAG-USER_BTN_PRESSED" style="opacity: 1;"><path class="path" d="M109.6015625,911.9499969482422L109.6015625,936.9499969482422L211.17028045567386,1026.3281585702052" marker-end="url(#arrowhead128)" style="fill:none"></path><defs><marker id="arrowhead128" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-DAC_FLAG_UP LE-USER_BTN_PRESSED" id="L-DAC_FLAG_UP-USER_BTN_PRESSED" style="opacity: 1;"><path class="path" d="M176.01945515125823,741.9867979004996L274.5484390258789,829.4499969482422L274.5484390258789,889.4499969482422L274.5484390258789,936.9499969482422L275.0484390258789,962.4500000000002" marker-end="url(#arrowhead129)" style="fill:none"></path><defs><marker id="arrowhead129" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-USER_BTN_PRESSED LE-TIME_IN_STATE" id="L-USER_BTN_PRESSED-TIME_IN_STATE" style="opacity: 1;"><path class="path" d="M275.0484390258789,1202.5531188964846L274.5484390258789,1239.5531158447266L319.2979015929737,1325.3895938293897" marker-end="url(#arrowhead130)" style="fill:none"></path><defs><marker id="arrowhead130" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-TIME_IN_STATE LE-NEXT_STATE" id="L-TIME_IN_STATE-NEXT_STATE" style="opacity: 1;"><path class="path" d="M367.13437652587896,1557.7343627929688L366.6343765258789,1594.734359741211L366.6343765258789,1632.234359741211" marker-end="url(#arrowhead131)" style="fill:none"></path><defs><marker id="arrowhead131" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-USER_BTN_PRESSED LE-SAI_FLAG" id="L-USER_BTN_PRESSED-SAI_FLAG" style="opacity: 1;"><path class="path" d="M332.9046906996329,1020.3062455702382L409.48046875,936.9499969482422L409.48046875,889.4499969482422L409.48046875,829.4499969482422L409.48046875,696.6624984741211L409.48046875,563.875L409.48046875,503.875L409.48046875,443.875L409.48046875,383.875L409.48046875,323.875L321.88927843011663,240.03416059576224" marker-end="url(#arrowhead132)" style="fill:none"></path><defs><marker id="arrowhead132" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-TIME_IN_STATE LE-SAI_FLAG" id="L-TIME_IN_STATE-SAI_FLAG" style="opacity: 1;"><path class="path" d="M409.705668939733,1320.1244052068228L444.16015625,1239.5531158447266L444.16015625,1082.0015563964844L444.16015625,936.9499969482422L444.16015625,889.4499969482422L444.16015625,829.4499969482422L444.16015625,696.6624984741211L444.16015625,563.875L444.16015625,503.875L444.16015625,443.875L444.16015625,383.875L444.16015625,323.875L327.0943395053371,234.82909952054186" marker-end="url(#arrowhead133)" style="fill:none"></path><defs><marker id="arrowhead133" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(110.49609375,443.875)" style="opacity: 1;"><g transform="translate(-14.6796875,-12.5)" class="label"><rect rx="0" ry="0" width="29.359375" height="25"></rect><foreignObject width="29.359375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Non</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(259.98828125,323.875)" style="opacity: 1;"><g transform="translate(-12.453125,-12.5)" class="label"><rect rx="0" ry="0" width="24.90625" height="25"></rect><foreignObject width="24.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Oui</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(109.6015625,829.4499969482422)" style="opacity: 1;"><g transform="translate(-12.453125,-12.5)" class="label"><rect rx="0" ry="0" width="24.90625" height="25"></rect><foreignObject width="24.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Oui</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(274.5484390258789,889.4499969482422)" style="opacity: 1;"><g transform="translate(-14.6796875,-12.5)" class="label"><rect rx="0" ry="0" width="29.359375" height="25"></rect><foreignObject width="29.359375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Non</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(274.5484390258789,1239.5531158447266)" style="opacity: 1;"><g transform="translate(-12.453125,-12.5)" class="label"><rect rx="0" ry="0" width="24.90625" height="25"></rect><foreignObject width="24.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Oui</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(366.6343765258789,1594.734359741211)" style="opacity: 1;"><g transform="translate(-12.453125,-12.5)" class="label"><rect rx="0" ry="0" width="24.90625" height="25"></rect><foreignObject width="24.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Oui</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(409.48046875,563.875)" style="opacity: 1;"><g transform="translate(-14.6796875,-12.5)" class="label"><rect rx="0" ry="0" width="29.359375" height="25"></rect><foreignObject width="29.359375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Non</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(444.16015625,696.6624984741211)" style="opacity: 1;"><g transform="translate(-14.6796875,-12.5)" class="label"><rect rx="0" ry="0" width="29.359375" height="25"></rect><foreignObject width="29.359375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Non</span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="flowchart-INIT-65" transform="translate(274.5484390258789,30.5)" style="opacity: 1;"><rect rx="22.5" ry="22.5" x="-100.703125" y="-22.5" width="201.40625" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-85.078125,-12.5)"><foreignObject width="170.15625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Entrée dans l'état 'IDLE'</div></foreignObject></g></g></g><g class="node default" id="flowchart-FINISH-66" transform="translate(366.6343765258789,1749.734359741211)" style="opacity: 1;"><rect rx="22.5" ry="22.5" x="-89.578125" y="-22.5" width="179.15625" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-73.953125,-12.5)"><foreignObject width="147.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Sortie de l'état 'IDLE'</div></foreignObject></g></g></g><g class="node default" id="flowchart-SAI_FLAG-67" transform="translate(274.5484390258789,194.6875)" style="opacity: 1;"><polygon points="91.6875,0 183.375,-91.6875 91.6875,-183.375 0,-91.6875" transform="translate(-91.6875,91.6875)" class="label-container"></polygon><g class="label" transform="translate(0,0)"><g transform="translate(-69.375,-12.5)"><foreignObject width="138.75" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Drapeau SAI levé ?</div></foreignObject></g></g></g><g class="node default" id="flowchart-FILTER-68" transform="translate(259.98828125,503.875)" style="opacity: 1;"><rect rx="0" ry="0" x="-114.4921875" y="-22.5" width="228.984375" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-104.4921875,-12.5)"><foreignObject width="208.984375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Fitrage des échantillons PDM</div></foreignObject></g></g></g><g class="node default" id="flowchart-RESET_SAI_FLAG-69" transform="translate(259.98828125,383.875)" style="opacity: 1;"><rect rx="0" ry="0" x="-97.6015625" y="-22.5" width="195.203125" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-87.6015625,-12.5)"><foreignObject width="175.203125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Abaisser le Drapeau SAI</div></foreignObject></g></g></g><g class="node default" id="flowchart-DAC_FLAG_UP-70" transform="translate(125.0562515258789,696.6624984741211)" style="opacity: 1;"><polygon points="95.28750000000001,0 190.57500000000002,-95.28750000000001 95.28750000000001,-190.57500000000002 0,-95.28750000000001" transform="translate(-95.28750000000001,95.28750000000001)" class="label-container"></polygon><g class="label" transform="translate(0,0)"><g transform="translate(-73.375,-12.5)"><foreignObject width="146.75" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Drapeau DAC levé ?</div></foreignObject></g></g></g><g class="node default" id="flowchart-RESET_DAC_FLAG-71" transform="translate(109.6015625,889.4499969482422)" style="opacity: 1;"><rect rx="0" ry="0" x="-101.6015625" y="-22.5" width="203.203125" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-91.6015625,-12.5)"><foreignObject width="183.203125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Abaisser le Drapeau DAC</div></foreignObject></g></g></g><g class="node default" id="flowchart-USER_BTN_PRESSED-72" transform="translate(274.5484390258789,1082.0015563964844)" style="opacity: 1;"><polygon points="120.0515625,0 240.103125,-120.0515625 120.0515625,-240.103125 0,-120.0515625" transform="translate(-120.0515625,120.0515625)" class="label-container"></polygon><g class="label" transform="translate(0,0)"><g transform="translate(-100.890625,-12.5)"><foreignObject width="201.78125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Appui sur le bouton 'USER'?</div></foreignObject></g></g></g><g class="node default" id="flowchart-TIME_IN_STATE-73" transform="translate(366.6343765258789,1417.1437377929688)" style="opacity: 1;"><polygon points="140.09062500000002,0 280.18125000000003,-140.09062500000002 140.09062500000002,-280.18125000000003 0,-140.09062500000002" transform="translate(-140.09062500000002,140.09062500000002)" class="label-container"></polygon><g class="label" transform="translate(0,0)"><g transform="translate(-123.15625,-12.5)"><foreignObject width="246.3125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Temps passé dans l'état&gt; 500 ms?</div></foreignObject></g></g></g><g class="node default" id="flowchart-NEXT_STATE-74" transform="translate(366.6343765258789,1654.734359741211)" style="opacity: 1;"><rect rx="0" ry="0" x="-113.53125" y="-22.5" width="227.0625" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-103.53125,-12.5)"><foreignObject width="207.0625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Prochain état: 'RECORDING'</div></foreignObject></g></g></g></g></g></g></svg></div><h2 id='recording'><span>RECORDING</span></h2><div class="md-diagram-panel md-fences-adv-panel"><svg id="mermaidChart2" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="1850.234375" style="max-width: 643.2601318359375px;" viewBox="0 0 643.2601318359375 1850.234375"><style>#mermaidChart2{font-family:sans-serif;font-size:16px;fill:#333;}#mermaidChart2 .error-icon{fill:#552222;}#mermaidChart2 .error-text{fill:#552222;stroke:#552222;}#mermaidChart2 .edge-thickness-normal{stroke-width:2px;}#mermaidChart2 .edge-thickness-thick{stroke-width:3.5px;}#mermaidChart2 .edge-pattern-solid{stroke-dasharray:0;}#mermaidChart2 .edge-pattern-dashed{stroke-dasharray:3;}#mermaidChart2 .edge-pattern-dotted{stroke-dasharray:2;}#mermaidChart2 .marker{fill:#333333;}#mermaidChart2 .marker.cross{stroke:#333333;}#mermaidChart2 svg{font-family:sans-serif;font-size:16px;}#mermaidChart2 .label{font-family:sans-serif;color:#333;}#mermaidChart2 .label text{fill:#333;}#mermaidChart2 .node rect,#mermaidChart2 .node circle,#mermaidChart2 .node ellipse,#mermaidChart2 .node polygon,#mermaidChart2 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaidChart2 .node .label{text-align:center;}#mermaidChart2 .node.clickable{cursor:pointer;}#mermaidChart2 .arrowheadPath{fill:#333333;}#mermaidChart2 .edgePath .path{stroke:#333333;stroke-width:1.5px;}#mermaidChart2 .flowchart-link{stroke:#333333;fill:none;}#mermaidChart2 .edgeLabel{background-color:#e8e8e8;text-align:center;}#mermaidChart2 .edgeLabel rect{opacity:0.5;background-color:#e8e8e8;fill:#e8e8e8;}#mermaidChart2 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaidChart2 .cluster text{fill:#333;}#mermaidChart2 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:sans-serif;font-size:12px;background:hsl(80,100%,96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaidChart2:root{--mermaid-font-family:sans-serif;}#mermaidChart2:root{--mermaid-alt-font-family:sans-serif;}#mermaidChart2 flowchart{fill:apa;}</style><g><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath LS-NEXT_STATE LE-FINISH" id="L-NEXT_STATE-FINISH" style="opacity: 1;"><path class="path" d="M495.1695327758789,1747.234359741211L495.1695327758789,1772.234359741211L495.1695327758789,1797.234359741211" marker-end="url(#arrowhead229)" style="fill:none"></path><defs><marker id="arrowhead229" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-INIT LE-SAI_FLAG" id="L-INIT-SAI_FLAG" style="opacity: 1;"><path class="path" d="M367.0562515258789,53L367.0562515258789,78L367.5562515258789,103.5" marker-end="url(#arrowhead230)" style="fill:none"></path><defs><marker id="arrowhead230" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-SAI_FLAG LE-DAC_FLAG_UP" id="L-SAI_FLAG-DAC_FLAG_UP" style="opacity: 1;"><path class="path" d="M306.5039983831669,225.82274685728797L109.6015625,323.875L109.6015625,383.875L109.6015625,431.375L109.6015625,478.875L109.6015625,526.375L109.6015625,573.875L109.6015625,633.875L129.93934496389744,695.2848768378605" marker-end="url(#arrowhead231)" style="fill:none"></path><defs><marker id="arrowhead231" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-SAI_FLAG LE-RESET_SAI_FLAG" id="L-SAI_FLAG-RESET_SAI_FLAG" style="opacity: 1;"><path class="path" d="M341.75599283147784,261.07474130559893L316.46875,323.875L316.46875,361.375" marker-end="url(#arrowhead232)" style="fill:none"></path><defs><marker id="arrowhead232" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-RESET_SAI_FLAG LE-FILTER" id="L-RESET_SAI_FLAG-FILTER" style="opacity: 1;"><path class="path" d="M316.46875,406.375L316.46875,431.375L316.46875,456.375" marker-end="url(#arrowhead233)" style="fill:none"></path><defs><marker id="arrowhead233" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-FILTER LE-SAVE" id="L-FILTER-SAVE" style="opacity: 1;"><path class="path" d="M316.46875,501.375L316.46875,526.375L316.46875,551.375" marker-end="url(#arrowhead234)" style="fill:none"></path><defs><marker id="arrowhead234" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-SAVE LE-DAC_FLAG_UP" id="L-SAVE-DAC_FLAG_UP" style="opacity: 1;"><path class="path" d="M316.46875,596.375L316.46875,633.875L205.9488365311308,724.474614729373" marker-end="url(#arrowhead235)" style="fill:none"></path><defs><marker id="arrowhead235" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-DAC_FLAG_UP LE-RESET_DAC_FLAG" id="L-DAC_FLAG_UP-RESET_DAC_FLAG" style="opacity: 1;"><path class="path" d="M129.93934421415295,839.0401224123952L109.6015625,899.4499969482422L109.6015625,936.9499969482422" marker-end="url(#arrowhead236)" style="fill:none"></path><defs><marker id="arrowhead236" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-RESET_DAC_FLAG LE-USER_BTN_PRESSED" id="L-RESET_DAC_FLAG-USER_BTN_PRESSED" style="opacity: 1;"><path class="path" d="M109.6015625,981.9499969482422L109.6015625,1006.9499969482422L290.7677886478501,1109.2384628780287" marker-end="url(#arrowhead237)" style="fill:none"></path><defs><marker id="arrowhead237" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-DAC_FLAG_UP LE-USER_BTN_PRESSED" id="L-DAC_FLAG_UP-USER_BTN_PRESSED" style="opacity: 1;"><path class="path" d="M212.17220275969603,803.6270190420616L367.0562515258789,899.4499969482422L367.0562515258789,959.4499969482422L367.0562515258789,1006.9499969482422L367.5562515258789,1032.4499999999998" marker-end="url(#arrowhead238)" style="fill:none"></path><defs><marker id="arrowhead238" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-USER_BTN_PRESSED LE-TIME_IN_STATE" id="L-USER_BTN_PRESSED-TIME_IN_STATE" style="opacity: 1;"><path class="path" d="M367.5562515258789,1272.553118896484L367.0562515258789,1309.5531158447266L436.960865102986,1406.2617865693776" marker-end="url(#arrowhead239)" style="fill:none"></path><defs><marker id="arrowhead239" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-TIME_IN_STATE LE-NEXT_STATE" id="L-TIME_IN_STATE-NEXT_STATE" style="opacity: 1;"><path class="path" d="M495.66953277587896,1627.7343627929695L495.1695327758789,1664.734359741211L495.1695327758789,1702.234359741211" marker-end="url(#arrowhead240)" style="fill:none"></path><defs><marker id="arrowhead240" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-USER_BTN_PRESSED LE-SAI_FLAG" id="L-USER_BTN_PRESSED-SAI_FLAG" style="opacity: 1;"><path class="path" d="M432.5031814304575,1097.3969238010634L538.015625,1006.9499969482422L538.015625,959.4499969482422L538.015625,899.4499969482422L538.015625,766.6624984741211L538.015625,633.875L538.015625,573.875L538.015625,526.375L538.015625,478.875L538.015625,431.375L538.015625,383.875L538.015625,323.875L419.780142362976,234.65110916290297" marker-end="url(#arrowhead241)" style="fill:none"></path><defs><marker id="arrowhead241" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-TIME_IN_STATE LE-SAI_FLAG" id="L-TIME_IN_STATE-SAI_FLAG" style="opacity: 1;"><path class="path" d="M538.2408251897332,1390.1244052068225L572.6953125,1309.5531158447266L572.6953125,1152.0015563964844L572.6953125,1006.9499969482422L572.6953125,959.4499969482422L572.6953125,899.4499969482422L572.6953125,766.6624984741211L572.6953125,633.875L572.6953125,573.875L572.6953125,526.375L572.6953125,478.875L572.6953125,431.375L572.6953125,383.875L572.6953125,323.875L423.8675887991546,230.56366272672435" marker-end="url(#arrowhead242)" style="fill:none"></path><defs><marker id="arrowhead242" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(109.6015625,478.875)" style="opacity: 1;"><g transform="translate(-14.6796875,-12.5)" class="label"><rect rx="0" ry="0" width="29.359375" height="25"></rect><foreignObject width="29.359375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Non</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(316.46875,323.875)" style="opacity: 1;"><g transform="translate(-12.453125,-12.5)" class="label"><rect rx="0" ry="0" width="24.90625" height="25"></rect><foreignObject width="24.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Oui</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(109.6015625,899.4499969482422)" style="opacity: 1;"><g transform="translate(-12.453125,-12.5)" class="label"><rect rx="0" ry="0" width="24.90625" height="25"></rect><foreignObject width="24.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Oui</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(367.0562515258789,959.4499969482422)" style="opacity: 1;"><g transform="translate(-14.6796875,-12.5)" class="label"><rect rx="0" ry="0" width="29.359375" height="25"></rect><foreignObject width="29.359375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Non</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(367.0562515258789,1309.5531158447266)" style="opacity: 1;"><g transform="translate(-12.453125,-12.5)" class="label"><rect rx="0" ry="0" width="24.90625" height="25"></rect><foreignObject width="24.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Oui</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(495.1695327758789,1664.734359741211)" style="opacity: 1;"><g transform="translate(-12.453125,-12.5)" class="label"><rect rx="0" ry="0" width="24.90625" height="25"></rect><foreignObject width="24.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Oui</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(538.015625,573.875)" style="opacity: 1;"><g transform="translate(-14.6796875,-12.5)" class="label"><rect rx="0" ry="0" width="29.359375" height="25"></rect><foreignObject width="29.359375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Non</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(572.6953125,633.875)" style="opacity: 1;"><g transform="translate(-14.6796875,-12.5)" class="label"><rect rx="0" ry="0" width="29.359375" height="25"></rect><foreignObject width="29.359375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Non</span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="flowchart-INIT-137" transform="translate(367.0562515258789,30.5)" style="opacity: 1;"><rect rx="22.5" ry="22.5" x="-131.8046875" y="-22.5" width="263.609375" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-116.1796875,-12.5)"><foreignObject width="232.359375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Entrée dans l'état 'RECORDING'</div></foreignObject></g></g></g><g class="node default" id="flowchart-FINISH-138" transform="translate(495.1695327758789,1819.734359741211)" style="opacity: 1;"><rect rx="22.5" ry="22.5" x="-120.6875" y="-22.5" width="241.375" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-105.0625,-12.5)"><foreignObject width="210.125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Sortie de l'état 'RECORDING'</div></foreignObject></g></g></g><g class="node default" id="flowchart-SAI_FLAG-139" transform="translate(367.0562515258789,194.6875)" style="opacity: 1;"><polygon points="91.6875,0 183.375,-91.6875 91.6875,-183.375 0,-91.6875" transform="translate(-91.6875,91.6875)" class="label-container"></polygon><g class="label" transform="translate(0,0)"><g transform="translate(-69.375,-12.5)"><foreignObject width="138.75" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Drapeau SAI levé ?</div></foreignObject></g></g></g><g class="node default" id="flowchart-FILTER-140" transform="translate(316.46875,478.875)" style="opacity: 1;"><rect rx="0" ry="0" x="-114.4921875" y="-22.5" width="228.984375" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-104.4921875,-12.5)"><foreignObject width="208.984375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Fitrage des échantillons PDM</div></foreignObject></g></g></g><g class="node default" id="flowchart-SAVE-141" transform="translate(316.46875,573.875)" style="opacity: 1;"><rect rx="0" ry="0" x="-171.8671875" y="-22.5" width="343.734375" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-161.8671875,-12.5)"><foreignObject width="323.734375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Ajout des échantillons PCM au son enregistré</div></foreignObject></g></g></g><g class="node default" id="flowchart-RESET_SAI_FLAG-142" transform="translate(316.46875,383.875)" style="opacity: 1;"><rect rx="0" ry="0" x="-97.6015625" y="-22.5" width="195.203125" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-87.6015625,-12.5)"><foreignObject width="175.203125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Abaisser le Drapeau SAI</div></foreignObject></g></g></g><g class="node default" id="flowchart-DAC_FLAG_UP-143" transform="translate(152.8492202758789,766.6624984741211)" style="opacity: 1;"><polygon points="95.28750000000001,0 190.57500000000002,-95.28750000000001 95.28750000000001,-190.57500000000002 0,-95.28750000000001" transform="translate(-95.28750000000001,95.28750000000001)" class="label-container"></polygon><g class="label" transform="translate(0,0)"><g transform="translate(-73.375,-12.5)"><foreignObject width="146.75" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Drapeau DAC levé ?</div></foreignObject></g></g></g><g class="node default" id="flowchart-RESET_DAC_FLAG-144" transform="translate(109.6015625,959.4499969482422)" style="opacity: 1;"><rect rx="0" ry="0" x="-101.6015625" y="-22.5" width="203.203125" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-91.6015625,-12.5)"><foreignObject width="183.203125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Abaisser le Drapeau DAC</div></foreignObject></g></g></g><g class="node default" id="flowchart-USER_BTN_PRESSED-145" transform="translate(367.0562515258789,1152.0015563964844)" style="opacity: 1;"><polygon points="120.0515625,0 240.103125,-120.0515625 120.0515625,-240.103125 0,-120.0515625" transform="translate(-120.0515625,120.0515625)" class="label-container"></polygon><g class="label" transform="translate(0,0)"><g transform="translate(-100.890625,-12.5)"><foreignObject width="201.78125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Appui sur le bouton 'USER'?</div></foreignObject></g></g></g><g class="node default" id="flowchart-TIME_IN_STATE-146" transform="translate(495.1695327758789,1487.1437377929688)" style="opacity: 1;"><polygon points="140.09062500000002,0 280.18125000000003,-140.09062500000002 140.09062500000002,-280.18125000000003 0,-140.09062500000002" transform="translate(-140.09062500000002,140.09062500000002)" class="label-container"></polygon><g class="label" transform="translate(0,0)"><g transform="translate(-123.15625,-12.5)"><foreignObject width="246.3125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Temps passé dans l'état&gt; 500 ms?</div></foreignObject></g></g></g><g class="node default" id="flowchart-NEXT_STATE-147" transform="translate(495.1695327758789,1724.734359741211)" style="opacity: 1;"><rect rx="0" ry="0" x="-106.2890625" y="-22.5" width="212.578125" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-96.2890625,-12.5)"><foreignObject width="192.578125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Prochain état: 'PLAYBACK'</div></foreignObject></g></g></g></g></g></g></svg></div><h2 id='playback'><span>PLAYBACK</span></h2><div class="md-diagram-panel md-fences-adv-panel"><svg id="mermaidChart3" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="1695.996826171875" style="max-width: 683.14453125px;" viewBox="0 0 683.14453125 1695.996826171875"><style>#mermaidChart3{font-family:sans-serif;font-size:16px;fill:#333;}#mermaidChart3 .error-icon{fill:#552222;}#mermaidChart3 .error-text{fill:#552222;stroke:#552222;}#mermaidChart3 .edge-thickness-normal{stroke-width:2px;}#mermaidChart3 .edge-thickness-thick{stroke-width:3.5px;}#mermaidChart3 .edge-pattern-solid{stroke-dasharray:0;}#mermaidChart3 .edge-pattern-dashed{stroke-dasharray:3;}#mermaidChart3 .edge-pattern-dotted{stroke-dasharray:2;}#mermaidChart3 .marker{fill:#333333;}#mermaidChart3 .marker.cross{stroke:#333333;}#mermaidChart3 svg{font-family:sans-serif;font-size:16px;}#mermaidChart3 .label{font-family:sans-serif;color:#333;}#mermaidChart3 .label text{fill:#333;}#mermaidChart3 .node rect,#mermaidChart3 .node circle,#mermaidChart3 .node ellipse,#mermaidChart3 .node polygon,#mermaidChart3 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaidChart3 .node .label{text-align:center;}#mermaidChart3 .node.clickable{cursor:pointer;}#mermaidChart3 .arrowheadPath{fill:#333333;}#mermaidChart3 .edgePath .path{stroke:#333333;stroke-width:1.5px;}#mermaidChart3 .flowchart-link{stroke:#333333;fill:none;}#mermaidChart3 .edgeLabel{background-color:#e8e8e8;text-align:center;}#mermaidChart3 .edgeLabel rect{opacity:0.5;background-color:#e8e8e8;fill:#e8e8e8;}#mermaidChart3 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaidChart3 .cluster text{fill:#333;}#mermaidChart3 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:sans-serif;font-size:12px;background:hsl(80,100%,96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaidChart3:root{--mermaid-font-family:sans-serif;}#mermaidChart3:root{--mermaid-alt-font-family:sans-serif;}#mermaidChart3 flowchart{fill:apa;}</style><g><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath LS-NEXT_STATE LE-FINISH" id="L-NEXT_STATE-FINISH" style="opacity: 1;"><path class="path" d="M514.62109375,1592.9968719482422L514.62109375,1617.9968719482422L514.62109375,1642.9968719482422" marker-end="url(#arrowhead326)" style="fill:none"></path><defs><marker id="arrowhead326" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-INIT LE-SAI_FLAG" id="L-INIT-SAI_FLAG" style="opacity: 1;"><path class="path" d="M457.21484375,53L457.21484375,78L457.71484375,103.5" marker-end="url(#arrowhead327)" style="fill:none"></path><defs><marker id="arrowhead327" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-SAI_FLAG LE-DAC_FLAG_UP" id="L-SAI_FLAG-DAC_FLAG_UP" style="opacity: 1;"><path class="path" d="M406.4040281707723,235.5641844207723L293.04296875,323.875L293.04296875,383.875L293.04296875,431.375L293.04296875,478.875L293.04296875,526.375L293.04296875,573.875L293.04296875,633.875L339.2271822138708,708.2767255620082" marker-end="url(#arrowhead328)" style="fill:none"></path><defs><marker id="arrowhead328" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-SAI_FLAG LE-RESET_SAI_FLAG" id="L-SAI_FLAG-RESET_SAI_FLAG" style="opacity: 1;"><path class="path" d="M457.71484375,286.875L457.21484375,323.875L457.21484375,361.375" marker-end="url(#arrowhead329)" style="fill:none"></path><defs><marker id="arrowhead329" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-RESET_SAI_FLAG LE-FILTER" id="L-RESET_SAI_FLAG-FILTER" style="opacity: 1;"><path class="path" d="M457.21484375,406.375L457.21484375,431.375L457.21484375,456.375" marker-end="url(#arrowhead330)" style="fill:none"></path><defs><marker id="arrowhead330" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-FILTER LE-SAVE" id="L-FILTER-SAVE" style="opacity: 1;"><path class="path" d="M457.21484375,501.375L457.21484375,526.375L457.21484375,551.375" marker-end="url(#arrowhead331)" style="fill:none"></path><defs><marker id="arrowhead331" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-SAVE LE-DAC_FLAG_UP" id="L-SAVE-DAC_FLAG_UP" style="opacity: 1;"><path class="path" d="M457.21484375,596.375L457.21484375,633.875L412.03063145196177,708.2767236760828" marker-end="url(#arrowhead332)" style="fill:none"></path><defs><marker id="arrowhead332" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-DAC_FLAG_UP LE-RESET_DAC_FLAG" id="L-DAC_FLAG_UP-RESET_DAC_FLAG" style="opacity: 1;"><path class="path" d="M327.7609865268845,814.5820787510055L241.0859375,899.4499969482422L241.0859375,936.9499969482422" marker-end="url(#arrowhead333)" style="fill:none"></path><defs><marker id="arrowhead333" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-RESET_DAC_FLAG LE-COPY_DAC" id="L-RESET_DAC_FLAG-COPY_DAC" style="opacity: 1;"><path class="path" d="M241.0859375,981.9499969482422L241.0859375,1019.4499969482422L241.0859375,1056.9499969482422" marker-end="url(#arrowhead334)" style="fill:none"></path><defs><marker id="arrowhead334" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-COPY_DAC LE-PLAYBACK_FINNISHED" id="L-COPY_DAC-PLAYBACK_FINNISHED" style="opacity: 1;"><path class="path" d="M241.0859375,1101.9499969482422L241.0859375,1126.9499969482422L419.4714225399191,1248.099668158323" marker-end="url(#arrowhead335)" style="fill:none"></path><defs><marker id="arrowhead335" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-DAC_FLAG_UP LE-PLAYBACK_FINNISHED" id="L-DAC_FLAG_UP-PLAYBACK_FINNISHED" style="opacity: 1;"><path class="path" d="M424.4458504687691,813.6330573071099L514.62109375,899.4499969482422L514.62109375,959.4499969482422L514.62109375,1019.4499969482422L514.62109375,1079.4499969482422L514.62109375,1126.9499969482422L515.12109375,1152.4499969482422" marker-end="url(#arrowhead336)" style="fill:none"></path><defs><marker id="arrowhead336" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-PLAYBACK_FINNISHED LE-NEXT_STATE" id="L-PLAYBACK_FINNISHED-NEXT_STATE" style="opacity: 1;"><path class="path" d="M515.12109375,1473.4968719482424L514.62109375,1510.4968719482422L514.62109375,1547.9968719482422" marker-end="url(#arrowhead337)" style="fill:none"></path><defs><marker id="arrowhead337" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-PLAYBACK_FINNISHED LE-SAI_FLAG" id="L-PLAYBACK_FINNISHED-SAI_FLAG" style="opacity: 1;"><path class="path" d="M568.3683993675071,1205.6973025657494L606.70703125,1126.9499969482422L606.70703125,1079.4499969482422L606.70703125,1019.4499969482422L606.70703125,959.4499969482422L606.70703125,899.4499969482422L606.70703125,766.6624984741211L606.70703125,633.875L606.70703125,573.875L606.70703125,526.375L606.70703125,478.875L606.70703125,431.375L606.70703125,383.875L606.70703125,323.875L506.8987834348981,237.6910603151019" marker-end="url(#arrowhead338)" style="fill:none"></path><defs><marker id="arrowhead338" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(293.04296875,478.875)" style="opacity: 1;"><g transform="translate(-14.6796875,-12.5)" class="label"><rect rx="0" ry="0" width="29.359375" height="25"></rect><foreignObject width="29.359375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Non</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(457.21484375,323.875)" style="opacity: 1;"><g transform="translate(-12.453125,-12.5)" class="label"><rect rx="0" ry="0" width="24.90625" height="25"></rect><foreignObject width="24.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Oui</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(241.0859375,899.4499969482422)" style="opacity: 1;"><g transform="translate(-12.453125,-12.5)" class="label"><rect rx="0" ry="0" width="24.90625" height="25"></rect><foreignObject width="24.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Oui</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(514.62109375,1019.4499969482422)" style="opacity: 1;"><g transform="translate(-14.6796875,-12.5)" class="label"><rect rx="0" ry="0" width="29.359375" height="25"></rect><foreignObject width="29.359375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Non</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(514.62109375,1510.4968719482422)" style="opacity: 1;"><g transform="translate(-12.453125,-12.5)" class="label"><rect rx="0" ry="0" width="24.90625" height="25"></rect><foreignObject width="24.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Oui</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(606.70703125,633.875)" style="opacity: 1;"><g transform="translate(-14.6796875,-12.5)" class="label"><rect rx="0" ry="0" width="29.359375" height="25"></rect><foreignObject width="29.359375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Non</span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="flowchart-INIT-208" transform="translate(457.21484375,30.5)" style="opacity: 1;"><rect rx="22.5" ry="22.5" x="-124.5625" y="-22.5" width="249.125" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-108.9375,-12.5)"><foreignObject width="217.875" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Entrée dans l'état 'PLAYBACK'</div></foreignObject></g></g></g><g class="node default" id="flowchart-FINISH-209" transform="translate(514.62109375,1665.4968719482422)" style="opacity: 1;"><rect rx="22.5" ry="22.5" x="-113.4453125" y="-22.5" width="226.890625" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-97.8203125,-12.5)"><foreignObject width="195.640625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Sortie de l'état 'PLAYBACK'</div></foreignObject></g></g></g><g class="node default" id="flowchart-SAI_FLAG-210" transform="translate(457.21484375,194.6875)" style="opacity: 1;"><polygon points="91.6875,0 183.375,-91.6875 91.6875,-183.375 0,-91.6875" transform="translate(-91.6875,91.6875)" class="label-container"></polygon><g class="label" transform="translate(0,0)"><g transform="translate(-69.375,-12.5)"><foreignObject width="138.75" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Drapeau SAI levé ?</div></foreignObject></g></g></g><g class="node default" id="flowchart-FILTER-211" transform="translate(457.21484375,478.875)" style="opacity: 1;"><rect rx="0" ry="0" x="-114.4921875" y="-22.5" width="228.984375" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-104.4921875,-12.5)"><foreignObject width="208.984375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Fitrage des échantillons PDM</div></foreignObject></g></g></g><g class="node default" id="flowchart-RESET_SAI_FLAG-212" transform="translate(457.21484375,383.875)" style="opacity: 1;"><rect rx="0" ry="0" x="-97.6015625" y="-22.5" width="195.203125" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-87.6015625,-12.5)"><foreignObject width="175.203125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Abaisser le Drapeau SAI</div></foreignObject></g></g></g><g class="node default" id="flowchart-DAC_FLAG_UP-213" transform="translate(375.12890625,766.6624984741211)" style="opacity: 1;"><polygon points="95.28750000000001,0 190.57500000000002,-95.28750000000001 95.28750000000001,-190.57500000000002 0,-95.28750000000001" transform="translate(-95.28750000000001,95.28750000000001)" class="label-container"></polygon><g class="label" transform="translate(0,0)"><g transform="translate(-73.375,-12.5)"><foreignObject width="146.75" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Drapeau DAC levé ?</div></foreignObject></g></g></g><g class="node default" id="flowchart-RESET_DAC_FLAG-214" transform="translate(241.0859375,959.4499969482422)" style="opacity: 1;"><rect rx="0" ry="0" x="-101.6015625" y="-22.5" width="203.203125" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-91.6015625,-12.5)"><foreignObject width="183.203125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Abaisser le Drapeau DAC</div></foreignObject></g></g></g><g class="node default" id="flowchart-COPY_DAC-215" transform="translate(241.0859375,1079.4499969482422)" style="opacity: 1;"><rect rx="0" ry="0" x="-233.0859375" y="-22.5" width="466.171875" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-223.0859375,-12.5)"><foreignObject width="446.171875" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Copie des échantillons PCM enregistré dans les buffer du DAC</div></foreignObject></g></g></g><g class="node default" id="flowchart-PLAYBACK_FINNISHED-216" transform="translate(514.62109375,1312.4734344482422)" style="opacity: 1;"><polygon points="160.5234375,0 321.046875,-160.5234375 160.5234375,-321.046875 0,-160.5234375" transform="translate(-160.5234375,160.5234375)" class="label-container"></polygon><g class="label" transform="translate(0,0)"><g transform="translate(-145.859375,-12.5)"><foreignObject width="291.71875" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Tous les echatillons PCM ont été copiés?</div></foreignObject></g></g></g><g class="node default" id="flowchart-NEXT_STATE-217" transform="translate(514.62109375,1570.4968719482422)" style="opacity: 1;"><rect rx="0" ry="0" x="-106.2890625" y="-22.5" width="212.578125" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-96.2890625,-12.5)"><foreignObject width="192.578125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Prochain état: 'PLAYBACK'</div></foreignObject></g></g></g><g class="node default" id="flowchart-SAVE-228" transform="translate(457.21484375,573.875)" style="opacity: 1;"><rect rx="0" ry="0" x="-30.75" y="-22.5" width="61.5" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-20.75,-12.5)"><foreignObject width="41.5" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">SAVE</div></foreignObject></g></g></g></g></g></g></svg></div><h2 id='transmit'><span>TRANSMIT</span></h2><div class="md-diagram-panel md-fences-adv-panel"><svg id="mermaidChart4" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="441" style="max-width: 351.796875px;" viewBox="0 0 351.796875 441"><style>#mermaidChart4{font-family:sans-serif;font-size:16px;fill:#333;}#mermaidChart4 .error-icon{fill:#552222;}#mermaidChart4 .error-text{fill:#552222;stroke:#552222;}#mermaidChart4 .edge-thickness-normal{stroke-width:2px;}#mermaidChart4 .edge-thickness-thick{stroke-width:3.5px;}#mermaidChart4 .edge-pattern-solid{stroke-dasharray:0;}#mermaidChart4 .edge-pattern-dashed{stroke-dasharray:3;}#mermaidChart4 .edge-pattern-dotted{stroke-dasharray:2;}#mermaidChart4 .marker{fill:#333333;}#mermaidChart4 .marker.cross{stroke:#333333;}#mermaidChart4 svg{font-family:sans-serif;font-size:16px;}#mermaidChart4 .label{font-family:sans-serif;color:#333;}#mermaidChart4 .label text{fill:#333;}#mermaidChart4 .node rect,#mermaidChart4 .node circle,#mermaidChart4 .node ellipse,#mermaidChart4 .node polygon,#mermaidChart4 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaidChart4 .node .label{text-align:center;}#mermaidChart4 .node.clickable{cursor:pointer;}#mermaidChart4 .arrowheadPath{fill:#333333;}#mermaidChart4 .edgePath .path{stroke:#333333;stroke-width:1.5px;}#mermaidChart4 .flowchart-link{stroke:#333333;fill:none;}#mermaidChart4 .edgeLabel{background-color:#e8e8e8;text-align:center;}#mermaidChart4 .edgeLabel rect{opacity:0.5;background-color:#e8e8e8;fill:#e8e8e8;}#mermaidChart4 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaidChart4 .cluster text{fill:#333;}#mermaidChart4 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:sans-serif;font-size:12px;background:hsl(80,100%,96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaidChart4:root{--mermaid-font-family:sans-serif;}#mermaidChart4:root{--mermaid-alt-font-family:sans-serif;}#mermaidChart4 flowchart{fill:apa;}</style><g><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath LS-NEXT_STATE LE-FINISH" id="L-NEXT_STATE-FINISH" style="opacity: 1;"><path class="path" d="M175.8984375,338L175.8984375,363L175.8984375,388" marker-end="url(#arrowhead360)" style="fill:none"></path><defs><marker id="arrowhead360" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-INIT LE-SEND_WAV_HEADER" id="L-INIT-SEND_WAV_HEADER" style="opacity: 1;"><path class="path" d="M175.8984375,53L175.8984375,78L175.8984375,103" marker-end="url(#arrowhead361)" style="fill:none"></path><defs><marker id="arrowhead361" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-SEND_WAV_HEADER LE-SEND_PCM" id="L-SEND_WAV_HEADER-SEND_PCM" style="opacity: 1;"><path class="path" d="M175.8984375,148L175.8984375,173L175.8984375,198" marker-end="url(#arrowhead362)" style="fill:none"></path><defs><marker id="arrowhead362" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-SEND_PCM LE-NEXT_STATE" id="L-SEND_PCM-NEXT_STATE" style="opacity: 1;"><path class="path" d="M175.8984375,243L175.8984375,268L175.8984375,293" marker-end="url(#arrowhead363)" style="fill:none"></path><defs><marker id="arrowhead363" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="flowchart-INIT-254" transform="translate(175.8984375,30.5)" style="opacity: 1;"><rect rx="22.5" ry="22.5" x="-123.8046875" y="-22.5" width="247.609375" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-108.1796875,-12.5)"><foreignObject width="216.359375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Entrée dans l'état 'TRANSMIT'</div></foreignObject></g></g></g><g class="node default" id="flowchart-FINISH-255" transform="translate(175.8984375,410.5)" style="opacity: 1;"><rect rx="22.5" ry="22.5" x="-112.6796875" y="-22.5" width="225.359375" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-97.0546875,-12.5)"><foreignObject width="194.109375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Sortie de l'état 'TRANSMIT'</div></foreignObject></g></g></g><g class="node default" id="flowchart-SEND_WAV_HEADER-256" transform="translate(175.8984375,125.5)" style="opacity: 1;"><rect rx="0" ry="0" x="-128.953125" y="-22.5" width="257.90625" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-118.953125,-12.5)"><foreignObject width="237.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Envoi de l'entête WAV sur l'UART</div></foreignObject></g></g></g><g class="node default" id="flowchart-SEND_PCM-257" transform="translate(175.8984375,220.5)" style="opacity: 1;"><rect rx="0" ry="0" x="-167.8984375" y="-22.5" width="335.796875" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-157.8984375,-12.5)"><foreignObject width="315.796875" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Envoi de echantillons enregistrés sur l'UART</div></foreignObject></g></g></g><g class="node default" id="flowchart-NEXT_STATE-258" transform="translate(175.8984375,315.5)" style="opacity: 1;"><rect rx="0" ry="0" x="-82.4296875" y="-22.5" width="164.859375" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-72.4296875,-12.5)"><foreignObject width="144.859375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Prochain état: 'IDLE'</div></foreignObject></g></g></g></g></g></g></svg></div></div></div>
+</body>
+</html>
