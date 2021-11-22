@@ -89,7 +89,7 @@ def main():
     idx_scale_start = int(N_hf / 2)
     idx_scale_end = idx_scale_start + (points_per_period_hf * 1)
     x_scale = (t_hf[idx_scale_start], t_hf[idx_scale_end])
-    order = 20
+    order = 10
     x_pcm_hf = np.zeros(t_hf.shape)
     for i in range(1, order + 1):
         a = (2 / np.pi) * ((-1) ** (i + 1)) / i
