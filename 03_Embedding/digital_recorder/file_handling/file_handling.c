@@ -89,6 +89,8 @@ FRESULT init_wav(const char *file_name, uint32_t fs) {
 FRESULT write_wav(const uint16_t *pcm_data, uint32_t pcm_size) {
     // Writing DATA
     FRESULT fresult = f_write(&USBHFile, (char *) pcm_data, sizeof(uint16_t) * pcm_size, &bw);
+    //if (fresult != FR_OK) return fresult;
+    //fresult = f_sync(&USBHFile);
     return fresult;
 }
 

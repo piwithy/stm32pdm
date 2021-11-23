@@ -62,11 +62,11 @@ typedef enum {
 
 // 1ms @ FS*DECIMATION_FACTOR (With PDM_WORD_SIZE samples per word)
 /** @brief PDM Processing buffer size (Contain 1ms of PDM Sample)*/
-#define PDM_BUFFER_SIZE ((FS / 1000) * (DECIMATION_FACTOR / PDM_WORD_SIZE))
+#define PDM_BUFFER_SIZE (10*((FS / 1000) * (DECIMATION_FACTOR / PDM_WORD_SIZE)))
 
 // 1ms @ FS (With 1 sample per word)
 /** @brief PCM Processing buffer size  (Contain 1ms of PDM Sample)*/
-#define PCM_BUFFER_SIZE (FS/1000)
+#define PCM_BUFFER_SIZE (10*(FS/1000))
 
 /** @brief Linear Gain applied on PCM Samples*/
 #define LINEAR_GAIN 10
@@ -252,13 +252,17 @@ int main(void) {
             case RECORDING:
                 // Handling Interrupts
                 if (!sai_flag) {
+                    HAL_GPIO_WritePin(SAI_FILTERING_GPIO_Port, SAI_FILTERING_Pin, GPIO_PIN_SET);
                     uint32_t filtered = pdm_fir_flt_chunk(&pdm_filter_wav,
                                                           pcm_buffer,
                                                           pdm_buffer + sai_half * PDM_BUFFER_SIZE,
                                                           PDM_BUFFER_SIZE);
                     sai_flag = 1;
+                    HAL_GPIO_WritePin(SAI_FILTERING_GPIO_Port, SAI_FILTERING_Pin, GPIO_PIN_RESET);
                     sample_count += filtered;
+                    HAL_GPIO_WritePin(USB_WRITING_GPIO_Port, USB_WRITING_Pin, GPIO_PIN_SET);
                     write_wav(pcm_buffer, filtered);
+                    HAL_GPIO_WritePin(USB_WRITING_GPIO_Port, USB_WRITING_Pin, GPIO_PIN_RESET);
                     // Updating cool down (sai flag raised every 1ms...)
                     if (cool_down > 0) cool_down--;
                 }
@@ -296,7 +300,7 @@ void SystemClock_Config(void) {
     /** Configure the main internal regulator output voltage
     */
     __HAL_RCC_PWR_CLK_ENABLE();
-    __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);
+    __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
     /** Initializes the RCC Oscillators according to the specified parameters
     * in the RCC_OscInitTypeDef structure.
     */
@@ -305,9 +309,9 @@ void SystemClock_Config(void) {
     RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
     RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
     RCC_OscInitStruct.PLL.PLLM = 4;
-    RCC_OscInitStruct.PLL.PLLN = 72;
+    RCC_OscInitStruct.PLL.PLLN = 168;
     RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
-    RCC_OscInitStruct.PLL.PLLQ = 3;
+    RCC_OscInitStruct.PLL.PLLQ = 7;
     if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
         Error_Handler();
     }
@@ -320,7 +324,7 @@ void SystemClock_Config(void) {
     RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
     RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
 
-    if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK) {
+    if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5) != HAL_OK) {
         Error_Handler();
     }
 }
@@ -428,10 +432,14 @@ static void MX_GPIO_Init(void) {
     __HAL_RCC_GPIOA_CLK_ENABLE();
     __HAL_RCC_GPIOC_CLK_ENABLE();
     __HAL_RCC_GPIOB_CLK_ENABLE();
+    __HAL_RCC_GPIOD_CLK_ENABLE();
     __HAL_RCC_GPIOG_CLK_ENABLE();
 
     /*Configure GPIO pin Output Level */
     HAL_GPIO_WritePin(USB_PSO_GPIO_Port, USB_PSO_Pin, GPIO_PIN_RESET);
+
+    /*Configure GPIO pin Output Level */
+    HAL_GPIO_WritePin(GPIOD, USB_WRITING_Pin | SAI_FILTERING_Pin, GPIO_PIN_RESET);
 
     /*Configure GPIO pin Output Level */
     HAL_GPIO_WritePin(GPIOG, LD3_Pin | LD4_Pin, GPIO_PIN_RESET);
@@ -448,6 +456,13 @@ static void MX_GPIO_Init(void) {
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
     HAL_GPIO_Init(USB_PSO_GPIO_Port, &GPIO_InitStruct);
+
+    /*Configure GPIO pins : USB_WRITING_Pin SAI_FILTERING_Pin */
+    GPIO_InitStruct.Pin = USB_WRITING_Pin | SAI_FILTERING_Pin;
+    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
     /*Configure GPIO pins : LD3_Pin LD4_Pin */
     GPIO_InitStruct.Pin = LD3_Pin | LD4_Pin;
