@@ -316,9 +316,9 @@ void HAL_SAI_MspInit(SAI_HandleTypeDef* hsai)
   /** Initializes the peripherals clock
   */
     PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_SAI_PLLSAI;
-    PeriphClkInitStruct.PLLSAI.PLLSAIN = 256;
+    PeriphClkInitStruct.PLLSAI.PLLSAIN = 128;
     PeriphClkInitStruct.PLLSAI.PLLSAIQ = 5;
-    PeriphClkInitStruct.PLLSAIDivQ = 1;
+    PeriphClkInitStruct.PLLSAIDivQ = 25;
     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
     {
       Error_Handler();
