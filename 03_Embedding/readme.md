@@ -3,7 +3,7 @@
 Ce dossier contient les sources des 3 démonstrateurs développées pour la cible STM32 (carte STM32F429I-DISC1). Ces démonstrateurs sont les suivants :
 - [parrot](parrot/readme.md ): Application « Perroquet ». Lors de l’appui sur le bouton `USER` la carte commence l’enregistrement du son ambiant, lors d’un deuxième appui la carte rejoue jusqu’aux 3 dernières secondes sur le DAC puis elle transmet les données WAV via le port série.
 - [Direct Output](direct_output/readme.md ): ce démonstrateur joue en temps réel sur le DAC les sons captés par la carte
-- [Digital Recorder](digital_recoder/readme.md) : Ce démonstrateur lors de l’appui sur le bouton `USER` le démonstrateur enregistre les sons ambiants sur une clé USB lors d’un deuxième appui, il arrête l’enregistrement.
+- [Digital Recorder](digital_recorder/readme.md) : Ce démonstrateur lors de l’appui sur le bouton `USER` le démonstrateur enregistre les sons ambiants sur une clé USB lors d’un deuxième appui, il arrête l’enregistrement.
 
 ## Périphériques utilisés par les démonstrateurs
 

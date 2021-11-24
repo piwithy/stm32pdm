@@ -2,7 +2,9 @@
 
 Digital Recorder est un démonstrateur dont l'objectif est d'enrigistrer les sons ambiants et les suavegrader au format WAV sur une clé USB
 
-[[__TOC__]]
+
+[[_TOC_]]
+
 
 # Schéma Block des Péripheriques
 <figure>
