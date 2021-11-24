@@ -3,7 +3,7 @@
 Ce dossier contient les sources des 3 démonstrateurs développées pour la cible STM32 (carte STM32F429I-DISC1). Ces démonstrateurs sont les suivants :
 - [parrot](parrot/readme.md ): Application « Perroquet ». Lors de l’appui sur le bouton `USER` la carte commence l’enregistrement du son ambiant, lors d’un deuxième appui la carte rejoue jusqu’aux 3 dernières secondes sur le DAC puis elle transmet les données WAV via le port série.
 - [Direct Output](direct_output/readme.md ): ce démonstrateur joue en temps réel sur le DAC les sons captés par la carte
-- [Digital Recorder](digital_recoder/readme.md) : Ce démonstrateur lors de l’appui sur le bouton `USER` le démonstrateur enregistre les sons ambiants sur une clé USB lors d’un deuxième appui, il arrête l’enregistrement.
+- [Digital Recorder](digital_recorder/readme.md) : Ce démonstrateur lors de l’appui sur le bouton `USER` le démonstrateur enregistre les sons ambiants sur une clé USB lors d’un deuxième appui, il arrête l’enregistrement.
 
 ## Périphériques utilisés par les démonstrateurs
 
@@ -207,7 +207,7 @@ N/A
         </tr>
         <tr>
         	<td>Trigger</td>
-            <td ><strong>Timer 2 Trigger Out event</strong></td>
+            <td><strong>Timer 2 Trigger Out event</strong></td>
         </tr>
         <tr>
             <td>Wave Generation mode</td>
@@ -222,7 +222,7 @@ N/A
         </tr>
         <tr>
         	<td>Trigger</td>
-            <td ><strong>Timer 2 Trigger Out event</strong></td>
+            <td><strong>Timer 2 Trigger Out event<strong></td>
         </tr>
         <tr>
             <td>Wave Generation mode</td>
@@ -755,6 +755,8 @@ ARR=\frac{f_{SYS}}{f_{TIM}} - 1 = \frac{72 * 10^{6}}{48* 10{^3}} - 1 = 1499
 
 #### Horloges
 Pour configurer les Holorges, il faut définir plusieurs fréquences que l'on utilise sur la carte :
+
+
 - `SAI-A clock (MHz)` Corresponds à la fréquence d'échantillonnage du signal PDM ($`fs_{PDM}`$) pour la déterminer :
 Avec $`D`$ le facteur de décimation (multiple de 16) et $`fs_{PCM}`$ la fréquence d'échantillonnage recherché pour le signal PCM.
 ```math
@@ -777,5 +779,42 @@ on configurera donc `SAI-A Clock` a 3.072 MHz
 - `HCLK` sera configuré à 72 MHz
 
 Ce qui nous donne le schéma d'horloges suivant :
+```mermaid
+graph LR
+	INPUT(("Input Frequency"))
+	HCLK(("HCLK"))
+	48M_CLK(("48 MHz Clock"))
+	SAI_A_CLK(("SAI-A Clock"))
+	DIVIDE_M["/M"]
+	MPLL_MULTIPLY_N[*N]
+	MPLL_DIVIDE_P["/P"]
+	MPLL_DIVIDE_Q["/Q"]
+	AHB_PRESCALER["/AHB_Prescaler"]
+	PLL_SAIQCLK["/PLL_SAIQCLK"]
+	SPLL_MULTIPLY_N["*N"]
+	SPLL_DIVIDE_Q["/Q"]
+
+
+	subgraph Main PLL
+		MPLL_MULTIPLY_N --> MPLL_DIVIDE_P;
+		MPLL_MULTIPLY_N --> MPLL_DIVIDE_Q;
+	end;
+
+	subgraph PLL SAI
+	   SPLL_MULTIPLY_N --> SPLL_DIVIDE_Q;
+	end
+
+	INPUT --> DIVIDE_M;
+	DIVIDE_M --> MPLL_MULTIPLY_N;
+	DIVIDE_M -->SPLL_MULTIPLY_N
+	MPLL_DIVIDE_P --> AHB_PRESCALER;
+	MPLL_DIVIDE_Q ---> 48M_CLK
+	AHB_PRESCALER -->HCLK;
+
+	SPLL_DIVIDE_Q --> PLL_SAIQCLK;
+	PLL_SAIQCLK-->SAI_A_CLK;
+```
+
+Dans le Logiciel [CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html) il est represneté comme suit:
 
 ![Clocks](../00_Documentation/imgs/03_Embedding/general/Clocks.png)
