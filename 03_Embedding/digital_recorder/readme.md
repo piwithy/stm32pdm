@@ -1,9 +1,6 @@
 <h1> Digital recorder </h1>
 
-Digital Recorder est un démonstrateur dont l'objectif est d'enrigistrer les sons ambiants et les suavegrader au format WAV sur une clé USB
-
-
-[[_TOC_]]
+Digital Recorder est un démonstrateur dont l’objectif est d’enregistrer les sons ambiants et les sauvegarder au format WAV sur une clé USB
 
 
 # Schéma Block des Péripheriques
@@ -15,100 +12,100 @@ Digital Recorder est un démonstrateur dont l'objectif est d'enrigistrer les son
 # Pinout
 
 <table>
-	<thead>
-		<tr>
-			<th>PIN</th>
-			<th>Signal</th>
-			<th>Commentaire</th>
-			<th>Péripherique</th>
-		<tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>PA0</td>
-			<td>USER_BUTTON</td>
-			<td>Bouton Bleu de la carte</td>
-			<td style="text-align: center; vertical-align: middle;" rowspan="3">GPIO</td>
-		</tr>
-		<tr>
-			<td>PG13</td>
-			<td>LD3</td>
-			<td>LED Verte</td>
-		</tr>
-		<tr>
-			<td>PG14</td>
-			<td>LD4</td>
-			<td>LED Rouge</td>
-		<tr>
-		<tr>
-		<td>PH0</td>
-			<td>RCC_OSC_IN</td>
-			<td style="vertical-align: middle;" rowspan="2">Signaux de l'oscillateur</td>
-			<td style="text-align: center; vertical-align: middle;" rowspan="2">RCC</td>
-		</tr>
-		<tr>
-			<td>PH1</td>
-			<td>RCC_OSC_OUT</td>
-		</tr>
-		<tr>
-			<td>PE4</td>
-			<td>SAI_FS_A</td>
-			<td>SAI SELECT</td>
-			<td style="text-align: center; vertical-align: middle;" rowspan="3">SAI 1</td>
-		</tr>
-		<tr>
-			<td>PE5</td>
-			<td>SAI_SCK_A</td>
-			<td>SAI CLOCK</td>
-		</tr>
-		<tr>
-			<td>PE6</td>
-			<td>SAI_SD_A</td>
-			<td>SAI DATA</td>
-		</tr>
-		<tr>
-			<td>PA13</td>
-			<td>SYS_JTMS-SWDIO</td>
-			<td style="vertical-align: middle;" rowspan="2">Lignes de DEBUG</td>
-			<td style="text-align: center; vertical-align: middle;" rowspan="2">SYS</td>
-		</tr>
-		<tr>
-			<td>PA14</td>
-			<td>SYS_JTCK-SWCLK</td>
-		</tr>
-		<tr>
-			<td>PA9</td>
-			<td>USART1_TX</td>
-			<td>Canal TX de l'USART 1</td>
-			<td style="text-align: center; vertical-align: middle;" rowspan="2">USART 1</td>
-		</tr>
-		<tr>
-			<td>PA9</td>
-			<td>USART1_RX</td>
-			<td>Canal RX de l'USART 1</td>
-		</tr>
-		<tr>
-			<td> PB13 </td>
-			<td> USB_OTG_HS_VBUS </td>
-			<td> Signal USB 2.0 VBUS</td>
-			<td style="text-align: center; vertical-align: middle;" rowspan="4"> USB_HS </td>
-		</tr>
-		<tr>
-			<td> PB14 </td>
-			<td> USB_OTG_HS_DM</td>
-			<td> Signal USB 2.0 D-</td>
-		</tr>
-		<tr>
-			<td> PD15</td>
-			<td> USB_OTG_HS_DP</td>
-			<td> Signal USB 2.0 D+ </td>
-		</tr>
-		<tr>
-			<td> PC4 </td>
-			<td> USB_PSO </td>
-			<td> Active l’alimentation du périphérique USB par la carte (0 &rarr; alimenté, 1 &rarr; Non alimenté)</td>
-		</tr>
-	</tbody>
+ <thead>
+  <tr>
+   <th>PIN</th>
+   <th>Signal</th>
+   <th>Commentaire</th>
+   <th>Périphérique</th>
+  <tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td>PA0</td>
+   <td>USER_BUTTON</td>
+   <td>Bouton Bleu de la carte</td>
+   <td style="text-align: center; vertical-align: middle;" rowspan="3">GPIO</td>
+  </tr>
+  <tr>
+   <td>PG13</td>
+   <td>LD3</td>
+   <td>LED Verte</td>
+  </tr>
+  <tr>
+   <td>PG14</td>
+   <td>LD4</td>
+   <td>LED Rouge</td>
+  <tr>
+  <tr>
+  <td>PH0</td>
+   <td>RCC_OSC_IN</td>
+   <td style="vertical-align: middle;" rowspan="2">Signaux de l’oscillateur</td>
+   <td style="text-align: center; vertical-align: middle;" rowspan="2">RCC</td>
+  </tr>
+  <tr>
+   <td>PH1</td>
+   <td>RCC_OSC_OUT</td>
+  </tr>
+  <tr>
+   <td>PE4</td>
+   <td>SAI_FS_A</td>
+<td>SAI SELECT</td>
+<td style="text-align: center; vertical-align: middle;" rowspan="3">SAI 1</td>
+  </tr>
+  <tr>
+   <td>PE5</td>
+   <td>SAI_SCK_A</td>
+<td>SAI CLOCK</td>
+  </tr>
+  <tr>
+   <td>PE6</td>
+<td>SAI_SD_A</td>
+<td>SAI DATA</td>
+  </tr>
+  <tr>
+   <td>PA13</td>
+<td>SYS_JTMS-SWDIO</td>
+   <td style="vertical-align: middle;" rowspan="2">Lignes de DEBUG</td>
+   <td style="text-align: center; vertical-align: middle;" rowspan="2">SYS</td>
+  </tr>
+  <tr>
+   <td>PA14</td>
+<td>SYS_JTCK-SWCLK</td>
+  </tr>
+  <tr>
+   <td>PA9</td>
+   <td>USART1_TX</td>
+   <td>Canal TX de l’USART 1</td>
+   <td style="text-align: center; vertical-align: middle;" rowspan="2">USART 1</td>
+  </tr>
+  <tr>
+   <td>PA9</td>
+<td>USART1_RX</td>
+   <td>Canal RX de l’USART 1</td>
+  </tr>
+  <tr>
+   <td> PB13 </td>
+   <td> USB_OTG_HS_VBUS </td>
+   <td> Signal USB 2.0 VBUS</td>
+   <td style="text-align: center; vertical-align: middle;" rowspan="4"> USB_HS </td>
+  </tr>
+  <tr>
+   <td> PB14 </td>
+   <td> USB_OTG_HS_DM</td>
+   <td> Signal USB 2.0 D-</td>
+  </tr>
+  <tr>
+   <td> PD15</td>
+   <td> USB_OTG_HS_DP</td>
+   <td> Signal USB 2.0 D+ </td>
+  </tr>
+  <tr>
+   <td> PC4 </td>
+   <td> USB_PSO </td>
+   <td> Active l’alimentation du périphérique USB par la carte (0 &rarr; alimenté, 1 &rarr; Non alimenté)</td>
+  </tr>
+ </tbody>
 </table>
 
 # Vue Système
@@ -125,9 +122,9 @@ Digital Recorder est un démonstrateur dont l'objectif est d'enrigistrer les son
 <figcaption style="text-align:center"><em>Clocks</em></figcaption>
 </figure>
 
-### Horloges Importantes
+### Horloges importantes
 
-#### Schéma des horloges Importantes
+#### Schéma des horloges importantes
 
  ```mermaid
  graph LR
@@ -165,14 +162,14 @@ Digital Recorder est un démonstrateur dont l'objectif est d'enrigistrer les son
      PLL_SAIQCLK-->SAI_A_CLK;
  ```
 
- #### Configuration des Horloges
+ #### Configuration des horloges
 
  - HCLK
 
 <table>
     <thead>
         <tr>
-            <th>Variable</th><th>Bloc</th><th>Valeur</th><th>Operation</th>
+            <th>Variable</th><th>Bloc</th><th>Valeur</th><th>Opération</th>
         </tr>
     </thead>
     <tbody>
@@ -201,7 +198,7 @@ HCLK = \frac{\frac{\frac{Input Frequency}{M} * N}{P}}{AHB Prescaler} = \frac{\fr
  <table>
      <thead>
          <tr>
-             <th>Variable</th><th>Bloc</th><th>Valeur</th><th>Operation</th>
+             <th>Variable</th><th>Bloc</th><th>Valeur</th><th>Opération</th>
          </tr>
      </thead>
      <tbody>
@@ -226,7 +223,7 @@ HCLK = \frac{\frac{\frac{Input Frequency}{M} * N}{P}}{AHB Prescaler} = \frac{\fr
  <table>
      <thead>
          <tr>
-             <th>Variable</th><th>Bloc</th><th>Valeur</th><th>Operation</th>
+             <th>Variable</th><th>Bloc</th><th>Valeur</th><th>Opération</th>
          </tr>
      </thead>
      <tbody>
@@ -246,7 +243,7 @@ HCLK = \frac{\frac{\frac{Input Frequency}{M} * N}{P}}{AHB Prescaler} = \frac{\fr
  </table>
 
 ```math
-SAI A Clock = \frac{\frac{\frac{Input Frequency}{M} * N}{Q}}{PLL SAICQCLK} = \frac{\frac{\frac{8}{4} * 192}{5}}{25} *10^6 = 3.072 *10^6Hz
+SAI A Clock = \frac{\frac{\frac{Input Frequency}{M} * N}{Q}}{PLL SAIQCLK} = \frac{\frac{\frac{8}{4} * 192}{5}}{25} *10^6 = 3.072 *10^6Hz
 ```
 
 #### Valeurs des Horloges
@@ -290,16 +287,16 @@ SAI A Clock = \frac{\frac{\frac{Input Frequency}{M} * N}{Q}}{PLL SAICQCLK} = \fr
 # Paramètres du filtre
 | Paramètre                       | Nom             | Valeur    | Unité    |
 |:--------------------------------|:---------------:|:---------:|:--------:|
-| Fréqence du flux PDM            | $`f_{PCD}`$     | $`3.072`$ | $`MHz`$  |
+| Fréquence du flux PDM           | $`f_{PDM}`$     | $`3.072`$ | $`MHz`$  |
 | Facteur de sous échantillonnage | $`D`$           | $`64`$    |          |
-| Fréquence d'échantillonnage PCM | $`fs_{PCM}`$    | $`48`$    | $`kHz`$  |
+| Fréquence d’échantillonnage PCM | $`fs_{PCM}`$    | $`48`$    | $`kHz`$  |
 | Durée du Cycle SAI              | $`t_{SAI}`$     | $`10`$    | $`ms`$   |
 | Fréquence système               | $`f_{system}`$  | $`168`$   | $`MHz`$  |
-| Fréquence du coupure du filtre  | $`f_c`$         | $`20`$    | $`kHz`$  |
+| Fréquence de coupure du filtre  | $`f_c`$         | $`20`$    | $`kHz`$  |
 | Ordre du filtre                 | $`N`$           | $`16`$    |          |
-| Taille des echantillons PCM     | $`n`$           | $`16`$    | $`bits`$ |
+| Taille des échantillons PCM     | $`n`$           | $`16`$    | $`bits`$ |
 
-# Machine d'état
+# Machine d’état
 ```mermaid
 graph LR
     INIT(( ));
@@ -317,7 +314,7 @@ graph LR
     RECORDING -->|USB_DISK_REMOVED| WAITING_FOR_USB
 ```
 
-## Logigramme des Etats
+## Logigramme des États
 ### WAITING_FOR_USB
 
 ``` mermaid
