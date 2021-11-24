@@ -1,6 +1,8 @@
-<h1> DIgital recorder </h1>
+<h1> Digital recorder </h1>
 
 Digital Recorder est un démonstrateur dont l'objectif est d'enrigistrer les sons ambiants et les suavegrader au format WAV sur une clé USB
+
+[[__TOC__]]
 
 # Schéma Block des Péripheriques
 <figure>
@@ -176,7 +178,7 @@ Digital Recorder est un démonstrateur dont l'objectif est d'enrigistrer les son
             <td>M</td><td>N/A</td><td>4</td><td>Division</td>
         </tr>
         <tr>
-            <td>N</td><td>Main PLL</td><td>72</td><td>Multiplication</td>
+            <td>N</td><td>Main PLL</td><td>168</td><td>Multiplication</td>
         </tr>
         <tr>
             <td>P</td><td>Main PLL</td><td>2</td><td>Division</td>
@@ -190,7 +192,7 @@ Digital Recorder est un démonstrateur dont l'objectif est d'enrigistrer les son
 
 
  ```math
-HCLK = \frac{\frac{\frac{Input Frequency}{M} * N}{P}}{AHB Prescaler} = \frac{\frac{\frac{8}{4} * 72}{2}}{1} *10^6 =  72*10^6 Hz
+HCLK = \frac{\frac{\frac{Input Frequency}{M} * N}{P}}{AHB Prescaler} = \frac{\frac{\frac{8}{4} * 168}{2}}{1} *10^6 =  168*10^6 Hz
  ```
  - 48Mhz Clock
 
@@ -205,17 +207,17 @@ HCLK = \frac{\frac{\frac{Input Frequency}{M} * N}{P}}{AHB Prescaler} = \frac{\fr
              <td>M</td><td>N/A</td><td>4</td><td>Division</td>
          </tr>
          <tr>
-             <td>N</td><td>Main PLL</td><td>72</td><td>Multiplication</td>
+             <td>N</td><td>Main PLL</td><td>168</td><td>Multiplication</td>
          </tr>
          <tr>
-             <td>Q</td><td>Main PLL</td><td>3</td><td>Division</td>
+             <td>Q</td><td>Main PLL</td><td>7</td><td>Division</td>
          </tr>
      </tbdoy>
  </table>
 
 
  ```math
-48MHz CLOCK = \frac{\frac{Input Frequency}{M} * N}{Q} = \frac{\frac{8}{4} * 72}{3} *10^6  = 48*10^6 Hz
+48MHz CLOCK = \frac{\frac{Input Frequency}{M} * N}{Q} = \frac{\frac{8}{4} * 168}{7} *10^6  = 48*10^6 Hz
  ```
 
  - SAI-A Clock
@@ -254,9 +256,9 @@ SAI A Clock = \frac{\frac{\frac{Input Frequency}{M} * N}{Q}}{PLL SAICQCLK} = \fr
  48M_CLK(("48 MHz Clock"))
  SAI_A_CLK(("SAI-A Clock"))
      DIVIDE_M["/4"]
-     MPLL_MULTIPLY_N[*72]
+     MPLL_MULTIPLY_N[*168]
      MPLL_DIVIDE_P["/2"]
-     MPLL_DIVIDE_Q["/3"]
+     MPLL_DIVIDE_Q["/7"]
      AHB_PRESCALER["/1"]
      PLL_SAIQCLK["/25"]
      SPLL_MULTIPLY_N["*192"]
@@ -264,8 +266,8 @@ SAI A Clock = \frac{\frac{\frac{Input Frequency}{M} * N}{Q}}{PLL SAICQCLK} = \fr
 
 
      subgraph Main PLL
-         MPLL_MULTIPLY_N -->|"144 MHz"| MPLL_DIVIDE_P;
-         MPLL_MULTIPLY_N -->|"144 MHz"| MPLL_DIVIDE_Q;
+         MPLL_MULTIPLY_N -->|"336 MHz"| MPLL_DIVIDE_P;
+         MPLL_MULTIPLY_N -->|"336 MHz"| MPLL_DIVIDE_Q;
      end;
 
      subgraph PLL SAI
@@ -283,7 +285,17 @@ SAI A Clock = \frac{\frac{\frac{Input Frequency}{M} * N}{Q}}{PLL SAICQCLK} = \fr
      PLL_SAIQCLK-->|"3.072 MHz"|SAI_A_CLK;
  ```
 
-
+# Paramètres du filtre
+| Paramètre                       | Nom             | Valeur    | Unité    |
+|:--------------------------------|:---------------:|:---------:|:--------:|
+| Fréqence du flux PDM            | $`f_{PCD}`$     | $`3.072`$ | $`MHz`$  |
+| Facteur de sous échantillonnage | $`D`$           | $`64`$    |          |
+| Fréquence d'échantillonnage PCM | $`fs_{PCM}`$    | $`48`$    | $`kHz`$  |
+| Durée du Cycle SAI              | $`t_{SAI}`$     | $`10`$    | $`ms`$   |
+| Fréquence système               | $`f_{system}`$  | $`168`$   | $`MHz`$  |
+| Fréquence du coupure du filtre  | $`f_c`$         | $`20`$    | $`kHz`$  |
+| Ordre du filtre                 | $`N`$           | $`16`$    |          |
+| Taille des echantillons PCM     | $`n`$           | $`16`$    | $`bits`$ |
 
 # Machine d'état
 ```mermaid
@@ -305,6 +317,7 @@ graph LR
 
 ## Logigramme des Etats
 ### WAITING_FOR_USB
+
 ``` mermaid
 graph TD
     INIT(["Entrée dans l'état 'WAITING_FOR_USB'"])
@@ -322,8 +335,8 @@ graph TD
 
 
 ### IDLE
-```mermaid
 
+```mermaid
 graph TD
     INIT(["Entrée dans l'état 'IDLE'"])
     FINISH(["Sortie de l'état 'IDLE'"])
@@ -366,15 +379,15 @@ graph TD
 ```
 
 ### RECORDING
-```mermaid
 
+```mermaid
 graph TD
     INIT(["Entrée dans l'état 'RECORDING'"])
     FINISH(["Sortie de l'état 'RECORDING'"])
 
-    INIT_WAV[["Initialisation du Fichier WAV"]];
-    WRITE_WAV[["Ecriture Des Echatillons dans le FICHIER WAV"]]
-    FINISH_WAV[["Mise a jour de l'entête et enregistrement du fichier WAV"]]
+    INIT_WAV["Initialisation du Fichier WAV"];
+    WRITE_WAV["Ecriture Des Echatillons dans le FICHIER WAV"]
+    FINISH_WAV["Mise a jour de l'entête et enregistrement du fichier WAV"]
 
     SAI_FLAG{"Drapeau SAI levé ?"};
     FILTER["Fitrage des échantillons PDM"];
