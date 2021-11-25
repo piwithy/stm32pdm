@@ -5,11 +5,11 @@ var indexSectionsWithContent =
   2: "cmps",
   3: "_bdehimnpstu",
   4: "_abcdefghijklmnopqrstuvwxz",
-  5: "dhpu",
+  5: "dp",
   6: "fghip",
   7: "abcdefhilmnoprstuw",
   8: "_dlpsw",
-  9: "acdefghilmnoprstu",
+  9: "acdefghilmnoprst",
   10: "dm"
 };
 
