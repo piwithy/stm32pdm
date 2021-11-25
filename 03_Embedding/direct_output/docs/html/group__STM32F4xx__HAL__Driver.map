@@ -11,12 +11,11 @@
 <area shape="rect" id="node10" href="$group__TIM.html" title="TIM HAL module driver." alt="" coords="277,449,323,475"/>
 <area shape="rect" id="node11" href="$group__FLASHEx.html" title="FLASH HAL Extension module driver." alt="" coords="259,499,341,524"/>
 <area shape="rect" id="node12" href="$group__SAIEx.html" title="SAI Extension HAL module driver." alt="" coords="270,548,330,573"/>
-<area shape="rect" id="node13" title=" " alt="" coords="5,449,184,475"/>
+<area shape="rect" id="node13" title=" " alt="" coords="5,425,184,451"/>
 <area shape="rect" id="node14" href="$group__GPIO.html" title="GPIO HAL module driver." alt="" coords="273,597,327,623"/>
 <area shape="rect" id="node15" href="$group__PWR.html" title="PWR HAL module driver." alt="" coords="274,647,326,672"/>
 <area shape="rect" id="node16" href="$group__EXTI.html" title="EXTI HAL module driver." alt="" coords="275,696,325,721"/>
-<area shape="rect" id="node17" href="$group__UART.html" title="HAL UART module driver." alt="" coords="271,745,329,771"/>
-<area shape="rect" id="node18" href="$group__RCC.html" title="RCC HAL module driver." alt="" coords="275,795,325,820"/>
-<area shape="rect" id="node19" href="$group__DMAEx.html" title="DMA Extended HAL module driver." alt="" coords="265,844,335,869"/>
-<area shape="rect" id="node20" href="$group__FLASH.html" title="FLASH HAL module driver." alt="" coords="267,893,333,919"/>
+<area shape="rect" id="node17" href="$group__RCC.html" title="RCC HAL module driver." alt="" coords="275,745,325,771"/>
+<area shape="rect" id="node18" href="$group__DMAEx.html" title="DMA Extended HAL module driver." alt="" coords="265,795,335,820"/>
+<area shape="rect" id="node19" href="$group__FLASH.html" title="FLASH HAL module driver." alt="" coords="267,844,333,869"/>
 </map>

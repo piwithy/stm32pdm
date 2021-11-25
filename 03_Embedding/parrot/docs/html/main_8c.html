@@ -146,7 +146,7 @@ Macros</h2></td></tr>
 <tr class="memdesc:a3000afea9224035106bfc127d01856c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum length of a record in ms. <br /></td></tr>
 <tr class="separator:a3000afea9224035106bfc127d01856c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a964ebf95ce5485144152db73c035db"><td class="memItemLeft" align="right" valign="top"><a id="a8a964ebf95ce5485144152db73c035db"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a8a964ebf95ce5485144152db73c035db">LINEAR_GAIN</a>&#160;&#160;&#160;9</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a8a964ebf95ce5485144152db73c035db">LINEAR_GAIN</a>&#160;&#160;&#160;20</td></tr>
 <tr class="memdesc:a8a964ebf95ce5485144152db73c035db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Linear Gain applied on PCM Samples. <br /></td></tr>
 <tr class="separator:a8a964ebf95ce5485144152db73c035db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1682c770d91c5d167b621a782be940d4"><td class="memItemLeft" align="right" valign="top"><a id="a1682c770d91c5d167b621a782be940d4"></a>
@@ -226,6 +226,9 @@ uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
 uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#af59bac55bfc989c04bcace549f9570f0">PCM_BUFFER</a> [<a class="el" href="main_8c.html#afb134291fff6dfdc86740cbc3db6bb62">PCM_BUFFER_SIZE</a>]</td></tr>
 <tr class="memdesc:af59bac55bfc989c04bcace549f9570f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">PCM Processing Buffer. <br /></td></tr>
 <tr class="separator:af59bac55bfc989c04bcace549f9570f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa571e4abe57c14fee966fcc8588f5bc6"><td class="memItemLeft" align="right" valign="top"><a id="aa571e4abe57c14fee966fcc8588f5bc6"></a>
+const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>VOID_BUFFER</b> [<a class="el" href="main_8c.html#afb134291fff6dfdc86740cbc3db6bb62">PCM_BUFFER_SIZE</a>] = {[0 ... <a class="el" href="main_8c.html#afb134291fff6dfdc86740cbc3db6bb62">PCM_BUFFER_SIZE</a> - 1] = 0x7FF}</td></tr>
+<tr class="separator:aa571e4abe57c14fee966fcc8588f5bc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8b94b13af5682e69de4e0c26fbff395"><td class="memItemLeft" align="right" valign="top"><a id="ae8b94b13af5682e69de4e0c26fbff395"></a>
 uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ae8b94b13af5682e69de4e0c26fbff395">PCM_SOUND</a> [<a class="el" href="main_8c.html#a1682c770d91c5d167b621a782be940d4">SAMPLE_COUNT</a>]</td></tr>
 <tr class="memdesc:ae8b94b13af5682e69de4e0c26fbff395"><td class="mdescLeft">&#160;</td><td class="mdescRight">PCM Record Buffer. <br /></td></tr>

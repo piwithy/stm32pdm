@@ -1,5 +1,5 @@
 <map id="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h" name="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h">
-<area shape="rect" id="node1" title="This file contains all the functions prototypes for the HAL module driver." alt="" coords="2187,5,2393,47"/>
+<area shape="rect" id="node1" title="This file contains all the functions prototypes for the HAL module driver." alt="" coords="2083,5,2289,47"/>
 <area shape="rect" id="node2" href="$main_8h.html" title=": Header for main.c file. This file contains the common defines of the application." alt="" coords="167,109,291,136"/>
 <area shape="rect" id="node6" href="$stm32f4xx__hal_8c.html" title="HAL module driver. This is the common part of the HAL initialization." alt="" coords="315,102,521,143"/>
 <area shape="rect" id="node7" href="$stm32f4xx__hal__cortex_8c.html" title="CORTEX HAL module driver. This file provides firmware functions to manage the following functionaliti..." alt="" coords="545,95,728,151"/>
@@ -20,7 +20,6 @@
 <area shape="rect" id="node22" href="$stm32f4xx__hal__sai__ex_8c.html" title="SAI Extension HAL module driver. This file provides firmware functions to manage the following functi..." alt="" coords="3645,95,3828,151"/>
 <area shape="rect" id="node23" href="$stm32f4xx__hal__tim_8c.html" title="TIM HAL module driver. This file provides firmware functions to manage the following functionalities ..." alt="" coords="3852,95,4035,151"/>
 <area shape="rect" id="node24" href="$stm32f4xx__hal__tim__ex_8c.html" title="TIM HAL module driver. This file provides firmware functions to manage the following functionalities ..." alt="" coords="4059,95,4241,151"/>
-<area shape="rect" id="node25" href="$stm32f4xx__hal__uart_8c.html" title="UART HAL module driver. This file provides firmware functions to manage the following functionalities..." alt="" coords="4265,95,4448,151"/>
 <area shape="rect" id="node3" href="$main_8c.html" title=": Main program body" alt="" coords="5,206,129,233"/>
 <area shape="rect" id="node4" href="$stm32f4xx__hal__msp_8c.html" title="This file provides code for the MSP Initialization and de&#45;Initialization codes." alt="" coords="153,199,304,240"/>
 <area shape="rect" id="node5" href="$stm32f4xx__it_8c.html" title="Interrupt Service Routines." alt="" coords="328,206,505,233"/>
