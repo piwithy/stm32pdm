@@ -16,6 +16,63 @@ Le filtre implémenté par cette librairie applique le pipeline de filtrage suiv
 ![pipeline filtrage](../../00_Documentation/imgs/02_Filtering/filter_library/filter_chain.png)
 
 
+exemple:
+considerons le signal PDM suivant:
+![sign_pdm_128](../../00_Documentation/imgs/02_Filtering/filter_library/pdm_128_sample.png)
+
+
+On retrouve les valeurs suivante dans le Buffer PDM:
+
+| Bit Address |  00 |  01 |  02 |  03 |  04 |  05 |  06 |  07 |  08 |  09 |  10 |  11 |  12 |  13 |  14 |  15 |PDM Word N°|
+|:-----------:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---------:|
+| 000-015     |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  0  |  1  |  1  |  1  |  1  |  1  | 000       |
+| 016-031     |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  1  | 001       |
+| 032-047     |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  0  |  1  |  1  |  1  |  1  | 002       |
+| 048-063     |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  0  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  0  | 003       |
+| 064-079     |  1  |  1  |  1  |  1  |  1  |  0  |  1  |  1  |  1  |  1  |  1  |  0  |  1  |  1  |  1  |  0  | 004       |
+| 080-095     |  1  |  1  |  1  |  1  |  0  |  1  |  1  |  1  |  0  |  1  |  1  |  0  |  1  |  1  |  1  |  0  | 005       |
+| 096-111     |  1  |  1  |  0  |  1  |  1  |  0  |  1  |  1  |  0  |  1  |  1  |  0  |  1  |  0  |  1  |  1  | 006       |
+| 112-127     |  0  |  1  |  0  |  1  |  1  |  0  |  1  |  0  |  1  |  0  |  1  |  0  |  1  |  0  |  1  |  0  | 007       |
+
+Si on applique le filtre sur ces données (128 echantillons PDM) avec un facteur de décimation de 64 (On calcul 1 échantillons PCM pour 64 PDM):
+```mermaid
+graph TD
+    INIT(["Begin"]);
+    FINISH(["End"]);
+
+    INIT_I["i = 0"];
+    INIT_J["j = 0"];
+
+    INC_I["i = i + 1"];
+    INC_J["j = j + 1"];
+
+    CHECK_I{"i == 2"};
+    CHECK_J{"j == 4"};
+
+    PUT[/"Load PDM WORD %4 * i + j% Into Filter"/];
+    GET[\"Compute PCM Sample % i %"\];
+
+    INIT --> INIT_I;
+    INIT_I --> CHECK_I;
+    CHECK_I -->|"True"| FINISH;
+    CHECK_I -->|"False"| INIT_J;
+    INIT_J --> CHECK_J;
+    CHECK_J -->|"False"|PUT;
+    PUT --> INC_J --> CHECK_J;
+
+    CHECK_J -->|"True"|GET;
+    GET --> INC_I;
+    INC_I --> CHECK_I;
+
+```
+
+Ce qui nous donne les échantillons PCM suivants une fois l'algorithme appliqué:
+| PCM Sample N° | Value |
+|:-------------:|:-----:|
+|             0 | 29503 |
+|             1 | 15713 |
+
+
 # Générer un filtre
 
 
