@@ -63,7 +63,7 @@ typedef enum program_state {
 #define PCM_BUFFER_SIZE (SOUND_FS/1000)
 
 /** @brief Linear Gain applied on PCM Samples*/
-#define LINEAR_GAIN 20
+#define LINEAR_GAIN 10
 
 /* USER CODE END PD */
 

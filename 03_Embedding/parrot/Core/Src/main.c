@@ -70,7 +70,7 @@ typedef enum {
 #define RECORD_TIME_MS 2985
 
 /** @brief Linear Gain applied on PCM Samples*/
-#define LINEAR_GAIN 20
+#define LINEAR_GAIN 10
 
 /** @brief Number of PCM samples to store in the recorded sound */
 #define SAMPLE_COUNT (RECORD_TIME_MS * (SOUND_FS/1000))
