@@ -58,15 +58,18 @@ typedef enum {
 #define DECIMATION_FACTOR 64
 
 /** @brief Number of PDM Sample in A Word */
-#define PDM_WORD_SIZE 16
+#define WORD_SIZE 16
 
-// 1ms @ FS*DECIMATION_FACTOR (With PDM_WORD_SIZE samples per word)
+/** @brief Duration of a real time cycle in Milliseconds **/
+#define T_CYCLE_MS 100
+
+// 1ms of PDM data @SOUND_FS*DECIMATION_FACTOR in WORD of WORD_SIZE
 /** @brief PDM Processing buffer size (Contain 1ms of PDM Sample)*/
-#define PDM_BUFFER_SIZE (100*((FS / 1000) * (DECIMATION_FACTOR / PDM_WORD_SIZE)))
+#define PDM_BUFFER_SIZE (T_CYCLE_MS * ((FS / 1000) * DECIMATION_FACTOR / WORD_SIZE))
 
-// 1ms @ FS (With 1 sample per word)
+// 1ms of PCM_DATA in word of WORD_SIZE
 /** @brief PCM Processing buffer size  (Contain 1ms of PDM Sample)*/
-#define PCM_BUFFER_SIZE (100*(FS/1000))
+#define PCM_BUFFER_SIZE (T_CYCLE_MS * (FS / 1000))
 
 /** @brief Linear Gain applied on PCM Samples*/
 #define LINEAR_GAIN 10

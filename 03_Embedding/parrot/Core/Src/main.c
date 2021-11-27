@@ -57,13 +57,16 @@ typedef enum {
 /** @brief Number of PDM Sample in A Word */
 #define WORD_SIZE 16
 
+/** @brief Duration of a real time cycle in Milliseconds **/
+#define T_CYCLE_MS 1
+
 // 1ms of PDM data @SOUND_FS*DECIMATION_FACTOR in WORD of WORD_SIZE
 /** @brief PDM Processing buffer size (Contain 1ms of PDM Sample)*/
-#define PDM_BUFFER_SIZE ((SOUND_FS / 1000) * DECIMATION_FACTOR / WORD_SIZE)
+#define PDM_BUFFER_SIZE (T_CYCLE_MS * ((SOUND_FS / 1000) * DECIMATION_FACTOR / WORD_SIZE))
 
 // 1ms of PCM_DATA in word of WORD_SIZE
 /** @brief PCM Processing buffer size  (Contain 1ms of PDM Sample)*/
-#define PCM_BUFFER_SIZE (SOUND_FS / 1000)
+#define PCM_BUFFER_SIZE (T_CYCLE_MS * (SOUND_FS / 1000))
 
 
 /** @brief Maximum length of a record in ms */
