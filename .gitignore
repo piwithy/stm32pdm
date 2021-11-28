@@ -1,4 +1,6 @@
 **/*.pcm
 **/*.pdm
 **/*.wav
-venv
+**/venv*
+**/__pycache__
+dump.md

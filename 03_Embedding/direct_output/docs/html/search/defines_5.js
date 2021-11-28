@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['word_5fsize_12483',['WORD_SIZE',['../main_8c.html#a92ed8507d1cd2331ad09275c5c4c1c89',1,'main.c']]]
+  ['t_5fcycle_5fms_12362',['T_CYCLE_MS',['../main_8c.html#a8a6206d20683a79030dac287783ac875',1,'main.c']]]
 ];

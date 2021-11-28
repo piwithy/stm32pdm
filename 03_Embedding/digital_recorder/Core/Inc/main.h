@@ -62,6 +62,10 @@ void Error_Handler(void);
 #define USER_BTN_GPIO_Port GPIOA
 #define USB_PSO_Pin GPIO_PIN_4
 #define USB_PSO_GPIO_Port GPIOC
+#define USB_WRITING_Pin GPIO_PIN_6
+#define USB_WRITING_GPIO_Port GPIOD
+#define SAI_FILTERING_Pin GPIO_PIN_7
+#define SAI_FILTERING_GPIO_Port GPIOD
 #define LD3_Pin GPIO_PIN_13
 #define LD3_GPIO_Port GPIOG
 #define LD4_Pin GPIO_PIN_14

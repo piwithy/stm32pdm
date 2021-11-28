@@ -1,4 +1,4 @@
-<h1> Digital recorder </h1>
+<h1> Digital Recorder </h1>
 
 Digital Recorder est un démonstrateur dont l’objectif est d’enregistrer les sons ambiants et les sauvegarder au format WAV sur une clé USB
 

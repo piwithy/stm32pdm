@@ -1,7 +1,7 @@
 <h1> 03_Embedding</h1>
 
 Ce dossier contient les sources des 3 démonstrateurs développées pour la cible STM32 (carte STM32F429I-DISC1). Ces démonstrateurs sont les suivants :
-- [parrot](parrot/readme.md ): Application « Perroquet ». Lors de l’appui sur le bouton `USER` la carte commence l’enregistrement du son ambiant, lors d’un deuxième appui la carte rejoue jusqu’aux 3 dernières secondes sur le DAC puis elle transmet les données WAV via le port série.
+- [parrot](parrot/readme.md ): Application « Perroquet ». Lors de l’appui sur le bouton, `USER` la carte commence l’enregistrement du son ambiant, lors d’un deuxième appui, la carte rejoue jusqu’aux 3 dernières secondes sur le DAC puis elle transmet les données WAV via le port série.
 - [Direct Output](direct_output/readme.md ): ce démonstrateur joue en temps réel sur le DAC les sons captés par la carte
 - [Digital Recorder](digital_recorder/readme.md) : Ce démonstrateur lors de l’appui sur le bouton `USER` le démonstrateur enregistre les sons ambiants sur une clé USB lors d’un deuxième appui, il arrête l’enregistrement.
 
@@ -814,7 +814,111 @@ graph LR
 	SPLL_DIVIDE_Q --> PLL_SAIQCLK;
 	PLL_SAIQCLK-->SAI_A_CLK;
 ```
+Pour notre carte les fréquences limites sont les suivantes:
+```mermaid
+graph LR
+	INPUT(("4 =< Input Frequency <=26 MHz"))
+	HCLK(("HCLK"))
+	48M_CLK(("48 MHz Clock"))
+	SAI_A_CLK(("SAI-A Clock"))
+	DIVIDE_M["/M"]
+	MPLL_MULTIPLY_N[*N]
+	MPLL_DIVIDE_P["/P"]
+	MPLL_DIVIDE_Q["/Q"]
+	AHB_PRESCALER["/AHB_Prescaler"]
+	PLL_SAIQCLK["/PLL_SAIQCLK"]
+	SPLL_MULTIPLY_N["*N"]
+	SPLL_DIVIDE_Q["/Q"]
 
-Dans le Logiciel [CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html) il est represneté comme suit:
+
+	subgraph Main PLL
+		MPLL_MULTIPLY_N -->|"100 =< f =< 432 MHz"| MPLL_DIVIDE_P;
+		MPLL_MULTIPLY_N -->|"100 =< f =< 432 MHz"| MPLL_DIVIDE_Q;
+	end;
+
+	subgraph PLL SAI
+	   SPLL_MULTIPLY_N -->|"100 =< f =< 432 MHz"| SPLL_DIVIDE_Q;
+	end
+
+	INPUT --> DIVIDE_M;
+	DIVIDE_M -->|"0.95 =< f =< 2.1 MHz"| MPLL_MULTIPLY_N;
+	DIVIDE_M -->|"0.95 =< f =< 2.1 MHz"| SPLL_MULTIPLY_N;
+	MPLL_DIVIDE_P -->|"24 =< f =< 180 MHz"| AHB_PRESCALER;
+	MPLL_DIVIDE_Q --->|"=48 MHz"| 48M_CLK
+	AHB_PRESCALER -->|"24 =< f =< 180 MHz"| HCLK;
+
+	SPLL_DIVIDE_Q --> |"6.667 <= f =< 216 MHz"| PLL_SAIQCLK;
+	PLL_SAIQCLK-->|"0.208<= f <= 216 MHz"|SAI_A_CLK;
+```
+
+Dans le Logiciel [CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html) il est représenté comme suit:
 
 ![Clocks](../00_Documentation/imgs/03_Embedding/general/Clocks.png)
+
+
+N.B.: le Microphone PDM utiliser par les démonstrateurs accepte des fréquences d'horlogers SAI entre 1 et 3.25 MHz
+
+
+# Configuration du temps de cycle SAI et DAC
+Les démonstrateurs travaillent avec deux Périphériques ayant des contraintes temps réel pour l'acquisition et la restitution du signal audio:
+- DAC: Temps de cycle DAC (temps entre deux interruptions du DMA) $`t_{DAC}`$
+
+	le calcul de $`t_{DAC}`$ se fait grâce à deux paramètres
+	- la fréquence d'échantillonnage du DAC ($`fs_{DAC}`$)
+	- le nombre d'échantillons contenu dans un demi-buffer DMA: RAM &rarr; DAC: $`n_{DAC}`$
+```math
+	t_{DAC} = \frac{n_{DAC}}{fs_{DAC}} \iff n_{DAC} = fs_{DAC}*t_{DAC}
+```
+Donc si on veut $`t_{DAC} = 1 ms`$ et $`fs_{DAC} = 48*10^3Hz`$ on à:
+```math
+	n_{DAC} = fs_{DAC}*t_{DAC} = 48*10^3 * 1* 10^{-3}= 48
+```
+
+Le buffer, DMA: RAM &rarr; DAC aura donc une taille de $`48*2 = 96`$ échantillons PCM
+
+- SAI: Temps de cycle SAI (temps entre deux interruptions du DMA) $`t_{SAI}`$
+
+	le calcul de $`t_{SAI}`$ se fait grâce à deux paramètres
+	- la fréquence du signal PDM ($`f_{PDM}`$)
+	- Le nombre de mots PDM dans un demi-buffer DMA SAI &rarr; RA%: $`n_{SAI}`$
+	- le nombre nombre d'échantillons PDM par mot: $`n_{PDM_{word}}`$
+```math
+	t_{SAI} = \frac{n_{SAI}*n_{PDM_{word}}}{f_{PDM}} \iff n_{SAI} = \frac{f_{PDM}*t_{SAI}}{n_{PDM_{word}}}
+```
+Donc si on veut, $`t_{SAI} = 1 ms`$, $`f_{PDM} = 3.072*10^6Hz`$ et $`n_{PDM_{word}} = 16`$ on à:
+```math
+	n_{SAI} = \frac{f_{PDM}*t_{SAI}}{n_{PDM_{word}}} = \frac{3.072*10^6*1*10^{-3}}{16} = 192
+```
+
+Le buffer DMA RAM &rarr; DAC aura donc une taille de $`192*2 = 384`$ mot PDM.
+
+dans les démonstrateurs on travail uniquement avec la fréquence d'échantillonnage $`fs_{PCM}`$ car on peut obtenir $`f_{PDM}`$ via l'expression suivante:
+```math
+f_{PDM} = D * fs_{PCM}
+```
+avec $`D`$ le facteur de sous échantillonnage
+
+la taille des buffers (demi-buffer DMA) PCM et PDM est donc calculé dans les démonstrateurs la manière suivante :
+
+```c
+/** @brief PCM Sampling frequency in Hz*/
+#define SOUND_FS 32000
+/** @brief PDM -> PCM Sampling frequency factor */
+#define DECIMATION_FACTOR 64
+
+/** @brief Number of PDM Sample in A Word */
+#define WORD_SIZE 16
+
+/** @brief Duration of a real time cycle in Milliseconds **/
+#define T_CYCLE_MS 1
+
+// 1ms of PDM data @SOUND_FS*DECIMATION_FACTOR in WORD of WORD_SIZE
+/** @brief PDM Processing buffer size (Contain 1ms of PDM Sample)*/
+#define PDM_BUFFER_SIZE (T_CYCLE_MS * ((SOUND_FS / 1000) * DECIMATION_FACTOR / WORD_SIZE))
+
+// 1ms of PCM_DATA in word of WORD_SIZE
+/** @brief PCM Processing buffer size  (Contain 1ms of PDM Sample)*/
+#define PCM_BUFFER_SIZE (T_CYCLE_MS * (SOUND_FS / 1000))
+```
+
+Où les constantes `PCM_BUFFER_SIZE` et `PDM_BUFFER_SIZE` correspondent à $`n_{PCM}`$ et $`n_{PDM}`$

@@ -1,4 +1,6 @@
-<h1> STM32PDM </h1
+<h1> STM32PDM </h1>
+
+[![LICENCE](https://img.shields.io/badge/licence-BSD%203--Clause-lightgrey?style=for-the-badge&logo=appveyor)](LICENCE)
 
 Traitement de signal audio embarqué temps-réel sur carte STM32
 
