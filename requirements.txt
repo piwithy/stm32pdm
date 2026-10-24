@@ -2,7 +2,7 @@ cycler
 kiwisolver
 matplotlib
 numpy
-Pillow
+Pillow>=13.0.0
 pyparsing
 pyserial
 python-dateutil
